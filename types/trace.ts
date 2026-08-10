@@ -27,6 +27,7 @@ export interface HistoricalMoment {
   readonly title: string;
   readonly summary: string;
   readonly metadata?: string;
+  readonly verification?: string;
   readonly image?: TraceImage;
   readonly sources?: readonly TraceSource[];
 }

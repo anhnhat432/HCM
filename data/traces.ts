@@ -142,7 +142,141 @@ export const traces = [
     shortTitle: "Trách nhiệm",
     theme: "responsibility",
     cardSummary: "Khi mỗi lựa chọn cá nhân đều tác động đến người khác.",
-    historicalMoments: placeholderMoments,
+    presentDay: {
+      label: "2026 — Điểm xuất phát",
+      headline: [
+        "Khi điều dễ làm",
+        "không phải lúc nào",
+        "cũng là điều nên làm.",
+      ],
+      summary:
+        "Trong lúc chạy nước rút cho một project, một thành viên phát hiện nhóm có thể dùng lại nội dung của người khác để tiết kiệm thời gian. Lối tắt ấy giúp cả nhóm hoàn thành nhanh hơn, nhưng buộc mỗi người cân nhắc trách nhiệm của mình với kết quả chung.",
+      image: {
+        src: "/images/traces/dao-duc-trach-nhiem/present-day.jpg",
+        alt: "Nhóm sinh viên cùng xem tài liệu trên laptop khi làm project",
+        caption: "Một lối tắt đặt cả nhóm trước lựa chọn chung",
+        credit: "Unsplash reference — modern student project scene",
+      },
+    },
+    centralQuestion:
+      "Điều gì định hướng một lựa chọn đúng khi không ai buộc ta phải làm đúng?",
+    historicalMoments: [
+      {
+        id: "tu-cach-nguoi-cach-menh",
+        year: "1927",
+        title: "Tư cách một người cách mệnh",
+        summary:
+          "Trong Đường Kách mệnh, Nguyễn Ái Quốc đặt “Tư cách một người cách mệnh” ở phần đầu, nêu yêu cầu về tự mình, với người và với việc. Đạo đức vì thế được trình bày như nền tảng gắn liền với hành động cách mạng.",
+        metadata: "Tác phẩm Đường Kách mệnh — xuất bản năm 1927",
+        verification:
+          "Cần đối chiếu nguyên bản phần “Tư cách một người cách mệnh” và bối cảnh xuất bản trước khi khóa nội dung.",
+        image: {
+          alt: "Khung tư liệu trung tính cho tác phẩm Đường Kách mệnh năm 1927",
+          caption: "Chờ bổ sung tư liệu lưu trữ đã được xác minh",
+          credit: "TODO: 1927 archival asset required",
+          isPlaceholder: true,
+        },
+        sources: [
+          {
+            title:
+              "Vận dụng tư tưởng tác phẩm “Đường cách mệnh” trong xây dựng, chỉnh đốn Đảng",
+            url: "https://hochiminh.vn/tu-tuong-dao-duc-ho-chi-minh/nghien-cuu-tu-tuong-dao-duc-ho-chi-minh/van-dung-tu-tuong-tac-pham-duong-cach-menh-trong-xay-dung-chinh-don-dang-6549",
+          },
+        ],
+      },
+      {
+        id: "sua-doi-loi-lam-viec",
+        year: "1947",
+        title: "Sửa đổi lối làm việc",
+        summary:
+          "Trong Sửa đổi lối làm việc, Hồ Chí Minh phê bình chủ quan, hẹp hòi, bệnh cá nhân và yêu cầu sửa cách nghĩ, cách làm. Trách nhiệm trước tổ chức, nhân dân được đặt trong kỷ luật công việc hằng ngày.",
+        metadata: "Việt Bắc — tháng 10, 1947",
+        verification:
+          "Cần chuyên gia lịch sử xác nhận cách tóm lược mối liên hệ giữa sửa lối làm việc và trách nhiệm trước tập thể.",
+        image: {
+          alt: "Khung tư liệu trung tính cho tác phẩm Sửa đổi lối làm việc năm 1947",
+          caption: "Chờ bổ sung tư liệu lưu trữ đã được xác minh",
+          credit: "TODO: 1947 archival asset required",
+          isPlaceholder: true,
+        },
+        sources: [
+          {
+            title:
+              "60 năm tác phẩm Sửa đổi lối làm việc của Chủ tịch Hồ Chí Minh",
+            url: "https://tulieuvankien.dangcongsan.vn/c-mac-angghen-lenin-ho-chi-minh/ho-chi-minh/nghien-cuu-hoc-tap-tu-tuong/60-nam-tac-pham-sua-doi-loi-lam-viec-cua-chu-tich-ho-chi-minh-10-1947-102007-y-nghia-va-gia-tri-tu-tuong-sua-doi-2488",
+          },
+        ],
+      },
+      {
+        id: "nang-cao-dao-duc-cach-mang",
+        year: "1969",
+        title: "Nâng cao đạo đức cách mạng",
+        summary:
+          "Ngày 3 tháng 2, báo Nhân Dân đăng bài “Nâng cao đạo đức cách mạng, quét sạch chủ nghĩa cá nhân”. Bài viết đặt lợi ích của cách mạng, nhân dân lên trên lợi ích riêng, gắn tu dưỡng với việc hoàn thành nhiệm vụ.",
+        metadata: "Báo Nhân Dân — 3 tháng 2, 1969",
+        verification:
+          "Ngày đăng và tên bài đã có nguồn báo Nhân Dân; câu diễn giải về lợi ích chung cần đối chiếu toàn văn.",
+        image: {
+          alt: "Khung tư liệu trung tính cho bài viết về đạo đức cách mạng năm 1969",
+          caption: "Chờ bổ sung tư liệu lưu trữ đã được xác minh",
+          credit: "TODO: 1969 archival asset required",
+          isPlaceholder: true,
+        },
+        sources: [
+          {
+            title:
+              "Nâng cao đạo đức cách mạng, quét sạch chủ nghĩa cá nhân",
+            url: "https://special.nhandan.vn/nang_cao_dao_duc_cach_mang_quet_sach_chu_nghia_ca_nhan/index.html",
+          },
+        ],
+      },
+    ],
+    thoughtFormation: {
+      heading: ["Tư tưởng ấy", "được hình thành", "như thế nào?"],
+      factors: [
+        {
+          title: "Đạo đức là nền tảng",
+          summary:
+            "Lựa chọn đúng bắt đầu từ việc tự rèn mình, không chỉ từ quy định bên ngoài.",
+        },
+        {
+          title: "Trách nhiệm trong hành động",
+          summary:
+            "Một nguyên tắc chỉ có ý nghĩa khi được thể hiện trong cách làm việc và nhận trách nhiệm.",
+        },
+        {
+          title: "Lợi ích chung",
+          summary:
+            "Lợi ích cá nhân cần được đặt trong quan hệ với tập thể và những người chịu tác động.",
+        },
+      ],
+      conclusion: ["Đạo đức &", "trách nhiệm"],
+    },
+    application: {
+      eyebrow: "Đạo đức & trách nhiệm trong thực tiễn",
+      heading: ["Điều này có nghĩa gì", "với bạn hôm nay?"],
+      bridge: "Quay lại nhóm sinh viên ban đầu.",
+      items: [
+        {
+          number: "01",
+          title: "Trung thực với lựa chọn",
+          summary:
+            "Kiểm tra nguồn, nói rõ điều nhóm định sử dụng và chọn cách có thể giải thích minh bạch với mọi người.",
+        },
+        {
+          number: "02",
+          title: "Chịu trách nhiệm với hành động",
+          summary:
+            "Cùng nhận phần hậu quả của quyết định và chủ động sửa lại khi lựa chọn của nhóm có vấn đề.",
+        },
+        {
+          number: "03",
+          title: "Đặt lợi ích chung đúng chỗ",
+          summary:
+            "Ưu tiên kết quả bền vững của cả nhóm, kể cả khi điều đó cần thêm thời gian thay vì một lối tắt.",
+        },
+      ],
+    },
   },
   {
     slug: "con-nguoi",

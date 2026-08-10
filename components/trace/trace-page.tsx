@@ -14,6 +14,9 @@ interface TracePageProps {
 }
 
 export function TracePage({ trace, nextTrace }: TracePageProps) {
+  const firstHistoricalYear = trace.historicalMoments[0].year;
+  const finalHistoricalYear = trace.historicalMoments[2].year;
+
   return (
     <div className={`trace-experience ${traceThemes[trace.theme]}`}>
       <TraceHeader order={trace.order} title={trace.title} />
@@ -22,10 +25,18 @@ export function TracePage({ trace, nextTrace }: TracePageProps) {
           centralQuestion={trace.centralQuestion}
           presentDay={trace.presentDay}
         />
-        <TimeBridge variant="back" />
+        <TimeBridge
+          fromYear="2026"
+          toYear={firstHistoricalYear}
+          variant="back"
+        />
         <HistoricalSequence moments={trace.historicalMoments} />
         <ThoughtFormation formation={trace.thoughtFormation} />
-        <TimeBridge variant="return" />
+        <TimeBridge
+          fromYear={finalHistoricalYear}
+          toYear="2026"
+          variant="return"
+        />
         <PresentApplication application={trace.application} />
         <TraceNavigation nextTrace={nextTrace} />
       </main>

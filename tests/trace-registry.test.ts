@@ -55,6 +55,47 @@ test("dai doan ket continues to the existing second trace route", () => {
   assert.equal(getNextTraceSlug("dai-doan-ket"), "dao-duc-trach-nhiem");
 });
 
+test("dao duc va trach nhiem exposes the complete approved narrative", () => {
+  const trace = getTraceBySlug("dao-duc-trach-nhiem");
+
+  assert.ok(trace?.presentDay);
+  assert.equal(
+    trace.centralQuestion,
+    "Điều gì định hướng một lựa chọn đúng khi không ai buộc ta phải làm đúng?",
+  );
+  assert.deepEqual(
+    trace.historicalMoments.map((moment) => moment.year),
+    ["1927", "1947", "1969"],
+  );
+  assert.equal(trace.thoughtFormation?.factors.length, 3);
+  assert.equal(trace.application?.items.length, 3);
+  assert.equal(getNextTraceSlug(trace.slug), "con-nguoi");
+});
+
+test("dao duc va trach nhiem records sources and verification work", () => {
+  const trace = getTraceBySlug("dao-duc-trach-nhiem");
+
+  assert.ok(trace);
+  assert.ok(
+    trace.historicalMoments.every(
+      (moment) => moment.sources?.length && moment.verification,
+    ),
+  );
+  assert.ok(
+    trace.historicalMoments.every(
+      (moment) => moment.image?.isPlaceholder && !moment.image.src,
+    ),
+  );
+  assert.deepEqual(
+    trace.historicalMoments.map((moment) => moment.image?.credit),
+    [
+      "TODO: 1927 archival asset required",
+      "TODO: 1947 archival asset required",
+      "TODO: 1969 archival asset required",
+    ],
+  );
+});
+
 test("dai doan ket records verification work for every historical asset", () => {
   const trace = getTraceBySlug("dai-doan-ket");
 

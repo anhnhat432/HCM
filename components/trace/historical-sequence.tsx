@@ -5,24 +5,24 @@ interface HistoricalSequenceProps {
   readonly moments: HistoricalMoments;
 }
 
-const nextTargets = [
-  { href: "#moment-1941", label: "Tiếp theo" },
-  { href: "#moment-1945", label: "Tiếp theo" },
-  { href: "#thought-formation", label: "Tư tưởng hình thành" },
-] as const;
-
 export function HistoricalSequence({ moments }: HistoricalSequenceProps) {
   return (
     <>
-      {moments.map((moment, index) => (
-        <HistoricalMoment
-          imageRight={index % 2 === 1}
-          key={moment.id}
-          moment={moment}
-          nextHref={nextTargets[index].href}
-          nextLabel={nextTargets[index].label}
-        />
-      ))}
+      {moments.map((moment, index) => {
+        const nextMoment = moments[index + 1];
+
+        return (
+          <HistoricalMoment
+            imageRight={index % 2 === 1}
+            key={moment.id}
+            moment={moment}
+            nextHref={
+              nextMoment ? `#moment-${nextMoment.year}` : "#thought-formation"
+            }
+            nextLabel={nextMoment ? "Tiếp theo" : "Tư tưởng hình thành"}
+          />
+        );
+      })}
     </>
   );
 }

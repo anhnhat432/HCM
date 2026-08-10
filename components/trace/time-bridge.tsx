@@ -5,9 +5,11 @@ import { TraceLine } from "@/components/trace/trace-line";
 
 interface TimeBridgeProps {
   readonly variant: "back" | "return";
+  readonly fromYear: string;
+  readonly toYear: string;
 }
 
-export function TimeBridge({ variant }: TimeBridgeProps) {
+export function TimeBridge({ variant, fromYear, toYear }: TimeBridgeProps) {
   if (variant === "back") {
     return (
       <section
@@ -26,9 +28,9 @@ export function TimeBridge({ variant }: TimeBridgeProps) {
             </h2>
           </TraceReveal>
 
-          <TraceLine direction="back" fromYear="2026" toYear="1930" />
+          <TraceLine direction="back" fromYear={fromYear} toYear={toYear} />
 
-          <Link className="time-bridge__cue" href="#moment-1930">
+          <Link className="time-bridge__cue" href={`#moment-${toYear}`}>
             Bắt đầu ↓
           </Link>
         </div>
@@ -44,7 +46,7 @@ export function TimeBridge({ variant }: TimeBridgeProps) {
       aria-labelledby="return-title"
     >
       <div className="site-container time-bridge__inner">
-        <TraceLine direction="return" fromYear="1945" toYear="2026" />
+        <TraceLine direction="return" fromYear={fromYear} toYear={toYear} />
 
         <TraceReveal>
           <h2 className="time-bridge__title" id="return-title">
