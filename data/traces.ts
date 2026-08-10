@@ -166,10 +166,10 @@ export const traces = [
         year: "1927",
         title: "Tư cách một người cách mệnh",
         summary:
-          "Trong Đường Kách mệnh, Nguyễn Ái Quốc đặt “Tư cách một người cách mệnh” ở phần đầu, nêu yêu cầu về tự mình, với người và với việc. Đạo đức vì thế được trình bày như nền tảng gắn liền với hành động cách mạng.",
+          "Trong Đường Kách mệnh, Nguyễn Ái Quốc đặt “Tư cách một người cách mệnh” ở đầu tác phẩm, nêu yêu cầu về bản thân, với người và công việc. Đạo đức được xác lập sớm như nền tảng gắn với hành động cách mạng.",
         metadata: "Tác phẩm Đường Kách mệnh — xuất bản năm 1927",
         verification:
-          "Cần đối chiếu nguyên bản phần “Tư cách một người cách mệnh” và bối cảnh xuất bản trước khi khóa nội dung.",
+          "Đã đối chiếu nguồn chính thống về năm 1927, bối cảnh các bài giảng và vai trò của chuẩn mực đạo đức; summary là diễn giải, không phải trích dẫn.",
         image: {
           alt: "Khung tư liệu trung tính cho tác phẩm Đường Kách mệnh năm 1927",
           caption: "Chờ bổ sung tư liệu lưu trữ đã được xác minh",
@@ -189,10 +189,10 @@ export const traces = [
         year: "1947",
         title: "Sửa đổi lối làm việc",
         summary:
-          "Trong Sửa đổi lối làm việc, Hồ Chí Minh phê bình chủ quan, hẹp hòi, bệnh cá nhân và yêu cầu sửa cách nghĩ, cách làm. Trách nhiệm trước tổ chức, nhân dân được đặt trong kỷ luật công việc hằng ngày.",
+          "Trong Sửa đổi lối làm việc, Hồ Chí Minh đưa yêu cầu về phẩm chất vào thực tiễn công tác: nhận diện bệnh chủ quan, hẹp hòi, sửa cách nghĩ, cách làm và nhấn mạnh trách nhiệm của cán bộ, đảng viên với tổ chức, tập thể.",
         metadata: "Việt Bắc — tháng 10, 1947",
         verification:
-          "Cần chuyên gia lịch sử xác nhận cách tóm lược mối liên hệ giữa sửa lối làm việc và trách nhiệm trước tập thể.",
+          "Đã đối chiếu nguồn chính thống về bối cảnh Việt Bắc năm 1947, nội dung phê bình khuyết điểm và trách nhiệm của cán bộ, đảng viên; summary là diễn giải.",
         image: {
           alt: "Khung tư liệu trung tính cho tác phẩm Sửa đổi lối làm việc năm 1947",
           caption: "Chờ bổ sung tư liệu lưu trữ đã được xác minh",
@@ -208,25 +208,24 @@ export const traces = [
         ],
       },
       {
-        id: "nang-cao-dao-duc-cach-mang",
-        year: "1969",
-        title: "Nâng cao đạo đức cách mạng",
+        id: "dao-duc-cach-mang",
+        year: "1958",
+        title: "Đạo đức cách mạng",
         summary:
-          "Ngày 3 tháng 2, báo Nhân Dân đăng bài “Nâng cao đạo đức cách mạng, quét sạch chủ nghĩa cá nhân”. Bài viết đặt lợi ích của cách mạng, nhân dân lên trên lợi ích riêng, gắn tu dưỡng với việc hoàn thành nhiệm vụ.",
-        metadata: "Báo Nhân Dân — 3 tháng 2, 1969",
+          "Trong Đạo đức cách mạng, Hồ Chí Minh trình bày có hệ thống hơn về đạo đức, tu dưỡng, lợi ích chung và chống chủ nghĩa cá nhân. Tác phẩm phát triển mạch tư tưởng về phẩm chất, trách nhiệm đã đặt ra từ 1927, 1947.",
+        metadata: "Tạp chí Học tập, số 12 — 1958",
         verification:
-          "Ngày đăng và tên bài đã có nguồn báo Nhân Dân; câu diễn giải về lợi ích chung cần đối chiếu toàn văn.",
+          "Đã đối chiếu nguồn chính thống về tên tác phẩm, bút danh Trần Lực và việc đăng trên Tạp chí Học tập số 12 năm 1958; summary là diễn giải, không phải trích dẫn.",
         image: {
-          alt: "Khung tư liệu trung tính cho bài viết về đạo đức cách mạng năm 1969",
+          alt: "Khung tư liệu trung tính cho tác phẩm Đạo đức cách mạng năm 1958",
           caption: "Chờ bổ sung tư liệu lưu trữ đã được xác minh",
-          credit: "TODO: 1969 archival asset required",
+          credit: "TODO: 1958 archival asset required",
           isPlaceholder: true,
         },
         sources: [
           {
-            title:
-              "Nâng cao đạo đức cách mạng, quét sạch chủ nghĩa cá nhân",
-            url: "https://special.nhandan.vn/nang_cao_dao_duc_cach_mang_quet_sach_chu_nghia_ca_nhan/index.html",
+            title: "“Đạo đức cách mạng” của Chủ tịch Hồ Chí Minh",
+            url: "https://hochiminh.vn/tin-tuc/dao-duc-cach-mang-cua-chu-tich-ho-chi-minh-1431",
           },
         ],
       },

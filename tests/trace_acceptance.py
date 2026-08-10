@@ -35,7 +35,7 @@ TRACE_CASES = {
         "question": (
             "Điều gì định hướng một lựa chọn đúng khi không ai buộc ta phải làm đúng?"
         ),
-        "years": ["1927", "1947", "1969"],
+        "years": ["1927", "1947", "1958"],
         "conclusion": "ĐẠO ĐỨC & TRÁCH NHIỆM",
         "next_title": "Con người",
         "next_path": "/trace/con-nguoi",

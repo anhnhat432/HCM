@@ -65,8 +65,9 @@ test("dao duc va trach nhiem exposes the complete approved narrative", () => {
   );
   assert.deepEqual(
     trace.historicalMoments.map((moment) => moment.year),
-    ["1927", "1947", "1969"],
+    ["1927", "1947", "1958"],
   );
+  assert.equal(JSON.stringify(trace).includes("1969"), false);
   assert.equal(trace.thoughtFormation?.factors.length, 3);
   assert.equal(trace.application?.items.length, 3);
   assert.equal(getNextTraceSlug(trace.slug), "con-nguoi");
@@ -91,7 +92,7 @@ test("dao duc va trach nhiem records sources and verification work", () => {
     [
       "TODO: 1927 archival asset required",
       "TODO: 1947 archival asset required",
-      "TODO: 1969 archival asset required",
+      "TODO: 1958 archival asset required",
     ],
   );
 });
