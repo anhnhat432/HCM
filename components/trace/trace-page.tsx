@@ -1,4 +1,5 @@
 import { HistoricalSequence } from "@/components/trace/historical-sequence";
+import { JourneyClosing } from "@/components/trace/journey-closing";
 import { PresentApplication } from "@/components/trace/present-application";
 import { ThoughtFormation } from "@/components/trace/thought-formation";
 import { TimeBridge } from "@/components/trace/time-bridge";
@@ -6,14 +7,23 @@ import { TraceHeader } from "@/components/trace/trace-header";
 import { TraceNavigation } from "@/components/trace/trace-navigation";
 import { TraceOpening } from "@/components/trace/trace-opening";
 import { traceThemes } from "@/lib/trace-themes";
-import type { CompleteTraceData, TraceData } from "@/types/trace";
+import type {
+  CompleteTraceData,
+  JourneyClosingData,
+  TraceData,
+} from "@/types/trace";
 
-interface TracePageProps {
+type TracePageProps = {
   readonly trace: CompleteTraceData;
   readonly nextTrace: TraceData;
-}
+  readonly closing?: never;
+} | {
+  readonly trace: CompleteTraceData;
+  readonly nextTrace?: never;
+  readonly closing: JourneyClosingData;
+};
 
-export function TracePage({ trace, nextTrace }: TracePageProps) {
+export function TracePage({ trace, nextTrace, closing }: TracePageProps) {
   const firstHistoricalYear = trace.historicalMoments[0].year;
   const finalHistoricalYear = trace.historicalMoments[2].year;
 
@@ -37,8 +47,13 @@ export function TracePage({ trace, nextTrace }: TracePageProps) {
           toYear="2026"
           variant="return"
         />
-        <PresentApplication application={trace.application} />
-        <TraceNavigation nextTrace={nextTrace} />
+        <PresentApplication
+          application={trace.application}
+          continuationHref={closing ? "#journey-closing" : undefined}
+          continuationLabel={closing ? "Khép lại hành trình" : undefined}
+        />
+        {nextTrace ? <TraceNavigation nextTrace={nextTrace} /> : null}
+        {closing ? <JourneyClosing closing={closing} /> : null}
       </main>
     </div>
   );

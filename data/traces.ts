@@ -1,25 +1,4 @@
-import type { HistoricalMoments, TraceData } from "@/types/trace";
-
-const placeholderMoments: HistoricalMoments = [
-  {
-    id: "placeholder-01",
-    year: "—",
-    title: "Dấu mốc lịch sử 01",
-    summary: "Nội dung sẽ được biên soạn và xác minh trong phase Trace.",
-  },
-  {
-    id: "placeholder-02",
-    year: "—",
-    title: "Dấu mốc lịch sử 02",
-    summary: "Nội dung sẽ được biên soạn và xác minh trong phase Trace.",
-  },
-  {
-    id: "placeholder-03",
-    year: "—",
-    title: "Dấu mốc lịch sử 03",
-    summary: "Nội dung sẽ được biên soạn và xác minh trong phase Trace.",
-  },
-];
+import type { TraceData } from "@/types/trace";
 
 export const traces = [
   {
@@ -284,6 +263,133 @@ export const traces = [
     shortTitle: "Con người",
     theme: "humanity",
     cardSummary: "Con người đứng ở đâu trong một xã hội đang thay đổi?",
-    historicalMoments: placeholderMoments,
+    presentDay: {
+      label: "2026 — Điểm xuất phát",
+      headline: ["Khi một con người", "bị đo bằng", "những con số."],
+      summary:
+        "Điểm số, thành tích, năng suất và những dòng trong CV dần trở thành thước đo quen thuộc. Khi kết quả không như mong đợi, một sinh viên bắt đầu tự hỏi liệu giá trị của mình có đang bị thu gọn vào những con số ấy.",
+      image: {
+        src: "/images/traces/con-nguoi/present-day.jpg",
+        alt: "Một sinh viên tập trung trước laptop trong không gian học tập",
+        caption: "Khi kết quả dần trở thành thước đo duy nhất",
+        credit: "Unsplash reference — student studying at a laptop",
+      },
+    },
+    centralQuestion: "Giá trị của một con người được quyết định bởi điều gì?",
+    historicalMoments: [
+      {
+        id: "tuyen-ngon-doc-lap",
+        year: "1945",
+        title: "Tuyên ngôn Độc lập",
+        summary:
+          "Trong Tuyên ngôn Độc lập, Hồ Chí Minh đặt quyền sống, tự do và bình đẳng của con người trong lập luận về độc lập dân tộc. Phẩm giá con người vì thế gắn với quyền tự quyết của cả cộng đồng.",
+        metadata: "Quảng trường Ba Đình, Hà Nội — 2 tháng 9, 1945",
+        verification:
+          "Đã đối chiếu nguồn chính thống về ngày công bố, quyền sống, tự do, bình đẳng và mối liên hệ giữa quyền con người với quyền dân tộc; summary là diễn giải.",
+        image: {
+          alt: "Khung tư liệu trung tính cho Tuyên ngôn Độc lập năm 1945",
+          caption: "Chờ bổ sung tư liệu lưu trữ đã được xác minh",
+          credit: "TODO: 1945 archival asset required",
+          isPlaceholder: true,
+        },
+        sources: [
+          {
+            title: "Quyền con người trong Tuyên ngôn Độc lập của Chủ tịch Hồ Chí Minh",
+            url: "https://tulieuvankien.dangcongsan.vn/c-mac-angghen-lenin-ho-chi-minh/ho-chi-minh/nghien-cuu-hoc-tap-tu-tuong/quyen-con-nguoi-trong-tuyen-ngon-doc-lap-cua-chu-tich-ho-chi-minh-2166",
+          },
+        ],
+      },
+      {
+        id: "trong-nguoi",
+        year: "1958",
+        title: "Trồng người",
+        summary:
+          "Tại lớp học chính trị của giáo viên cấp II, III toàn miền Bắc, Hồ Chí Minh nhấn mạnh “trồng người” là công việc lâu dài. Giáo dục không chỉ truyền đạt kiến thức mà còn bồi dưỡng con người để trưởng thành và đóng góp.",
+        metadata:
+          "Lớp học chính trị của giáo viên cấp II, III — 13 tháng 9, 1958",
+        verification:
+          "Đã đối chiếu Báo Quân đội nhân dân và dẫn chiếu Hồ Chí Minh Toàn tập, tập 11, trang 528 về phát biểu ngày 13 tháng 9 năm 1958.",
+        image: {
+          alt: "Khung tư liệu trung tính cho phát biểu về trồng người năm 1958",
+          caption: "Chờ bổ sung tư liệu lưu trữ đã được xác minh",
+          credit: "TODO: 1958 archival asset required",
+          isPlaceholder: true,
+        },
+        sources: [
+          {
+            title: "13-9-1958: Bác Hồ căn dặn chuyện trồng cây — trồng người",
+            url: "https://www.qdnd.vn/tu-lieu-ho-so/ngay-nay-nam-xua/13-9-1958-bac-ho-can-dan-chuyen-trong-cay-trong-nguoi-671049",
+          },
+        ],
+      },
+      {
+        id: "di-chuc",
+        year: "1969",
+        title: "Di chúc",
+        summary:
+          "Trong Di chúc, Hồ Chí Minh quan tâm đến giáo dục thanh niên, bồi dưỡng thế hệ kế tiếp và nâng cao đời sống nhân dân. Những căn dặn ấy đặt con người ở trung tâm công việc xây dựng xã hội sau chiến tranh.",
+        metadata: "Di chúc của Chủ tịch Hồ Chí Minh — 1969",
+        verification:
+          "Đã đối chiếu toàn văn Di chúc về giáo dục thanh niên, bồi dưỡng thế hệ cách mạng và kế hoạch nâng cao đời sống nhân dân; summary là diễn giải.",
+        image: {
+          alt: "Khung tư liệu trung tính cho Di chúc năm 1969",
+          caption: "Chờ bổ sung tư liệu lưu trữ đã được xác minh",
+          credit: "TODO: 1969 archival asset required",
+          isPlaceholder: true,
+        },
+        sources: [
+          {
+            title: "Toàn văn Di chúc của Chủ tịch Hồ Chí Minh",
+            url: "https://baochinhphu.vn/toan-van-di-chuc-cua-chu-tich-ho-chi-minh-102169104.htm",
+          },
+        ],
+      },
+    ],
+    thoughtFormation: {
+      heading: ["Tư tưởng ấy", "được hình thành", "như thế nào?"],
+      factors: [
+        {
+          title: "Quyền và phẩm giá con người",
+          summary:
+            "Quyền sống, tự do và bình đẳng được đặt trong quan hệ với quyền độc lập, tự quyết của dân tộc.",
+        },
+        {
+          title: "Giáo dục và phát triển con người",
+          summary:
+            "Con người cần được học tập, bồi dưỡng và tạo điều kiện để phát triển lâu dài.",
+        },
+        {
+          title: "Con người trong xây dựng xã hội",
+          summary:
+            "Sự phát triển chỉ có ý nghĩa khi hướng tới đời sống nhân dân và phát huy khả năng đóng góp của mỗi người.",
+        },
+      ],
+      conclusion: ["Con người", "vừa là mục tiêu,", "vừa là động lực"],
+    },
+    application: {
+      eyebrow: "Con người trong thực tiễn",
+      heading: ["Điều này có nghĩa gì", "với bạn hôm nay?"],
+      bridge: "Quay lại sinh viên ở điểm xuất phát.",
+      items: [
+        {
+          number: "01",
+          title: "Không thu gọn con người vào thành tích",
+          summary:
+            "Điểm số, năng suất hay kết quả tức thời chỉ phản ánh một phần, không thể đại diện cho toàn bộ một con người.",
+        },
+        {
+          number: "02",
+          title: "Tạo điều kiện để con người phát triển",
+          summary:
+            "Giáo dục và môi trường tập thể cần mở ra cơ hội để mỗi người học hỏi, trưởng thành và đóng góp.",
+        },
+        {
+          number: "03",
+          title: "Đặt con người vào trung tâm",
+          summary:
+            "Một quyết định tốt cần cân nhắc cả kết quả đạt được lẫn ảnh hưởng của nó tới những người liên quan.",
+        },
+      ],
+    },
   },
 ] as const satisfies readonly TraceData[];

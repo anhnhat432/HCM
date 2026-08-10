@@ -77,6 +77,29 @@ export interface TraceApplication {
   ];
 }
 
+export interface JourneyClosingTopic {
+  readonly order: TraceOrder;
+  readonly title: string;
+}
+
+export interface JourneyClosingAction {
+  readonly label: string;
+  readonly href: string;
+}
+
+export interface JourneyClosingData {
+  readonly brand: string;
+  readonly heading: readonly string[];
+  readonly topics: readonly [
+    JourneyClosingTopic,
+    JourneyClosingTopic,
+    JourneyClosingTopic,
+  ];
+  readonly statement: string;
+  readonly primaryAction: JourneyClosingAction;
+  readonly secondaryAction: JourneyClosingAction;
+}
+
 export interface TraceData {
   readonly slug: TraceSlug;
   readonly order: TraceOrder;

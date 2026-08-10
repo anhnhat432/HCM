@@ -5,9 +5,15 @@ import type { TraceApplication } from "@/types/trace";
 
 interface PresentApplicationProps {
   readonly application: TraceApplication;
+  readonly continuationHref?: string;
+  readonly continuationLabel?: string;
 }
 
-export function PresentApplication({ application }: PresentApplicationProps) {
+export function PresentApplication({
+  application,
+  continuationHref = "#next-trace",
+  continuationLabel = "Tiếp tục hành trình",
+}: PresentApplicationProps) {
   return (
     <section
       className="present-application"
@@ -41,9 +47,9 @@ export function PresentApplication({ application }: PresentApplicationProps) {
             ))}
           </div>
 
-          <Link className="trace-sequence-link" href="#next-trace">
+          <Link className="trace-sequence-link" href={continuationHref}>
             <span aria-hidden="true" />
-            Tiếp tục hành trình
+            {continuationLabel}
             <b aria-hidden="true">→</b>
           </Link>
         </div>

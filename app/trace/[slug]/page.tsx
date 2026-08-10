@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { TracePage } from "@/components/trace/trace-page";
+import { journeyClosing } from "@/data/journey-closing";
 import { traces } from "@/data/traces";
 import { getNextTraceSlug, getTraceBySlug } from "@/lib/trace-registry";
 import { traceThemes } from "@/lib/trace-themes";
@@ -33,9 +34,11 @@ export default async function TracePlaceholderPage({
     trace.thoughtFormation &&
     trace.application;
 
-  if (hasCompleteExperience && nextTrace) {
-    return (
+  if (hasCompleteExperience) {
+    return nextTrace ? (
       <TracePage trace={trace as CompleteTraceData} nextTrace={nextTrace} />
+    ) : (
+      <TracePage closing={journeyClosing} trace={trace as CompleteTraceData} />
     );
   }
 

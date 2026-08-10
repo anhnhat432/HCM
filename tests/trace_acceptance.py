@@ -26,6 +26,7 @@ TRACE_CASES = {
         "next_title": "Đạo đức & trách nhiệm",
         "next_path": "/trace/dao-duc-trach-nhiem",
         "placeholder_count": 3,
+        "ending": "next-trace",
     },
     "trace-02": {
         "path": "/trace/dao-duc-trach-nhiem",
@@ -40,6 +41,18 @@ TRACE_CASES = {
         "next_title": "Con người",
         "next_path": "/trace/con-nguoi",
         "placeholder_count": 3,
+        "ending": "next-trace",
+    },
+    "trace-03": {
+        "path": "/trace/con-nguoi",
+        "title": "Con người",
+        "chapter": "03 / 03",
+        "headline": "Khi một con người",
+        "question": "Giá trị của một con người được quyết định bởi điều gì?",
+        "years": ["1945", "1958", "1969"],
+        "conclusion": "CON NGƯỜI VỪA LÀ MỤC TIÊU, VỪA LÀ ĐỘNG LỰC",
+        "placeholder_count": 3,
+        "ending": "journey-closing",
     },
 }
 
@@ -104,7 +117,7 @@ def verify_trace(page: Page, trace_case: dict) -> None:
         "thought-formation",
         "return-2026",
         "application",
-        "next-trace",
+        trace_case["ending"],
     ]
     stages = page.locator("[data-trace-stage]").evaluate_all(
         "elements => elements.map(element => element.dataset.traceStage)"
@@ -187,9 +200,18 @@ def verify_trace(page: Page, trace_case: dict) -> None:
             lines <= 3 for lines in rendered_line_count(page, ".application-item p")
         )
 
-    assert page.get_by_role(
-        "link", name=trace_case["next_title"], exact=True
-    ).get_attribute("href") == trace_case["next_path"]
+    if trace_case["ending"] == "next-trace":
+        assert page.get_by_role(
+            "link", name=trace_case["next_title"], exact=True
+        ).get_attribute("href") == trace_case["next_path"]
+    else:
+        closing = page.locator(".journey-closing")
+        closing.wait_for()
+        assert "Ba câu hỏi của hôm nay" in closing.inner_text()
+        assert page.get_by_role(
+            "link", name="Bắt đầu lại", exact=True
+        ).get_attribute("href") == "/trace/dai-doan-ket"
+
     assert page.get_by_role("link", name="Về trang chủ", exact=True).get_attribute(
         "href"
     ) == "/"
@@ -200,12 +222,18 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     assert document_width <= viewport_width
 
 
-def verify_mobile_targets(page: Page, next_title: str) -> None:
+def verify_mobile_targets(page: Page, trace_case: dict) -> None:
+    ending_targets = (
+        [trace_case["next_title"]]
+        if trace_case["ending"] == "next-trace"
+        else ["Khép lại hành trình", "Bắt đầu lại"]
+    )
+
     for name in [
         "ĐUỐC HỒNG",
         "Nhìn lại quá khứ",
         "Xem cách áp dụng",
-        next_title,
+        *ending_targets,
         "Về trang chủ",
     ]:
         target = page.get_by_role("link", name=name, exact=True)
@@ -223,18 +251,6 @@ def prepare_full_page_screenshot(page: Page) -> None:
         page.wait_for_timeout(180)
     page.evaluate("window.scrollTo(0, 0)")
     page.wait_for_timeout(500)
-
-
-def verify_incomplete_trace_stays_placeholder(page: Page) -> None:
-    response = page.goto(
-        f"{BASE_URL}/trace/con-nguoi",
-        wait_until="domcontentloaded",
-        timeout=60_000,
-    )
-    assert response is not None and response.ok
-    assert page.get_by_role("heading", level=1).inner_text() == "Con người"
-    assert page.get_by_role("link", name="ĐUỐC HỒNG").get_attribute("href") == "/"
-    assert page.locator("[data-trace-stage]").count() == 0
 
 
 def main() -> None:
@@ -255,7 +271,7 @@ def main() -> None:
                 error_groups.append(collect_console_errors(page))
                 verify_trace(page, trace_case)
                 if viewport_name == "mobile":
-                    verify_mobile_targets(page, trace_case["next_title"])
+                    verify_mobile_targets(page, trace_case)
                 prepare_full_page_screenshot(page)
                 page.screenshot(
                     path=str(SCREENSHOT_DIR / f"{trace_name}-{viewport_name}.png"),
@@ -270,15 +286,11 @@ def main() -> None:
             verify_trace(reduced_motion, trace_case)
             reduced_motion.close()
 
-        placeholder = browser.new_page(viewport=viewports["desktop"])
-        error_groups.append(collect_console_errors(placeholder))
-        verify_incomplete_trace_stays_placeholder(placeholder)
-        placeholder.close()
         browser.close()
 
     errors = [error for group in error_groups for error in group]
     assert not errors, f"Browser console errors: {errors}"
-    print("Trace 01 and Trace 02 acceptance passed")
+    print("Trace 01, Trace 02, and Trace 03 acceptance passed")
 
 
 if __name__ == "__main__":

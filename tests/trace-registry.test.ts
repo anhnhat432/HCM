@@ -97,6 +97,47 @@ test("dao duc va trach nhiem records sources and verification work", () => {
   );
 });
 
+test("con nguoi exposes the complete approved narrative", () => {
+  const trace = getTraceBySlug("con-nguoi");
+
+  assert.ok(trace?.presentDay);
+  assert.equal(
+    trace.centralQuestion,
+    "Giá trị của một con người được quyết định bởi điều gì?",
+  );
+  assert.deepEqual(
+    trace.historicalMoments.map((moment) => moment.year),
+    ["1945", "1958", "1969"],
+  );
+  assert.equal(trace.thoughtFormation?.factors.length, 3);
+  assert.equal(trace.application?.items.length, 3);
+  assert.equal(getNextTraceSlug(trace.slug), null);
+});
+
+test("con nguoi records sources and placeholder asset work", () => {
+  const trace = getTraceBySlug("con-nguoi");
+
+  assert.ok(trace);
+  assert.ok(
+    trace.historicalMoments.every(
+      (moment) => moment.sources?.length && moment.verification,
+    ),
+  );
+  assert.ok(
+    trace.historicalMoments.every(
+      (moment) => moment.image?.isPlaceholder && !moment.image.src,
+    ),
+  );
+  assert.deepEqual(
+    trace.historicalMoments.map((moment) => moment.image?.credit),
+    [
+      "TODO: 1945 archival asset required",
+      "TODO: 1958 archival asset required",
+      "TODO: 1969 archival asset required",
+    ],
+  );
+});
+
 test("dai doan ket records verification work for every historical asset", () => {
   const trace = getTraceBySlug("dai-doan-ket");
 
