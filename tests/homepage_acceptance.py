@@ -10,6 +10,10 @@ from playwright.sync_api import (
 
 
 BASE_URL = os.environ.get("HCM_BASE_URL", "http://localhost:3000")
+SITE_DESCRIPTION = (
+    "Bắt đầu từ những câu hỏi của hiện tại và lần theo quá trình hình thành "
+    "tư tưởng Hồ Chí Minh."
+)
 SCREENSHOT_DIR = Path(
     os.environ.get("HCM_SCREENSHOT_DIR", "artifacts/homepage")
 ).resolve()
@@ -29,6 +33,69 @@ TOPICS = [
     ),
     ("Con người", "CON NGƯỜI", "/trace/con-nguoi", "Khi một con người"),
 ]
+
+
+def text_contrast_ratio(page: Page, selector: str) -> float:
+    return page.locator(selector).first.evaluate(
+        """element => {
+            const parseColor = color => {
+                if (color.startsWith('#')) {
+                    const hex = color.slice(1);
+                    return {
+                        r: Number.parseInt(hex.slice(0, 2), 16),
+                        g: Number.parseInt(hex.slice(2, 4), 16),
+                        b: Number.parseInt(hex.slice(4, 6), 16),
+                        a: 1,
+                    };
+                }
+                const values = color.match(/[\\d.]+/g)?.map(Number) ?? [];
+                return {
+                    r: values[0] ?? 0,
+                    g: values[1] ?? 0,
+                    b: values[2] ?? 0,
+                    a: values[3] ?? 1,
+                };
+            };
+            const blend = (foreground, background) => ({
+                r: foreground.r * foreground.a + background.r * (1 - foreground.a),
+                g: foreground.g * foreground.a + background.g * (1 - foreground.a),
+                b: foreground.b * foreground.a + background.b * (1 - foreground.a),
+            });
+            const luminance = color => {
+                const channels = [color.r, color.g, color.b].map(channel => {
+                    const value = channel / 255;
+                    return value <= 0.04045
+                        ? value / 12.92
+                        : Math.pow((value + 0.055) / 1.055, 2.4);
+                });
+                return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+            };
+            const foreground = parseColor(getComputedStyle(element).color);
+            const background = parseColor(
+                getComputedStyle(document.documentElement)
+                    .getPropertyValue('--color-canvas')
+                    .trim()
+            );
+            const renderedForeground = blend(foreground, background);
+            const foregroundLuminance = luminance(renderedForeground);
+            const backgroundLuminance = luminance(background);
+            return (
+                (Math.max(foregroundLuminance, backgroundLuminance) + 0.05) /
+                (Math.min(foregroundLuminance, backgroundLuminance) + 0.05)
+            );
+        }"""
+    )
+
+
+def verify_text_contrast(page: Page) -> None:
+    for selector in [
+        ".home-hero__supporting",
+        ".topic-section__label",
+        ".topic-link__idea",
+        ".home-footer p",
+    ]:
+        ratio = text_contrast_ratio(page, selector)
+        assert ratio >= 4.5, f"{selector} contrast is only {ratio:.2f}:1"
 
 
 def collect_console_errors(page: Page) -> list[str]:
@@ -51,7 +118,19 @@ def verify_homepage(page: Page) -> None:
     except PlaywrightTimeoutError:
         pass
 
-    assert page.title() == "ĐUỐC HỒNG"
+    assert page.title() == "Đuốc Hồng"
+    assert (
+        page.locator('meta[name="description"]').get_attribute("content")
+        == SITE_DESCRIPTION
+    )
+    assert (
+        page.locator('meta[property="og:site_name"]').get_attribute("content")
+        == "Đuốc Hồng"
+    )
+    assert (
+        page.locator('meta[property="og:locale"]').get_attribute("content")
+        == "vi_VN"
+    )
     assert page.locator(".brand-mark").inner_text() == "ĐUỐC HỒNG"
     assert page.get_by_text("HCM // TRACE", exact=False).count() == 0
 
@@ -79,7 +158,9 @@ def verify_homepage(page: Page) -> None:
     elif viewport_width <= 480:
         assert 48 <= heading_size <= 56
 
-    page.get_by_text("ĐUỐC HỒNG — 2026", exact=True).wait_for()
+    page.locator(".home-hero").get_by_text(
+        "ĐUỐC HỒNG — 2026", exact=True
+    ).wait_for()
     assert page.get_by_text("03 chủ đề · 05–10 phút", exact=True).count() == 0
     assert page.get_by_text("DESIGN SYSTEM", exact=True).count() == 0
 
@@ -104,6 +185,7 @@ def verify_homepage(page: Page) -> None:
     assert image_box is not None
     assert 0.68 <= image_box["width"] / image_box["height"] <= 0.82
     assert page.locator(".trace-visual").count() == 0
+    verify_text_contrast(page)
 
     page.get_by_text("Bạn muốn khám phá điều gì?", exact=True).wait_for()
 
@@ -114,7 +196,10 @@ def verify_homepage(page: Page) -> None:
         topic_link = page.get_by_role("link", name=title, exact=True)
         assert topic_link.get_attribute("href") == href
 
-    page.get_by_text("ĐUỐC HỒNG — Prototype 2026", exact=True).wait_for()
+    page.locator(".home-footer").get_by_text(
+        "ĐUỐC HỒNG — 2026", exact=True
+    ).wait_for()
+    assert page.get_by_text("Prototype", exact=False).count() == 0
 
 
 def verify_trace_routes(page: Page) -> None:
@@ -128,6 +213,20 @@ def verify_trace_routes(page: Page) -> None:
         except PlaywrightTimeoutError:
             pass
         heading = page.get_by_role("heading", level=1).inner_text()
+        assert page.title() == f"{title} | Đuốc Hồng"
+        assert page.locator('meta[name="description"]').get_attribute("content")
+        assert (
+            page.locator('meta[property="og:title"]').get_attribute("content")
+            == f"{title} | Đuốc Hồng"
+        )
+        assert (
+            page.locator('meta[property="og:site_name"]').get_attribute("content")
+            == "Đuốc Hồng"
+        )
+        assert (
+            page.locator('meta[property="og:locale"]').get_attribute("content")
+            == "vi_VN"
+        )
         assert page.get_by_role("link", name="ĐUỐC HỒNG").get_attribute("href") == "/"
         assert page.get_by_text("HCM // TRACE", exact=False).count() == 0
         assert expected_headline in heading
@@ -140,6 +239,7 @@ def verify_not_found(page: Page) -> None:
         timeout=60_000,
     )
     assert response is not None and response.status == 404
+    assert page.title() == "Không tìm thấy | Đuốc Hồng"
     assert page.get_by_role("link", name="ĐUỐC HỒNG").get_attribute("href") == "/"
     assert page.get_by_text("HCM // TRACE", exact=False).count() == 0
 
@@ -154,6 +254,17 @@ def prepare_full_page_screenshot(page: Page) -> None:
         page.wait_for_timeout(250)
     page.evaluate("window.scrollTo(0, 0)")
     page.wait_for_timeout(600)
+
+
+def verify_reduced_motion_is_immediate(page: Page) -> None:
+    for selector in [".home-hero__visual", ".topic-list li > div"]:
+        locator = page.locator(selector).first
+        locator.scroll_into_view_if_needed()
+        page.wait_for_timeout(50)
+        opacity = locator.evaluate(
+            "element => Number.parseFloat(getComputedStyle(element).opacity)"
+        )
+        assert opacity == 1, f"{selector} remains faded with reduced motion"
 
 
 def main() -> None:
@@ -222,6 +333,7 @@ def main() -> None:
         )
         reduced_motion_errors = collect_console_errors(reduced_motion)
         verify_homepage(reduced_motion)
+        verify_reduced_motion_is_immediate(reduced_motion)
 
         browser.close()
 

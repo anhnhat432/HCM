@@ -63,6 +63,78 @@ TRACE_CASES = {
 }
 
 
+def text_contrast_ratio(page: Page, selector: str) -> float:
+    return page.locator(selector).first.evaluate(
+        """element => {
+            const parseColor = color => {
+                if (color.startsWith('#')) {
+                    const hex = color.slice(1);
+                    return {
+                        r: Number.parseInt(hex.slice(0, 2), 16),
+                        g: Number.parseInt(hex.slice(2, 4), 16),
+                        b: Number.parseInt(hex.slice(4, 6), 16),
+                        a: 1,
+                    };
+                }
+                const values = color.match(/[\\d.]+/g)?.map(Number) ?? [];
+                return {
+                    r: values[0] ?? 0,
+                    g: values[1] ?? 0,
+                    b: values[2] ?? 0,
+                    a: values[3] ?? 1,
+                };
+            };
+            const blend = (foreground, background) => ({
+                r: foreground.r * foreground.a + background.r * (1 - foreground.a),
+                g: foreground.g * foreground.a + background.g * (1 - foreground.a),
+                b: foreground.b * foreground.a + background.b * (1 - foreground.a),
+            });
+            const luminance = color => {
+                const channels = [color.r, color.g, color.b].map(channel => {
+                    const value = channel / 255;
+                    return value <= 0.04045
+                        ? value / 12.92
+                        : Math.pow((value + 0.055) / 1.055, 2.4);
+                });
+                return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+            };
+            const foreground = parseColor(getComputedStyle(element).color);
+            const background = parseColor(
+                getComputedStyle(document.documentElement)
+                    .getPropertyValue('--color-canvas')
+                    .trim()
+            );
+            const renderedForeground = blend(foreground, background);
+            const foregroundLuminance = luminance(renderedForeground);
+            const backgroundLuminance = luminance(background);
+            return (
+                (Math.max(foregroundLuminance, backgroundLuminance) + 0.05) /
+                (Math.min(foregroundLuminance, backgroundLuminance) + 0.05)
+            );
+        }"""
+    )
+
+
+def verify_text_contrast(page: Page) -> None:
+    selectors = [
+        ".trace-header__title",
+        ".trace-opening__summary",
+        ".trace-figure__credit",
+        ".historical-moment__summary",
+        ".historical-moment__metadata",
+        ".historical-moment__sources",
+        ".formation-factor p",
+        ".application-item p",
+        ".journey-closing__statement",
+    ]
+
+    for selector in selectors:
+        if page.locator(selector).count() == 0:
+            continue
+        ratio = text_contrast_ratio(page, selector)
+        assert ratio >= 4.5, f"{selector} contrast is only {ratio:.2f}:1"
+
+
 def collect_console_errors(page: Page) -> list[str]:
     errors: list[str] = []
 
@@ -101,7 +173,20 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     )
     assert response is not None and response.ok
     settle_page(page)
-    assert page.title() == "ĐUỐC HỒNG"
+    assert page.title() == f"{trace_case['title']} | Đuốc Hồng"
+    assert page.locator('meta[name="description"]').get_attribute("content")
+    assert (
+        page.locator('meta[property="og:title"]').get_attribute("content")
+        == f"{trace_case['title']} | Đuốc Hồng"
+    )
+    assert (
+        page.locator('meta[property="og:site_name"]').get_attribute("content")
+        == "Đuốc Hồng"
+    )
+    assert (
+        page.locator('meta[property="og:locale"]').get_attribute("content")
+        == "vi_VN"
+    )
 
     headings = page.get_by_role("heading", level=1)
     assert headings.count() == 1
@@ -147,6 +232,7 @@ def verify_trace(page: Page, trace_case: dict) -> None:
         "formation_source_count"
     ]
     assert page.get_by_text("TODO:", exact=False).count() == 0
+    verify_text_contrast(page)
     assert trace_case["conclusion"] in " ".join(
         page.locator(".thought-formation__conclusion h3").inner_text().split()
     )
@@ -272,6 +358,21 @@ def prepare_full_page_screenshot(page: Page) -> None:
     page.wait_for_timeout(500)
 
 
+def verify_reduced_motion_is_immediate(page: Page) -> None:
+    for selector in [
+        ".trace-line__year--to",
+        ".historical-moment__copy",
+        ".historical-moment__visual",
+    ]:
+        locator = page.locator(selector).first
+        locator.scroll_into_view_if_needed()
+        page.wait_for_timeout(50)
+        opacity = locator.evaluate(
+            "element => Number.parseFloat(getComputedStyle(element).opacity)"
+        )
+        assert opacity == 1, f"{selector} remains faded with reduced motion"
+
+
 def main() -> None:
     SCREENSHOT_DIR.mkdir(parents=True, exist_ok=True)
     viewports = {
@@ -303,6 +404,7 @@ def main() -> None:
             )
             error_groups.append(collect_console_errors(reduced_motion))
             verify_trace(reduced_motion, trace_case)
+            verify_reduced_motion_is_immediate(reduced_motion)
             reduced_motion.close()
 
         browser.close()

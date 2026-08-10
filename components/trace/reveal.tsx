@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
 interface TraceRevealProps {
@@ -18,11 +18,21 @@ export function TraceReveal({
   delay = 0,
   image = false,
 }: TraceRevealProps) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, x: image ? 18 : 0, y: image ? 0 : 20 }}
-      transition={{ duration: 0.62, delay, ease: revealEase }}
+      initial={
+        shouldReduceMotion
+          ? { opacity: 1, x: 0, y: 0 }
+          : { opacity: 0, x: image ? 18 : 0, y: image ? 0 : 20 }
+      }
+      transition={
+        shouldReduceMotion
+          ? { duration: 0 }
+          : { duration: 0.62, delay, ease: revealEase }
+      }
       viewport={{ once: true, amount: 0.18 }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
     >

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -14,6 +15,42 @@ interface TracePlaceholderPageProps {
 
 export function generateStaticParams() {
   return traces.map((trace) => ({ slug: trace.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: TracePlaceholderPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const trace = getTraceBySlug(slug);
+
+  if (!trace) {
+    const description =
+      "Trang bạn tìm kiếm không tồn tại trong hành trình Đuốc Hồng.";
+
+    return {
+      title: "Không tìm thấy",
+      description,
+      openGraph: {
+        title: "Không tìm thấy | Đuốc Hồng",
+        description,
+        siteName: "Đuốc Hồng",
+        locale: "vi_VN",
+        type: "website",
+      },
+    };
+  }
+
+  return {
+    title: trace.title,
+    description: trace.cardSummary,
+    openGraph: {
+      title: `${trace.title} | Đuốc Hồng`,
+      description: trace.cardSummary,
+      siteName: "Đuốc Hồng",
+      locale: "vi_VN",
+      type: "website",
+    },
+  };
 }
 
 export default async function TracePlaceholderPage({

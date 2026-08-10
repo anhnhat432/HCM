@@ -28,9 +28,20 @@ const homepageFont = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "ĐUỐC HỒNG",
+  title: {
+    default: "Đuốc Hồng",
+    template: "%s | Đuốc Hồng",
+  },
   description:
     "Bắt đầu từ những câu hỏi của hiện tại và lần theo quá trình hình thành tư tưởng Hồ Chí Minh.",
+  openGraph: {
+    title: "Đuốc Hồng",
+    description:
+      "Bắt đầu từ những câu hỏi của hiện tại và lần theo quá trình hình thành tư tưởng Hồ Chí Minh.",
+    siteName: "Đuốc Hồng",
+    locale: "vi_VN",
+    type: "website",
+  },
 };
 
 interface RootLayoutProps {

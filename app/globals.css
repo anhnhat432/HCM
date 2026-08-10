@@ -15,7 +15,7 @@
 :root {
   --color-canvas: #f3f0e8;
   --color-ink: #161616;
-  --color-muted: #77736d;
+  --color-muted: #65615c;
   --color-line: #d4cfc6;
   --color-accent: #982e30;
   --color-slate: #2a2520;
@@ -228,10 +228,11 @@ a {
   position: absolute;
   bottom: 1rem;
   left: 1rem;
-  color: rgb(119 115 109 / 72%);
+  color: var(--color-clear);
   font-size: 0.62rem;
   font-weight: 500;
   letter-spacing: 0.18em;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 65%);
   text-transform: uppercase;
 }
 
@@ -685,7 +686,7 @@ a {
   justify-content: center;
   gap: 1rem;
   padding: 2rem;
-  color: rgb(119 115 109 / 70%);
+  color: var(--color-muted);
   background:
     linear-gradient(rgb(152 46 48 / 8%) 1px, transparent 1px),
     linear-gradient(90deg, rgb(152 46 48 / 8%) 1px, transparent 1px),
@@ -726,7 +727,7 @@ a {
 
 .trace-figure figcaption {
   margin-top: 0.85rem;
-  color: rgb(119 115 109 / 78%);
+  color: var(--color-muted);
   font-size: 0.62rem;
   letter-spacing: 0.12em;
   line-height: 1.55;
@@ -743,7 +744,7 @@ a {
 }
 
 .trace-figure__credit {
-  color: rgb(119 115 109 / 66%);
+  color: var(--color-muted);
   letter-spacing: 0.055em;
   line-height: 1.65;
   text-transform: none;
@@ -982,7 +983,7 @@ a {
 
 .historical-moment__metadata {
   margin: 1rem 0 0;
-  color: rgb(119 115 109 / 66%);
+  color: var(--color-muted);
   font-size: 0.65rem;
   letter-spacing: 0.13em;
   line-height: 1.6;
@@ -996,7 +997,7 @@ a {
   max-width: 33rem;
   margin-top: 1.05rem;
   padding-top: 0.85rem;
-  color: rgb(119 115 109 / 68%);
+  color: var(--color-muted);
   border-top: 1px solid rgb(212 207 198 / 72%);
   font-size: 0.62rem;
   line-height: 1.55;
@@ -1149,7 +1150,7 @@ a {
   max-width: 45rem;
   margin-top: 1.75rem;
   padding-top: 1rem;
-  color: rgb(119 115 109 / 72%);
+  color: var(--color-muted);
   border-top: 1px solid rgb(212 207 198 / 72%);
   font-size: 0.62rem;
   line-height: 1.55;

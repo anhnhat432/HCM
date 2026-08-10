@@ -1,10 +1,11 @@
-# HCM // TRACE
+# ĐUỐC HỒNG
 
-An interactive web experience that begins with questions from 2026, traces the
-historical formation of Ho Chi Minh Thought, and returns to the present.
+Trải nghiệm web tương tác bắt đầu từ những câu hỏi của năm 2026, lần theo các
+dấu mốc lịch sử trong quá trình hình thành tư tưởng Hồ Chí Minh và trở lại hiện
+tại để liên hệ với thực tiễn.
 
-The current implementation covers Phase 0 (Foundation) and Phase 1 (Homepage).
-Trace content has not been implemented yet.
+Sản phẩm hiện gồm Homepage, ba Trace — Đại đoàn kết, Đạo đức & trách nhiệm,
+Con người — và Journey Closing.
 
 ## Commands
 

@@ -1,4 +1,20 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+const description =
+  "Trang bạn tìm kiếm không tồn tại trong hành trình Đuốc Hồng.";
+
+export const metadata: Metadata = {
+  title: "Không tìm thấy",
+  description,
+  openGraph: {
+    title: "Không tìm thấy | Đuốc Hồng",
+    description,
+    siteName: "Đuốc Hồng",
+    locale: "vi_VN",
+    type: "website",
+  },
+};
 
 export default function NotFound() {
   return (

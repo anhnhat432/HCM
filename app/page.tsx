@@ -79,7 +79,7 @@ export default function Home() {
 
       <footer className="home-footer">
         <div className="site-container home-footer__inner">
-          <p>ĐUỐC HỒNG — Prototype 2026</p>
+          <p>ĐUỐC HỒNG — 2026</p>
         </div>
       </footer>
     </main>
