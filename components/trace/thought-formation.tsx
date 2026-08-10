@@ -48,6 +48,26 @@ export function ThoughtFormation({ formation }: ThoughtFormationProps) {
                     <span key={line}>{line}</span>
                   ))}
                 </h3>
+                {formation.sources?.length ? (
+                  <div
+                    className="thought-formation__sources"
+                    aria-label="Nguồn cho kết luận"
+                  >
+                    <span>Nguồn lý luận</span>
+                    <div>
+                      {formation.sources.map((source) => (
+                        <a
+                          href={source.url}
+                          key={source.url}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          {source.title}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
               </div>
             </TraceReveal>
           </div>

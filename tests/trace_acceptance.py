@@ -25,7 +25,9 @@ TRACE_CASES = {
         "conclusion": "ĐẠI ĐOÀN KẾT DÂN TỘC",
         "next_title": "Đạo đức & trách nhiệm",
         "next_path": "/trace/dao-duc-trach-nhiem",
-        "placeholder_count": 3,
+        "placeholder_count": 0,
+        "historical_image_source_count": 3,
+        "formation_source_count": 0,
         "ending": "next-trace",
     },
     "trace-02": {
@@ -40,7 +42,9 @@ TRACE_CASES = {
         "conclusion": "ĐẠO ĐỨC & TRÁCH NHIỆM",
         "next_title": "Con người",
         "next_path": "/trace/con-nguoi",
-        "placeholder_count": 3,
+        "placeholder_count": 2,
+        "historical_image_source_count": 1,
+        "formation_source_count": 0,
         "ending": "next-trace",
     },
     "trace-03": {
@@ -51,7 +55,9 @@ TRACE_CASES = {
         "question": "Giá trị của một con người được quyết định bởi điều gì?",
         "years": ["1945", "1958", "1969"],
         "conclusion": "CON NGƯỜI VỪA LÀ MỤC TIÊU, VỪA LÀ ĐỘNG LỰC",
-        "placeholder_count": 3,
+        "placeholder_count": 2,
+        "historical_image_source_count": 1,
+        "formation_source_count": 3,
         "ending": "journey-closing",
     },
 }
@@ -131,6 +137,16 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     assert page.locator(".trace-figure__frame--placeholder").count() == trace_case[
         "placeholder_count"
     ]
+    assert page.locator(".historical-moment__sources").count() == 3
+    assert page.locator(".historical-moment__sources a").count() >= 3
+    assert page.locator(
+        ".historical-moment .trace-figure__credit a"
+    ).count() == trace_case["historical_image_source_count"]
+    assert page.locator(".trace-opening .trace-figure__credit a").count() == 1
+    assert page.locator(".thought-formation__sources a").count() == trace_case[
+        "formation_source_count"
+    ]
+    assert page.get_by_text("TODO:", exact=False).count() == 0
     assert trace_case["conclusion"] in " ".join(
         page.locator(".thought-formation__conclusion h3").inner_text().split()
     )
@@ -190,9 +206,12 @@ def verify_trace(page: Page, trace_case: dict) -> None:
             "element => Number.parseFloat(getComputedStyle(element).columnGap)"
         )
 
-        assert all(
-            lines <= 5
-            for lines in rendered_line_count(page, ".historical-moment__summary")
+        historical_line_counts = rendered_line_count(
+            page, ".historical-moment__summary"
+        )
+        assert all(lines <= 5 for lines in historical_line_counts), (
+            f"{trace_case['path']} historical summaries exceed five lines: "
+            f"{historical_line_counts}"
         )
         assert application_font_size <= 14.8
         assert application_gap <= 6.5

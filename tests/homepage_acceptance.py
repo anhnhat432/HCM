@@ -15,13 +15,19 @@ SCREENSHOT_DIR = Path(
 ).resolve()
 
 TOPICS = [
-    ("Đại đoàn kết", "ĐẠI ĐOÀN KẾT", "/trace/dai-doan-ket"),
+    (
+        "Đại đoàn kết",
+        "ĐẠI ĐOÀN KẾT",
+        "/trace/dai-doan-ket",
+        "Khi khác biệt",
+    ),
     (
         "Đạo đức & trách nhiệm",
         "ĐẠO ĐỨC & TRÁCH NHIỆM",
         "/trace/dao-duc-trach-nhiem",
+        "Khi điều dễ làm",
     ),
-    ("Con người", "CON NGƯỜI", "/trace/con-nguoi"),
+    ("Con người", "CON NGƯỜI", "/trace/con-nguoi", "Khi một con người"),
 ]
 
 
@@ -102,9 +108,9 @@ def verify_homepage(page: Page) -> None:
     page.get_by_text("Bạn muốn khám phá điều gì?", exact=True).wait_for()
 
     visible_topic_titles = page.locator(".topic-link__title").all_inner_texts()
-    assert visible_topic_titles == [visible for _, visible, _ in TOPICS]
+    assert visible_topic_titles == [visible for _, visible, _, _ in TOPICS]
 
-    for title, _, href in TOPICS:
+    for title, _, href, _ in TOPICS:
         topic_link = page.get_by_role("link", name=title, exact=True)
         assert topic_link.get_attribute("href") == href
 
@@ -112,7 +118,7 @@ def verify_homepage(page: Page) -> None:
 
 
 def verify_trace_routes(page: Page) -> None:
-    for title, _, href in TOPICS:
+    for title, _, href, expected_headline in TOPICS:
         response = page.goto(
             f"{BASE_URL}{href}", wait_until="domcontentloaded", timeout=60_000
         )
@@ -124,10 +130,7 @@ def verify_trace_routes(page: Page) -> None:
         heading = page.get_by_role("heading", level=1).inner_text()
         assert page.get_by_role("link", name="ĐUỐC HỒNG").get_attribute("href") == "/"
         assert page.get_by_text("HCM // TRACE", exact=False).count() == 0
-        if href == "/trace/dai-doan-ket":
-            assert "Khi khác biệt" in heading
-        else:
-            assert heading == title
+        assert expected_headline in heading
 
 
 def verify_not_found(page: Page) -> None:
@@ -198,7 +201,7 @@ def main() -> None:
             mobile.get_by_role("link", name="Bắt đầu hành trình", exact=True),
             *[
                 mobile.get_by_role("link", name=title, exact=True)
-                for title, _, _ in TOPICS
+                for title, _, _, _ in TOPICS
             ],
         ]:
             box = locator.bounding_box()

@@ -60,10 +60,28 @@ export function TraceOpening({
                 priority
                 sizes="(max-width: 48rem) calc(100vw - 4rem), 520px"
                 src={presentDay.image.src}
+                style={{ objectPosition: presentDay.image.objectPosition }}
               />
             </div>
-            {presentDay.image.caption ? (
-              <figcaption>{presentDay.image.caption}</figcaption>
+            {presentDay.image.caption || presentDay.image.credit ? (
+              <figcaption className="trace-figure__caption">
+                {presentDay.image.caption ? (
+                  <span>{presentDay.image.caption}</span>
+                ) : null}
+                <span className="trace-figure__credit">
+                  Nguồn ảnh: {presentDay.image.sourceUrl ? (
+                    <a
+                      href={presentDay.image.sourceUrl}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {presentDay.image.credit}
+                    </a>
+                  ) : (
+                    presentDay.image.credit
+                  )}
+                </span>
+              </figcaption>
             ) : null}
           </figure>
         </TraceReveal>

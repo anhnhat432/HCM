@@ -38,6 +38,21 @@ export function HistoricalMoment({
           {moment.metadata ? (
             <p className="historical-moment__metadata">{moment.metadata}</p>
           ) : null}
+          <div className="historical-moment__sources" aria-label="Nguồn nội dung">
+            <span>Nguồn nội dung</span>
+            <div>
+              {moment.sources.map((source) => (
+                <a
+                  href={source.url}
+                  key={source.url}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {source.title}
+                </a>
+              ))}
+            </div>
+          </div>
           <Link className="trace-sequence-link" href={nextHref}>
             <span aria-hidden="true" />
             {nextLabel}
@@ -58,6 +73,7 @@ export function HistoricalMoment({
                     fill
                     sizes="(max-width: 48rem) calc(100vw - 4rem), 520px"
                     src={image.src}
+                    style={{ objectPosition: image.objectPosition }}
                   />
                 ) : (
                   <div
@@ -70,7 +86,24 @@ export function HistoricalMoment({
                   </div>
                 )}
               </div>
-              {image.caption ? <figcaption>{image.caption}</figcaption> : null}
+              {image.caption || image.credit ? (
+                <figcaption className="trace-figure__caption">
+                  {image.caption ? <span>{image.caption}</span> : null}
+                  <span className="trace-figure__credit">
+                    Nguồn ảnh: {image.sourceUrl ? (
+                      <a
+                        href={image.sourceUrl}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        {image.credit}
+                      </a>
+                    ) : (
+                      image.credit
+                    )}
+                  </span>
+                </figcaption>
+              ) : null}
             </figure>
           </TraceReveal>
         ) : null}

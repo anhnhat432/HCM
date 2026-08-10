@@ -7,12 +7,22 @@ export const TRACE_SLUGS = [
 export type TraceSlug = (typeof TRACE_SLUGS)[number];
 export type TraceOrder = 1 | 2 | 3;
 export type TraceThemeKey = "unity" | "responsibility" | "humanity";
+export type TraceImageVerificationStatus = "verified" | "placeholder";
+export type TraceImageUsageStatus =
+  | "licensed"
+  | "needs-review"
+  | "not-applicable";
 
 export interface TraceImage {
   readonly src?: string;
   readonly alt: string;
   readonly caption?: string;
-  readonly credit?: string;
+  readonly credit: string;
+  readonly sourceUrl?: string;
+  readonly verificationStatus: TraceImageVerificationStatus;
+  readonly usageStatus: TraceImageUsageStatus;
+  readonly license?: string;
+  readonly objectPosition?: string;
   readonly isPlaceholder?: boolean;
 }
 
@@ -27,9 +37,9 @@ export interface HistoricalMoment {
   readonly title: string;
   readonly summary: string;
   readonly metadata?: string;
-  readonly verification?: string;
+  readonly verification: string;
   readonly image?: TraceImage;
-  readonly sources?: readonly TraceSource[];
+  readonly sources: readonly [TraceSource, ...TraceSource[]];
 }
 
 export type HistoricalMoments = readonly [
@@ -58,6 +68,8 @@ export interface TraceFormation {
     TraceFormationFactor,
   ];
   readonly conclusion: readonly string[];
+  readonly verification?: string;
+  readonly sources?: readonly [TraceSource, ...TraceSource[]];
 }
 
 export interface TraceApplicationItem {

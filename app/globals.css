@@ -733,6 +733,37 @@ a {
   text-transform: uppercase;
 }
 
+.trace-figure__caption {
+  display: grid;
+  gap: 0.38rem;
+}
+
+.trace-figure__caption > span {
+  display: block;
+}
+
+.trace-figure__credit {
+  color: rgb(119 115 109 / 66%);
+  letter-spacing: 0.055em;
+  line-height: 1.65;
+  text-transform: none;
+}
+
+.trace-figure__credit a,
+.historical-moment__sources a,
+.thought-formation__sources a {
+  color: inherit;
+  text-decoration-color: rgb(119 115 109 / 38%);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.trace-figure__credit a:hover,
+.historical-moment__sources a:hover,
+.thought-formation__sources a:hover {
+  color: var(--trace-accent);
+}
+
 .time-bridge {
   min-height: calc(100svh - 3.5625rem);
   display: flex;
@@ -958,6 +989,33 @@ a {
   text-transform: uppercase;
 }
 
+.historical-moment__sources {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: 0.75rem;
+  max-width: 33rem;
+  margin-top: 1.05rem;
+  padding-top: 0.85rem;
+  color: rgb(119 115 109 / 68%);
+  border-top: 1px solid rgb(212 207 198 / 72%);
+  font-size: 0.62rem;
+  line-height: 1.55;
+}
+
+.historical-moment__sources > span,
+.thought-formation__sources > span {
+  color: var(--trace-accent);
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.historical-moment__sources div,
+.thought-formation__sources div {
+  display: grid;
+  gap: 0.35rem;
+}
+
 .trace-sequence-link {
   width: fit-content;
   gap: 0.75rem;
@@ -1082,6 +1140,19 @@ a {
   line-height: 0.94;
   letter-spacing: -0.05em;
   text-transform: uppercase;
+}
+
+.thought-formation__sources {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 0.9rem;
+  max-width: 45rem;
+  margin-top: 1.75rem;
+  padding-top: 1rem;
+  color: rgb(119 115 109 / 72%);
+  border-top: 1px solid rgb(212 207 198 / 72%);
+  font-size: 0.62rem;
+  line-height: 1.55;
 }
 
 .present-application {
@@ -1715,6 +1786,16 @@ a {
     font-size: 0.95rem;
     line-height: 1.68;
     letter-spacing: -0.012em;
+  }
+
+  .historical-moment__sources,
+  .thought-formation__sources {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  .historical-moment__sources {
+    max-width: none;
   }
 
   .thought-formation,
