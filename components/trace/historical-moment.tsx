@@ -1,0 +1,80 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import { TraceReveal } from "@/components/trace/reveal";
+import type { HistoricalMoment as HistoricalMomentData } from "@/types/trace";
+
+interface HistoricalMomentProps {
+  readonly moment: HistoricalMomentData;
+  readonly imageRight: boolean;
+  readonly nextHref: string;
+  readonly nextLabel: string;
+}
+
+export function HistoricalMoment({
+  moment,
+  imageRight,
+  nextHref,
+  nextLabel,
+}: HistoricalMomentProps) {
+  const image = moment.image;
+
+  return (
+    <section
+      className={`historical-moment${imageRight ? " historical-moment--image-right" : ""}`}
+      data-trace-stage={moment.year}
+      id={`moment-${moment.year}`}
+      aria-labelledby={`moment-${moment.year}-title`}
+    >
+      <div className="site-container historical-moment__grid">
+        <TraceReveal className="historical-moment__copy">
+          <time className="historical-moment__year" dateTime={moment.year}>
+            {moment.year}
+          </time>
+          <h2 className="historical-moment__title" id={`moment-${moment.year}-title`}>
+            {moment.title}
+          </h2>
+          <p className="historical-moment__summary">{moment.summary}</p>
+          {moment.metadata ? (
+            <p className="historical-moment__metadata">{moment.metadata}</p>
+          ) : null}
+          <Link className="trace-sequence-link" href={nextHref}>
+            <span aria-hidden="true" />
+            {nextLabel}
+            <b aria-hidden="true">→</b>
+          </Link>
+        </TraceReveal>
+
+        {image ? (
+          <TraceReveal className="historical-moment__visual" delay={0.08} image>
+            <figure className="trace-figure">
+              <div
+                className={`trace-figure__frame trace-figure__frame--historical${image.isPlaceholder ? " trace-figure__frame--placeholder" : ""}`}
+              >
+                {image.src ? (
+                  <Image
+                    alt={image.alt}
+                    className="trace-figure__image trace-figure__image--historical"
+                    fill
+                    sizes="(max-width: 48rem) calc(100vw - 4rem), 520px"
+                    src={image.src}
+                  />
+                ) : (
+                  <div
+                    aria-label={image.alt}
+                    className="trace-figure__placeholder"
+                    role="img"
+                  >
+                    <span>{moment.year}</span>
+                    <p>Tư liệu lịch sử đang bổ sung</p>
+                  </div>
+                )}
+              </div>
+              {image.caption ? <figcaption>{image.caption}</figcaption> : null}
+            </figure>
+          </TraceReveal>
+        ) : null}
+      </div>
+    </section>
+  );
+}

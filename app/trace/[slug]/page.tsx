@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { TracePage } from "@/components/trace/trace-page";
 import { traces } from "@/data/traces";
-import { getTraceBySlug } from "@/lib/trace-registry";
+import { getNextTraceSlug, getTraceBySlug } from "@/lib/trace-registry";
 import { traceThemes } from "@/lib/trace-themes";
+import type { CompleteTraceData } from "@/types/trace";
 
 interface TracePlaceholderPageProps {
   readonly params: Promise<{ slug: string }>;
@@ -21,6 +23,20 @@ export default async function TracePlaceholderPage({
 
   if (!trace) {
     notFound();
+  }
+
+  const nextSlug = getNextTraceSlug(trace.slug);
+  const nextTrace = nextSlug ? getTraceBySlug(nextSlug) : undefined;
+  const hasCompleteExperience =
+    trace.presentDay &&
+    trace.centralQuestion &&
+    trace.thoughtFormation &&
+    trace.application;
+
+  if (hasCompleteExperience && nextTrace) {
+    return (
+      <TracePage trace={trace as CompleteTraceData} nextTrace={nextTrace} />
+    );
   }
 
   const chapter = String(trace.order).padStart(2, "0");

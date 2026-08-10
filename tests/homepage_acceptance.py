@@ -117,7 +117,11 @@ def verify_trace_routes(page: Page) -> None:
             page.wait_for_load_state("networkidle", timeout=10_000)
         except PlaywrightTimeoutError:
             pass
-        assert page.get_by_role("heading", level=1).inner_text() == title
+        heading = page.get_by_role("heading", level=1).inner_text()
+        if href == "/trace/dai-doan-ket":
+            assert "Khi khác biệt" in heading
+        else:
+            assert heading == title
 
 
 def prepare_full_page_screenshot(page: Page) -> None:

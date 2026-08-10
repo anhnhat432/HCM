@@ -1,0 +1,32 @@
+"use client";
+
+import { motion } from "framer-motion";
+import type { ReactNode } from "react";
+
+interface TraceRevealProps {
+  readonly children: ReactNode;
+  readonly className?: string;
+  readonly delay?: number;
+  readonly image?: boolean;
+}
+
+const revealEase = [0.22, 1, 0.36, 1] as const;
+
+export function TraceReveal({
+  children,
+  className,
+  delay = 0,
+  image = false,
+}: TraceRevealProps) {
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, x: image ? 18 : 0, y: image ? 0 : 20 }}
+      transition={{ duration: 0.62, delay, ease: revealEase }}
+      viewport={{ once: true, amount: 0.18 }}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+    >
+      {children}
+    </motion.div>
+  );
+}

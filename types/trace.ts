@@ -9,10 +9,11 @@ export type TraceOrder = 1 | 2 | 3;
 export type TraceThemeKey = "unity" | "responsibility" | "humanity";
 
 export interface TraceImage {
-  readonly src: string;
+  readonly src?: string;
   readonly alt: string;
   readonly caption?: string;
   readonly credit?: string;
+  readonly isPlaceholder?: boolean;
 }
 
 export interface TraceSource {
@@ -21,9 +22,11 @@ export interface TraceSource {
 }
 
 export interface HistoricalMoment {
+  readonly id: string;
   readonly year: string;
   readonly title: string;
   readonly summary: string;
+  readonly metadata?: string;
   readonly image?: TraceImage;
   readonly sources?: readonly TraceSource[];
 }
@@ -34,6 +37,45 @@ export type HistoricalMoments = readonly [
   HistoricalMoment,
 ];
 
+export interface TracePresentDay {
+  readonly label: string;
+  readonly headline: readonly string[];
+  readonly summary: string;
+  readonly image: TraceImage & { readonly src: string };
+}
+
+export interface TraceFormationFactor {
+  readonly title: string;
+  readonly summary: string;
+}
+
+export interface TraceFormation {
+  readonly heading: readonly string[];
+  readonly factors: readonly [
+    TraceFormationFactor,
+    TraceFormationFactor,
+    TraceFormationFactor,
+  ];
+  readonly conclusion: readonly string[];
+}
+
+export interface TraceApplicationItem {
+  readonly number: "01" | "02" | "03";
+  readonly title: string;
+  readonly summary: string;
+}
+
+export interface TraceApplication {
+  readonly eyebrow: string;
+  readonly heading: readonly string[];
+  readonly bridge: string;
+  readonly items: readonly [
+    TraceApplicationItem,
+    TraceApplicationItem,
+    TraceApplicationItem,
+  ];
+}
+
 export interface TraceData {
   readonly slug: TraceSlug;
   readonly order: TraceOrder;
@@ -42,4 +84,15 @@ export interface TraceData {
   readonly theme: TraceThemeKey;
   readonly cardSummary: string;
   readonly historicalMoments: HistoricalMoments;
+  readonly presentDay?: TracePresentDay;
+  readonly centralQuestion?: string;
+  readonly thoughtFormation?: TraceFormation;
+  readonly application?: TraceApplication;
 }
+
+export type CompleteTraceData = TraceData & {
+  readonly presentDay: TracePresentDay;
+  readonly centralQuestion: string;
+  readonly thoughtFormation: TraceFormation;
+  readonly application: TraceApplication;
+};
