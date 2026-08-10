@@ -45,6 +45,10 @@ def verify_homepage(page: Page) -> None:
     except PlaywrightTimeoutError:
         pass
 
+    assert page.title() == "ĐUỐC HỒNG"
+    assert page.locator(".brand-mark").inner_text() == "ĐUỐC HỒNG"
+    assert page.get_by_text("HCM // TRACE", exact=False).count() == 0
+
     heading = page.get_by_role("heading", level=1)
     assert heading.count() == 1
     heading_text = " ".join(heading.inner_text().split())
@@ -69,7 +73,7 @@ def verify_homepage(page: Page) -> None:
     elif viewport_width <= 480:
         assert 48 <= heading_size <= 56
 
-    page.get_by_text("HCM // TRACE — 2026", exact=True).wait_for()
+    page.get_by_text("ĐUỐC HỒNG — 2026", exact=True).wait_for()
     assert page.get_by_text("03 chủ đề · 05–10 phút", exact=True).count() == 0
     assert page.get_by_text("DESIGN SYSTEM", exact=True).count() == 0
 
@@ -104,7 +108,7 @@ def verify_homepage(page: Page) -> None:
         topic_link = page.get_by_role("link", name=title, exact=True)
         assert topic_link.get_attribute("href") == href
 
-    page.get_by_text("HCM // TRACE — Prototype 2026", exact=True).wait_for()
+    page.get_by_text("ĐUỐC HỒNG — Prototype 2026", exact=True).wait_for()
 
 
 def verify_trace_routes(page: Page) -> None:
@@ -118,10 +122,23 @@ def verify_trace_routes(page: Page) -> None:
         except PlaywrightTimeoutError:
             pass
         heading = page.get_by_role("heading", level=1).inner_text()
+        assert page.get_by_role("link", name="ĐUỐC HỒNG").get_attribute("href") == "/"
+        assert page.get_by_text("HCM // TRACE", exact=False).count() == 0
         if href == "/trace/dai-doan-ket":
             assert "Khi khác biệt" in heading
         else:
             assert heading == title
+
+
+def verify_not_found(page: Page) -> None:
+    response = page.goto(
+        f"{BASE_URL}/khong-ton-tai",
+        wait_until="domcontentloaded",
+        timeout=60_000,
+    )
+    assert response is not None and response.status == 404
+    assert page.get_by_role("link", name="ĐUỐC HỒNG").get_attribute("href") == "/"
+    assert page.get_by_text("HCM // TRACE", exact=False).count() == 0
 
 
 def prepare_full_page_screenshot(page: Page) -> None:
@@ -151,6 +168,10 @@ def main() -> None:
             full_page=True,
         )
         verify_trace_routes(desktop)
+
+        not_found = browser.new_page(viewport={"width": 1920, "height": 1080})
+        verify_not_found(not_found)
+        not_found.close()
 
         laptop = browser.new_page(viewport={"width": 1366, "height": 768})
         laptop_errors = collect_console_errors(laptop)

@@ -49,7 +49,7 @@ export default async function TracePlaceholderPage({
       <div className="site-container trace-placeholder__inner">
         <header className="trace-placeholder__header">
           <Link className="trace-placeholder__brand" href="/">
-            HCM // TRACE
+            ĐUỐC HỒNG
           </Link>
           <span>{chapter} / 03</span>
         </header>

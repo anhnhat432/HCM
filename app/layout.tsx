@@ -28,7 +28,7 @@ const homepageFont = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "HCM // TRACE",
+  title: "ĐUỐC HỒNG",
   description:
     "Bắt đầu từ những câu hỏi của hiện tại và lần theo quá trình hình thành tư tưởng Hồ Chí Minh.",
 };

@@ -10,7 +10,7 @@ export default function Home() {
     <main className="home" id="main-content">
       <header className="home-header">
         <div className="site-container home-header__inner">
-          <span className="brand-mark">HCM // TRACE</span>
+          <span className="brand-mark">ĐUỐC HỒNG</span>
         </div>
       </header>
 
@@ -18,7 +18,7 @@ export default function Home() {
         <div className="site-container home-hero__grid">
           <div className="home-hero__copy">
             <Reveal>
-              <p className="section-kicker">HCM // TRACE — 2026</p>
+              <p className="section-kicker">ĐUỐC HỒNG — 2026</p>
             </Reveal>
 
             <Reveal delay={0.06}>
@@ -79,7 +79,7 @@ export default function Home() {
 
       <footer className="home-footer">
         <div className="site-container home-footer__inner">
-          <p>HCM // TRACE — Prototype 2026</p>
+          <p>ĐUỐC HỒNG — Prototype 2026</p>
         </div>
       </footer>
     </main>

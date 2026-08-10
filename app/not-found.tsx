@@ -6,7 +6,7 @@ export default function NotFound() {
       <div className="site-container trace-placeholder__inner">
         <header className="trace-placeholder__header">
           <Link className="trace-placeholder__brand" href="/">
-            HCM // TRACE
+            ĐUỐC HỒNG
           </Link>
           <span>404</span>
         </header>

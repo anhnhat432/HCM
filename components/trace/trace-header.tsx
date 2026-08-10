@@ -12,7 +12,7 @@ export function TraceHeader({ title, order }: TraceHeaderProps) {
     <header className="trace-header">
       <div className="site-container trace-header__inner">
         <Link className="trace-header__brand" href="/">
-          HCM // TRACE
+          ĐUỐC HỒNG
         </Link>
         <span className="trace-header__title">{title}</span>
         <span className="trace-header__chapter">{chapter} / 03</span>

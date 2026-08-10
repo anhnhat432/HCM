@@ -64,6 +64,7 @@ def verify_trace(page: Page) -> None:
     )
     assert response is not None and response.ok
     settle_page(page)
+    assert page.title() == "ĐUỐC HỒNG"
 
     headings = page.get_by_role("heading", level=1)
     assert headings.count() == 1
@@ -72,7 +73,8 @@ def verify_trace(page: Page) -> None:
     header = page.locator(".trace-header")
     header.wait_for()
     assert header.evaluate("element => getComputedStyle(element).position") == "sticky"
-    assert header.get_by_role("link", name="HCM // TRACE").get_attribute("href") == "/"
+    assert header.get_by_role("link", name="ĐUỐC HỒNG").get_attribute("href") == "/"
+    assert page.get_by_text("HCM // TRACE", exact=False).count() == 0
     header_title = header.get_by_text("Đại đoàn kết", exact=True)
     assert header_title.count() == 1
     if page.evaluate("window.innerWidth") > 768:
@@ -154,7 +156,7 @@ def verify_trace(page: Page) -> None:
 
 def verify_mobile_targets(page: Page) -> None:
     for name in [
-        "HCM // TRACE",
+        "ĐUỐC HỒNG",
         "Nhìn lại quá khứ",
         "Xem cách áp dụng",
         "Đạo đức & trách nhiệm",
@@ -185,6 +187,8 @@ def verify_incomplete_trace_stays_placeholder(page: Page) -> None:
     )
     assert response is not None and response.ok
     assert page.get_by_role("heading", level=1).inner_text() == "Đạo đức & trách nhiệm"
+    assert page.get_by_role("link", name="ĐUỐC HỒNG").get_attribute("href") == "/"
+    assert page.get_by_text("HCM // TRACE", exact=False).count() == 0
     assert page.locator("[data-trace-stage]").count() == 0
 
 
