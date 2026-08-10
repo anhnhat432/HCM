@@ -97,6 +97,19 @@ def main() -> None:
         )
         verify_trace_routes(desktop)
 
+        laptop = browser.new_page(viewport={"width": 1366, "height": 768})
+        laptop_errors = collect_console_errors(laptop)
+        verify_homepage(laptop)
+        laptop_viewport_width, laptop_document_width = laptop.evaluate(
+            "[document.documentElement.clientWidth, document.documentElement.scrollWidth]"
+        )
+        assert laptop_document_width <= laptop_viewport_width
+        prepare_full_page_screenshot(laptop)
+        laptop.screenshot(
+            path=str(SCREENSHOT_DIR / "homepage-laptop.png"),
+            full_page=True,
+        )
+
         mobile = browser.new_page(viewport={"width": 390, "height": 844})
         mobile_errors = collect_console_errors(mobile)
         verify_homepage(mobile)
@@ -118,7 +131,7 @@ def main() -> None:
 
         browser.close()
 
-    errors = desktop_errors + mobile_errors + reduced_motion_errors
+    errors = desktop_errors + laptop_errors + mobile_errors + reduced_motion_errors
     assert not errors, f"Browser console errors: {errors}"
     print("Homepage acceptance passed")
 
