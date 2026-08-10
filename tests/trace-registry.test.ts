@@ -55,6 +55,19 @@ test("dai doan ket continues to the existing second trace route", () => {
   assert.equal(getNextTraceSlug("dai-doan-ket"), "dao-duc-trach-nhiem");
 });
 
+test("dai doan ket records verification work for every historical asset", () => {
+  const trace = getTraceBySlug("dai-doan-ket");
+
+  assert.deepEqual(
+    trace?.historicalMoments.map((moment) => moment.image?.credit),
+    [
+      "TODO: 1930 archival asset needs verification",
+      "TODO: 1941 archival asset needs verification",
+      "TODO: 1945 archival asset required",
+    ],
+  );
+});
+
 test("theme mapping exposes one semantic class for every trace theme", () => {
   assert.deepEqual(Object.keys(traceThemes), [
     "unity",

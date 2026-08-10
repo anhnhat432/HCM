@@ -45,6 +45,17 @@ def settle_page(page: Page) -> None:
         page.wait_for_load_state("networkidle", timeout=10_000)
     except PlaywrightTimeoutError:
         pass
+    page.evaluate("() => document.fonts.ready")
+
+
+def rendered_line_count(page: Page, selector: str) -> list[int]:
+    return page.locator(selector).evaluate_all(
+        """elements => elements.map(element => {
+            const style = getComputedStyle(element);
+            const lineHeight = Number.parseFloat(style.lineHeight);
+            return Math.ceil(element.getBoundingClientRect().height / lineHeight);
+        })"""
+    )
 
 
 def verify_trace(page: Page) -> None:
@@ -78,6 +89,55 @@ def verify_trace(page: Page) -> None:
     assert "Điều gì có thể giữ một tập thể cùng hướng?" in question.inner_text()
     years = page.locator(".historical-moment__year").all_inner_texts()
     assert years == ["1930", "1941", "1945"]
+
+    viewport_width = page.evaluate("window.innerWidth")
+    if viewport_width >= 1024:
+        thought_heading_size = page.locator(".thought-formation__heading").evaluate(
+            "element => Number.parseFloat(getComputedStyle(element).fontSize)"
+        )
+        factor_padding = page.locator(".formation-factor").first.evaluate(
+            "element => Number.parseFloat(getComputedStyle(element).paddingTop)"
+        )
+        convergence_width = page.locator(".thought-formation__line span").evaluate(
+            "element => Number.parseFloat(getComputedStyle(element).width)"
+        )
+        conclusion_size = page.locator(
+            ".thought-formation__conclusion h3"
+        ).evaluate(
+            "element => Number.parseFloat(getComputedStyle(element).fontSize)"
+        )
+        application_content = page.locator(
+            ".present-application__content"
+        ).bounding_box()
+        application_anchor = page.locator(
+            ".present-application__anchor"
+        ).bounding_box()
+
+        assert 52 <= thought_heading_size <= 56
+        assert factor_padding >= 28
+        assert convergence_width >= 2
+        assert conclusion_size >= 72
+        assert application_content is not None and application_anchor is not None
+        assert application_anchor["x"] - application_content["x"] <= 780
+    elif viewport_width <= 480:
+        application_item = page.locator(".application-item").first
+        application_body = application_item.locator("p")
+        application_font_size = application_body.evaluate(
+            "element => Number.parseFloat(getComputedStyle(element).fontSize)"
+        )
+        application_gap = application_item.evaluate(
+            "element => Number.parseFloat(getComputedStyle(element).columnGap)"
+        )
+
+        assert all(
+            lines <= 5
+            for lines in rendered_line_count(page, ".historical-moment__summary")
+        )
+        assert application_font_size <= 14.8
+        assert application_gap <= 6.5
+        assert all(
+            lines <= 3 for lines in rendered_line_count(page, ".application-item p")
+        )
 
     assert page.get_by_role(
         "link", name="Đạo đức & trách nhiệm", exact=True

@@ -994,27 +994,27 @@ a {
 }
 
 .thought-formation {
-  padding-block: clamp(6rem, 10vw, 10rem);
+  padding-block: clamp(6rem, 8vw, 8rem);
   background: var(--color-canvas);
 }
 
 .thought-formation__inner {
-  max-width: 48rem;
+  max-width: 52rem;
 }
 
 .thought-formation__heading {
-  margin: 0 0 clamp(4rem, 7vw, 6rem);
-  font-size: clamp(2.45rem, 4vw, 3rem);
+  margin: 0 0 clamp(3.75rem, 5vw, 4.5rem);
+  font-size: clamp(2.75rem, 4.2vw, 3.375rem);
   font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
   text-transform: uppercase;
 }
 
 .thought-formation__convergence {
   display: grid;
-  grid-template-columns: 1.25rem 1fr;
-  gap: clamp(2rem, 4vw, 3rem);
+  grid-template-columns: 1.5rem 1fr;
+  gap: clamp(2.25rem, 4vw, 3.25rem);
 }
 
 .thought-formation__line {
@@ -1026,19 +1026,19 @@ a {
 }
 
 .thought-formation__line span {
-  width: 1px;
+  width: 2px;
   flex: 1;
-  background: linear-gradient(rgb(152 46 48 / 22%), var(--trace-accent));
+  background: linear-gradient(rgb(152 46 48 / 32%), var(--trace-accent));
 }
 
 .thought-formation__line b {
-  margin-top: 0.2rem;
-  font-size: 1rem;
+  margin-top: 0.35rem;
+  font-size: 1.15rem;
   font-weight: 400;
 }
 
 .formation-factor {
-  padding-block: 1.6rem;
+  padding-block: clamp(1.8rem, 2.5vw, 2.15rem);
   border-top: 1px solid var(--color-line);
 }
 
@@ -1051,19 +1051,19 @@ a {
 }
 
 .formation-factor p {
-  max-width: 37rem;
-  margin: 0.65rem 0 0;
+  max-width: 39rem;
+  margin: 0.8rem 0 0;
   color: var(--color-muted);
   font-size: 0.96rem;
   font-weight: 300;
-  line-height: 1.75;
+  line-height: 1.7;
 }
 
 .thought-formation__conclusion {
-  margin-top: 2.25rem;
-  padding: 2.25rem 0 0 1.5rem;
+  margin-top: 3rem;
+  padding: 2.75rem 0 0 2rem;
   border-top: 1px solid var(--color-line);
-  border-left: 4px solid var(--trace-accent);
+  border-left: 5px solid var(--trace-accent);
 }
 
 .thought-formation__conclusion p {
@@ -1077,10 +1077,10 @@ a {
 
 .thought-formation__conclusion h3 {
   margin: 0;
-  font-size: clamp(2.5rem, 5.2vw, 4.2rem);
+  font-size: clamp(3.4rem, 6vw, 5rem);
   font-weight: 700;
-  line-height: 0.98;
-  letter-spacing: -0.04em;
+  line-height: 0.94;
+  letter-spacing: -0.05em;
   text-transform: uppercase;
 }
 
@@ -1091,8 +1091,12 @@ a {
 
 .present-application__grid {
   display: grid;
-  grid-template-columns: minmax(0, 43rem) minmax(12rem, 1fr);
-  gap: clamp(5rem, 10vw, 10rem);
+  grid-template-columns: minmax(0, 44rem) minmax(10rem, 1fr);
+  gap: clamp(3.5rem, 4vw, 4rem);
+}
+
+.present-application__content {
+  max-width: 44rem;
 }
 
 .present-application__heading {
@@ -1153,23 +1157,24 @@ a {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  align-self: end;
-  padding-bottom: 6rem;
+  align-self: center;
+  justify-self: start;
+  padding-bottom: 0;
   color: rgb(119 115 109 / 48%);
 }
 
 .present-application__anchor span {
   width: 1px;
-  height: 4.5rem;
+  height: 8rem;
   margin-left: 0.18rem;
-  background: linear-gradient(transparent, var(--color-line));
+  background: linear-gradient(transparent, rgb(152 46 48 / 30%));
 }
 
 .present-application__anchor b {
   width: 0.42rem;
   height: 0.42rem;
   margin-block: 0.45rem;
-  background: var(--color-line);
+  background: rgb(152 46 48 / 42%);
   border-radius: 50%;
 }
 
@@ -1578,7 +1583,10 @@ a {
   }
 
   .historical-moment__summary {
-    font-size: 1rem;
+    max-width: none;
+    font-size: 0.95rem;
+    line-height: 1.68;
+    letter-spacing: -0.012em;
   }
 
   .thought-formation,
@@ -1587,21 +1595,28 @@ a {
   }
 
   .thought-formation__heading {
-    margin-bottom: 3.75rem;
-    font-size: clamp(2.25rem, 10vw, 3rem);
+    margin-bottom: 3rem;
+    font-size: clamp(2.2rem, 9.5vw, 2.55rem);
+    line-height: 1.06;
   }
 
   .thought-formation__convergence {
-    grid-template-columns: 0.85rem 1fr;
-    gap: 1.35rem;
+    grid-template-columns: 1rem 1fr;
+    gap: 1rem;
+  }
+
+  .formation-factor {
+    padding-block: 1.65rem;
   }
 
   .thought-formation__conclusion {
-    padding-left: 1.2rem;
+    margin-top: 2rem;
+    padding: 2rem 0 0 1rem;
+    border-left-width: 4px;
   }
 
   .thought-formation__conclusion h3 {
-    font-size: clamp(2.25rem, 11vw, 3.2rem);
+    font-size: clamp(2.5rem, 10.5vw, 2.9rem);
   }
 
   .present-application__grid {
@@ -1614,8 +1629,8 @@ a {
   }
 
   .application-item {
-    grid-template-columns: 3rem 1fr;
-    gap: 0.75rem;
+    grid-template-columns: 1.75rem 1fr;
+    gap: 0.4rem;
   }
 
   .application-item h3 {
@@ -1623,7 +1638,10 @@ a {
   }
 
   .application-item p {
-    font-size: 1rem;
+    max-width: none;
+    font-size: 0.925rem;
+    line-height: 1.65;
+    letter-spacing: -0.012em;
   }
 
   .present-application__anchor {
