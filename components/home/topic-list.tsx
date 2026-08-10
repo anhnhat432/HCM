@@ -22,10 +22,12 @@ export function TopicList({ traces }: TopicListProps) {
                 aria-label={trace.title}
               >
                 <span className="topic-link__number">{chapter}</span>
-                <span className="topic-link__title">{trace.title}</span>
+                <span className="topic-link__title">
+                  {trace.title.toLocaleUpperCase("vi-VN")}
+                </span>
                 <span className="topic-link__idea">{trace.cardSummary}</span>
                 <span className="topic-link__arrow" aria-hidden="true">
-                  ↗
+                  →
                 </span>
               </Link>
             </Reveal>

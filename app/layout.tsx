@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans, Newsreader } from "next/font/google";
+import { Be_Vietnam_Pro, IBM_Plex_Sans, Newsreader } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { MotionProvider } from "@/components/motion-provider";
@@ -20,6 +20,13 @@ const bodyFont = IBM_Plex_Sans({
   display: "swap",
 });
 
+const homepageFont = Be_Vietnam_Pro({
+  variable: "--font-homepage",
+  subsets: ["vietnamese"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "HCM // TRACE",
   description:
@@ -33,7 +40,9 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="vi">
-      <body className={`${displayFont.variable} ${bodyFont.variable}`}>
+      <body
+        className={`${displayFont.variable} ${bodyFont.variable} ${homepageFont.variable}`}
+      >
         <a className="skip-link" href="#main-content">
           Đi đến nội dung chính
         </a>
