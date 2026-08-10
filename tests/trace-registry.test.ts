@@ -105,7 +105,7 @@ test("every historical moment records content verification and sources", () => {
   }
 });
 
-test("historical assets expose explicit provenance and placeholder states", () => {
+test("historical assets expose explicit provenance, owner approval, and placeholder states", () => {
   const expectedAssets = new Map([
     ["dai-doan-ket:1930", "/images/traces/dai-doan-ket/1930-party-foundation.jpg"],
     ["dai-doan-ket:1941", "/images/traces/dai-doan-ket/1941-viet-minh-pac-bo.jpg"],
@@ -140,7 +140,11 @@ test("historical assets expose explicit provenance and placeholder states", () =
         assert.equal(image.src, expectedAssets.get(key));
         assert.ok(image.sourceUrl?.startsWith("https://"));
         assert.equal(image.verificationStatus, "verified");
-        assert.equal(image.usageStatus, "needs-review");
+        assert.equal(image.usageStatus, "approved");
+        assert.match(
+          image.usageNote ?? "",
+          /Chủ dự án xác nhận phê duyệt sử dụng công khai/,
+        );
       }
     }
   }

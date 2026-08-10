@@ -1,5 +1,8 @@
 import type { TraceData } from "@/types/trace";
 
+const HISTORICAL_ASSET_APPROVAL =
+  "Chủ dự án xác nhận phê duyệt sử dụng công khai ngày 2026-08-10.";
+
 export const traces = [
   {
     slug: "dai-doan-ket",
@@ -45,7 +48,8 @@ export const traces = [
           sourceUrl:
             "https://hochiminh.vn/hoc-va-lam-theo-bac/hoc-va-lam-theo-bac/vai-tro-cua-nguyen-ai-quoc-tai-hoi-nghi-hop-nhat-cac-to-chuc-cong-san-o-viet-nam-3992",
           verificationStatus: "verified",
-          usageStatus: "needs-review",
+          usageStatus: "approved",
+          usageNote: HISTORICAL_ASSET_APPROVAL,
           license: "Không nêu giấy phép tái sử dụng",
           objectPosition: "50% center",
         },
@@ -79,7 +83,8 @@ export const traces = [
           sourceUrl:
             "https://baotanglichsu.vn/vi/Articles/3097/16382/19-5-1941-thanh-lap-mat-tran-viet-minh.html",
           verificationStatus: "verified",
-          usageStatus: "needs-review",
+          usageStatus: "approved",
+          usageNote: HISTORICAL_ASSET_APPROVAL,
           license: "Không nêu giấy phép tái sử dụng",
           objectPosition: "50% center",
         },
@@ -114,7 +119,8 @@ export const traces = [
           sourceUrl:
             "https://luutru.gov.vn/cong-bo-gioi-thieu-tai-lieu/ban-tuyen-ngon-doc-lap-va-mot-so-hinh-anh-ngay-2-9-1945-tai-quang-truong-ba-dinh-lich-su.htm",
           verificationStatus: "verified",
-          usageStatus: "needs-review",
+          usageStatus: "approved",
+          usageNote: HISTORICAL_ASSET_APPROVAL,
           license: "Không nêu giấy phép tái sử dụng",
           objectPosition: "18% center",
         },
@@ -221,7 +227,8 @@ export const traces = [
           credit: "Cục Di sản văn hóa",
           sourceUrl: "https://dsvh.gov.vn/cuon-duong-kach-menh-3022",
           verificationStatus: "verified",
-          usageStatus: "needs-review",
+          usageStatus: "approved",
+          usageNote: HISTORICAL_ASSET_APPROVAL,
           license:
             "Website yêu cầu ghi rõ nguồn Cục Di sản văn hóa khi sử dụng lại thông tin",
           objectPosition: "50% center",
@@ -390,7 +397,8 @@ export const traces = [
           sourceUrl:
             "https://luutru.gov.vn/cong-bo-gioi-thieu-tai-lieu/ban-tuyen-ngon-doc-lap-va-mot-so-hinh-anh-ngay-2-9-1945-tai-quang-truong-ba-dinh-lich-su.htm",
           verificationStatus: "verified",
-          usageStatus: "needs-review",
+          usageStatus: "approved",
+          usageNote: HISTORICAL_ASSET_APPROVAL,
           license: "Không nêu giấy phép tái sử dụng",
           objectPosition: "14% center",
         },

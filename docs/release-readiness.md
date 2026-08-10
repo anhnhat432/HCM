@@ -2,10 +2,10 @@
 
 ## Current status
 
-**NOT READY for public release.** The functional experience and technical QA
-are release-ready, but four unique archival files still have unresolved reuse
-rights (`usageStatus: needs-review`). They must be cleared or replaced with the
-existing neutral-placeholder treatment before public deployment.
+**READY WITH LIMITATIONS for public release.** The functional experience and
+technical QA are release-ready. The project owner approved public use of the
+four unique archival files on 2026-08-10; their original source and license
+notes remain recorded separately from that approval.
 
 ## Verified experience
 
@@ -26,13 +26,13 @@ existing neutral-placeholder treatment before public deployment.
 
 | Trace | Moment | Asset | Verification | Usage | Release recommendation |
 | --- | --- | --- | --- | --- | --- |
-| Đại đoàn kết | 1930 | `1930-party-foundation.jpg` | verified | needs-review | Block public release until rights are cleared or use a neutral placeholder |
-| Đại đoàn kết | 1941 | `1941-viet-minh-pac-bo.jpg` | verified | needs-review | Block public release until rights are cleared or use a neutral placeholder |
-| Đại đoàn kết | 1945 | `1945-independence-declaration.jpg` | verified | needs-review | Block public release until rights are cleared or use a neutral placeholder |
-| Đạo đức & trách nhiệm | 1927 | `1927-duong-kach-menh.jpg` | verified | needs-review | Block public release until rights are cleared or use a neutral placeholder |
+| Đại đoàn kết | 1930 | `1930-party-foundation.jpg` | verified | approved | Cleared by project-owner approval for public use |
+| Đại đoàn kết | 1941 | `1941-viet-minh-pac-bo.jpg` | verified | approved | Cleared by project-owner approval for public use |
+| Đại đoàn kết | 1945 | `1945-independence-declaration.jpg` | verified | approved | Cleared by project-owner approval for public use |
+| Đạo đức & trách nhiệm | 1927 | `1927-duong-kach-menh.jpg` | verified | approved | Cleared by project-owner approval for public use |
 | Đạo đức & trách nhiệm | 1947 | Neutral placeholder | placeholder | not-applicable | Can ship with the known limitation |
 | Đạo đức & trách nhiệm | 1958 | Neutral placeholder | placeholder | not-applicable | Can ship with the known limitation |
-| Con người | 1945 | Reuses `1945-independence-declaration.jpg` | verified | needs-review | Same public-release blocker as Trace 01 |
+| Con người | 1945 | Reuses `1945-independence-declaration.jpg` | verified | approved | Covered by the same project-owner approval as Trace 01 |
 | Con người | 1958 | Neutral placeholder | placeholder | not-applicable | Can ship with the known limitation |
 | Con người | 1969 | Neutral placeholder | placeholder | not-applicable | Can ship with the known limitation |
 
@@ -47,11 +47,14 @@ distinct from historical imagery.
 - External URL availability is time-sensitive and should be rechecked before
   deployment.
 
+## Release blockers
+
+None currently recorded. The four neutral placeholders remain visible, known
+limitations rather than deployment blockers.
+
 ## Deployment prerequisites
 
-1. Clear reuse rights for the four unique `needs-review` archival files, or
-   replace them with neutral placeholders without changing the existing frames.
-2. Run the full test, typecheck, lint, build, and production acceptance gates on
+1. Run the full test, typecheck, lint, build, and production acceptance gates on
    the exact release commit.
-3. Configure the production host and verify metadata, internal routes, fonts,
+2. Configure the production host and verify metadata, internal routes, fonts,
    images, console, and network behavior on the deployed origin.

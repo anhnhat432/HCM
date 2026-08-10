@@ -10,6 +10,7 @@ export type TraceThemeKey = "unity" | "responsibility" | "humanity";
 export type TraceImageVerificationStatus = "verified" | "placeholder";
 export type TraceImageUsageStatus =
   | "licensed"
+  | "approved"
   | "needs-review"
   | "not-applicable";
 
@@ -21,6 +22,7 @@ export interface TraceImage {
   readonly sourceUrl?: string;
   readonly verificationStatus: TraceImageVerificationStatus;
   readonly usageStatus: TraceImageUsageStatus;
+  readonly usageNote?: string;
   readonly license?: string;
   readonly objectPosition?: string;
   readonly isPlaceholder?: boolean;
