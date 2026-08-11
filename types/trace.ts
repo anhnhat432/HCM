@@ -114,6 +114,7 @@ export interface TraceApplication {
 export interface JourneyClosingTopic {
   readonly order: TraceOrder;
   readonly title: string;
+  readonly takeaway: string;
 }
 
 export interface JourneyClosingAction {

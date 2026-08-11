@@ -31,7 +31,7 @@ export function TracePage({ trace, nextTrace, closing }: TracePageProps) {
 
   return (
     <div className={`trace-experience ${traceThemes[trace.theme]}`}>
-      <TraceHeader order={trace.order} title={trace.title} />
+      <TraceHeader slug={trace.slug} title={trace.title} />
       <TraceProgress moments={trace.historicalMoments} />
       <main id="main-content">
         <TraceOpening

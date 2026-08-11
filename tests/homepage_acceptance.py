@@ -361,6 +361,19 @@ def main() -> None:
             full_page=True,
         )
 
+        small_mobile = browser.new_page(viewport={"width": 375, "height": 812})
+        small_mobile_errors = collect_console_errors(small_mobile)
+        verify_homepage(small_mobile)
+        small_viewport_width, small_document_width = small_mobile.evaluate(
+            "[document.documentElement.clientWidth, document.documentElement.scrollWidth]"
+        )
+        assert small_document_width <= small_viewport_width
+        prepare_full_page_screenshot(small_mobile)
+        small_mobile.screenshot(
+            path=str(SCREENSHOT_DIR / "homepage-small-mobile.png"),
+            full_page=True,
+        )
+
         reduced_motion = browser.new_page(
             viewport={"width": 390, "height": 844}, reduced_motion="reduce"
         )
@@ -370,7 +383,13 @@ def main() -> None:
 
         browser.close()
 
-    errors = desktop_errors + laptop_errors + mobile_errors + reduced_motion_errors
+    errors = (
+        desktop_errors
+        + laptop_errors
+        + mobile_errors
+        + small_mobile_errors
+        + reduced_motion_errors
+    )
     assert not errors, f"Browser console errors: {errors}"
     print("Homepage acceptance passed")
 

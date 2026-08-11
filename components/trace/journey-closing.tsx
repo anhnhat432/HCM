@@ -28,7 +28,10 @@ export function JourneyClosing({ closing }: JourneyClosingProps) {
             {closing.topics.map((topic) => (
               <li key={topic.order}>
                 <span>{String(topic.order).padStart(2, "0")}</span>
-                <strong>{topic.title}</strong>
+                <div>
+                  <strong>{topic.title}</strong>
+                  <p>{topic.takeaway}</p>
+                </div>
               </li>
             ))}
           </ol>
