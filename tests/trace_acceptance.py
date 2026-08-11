@@ -22,6 +22,12 @@ TRACE_CASES = {
         "headline": "Khi khác biệt",
         "question": "Điều gì có thể giữ một tập thể cùng hướng?",
         "years": ["1930", "1941", "1945"],
+        "moment_titles": [
+            "Đảng Cộng sản Việt Nam",
+            "Việt Minh",
+            "Tuyên ngôn Độc lập",
+        ],
+        "source_counts": [2, 2, 1],
         "conclusion": "ĐẠI ĐOÀN KẾT DÂN TỘC",
         "application_titles": [
             "Tìm mục tiêu chung",
@@ -49,6 +55,12 @@ TRACE_CASES = {
             "Điều gì định hướng một lựa chọn đúng khi không ai buộc ta phải làm đúng?"
         ),
         "years": ["1927", "1947", "1958"],
+        "moment_titles": [
+            "Tư cách một người cách mệnh",
+            "Sửa đổi lối làm việc",
+            "Đạo đức cách mạng",
+        ],
+        "source_counts": [2, 2, 2],
         "conclusion": "ĐẠO ĐỨC & TRÁCH NHIỆM",
         "application_titles": [
             "Trung thực với lựa chọn",
@@ -74,6 +86,8 @@ TRACE_CASES = {
         "headline": "Khi một con người",
         "question": "Giá trị của một con người được quyết định bởi điều gì?",
         "years": ["1945", "1958", "1969"],
+        "moment_titles": ["Tuyên ngôn Độc lập", "Trồng người", "Di chúc"],
+        "source_counts": [2, 1, 1],
         "conclusion": "CON NGƯỜI VỪA LÀ MỤC TIÊU, VỪA LÀ ĐỘNG LỰC",
         "application_titles": [
             "Không thu gọn con người vào thành tích",
@@ -91,6 +105,12 @@ TRACE_CASES = {
         "ending": "journey-closing",
     },
 }
+
+JOURNEY_TAKEAWAYS = [
+    "Khác biệt có thể cùng hướng khi được quy tụ bởi một mục tiêu chung.",
+    "Lựa chọn đúng bắt đầu từ tự rèn mình và trách nhiệm với lợi ích chung.",
+    "Phát triển có ý nghĩa khi con người được tôn trọng và có cơ hội trưởng thành.",
+]
 
 FOCUSED_MOMENTS = {
     "trace-01": ["1930", "1941", "1945"],
@@ -173,7 +193,7 @@ def verify_text_contrast(page: Page) -> None:
         ".trace-figure__credit",
         ".historical-moment__summary",
         ".historical-moment__metadata",
-        ".historical-moment__sources",
+        ".source-drawer-trigger",
         ".formation-factor p",
         ".application-item p",
         ".journey-closing__statement",
@@ -301,6 +321,140 @@ def verify_image_presentation(page: Page, trace_case: dict) -> None:
         ] * trace_case["placeholder_count"]
 
 
+def verify_trace_switcher(page: Page, trace_case: dict) -> None:
+    trigger = page.locator(".trace-switcher__trigger")
+    menu = page.get_by_role("navigation", name="Chuyển Trace")
+
+    assert trigger.get_attribute("aria-expanded") == "false"
+    trigger.click()
+    assert trigger.get_attribute("aria-expanded") == "true"
+    menu.wait_for(state="visible")
+
+    links = menu.get_by_role("link")
+    assert links.count() == 3
+    assert links.evaluate_all(
+        "items => items.map(item => item.getAttribute('href'))"
+    ) == [
+        "/trace/dai-doan-ket",
+        "/trace/dao-duc-trach-nhiem",
+        "/trace/con-nguoi",
+    ]
+    current = menu.locator('[aria-current="page"]')
+    assert current.get_attribute("href") == trace_case["path"]
+    assert "✓" in current.inner_text()
+
+    page.keyboard.press("Escape")
+    menu.wait_for(state="hidden")
+    assert trigger.get_attribute("aria-expanded") == "false"
+    assert trigger.evaluate("element => document.activeElement === element")
+
+    trigger.press("Enter")
+    menu.wait_for(state="visible")
+    page.wait_for_function(
+        "() => document.activeElement?.getAttribute('aria-current') === 'page'"
+    )
+    current_index = list(TRACE_CASES).index(
+        next(name for name, case in TRACE_CASES.items() if case is trace_case)
+    )
+    expected_next_path = list(TRACE_CASES.values())[
+        (current_index + 1) % len(TRACE_CASES)
+    ]["path"]
+    page.keyboard.press("ArrowDown")
+    assert page.evaluate("document.activeElement?.getAttribute('href')") == (
+        expected_next_path
+    )
+    page.keyboard.press("Escape")
+    menu.wait_for(state="hidden")
+    assert trigger.evaluate("element => document.activeElement === element")
+
+    trigger.click()
+    menu.wait_for(state="visible")
+    page.mouse.click(8, 150)
+    menu.wait_for(state="hidden")
+
+
+def verify_source_drawer(page: Page, trace_case: dict) -> None:
+    year = trace_case["years"][0]
+    title = trace_case["moment_titles"][0]
+    moment = page.locator(f"#moment-{year}")
+    trigger = moment.get_by_role(
+        "button", name=f"Nguồn và kiểm chứng cho {title}, {year}"
+    )
+    trigger_handle = trigger.element_handle()
+    assert trigger_handle
+    figure_caption = moment.locator(
+        ".trace-figure__caption > span"
+    ).first.text_content()
+    assert figure_caption
+    figure_source = moment.locator(".trace-figure__credit a").get_attribute("href")
+
+    trigger.click()
+    dialog = page.get_by_role("dialog", name=title)
+    dialog.wait_for(state="visible")
+    page.wait_for_function(
+        """() => [...document.querySelectorAll(
+            '.source-drawer__overlay, .source-drawer'
+        )].every(element => element.getAnimations().every(
+            animation => animation.playState === 'finished'
+        ))"""
+    )
+    assert dialog.get_by_role("heading", level=2).inner_text() == title
+    assert dialog.locator("time").inner_text() == year
+    assert dialog.get_by_role("heading", name="Kiểm chứng").count() == 1
+    verification_id = dialog.get_attribute("aria-describedby")
+    assert verification_id
+    assert dialog.locator(f'[id="{verification_id}"]').inner_text()
+
+    source_links = dialog.locator(".source-drawer__sources a")
+    assert source_links.count() == trace_case["source_counts"][0]
+    assert all(
+        link.get_attribute("target") == "_blank" for link in source_links.all()
+    )
+    image_details = dialog.locator(".source-drawer__image-details")
+    image_details_text = image_details.text_content()
+    assert image_details_text
+    assert figure_caption in image_details_text
+    assert dialog.locator(".source-drawer__image-details a").get_attribute(
+        "href"
+    ) == figure_source
+    assert "Giấy phép" in image_details_text
+    assert "Trạng thái sử dụng" in image_details_text
+    assert page.evaluate("document.body.style.overflow") == "hidden"
+    page.wait_for_function(
+        "() => document.activeElement?.getAttribute('aria-label') === "
+        "'Đóng nguồn và kiểm chứng'"
+    )
+
+    page.keyboard.press("Shift+Tab")
+    assert dialog.locator(":focus").count() == 1
+
+    viewport_width = page.evaluate("window.innerWidth")
+    if viewport_width <= 480:
+        drawer_box = dialog.bounding_box()
+        assert drawer_box is not None
+        assert drawer_box["width"] <= viewport_width + 0.5
+        assert drawer_box["width"] >= viewport_width * 0.88
+
+    page.keyboard.press("Escape")
+    dialog.wait_for(state="detached")
+    page.wait_for_function(
+        "trigger => document.activeElement === trigger", arg=trigger_handle
+    )
+    assert page.evaluate("document.body.style.overflow") != "hidden"
+
+    trigger.click()
+    overlay = page.locator(".source-drawer__overlay")
+    overlay.wait_for(state="visible")
+    if viewport_width > 480:
+        overlay.click(position={"x": 8, "y": 8})
+    else:
+        page.get_by_role("button", name="Đóng nguồn và kiểm chứng").click()
+    overlay.wait_for(state="detached")
+    page.wait_for_function(
+        "trigger => document.activeElement === trigger", arg=trigger_handle
+    )
+
+
 def verify_trace(page: Page, trace_case: dict) -> None:
     response = page.goto(
         f"{BASE_URL}{trace_case['path']}",
@@ -348,8 +502,11 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     assert header.evaluate("element => getComputedStyle(element).position") == "sticky"
     assert header.get_by_role("link", name="ĐUỐC HỒNG").get_attribute("href") == "/"
     assert page.get_by_text("HCM // TRACE", exact=False).count() == 0
-    assert header.get_by_text(trace_case["title"], exact=True).count() == 1
-    header.get_by_text(trace_case["chapter"], exact=True).wait_for()
+    assert header.locator(".trace-header__title").text_content() == trace_case["title"]
+    assert header.locator(".trace-switcher__trigger > span").first.inner_text() == (
+        trace_case["chapter"]
+    )
+    verify_trace_switcher(page, trace_case)
 
     progress = page.get_by_role("navigation", name="Tiến trình Trace")
     progress_links = progress.get_by_role("link")
@@ -388,8 +545,8 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     assert page.locator(".trace-figure__frame--kind-placeholder").count() == trace_case[
         "placeholder_count"
     ]
-    assert page.locator(".historical-moment__sources").count() == 3
-    assert page.locator(".historical-moment__sources a").count() >= 3
+    assert page.locator(".historical-moment__sources").count() == 0
+    assert page.locator(".source-drawer-trigger").count() == 3
     assert page.locator(
         ".historical-moment .trace-figure__credit a"
     ).count() == trace_case["historical_image_source_count"]
@@ -402,6 +559,7 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     assert page.get_by_text("TODO:", exact=False).count() == 0
     verify_image_presentation(page, trace_case)
     verify_text_contrast(page)
+    verify_source_drawer(page, trace_case)
     assert trace_case["conclusion"] in " ".join(
         page.locator(".thought-formation__conclusion h3").inner_text().split()
     )
@@ -548,6 +706,9 @@ def verify_trace(page: Page, trace_case: dict) -> None:
         closing = page.locator(".journey-closing")
         closing.wait_for()
         assert "Ba câu hỏi của hôm nay" in closing.inner_text()
+        assert closing.locator(".journey-closing__topics p").all_inner_texts() == (
+            JOURNEY_TAKEAWAYS
+        )
         assert page.get_by_role(
             "link", name="Bắt đầu lại", exact=True
         ).get_attribute("href") == "/trace/dai-doan-ket"
@@ -578,6 +739,14 @@ def verify_mobile_targets(page: Page, trace_case: dict) -> None:
         "Về trang chủ",
     ]:
         target = page.get_by_role("link", name=name, exact=True)
+        box = target.bounding_box()
+        assert box is not None and box["height"] >= 44
+
+    switcher = page.locator(".trace-switcher__trigger")
+    switcher_box = switcher.bounding_box()
+    assert switcher_box is not None and switcher_box["height"] >= 44
+
+    for target in page.locator(".source-drawer-trigger").all():
         box = target.bounding_box()
         assert box is not None and box["height"] >= 44
 
@@ -623,6 +792,7 @@ def main() -> None:
         "desktop": {"width": 1920, "height": 1080},
         "laptop": {"width": 1366, "height": 768},
         "mobile": {"width": 390, "height": 844},
+        "small-mobile": {"width": 375, "height": 812},
     }
     error_groups: list[list[str]] = []
 
@@ -634,7 +804,7 @@ def main() -> None:
                 page = browser.new_page(viewport=viewport)
                 error_groups.append(collect_console_errors(page))
                 verify_trace(page, trace_case)
-                if viewport_name == "mobile":
+                if viewport_name in {"mobile", "small-mobile"}:
                     verify_mobile_targets(page, trace_case)
                 prepare_full_page_screenshot(page)
                 page.screenshot(
@@ -676,6 +846,25 @@ def main() -> None:
             verify_trace(reduced_motion, trace_case)
             verify_reduced_motion_is_immediate(reduced_motion)
             reduced_motion.close()
+
+        switcher_navigation = browser.new_page(
+            viewport={"width": 1366, "height": 768}
+        )
+        switcher_navigation.goto(
+            f"{BASE_URL}/trace/dai-doan-ket", wait_until="domcontentloaded"
+        )
+        settle_page(switcher_navigation)
+        switcher_navigation.locator(".trace-switcher__trigger").click()
+        switcher_navigation.get_by_role("navigation", name="Chuyển Trace").get_by_role(
+            "link", name="Đạo đức & trách nhiệm"
+        ).click()
+        switcher_navigation.wait_for_url(
+            f"{BASE_URL}/trace/dao-duc-trach-nhiem"
+        )
+        assert "Khi điều dễ làm" in switcher_navigation.get_by_role(
+            "heading", level=1
+        ).inner_text()
+        switcher_navigation.close()
 
         browser.close()
 

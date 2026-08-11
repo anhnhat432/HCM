@@ -1,13 +1,21 @@
 import Link from "next/link";
 
+import { TraceSwitcher } from "@/components/trace/trace-switcher";
+import { traces } from "@/data/traces";
+import type { TraceSlug } from "@/types/trace";
+
 interface TraceHeaderProps {
   readonly title: string;
-  readonly order: number;
+  readonly slug: TraceSlug;
 }
 
-export function TraceHeader({ title, order }: TraceHeaderProps) {
-  const chapter = String(order).padStart(2, "0");
+const switcherItems = traces.map(({ order, slug, title }) => ({
+  order,
+  slug,
+  title,
+}));
 
+export function TraceHeader({ title, slug }: TraceHeaderProps) {
   return (
     <header className="trace-header">
       <div className="site-container trace-header__inner">
@@ -15,7 +23,7 @@ export function TraceHeader({ title, order }: TraceHeaderProps) {
           ĐUỐC HỒNG
         </Link>
         <span className="trace-header__title">{title}</span>
-        <span className="trace-header__chapter">{chapter} / 03</span>
+        <TraceSwitcher currentSlug={slug} items={switcherItems} />
       </div>
     </header>
   );

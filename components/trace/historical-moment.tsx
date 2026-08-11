@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { TraceReveal } from "@/components/trace/reveal";
+import { SourceDrawer } from "@/components/trace/source-drawer";
 import { getTraceImageFrameClassName } from "@/lib/trace-image-presentation";
+import { getSourceDrawerDetails } from "@/lib/trace-sources";
 import type { HistoricalMoment as HistoricalMomentData } from "@/types/trace";
 
 interface HistoricalMomentProps {
@@ -39,22 +41,7 @@ export function HistoricalMoment({
           {moment.metadata ? (
             <p className="historical-moment__metadata">{moment.metadata}</p>
           ) : null}
-          <div className="historical-moment__sources" aria-label="Nguồn nội dung">
-            <span>Nguồn nội dung</span>
-            <div>
-              {moment.sources.map((source) => (
-                <a
-                  className="trace-source-link"
-                  href={source.url}
-                  key={source.url}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  {source.title}
-                </a>
-              ))}
-            </div>
-          </div>
+          <SourceDrawer details={getSourceDrawerDetails(moment)} />
           <Link className="trace-sequence-link" href={nextHref}>
             <span aria-hidden="true" />
             {nextLabel}
