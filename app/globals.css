@@ -1129,7 +1129,7 @@ a {
   margin: 0 0 clamp(3.75rem, 5vw, 4.5rem);
   font-size: clamp(2.75rem, 4.2vw, 3.375rem);
   font-weight: 700;
-  line-height: 1.04;
+  line-height: 1.1;
   letter-spacing: -0.04em;
   text-transform: uppercase;
 }
@@ -1202,7 +1202,7 @@ a {
   margin: 0;
   font-size: clamp(3.4rem, 6vw, 5rem);
   font-weight: 700;
-  line-height: 0.94;
+  line-height: 1.04;
   letter-spacing: -0.05em;
   text-transform: uppercase;
 }
@@ -1871,7 +1871,7 @@ a {
   .thought-formation__heading {
     margin-bottom: 3rem;
     font-size: clamp(2.2rem, 9.5vw, 2.55rem);
-    line-height: 1.06;
+    line-height: 1.1;
   }
 
   .thought-formation__convergence {
@@ -1933,6 +1933,7 @@ a {
 
   .trace-navigation__title {
     font-size: clamp(2.45rem, 12vw, 3.35rem);
+    line-height: 1.07;
   }
 
   .journey-closing {

@@ -192,6 +192,23 @@ def rendered_line_count(page: Page, selector: str) -> list[int]:
     )
 
 
+def computed_line_height_ratio(locator) -> float:
+    return locator.evaluate(
+        """element => {
+            const style = getComputedStyle(element);
+            return Number.parseFloat(style.lineHeight) /
+                Number.parseFloat(style.fontSize);
+        }"""
+    )
+
+
+def assert_line_height_ratio(locator, expected: float, label: str) -> None:
+    actual = computed_line_height_ratio(locator)
+    assert abs(actual - expected) <= 0.01, (
+        f"{label} line-height ratio is {actual:.3f}; expected {expected:.2f}"
+    )
+
+
 def verify_image_presentation(page: Page, trace_case: dict) -> None:
     opening_frame = page.locator(
         ".trace-opening .trace-figure__frame--kind-present"
@@ -321,6 +338,24 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     ]
 
     viewport_width = page.evaluate("window.innerWidth")
+    assert_line_height_ratio(
+        page.locator(".thought-formation__heading"),
+        1.10,
+        f"{trace_case['path']} Thought Formation",
+    )
+    assert_line_height_ratio(
+        page.locator(".thought-formation__conclusion h3"),
+        1.04,
+        f"{trace_case['path']} conclusion",
+    )
+    if trace_case["ending"] == "next-trace":
+        expected_next_ratio = 1.07 if viewport_width <= 480 else 1.02
+        assert_line_height_ratio(
+            page.locator(".trace-navigation__title"),
+            expected_next_ratio,
+            f"{trace_case['path']} Next Trace",
+        )
+
     if viewport_width >= 1024:
         thought_heading_size = page.locator(".thought-formation__heading").evaluate(
             "element => Number.parseFloat(getComputedStyle(element).fontSize)"
