@@ -1,6 +1,6 @@
 # Phase 7 Image Art Direction and Visual Consistency Design
 
-**Status:** Audit and design direction approved on 2026-08-11; written spec awaiting review
+**Status:** Approved with five mandatory amendments on 2026-08-11
 
 ## Scope
 
@@ -79,11 +79,15 @@ export interface TraceImagePresentation {
 ```
 
 `TraceImage` stores `kind` and optional `presentation`. The existing provenance,
-verification, usage, credit, source, license, and approval fields remain the
-source of truth and are not weakened or renamed.
+verification, usage, credit, `sourceUrl`, and license fields remain the source
+of truth and are not weakened or renamed. Phase 7 does not introduce a separate
+approval workflow or approval framework.
 
 `objectPosition` moves into `presentation` so crop behavior is part of the
-presentation contract. No year-specific renderer logic is introduced.
+presentation contract. Every existing top-level `TraceImage.objectPosition`
+value is migrated to `presentation.objectPosition`. The final production schema,
+data, renderer, and tests do not retain a legacy top-level field or compatibility
+fallback. No year-specific renderer logic is introduced.
 
 ## Presentation Grammar
 
@@ -99,10 +103,16 @@ presentation contract. No year-specific renderer logic is introduced.
 ### Historical photograph
 
 - Default frame: 4:3 landscape.
-- Default fit: cover, with per-Trace object positioning when needed.
+- Cover is used only when the crop preserves the historically meaningful
+  subject and event context.
+- Contain or restrained natural framing is used when cover would remove a main
+  person, stage, document, crowd, architecture, or other meaningful event
+  context.
 - Treatment: grayscale with moderate contrast and at most a very light warm tone.
 - Opacity remains 1 and no multiply blend is used.
-- Event context is preserved when it carries historical meaning.
+- Historical readability takes priority over filling the container. The 1945
+  Tuyên ngôn Độc lập image must not be aggressively cropped merely to fill a
+  landscape frame.
 
 ### Historical place
 
@@ -114,11 +124,15 @@ presentation contract. No year-specific renderer logic is introduced.
 
 ### Document or book
 
-- Default frame: document/4:5.
+- `document` is a flexible presentation category, not a fixed 4:5 mapping.
 - Default fit: contain.
 - Background: warm neutral paper.
 - Treatment: no blend mode and no opacity reduction; source text and physical
   boundaries remain visible.
+- The container may use a stable layout ratio, but the document inside retains
+  its natural aspect ratio and may use internal max-width or max-height limits.
+- Page boundaries, headings, handwriting, book covers, and meaningful scan edges
+  remain visible; the document is never required to fill the frame.
 - A thin border and minimal shadow may separate the object from the paper field,
   but the frame must not read as a UI card.
 
@@ -157,6 +171,9 @@ branch, and one caption block. No component is created for a particular year.
 existing opening layout remains unchanged. Homepage image metadata may be a
 small local constant; Homepage is not added to `TraceData`.
 
+All production crop behavior comes from `presentation.objectPosition`. The
+renderer does not read the former top-level property after migration.
+
 ## Caption and Credit Hierarchy
 
 Every visual keeps the current provenance and rights metadata. The visible
@@ -180,6 +197,7 @@ Before the Homepage production asset changes, Phase 7 must provide 2-3 candidate
 rendered inside the real Homepage frame. Each candidate report includes:
 
 - a desktop Homepage-frame preview;
+- a mobile Homepage-frame preview where the crop meaningfully differs;
 - source URL and owner/creator;
 - license or usage status;
 - a short narrative-fit rationale.
@@ -216,9 +234,10 @@ viewport this changes a typical historical image from roughly 311x415 to
 roughly 311x233, reducing unnecessary scroll height while keeping the subject
 legible.
 
-Documents remain approximately 4:5 and use contain. Their paper field must not
-produce excessive empty space. Captions wrap normally, preserve source links,
-and never create horizontal overflow.
+Documents use contain inside a stable but flexible paper field. Their natural
+ratio remains intact and internal sizing prevents both crop and excessive empty
+space. Captions wrap normally, preserve source links, and never create
+horizontal overflow.
 
 Present Day images retain 4:5. Existing section spacing, content density,
 reading order, and responsive breakpoints remain unchanged unless a frame-level
@@ -262,6 +281,13 @@ Validation covers Homepage and all three Traces at 1920x1080, 1366x768, and
 390x844, plus reduced motion. Full-page screenshots are produced for the
 Homepage desktop and every Trace on desktop and mobile.
 
+No replacement, crop, or treatment is accepted from a standalone asset preview.
+Every decision is reviewed in its actual Homepage, TraceOpening, or
+HistoricalMoment layout at 1920x1080, 1366x768, and 390x844. Acceptance requires
+that the image supports the narrative, crops naturally, preserves historical
+context, remains readable after treatment, matches its caption, and belongs to
+the editorial world of ĐUỐC HỒNG.
+
 Two correction passes are required:
 
 1. frame, fit, crop, tone, caption, and mobile-height correction;
@@ -276,6 +302,8 @@ the wider editorial publication.
 
 - One data-driven renderer supports present, historical photograph, historical
   place, document, artwork, and placeholder imagery.
+- Production Trace data contains no legacy top-level `objectPosition` values;
+  presentation metadata controls every crop.
 - No historical image type is blindly subjected to the old universal filter.
 - Trace 01 1930, 1941, and 1945 preserve substantially more source context.
 - Trace 02 1927 shows the complete book as a document.
