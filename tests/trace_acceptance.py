@@ -105,9 +105,11 @@ FOCUSED_OPENINGS = {
 }
 
 
-def text_contrast_ratio(page: Page, selector: str) -> float:
+def text_contrast_ratio(
+    page: Page, selector: str, *, include_opacity: bool = False
+) -> float:
     return page.locator(selector).first.evaluate(
-        """element => {
+        """(element, includeOpacity) => {
             const parseColor = color => {
                 if (color.startsWith('#')) {
                     const hex = color.slice(1);
@@ -141,19 +143,26 @@ def text_contrast_ratio(page: Page, selector: str) -> float:
                 return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
             };
             const foreground = parseColor(getComputedStyle(element).color);
+            const opacity = includeOpacity
+                ? Number.parseFloat(getComputedStyle(element).opacity)
+                : 1;
             const background = parseColor(
                 getComputedStyle(document.documentElement)
                     .getPropertyValue('--color-canvas')
                     .trim()
             );
-            const renderedForeground = blend(foreground, background);
+            const renderedForeground = blend(
+                { ...foreground, a: foreground.a * opacity },
+                background
+            );
             const foregroundLuminance = luminance(renderedForeground);
             const backgroundLuminance = luminance(background);
             return (
                 (Math.max(foregroundLuminance, backgroundLuminance) + 0.05) /
                 (Math.min(foregroundLuminance, backgroundLuminance) + 0.05)
             );
-        }"""
+        }""",
+        include_opacity,
     )
 
 
@@ -174,6 +183,13 @@ def verify_text_contrast(page: Page) -> None:
         if page.locator(selector).count() == 0:
             continue
         ratio = text_contrast_ratio(page, selector)
+        assert ratio >= 4.5, f"{selector} contrast is only {ratio:.2f}:1"
+
+    for selector in [
+        '.trace-progress__link:not([aria-current="step"])',
+        '.trace-progress__link[aria-current="step"]',
+    ]:
+        ratio = text_contrast_ratio(page, selector, include_opacity=True)
         assert ratio >= 4.5, f"{selector} contrast is only {ratio:.2f}:1"
 
 
@@ -350,14 +366,6 @@ def verify_trace(page: Page, trace_case: dict) -> None:
         "#trace-opening"
     )
 
-    page.locator("#trace-recap").scroll_into_view_if_needed()
-    page.wait_for_function(
-        """() => document.querySelector(
-            '.trace-progress [aria-current="step"]'
-        )?.getAttribute('href') === '#application'""",
-        timeout=3_000,
-    )
-
     years = trace_case["years"]
     expected_stages = [
         "present-day",
@@ -427,14 +435,15 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     )
     verify_conclusion_line_spacing(page, trace_case)
 
-    second_moment = page.locator(f"#moment-{years[1]}")
-    second_moment.scroll_into_view_if_needed()
-    page.wait_for_function(
-        """href => document.querySelector(
-            '.trace-progress [aria-current="step"]'
-        )?.getAttribute('href') === href""",
-        arg=f"#moment-{years[1]}",
-    )
+    for year in years:
+        href = f"#moment-{year}"
+        page.locator(href).scroll_into_view_if_needed()
+        page.wait_for_function(
+            """expectedHref => document.querySelector(
+                '.trace-progress [aria-current="step"]'
+            )?.getAttribute('href') === expectedHref""",
+            arg=href,
+        )
 
     application = page.locator("#application")
     application.scroll_into_view_if_needed()
@@ -443,6 +452,20 @@ def verify_trace(page: Page, trace_case: dict) -> None:
             '.trace-progress [aria-current="step"]'
         )?.getAttribute('href') === '#application'"""
     )
+
+    if trace_case["path"] == "/trace/dai-doan-ket":
+        page.locator("#trace-opening").scroll_into_view_if_needed()
+        page.wait_for_function(
+            """() => document.querySelector(
+                '.trace-progress [aria-current="step"]'
+            )?.getAttribute('href') === '#trace-opening'"""
+        )
+        page.locator("#trace-recap").scroll_into_view_if_needed()
+        page.wait_for_function(
+            """() => document.querySelector(
+                '.trace-progress [aria-current="step"]'
+            )?.getAttribute('href') === '#application'"""
+        )
 
     recap = page.locator("#trace-recap")
     assert recap.get_by_role("heading", level=2).inner_text() == trace_case["question"]

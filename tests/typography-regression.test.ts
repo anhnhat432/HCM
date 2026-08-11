@@ -83,3 +83,26 @@ test("mobile narrative copy preserves approved line-length guardrails", () => {
     assert.equal(getDeclaration(block, "overflow"), undefined);
   }
 });
+
+test("Trace progress keeps inactive years readable and raises mobile type size", () => {
+  const blocks = getRuleBlocks(".trace-progress__link");
+  const baseBlock = blocks.find(
+    (block) => getDeclaration(block, "opacity") !== undefined,
+  );
+  const mobileBlock = blocks.find(
+    (block) => getDeclaration(block, "letter-spacing") === "0.08em",
+  );
+
+  assert.ok(baseBlock);
+  assert.ok(mobileBlock);
+  assert.equal(getDeclaration(baseBlock, "color"), "var(--color-muted)");
+  assert.equal(getDeclaration(baseBlock, "opacity"), "1");
+  assert.equal(getDeclaration(mobileBlock, "font-size"), "0.625rem");
+});
+
+test("Trace progress focus receives the same text emphasis as hover and active", () => {
+  assert.match(
+    stylesheet,
+    /\.trace-progress__link:hover,\s*\.trace-progress__link:focus-visible,\s*\.trace-progress__link\[aria-current="step"\]/,
+  );
+});
