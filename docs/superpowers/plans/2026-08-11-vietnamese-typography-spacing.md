@@ -13,6 +13,7 @@
 - Change only line-height declarations for the three approved typography targets.
 - Thought Formation heading: `1.10` on desktop and mobile.
 - Conclusion climax: `1.04` on desktop and mobile.
+- Conclusion climax adjacent line spans: `margin-top: 0.12em` at every breakpoint.
 - Next Trace title: keep `1.02` on desktop/laptop and use `1.07` on mobile.
 - Keep existing font sizes, letter spacing, widths, layout, content, interactions, routes, and responsive structure.
 - Preserve Homepage behavior and reduced-motion behavior.
@@ -151,3 +152,63 @@ git diff --name-status
 Create a documentation commit and a focused implementation commit, push
 `fix/vietnamese-typography-spacing`, open a pull request to `main`, inspect its
 available checks, and stop without merging.
+
+---
+
+### Task 5: Separate Conclusion Heading Lines
+
+**Files:**
+- Modify: `tests/typography-regression.test.ts`
+- Modify: `tests/trace_acceptance.py`
+- Modify: `app/globals.css`
+
+**Interfaces:**
+- Consumes: block `span` lines rendered inside `.thought-formation__conclusion h3`.
+- Produces: a `0.12em` gap only between adjacent conclusion lines, with source-level and computed-style verification.
+
+- [ ] **Step 1: Write the failing source regression test**
+
+Add:
+
+```ts
+test("conclusion climax separates adjacent authored lines", () => {
+  const blocks = getRuleBlocks(
+    ".thought-formation__conclusion h3 span + span",
+  );
+
+  assert.equal(blocks.length, 1);
+  assert.equal(getDeclaration(blocks[0], "margin-top"), "0.12em");
+});
+```
+
+- [ ] **Step 2: Run the focused test and verify RED**
+
+```text
+npx tsx --test tests/typography-regression.test.ts
+```
+
+Expected: the new test fails because the adjacent-span rule does not exist.
+
+- [ ] **Step 3: Add the minimal CSS rule**
+
+Add immediately after the conclusion `h3` rule:
+
+```css
+.thought-formation__conclusion h3 span + span {
+  margin-top: 0.12em;
+}
+```
+
+- [ ] **Step 4: Add computed-style acceptance**
+
+For every Trace and viewport, inspect all conclusion spans after the first and
+assert that `parseFloat(marginTop) / parseFloat(fontSize)` is within `0.01` of
+`0.12`. Capture focused Thought Formation screenshots on desktop and mobile for
+visual inspection.
+
+- [ ] **Step 5: Verify and publish**
+
+Run the focused test, full test/typecheck/lint/build gate, Homepage acceptance,
+and all-Trace acceptance at 1920x1080, 1366x768, 390x844, and reduced motion.
+Commit, push a new branch from `origin/main`, open a pull request, inspect its
+checks, and stop without merging.

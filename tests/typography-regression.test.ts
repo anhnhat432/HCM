@@ -42,6 +42,15 @@ test("conclusion climax preserves its approved compact line spacing", () => {
   assert.equal(getDeclaration(blocks[1], "line-height"), undefined);
 });
 
+test("conclusion climax separates adjacent authored lines", () => {
+  const blocks = getRuleBlocks(
+    ".thought-formation__conclusion h3 span + span",
+  );
+
+  assert.equal(blocks.length, 1);
+  assert.equal(getDeclaration(blocks[0], "margin-top"), "0.12em");
+});
+
 test("Next Trace titles use a mobile-only line-height guardrail", () => {
   const blocks = getRuleBlocks(".trace-navigation__title");
 

@@ -26,8 +26,11 @@ width or heading prominence.
 ### Conclusion Climax
 
 Set the shared conclusion line-height to `1.04`. Keep
-`letter-spacing: -0.05em`. This preserves the compressed visual climax while
-preventing adjacent Vietnamese lines from appearing joined.
+`letter-spacing: -0.05em`. Each authored heading line is a separate block
+`span`; add `margin-top: 0.12em` only to adjacent spans. The explicit inter-line
+gap separates Vietnamese diacritics without inflating the line box around the
+first or last line, weakening the visual climax, or making the five-line Trace
+03 conclusion unnecessarily tall.
 
 ### Next Trace Mobile
 
@@ -48,6 +51,8 @@ regression, horizontal overflow, console errors, and reduced motion.
   breakpoints.
 - Conclusion headings compute to a `1.04` line-height ratio at all three
   breakpoints.
+- Every conclusion line after the first computes to a `0.12em` top margin at
+  all three breakpoints.
 - Next Trace titles compute to `1.02` on desktop/laptop and `1.07` on mobile.
 - No text clipping, overlap, horizontal overflow, or new console errors appear.
 - Homepage and all existing tests continue to pass.
