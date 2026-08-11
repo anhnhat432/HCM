@@ -47,13 +47,13 @@ TRACE_CASES = {
         "conclusion": "ĐẠO ĐỨC & TRÁCH NHIỆM",
         "next_title": "Con người",
         "next_path": "/trace/con-nguoi",
-        "placeholder_count": 2,
-        "historical_image_source_count": 1,
+        "placeholder_count": 0,
+        "historical_image_source_count": 3,
         "formation_source_count": 0,
         "presentations": [
             ("1927", "document", "contain", "document"),
-            ("1947", "placeholder", "contain", "landscape"),
-            ("1958", "placeholder", "contain", "landscape"),
+            ("1947", "document", "contain", "document"),
+            ("1958", "document", "contain", "document"),
         ],
         "ending": "next-trace",
     },
@@ -65,13 +65,13 @@ TRACE_CASES = {
         "question": "Giá trị của một con người được quyết định bởi điều gì?",
         "years": ["1945", "1958", "1969"],
         "conclusion": "CON NGƯỜI VỪA LÀ MỤC TIÊU, VỪA LÀ ĐỘNG LỰC",
-        "placeholder_count": 2,
-        "historical_image_source_count": 1,
+        "placeholder_count": 0,
+        "historical_image_source_count": 3,
         "formation_source_count": 3,
         "presentations": [
             ("1945", "historical-photo", "cover", "landscape"),
-            ("1958", "placeholder", "contain", "landscape"),
-            ("1969", "placeholder", "contain", "landscape"),
+            ("1958", "historical-photo", "cover", "landscape"),
+            ("1969", "document", "contain", "document"),
         ],
         "ending": "journey-closing",
     },
@@ -79,7 +79,8 @@ TRACE_CASES = {
 
 FOCUSED_MOMENTS = {
     "trace-01": ["1930", "1941", "1945"],
-    "trace-02": ["1927"],
+    "trace-02": ["1927", "1947", "1958"],
+    "trace-03": ["1958", "1969"],
 }
 
 

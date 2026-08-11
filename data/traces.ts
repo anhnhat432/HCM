@@ -2,6 +2,8 @@ import type { TraceData } from "@/types/trace";
 
 const HISTORICAL_ASSET_APPROVAL =
   "Chủ dự án xác nhận phê duyệt sử dụng công khai ngày 2026-08-10.";
+const PHASE_8_HISTORICAL_ASSET_APPROVAL =
+  "Chủ dự án duyệt triển khai nguồn tư liệu Evidence-first ngày 2026-08-11; nguồn không nêu giấy phép tái sử dụng.";
 
 export const traces = [
   {
@@ -299,19 +301,24 @@ export const traces = [
         verification:
           "Đã đối chiếu nguồn chính thống về bối cảnh Việt Bắc năm 1947, nội dung phê bình khuyết điểm và trách nhiệm của cán bộ, đảng viên; summary là diễn giải.",
         image: {
-          alt: "Khung tư liệu trung tính cho tác phẩm Sửa đổi lối làm việc năm 1947",
-          caption: "Chưa có tư liệu đúng bối cảnh và đủ điều kiện sử dụng",
-          credit: "ĐUỐC HỒNG — placeholder trung tính",
-          verificationStatus: "placeholder",
-          usageStatus: "not-applicable",
-          kind: "placeholder",
+          src: "/images/traces/dao-duc-trach-nhiem/1947-sua-doi-loi-lam-viec.jpg",
+          alt: "Bìa cũ của tác phẩm Sửa đổi lối làm việc, ghi bút danh X.Y.Z và Nhà xuất bản Sự thật",
+          caption:
+            "Bìa tác phẩm Sửa đổi lối làm việc, xuất bản lần đầu năm 1947",
+          credit: "Quân đội nhân dân; Wikimedia Commons",
+          sourceUrl:
+            "https://commons.wikimedia.org/wiki/File:Bia_Sua_doi_loi_lam_viec.jpg",
+          verificationStatus: "verified",
+          usageStatus: "approved",
+          license: "Public domain",
+          kind: "document",
           presentation: {
             fit: "contain",
-            aspectRatio: "landscape",
-            tone: "soft-archival",
+            aspectRatio: "document",
+            tone: "natural",
+            objectPosition: "50% center",
             background: "paper",
           },
-          isPlaceholder: true,
         },
         sources: [
           {
@@ -336,19 +343,25 @@ export const traces = [
         verification:
           "Đã đối chiếu nguồn chính thống về tên tác phẩm, bút danh Trần Lực và việc đăng trên Tạp chí Học tập số 12 năm 1958; summary là diễn giải, không phải trích dẫn.",
         image: {
-          alt: "Khung tư liệu trung tính cho tác phẩm Đạo đức cách mạng năm 1958",
-          caption: "Chưa có tư liệu đúng bối cảnh và đủ điều kiện sử dụng",
-          credit: "ĐUỐC HỒNG — placeholder trung tính",
-          verificationStatus: "placeholder",
-          usageStatus: "not-applicable",
-          kind: "placeholder",
+          src: "/images/traces/dao-duc-trach-nhiem/1958-dao-duc-cach-mang.jpg",
+          alt: "Trang mở đầu bản số hóa Đạo đức cách mạng, ghi rõ tác phẩm tháng 12 năm 1958",
+          caption:
+            "Trang mở đầu bản số hóa tác phẩm Đạo đức cách mạng (12-1958)",
+          credit: "Thư viện sách Hồ Chí Minh, Thành phố Hồ Chí Minh",
+          sourceUrl:
+            "https://thuviensachhochiminh.tphcm.gov.vn/documents/35261/39007/DaoDucCachMang.pdf/abc46104-e61f-42a5-8a05-0857e617d6f0",
+          verificationStatus: "verified",
+          usageStatus: "approved",
+          usageNote: PHASE_8_HISTORICAL_ASSET_APPROVAL,
+          license: "Không nêu giấy phép tái sử dụng",
+          kind: "document",
           presentation: {
             fit: "contain",
-            aspectRatio: "landscape",
-            tone: "soft-archival",
+            aspectRatio: "document",
+            tone: "natural",
+            objectPosition: "50% center",
             background: "paper",
           },
-          isPlaceholder: true,
         },
         sources: [
           {
@@ -498,19 +511,25 @@ export const traces = [
         verification:
           "Đã đối chiếu biên niên Bảo tàng Hồ Chí Minh, Báo Quân đội nhân dân và dẫn chiếu Hồ Chí Minh Toàn tập, tập 11, trang 528; phần trong ngoặc kép là trích dẫn trực tiếp từ nguồn.",
         image: {
-          alt: "Khung tư liệu trung tính cho phát biểu về trồng người năm 1958",
-          caption: "Chưa có tư liệu đúng bối cảnh và đủ điều kiện sử dụng",
-          credit: "ĐUỐC HỒNG — placeholder trung tính",
-          verificationStatus: "placeholder",
-          usageStatus: "not-applicable",
-          kind: "placeholder",
+          src: "/images/traces/con-nguoi/1958-political-class-teachers.jpg",
+          alt: "Chủ tịch Hồ Chí Minh vẫy chào đông đảo giáo viên tại lớp học chính trị ở Hà Nội ngày 13 tháng 9 năm 1958",
+          caption:
+            "Chủ tịch Hồ Chí Minh thăm lớp học chính trị của giáo viên cấp II, III toàn miền Bắc, ngày 13 tháng 9 năm 1958",
+          credit: "Cổng Thông tin điện tử Hồ Chí Minh",
+          sourceUrl:
+            "https://hochiminh.vn/tu-lieu-anh/tu-lieu-anh-chu-tich-ho-chi-minh-tu-nam-1954-1969.html",
+          verificationStatus: "verified",
+          usageStatus: "approved",
+          usageNote: PHASE_8_HISTORICAL_ASSET_APPROVAL,
+          license: "Không nêu giấy phép tái sử dụng",
+          kind: "historical-photo",
           presentation: {
-            fit: "contain",
+            fit: "cover",
             aspectRatio: "landscape",
-            tone: "soft-archival",
-            background: "paper",
+            tone: "archival",
+            objectPosition: "50% center",
+            background: "neutral",
           },
-          isPlaceholder: true,
         },
         sources: [
           {
@@ -530,19 +549,25 @@ export const traces = [
         verification:
           "Đã đối chiếu toàn văn Di chúc về giáo dục thanh niên, bồi dưỡng thế hệ cách mạng và kế hoạch nâng cao đời sống nhân dân; summary là diễn giải.",
         image: {
-          alt: "Khung tư liệu trung tính cho Di chúc năm 1969",
-          caption: "Chưa có tư liệu đúng bối cảnh và đủ điều kiện sử dụng",
-          credit: "ĐUỐC HỒNG — placeholder trung tính",
-          verificationStatus: "placeholder",
-          usageStatus: "not-applicable",
-          kind: "placeholder",
+          src: "/images/traces/con-nguoi/1969-testament.jpg",
+          alt: "Trang bút tích Di chúc đề ngày 10 tháng 5 năm 1969 với các chỉnh sửa bằng mực đỏ",
+          caption:
+            "Bút tích Di chúc ngày 10 tháng 5 năm 1969, phần sửa lời mở đầu",
+          credit:
+            "Cơ quan quản lý Lăng Chủ tịch Hồ Chí Minh; Wikimedia Commons",
+          sourceUrl:
+            "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh%27s_will_1969_handwriting_version_correcting_the_opening.png",
+          verificationStatus: "verified",
+          usageStatus: "approved",
+          license: "Public domain",
+          kind: "document",
           presentation: {
             fit: "contain",
-            aspectRatio: "landscape",
-            tone: "soft-archival",
+            aspectRatio: "document",
+            tone: "natural",
+            objectPosition: "50% center",
             background: "paper",
           },
-          isPlaceholder: true,
         },
         sources: [
           {

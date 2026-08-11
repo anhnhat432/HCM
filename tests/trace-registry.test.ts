@@ -120,14 +120,13 @@ test("historical assets expose explicit provenance, owner approval, and placehol
     ["dai-doan-ket:1941", "/images/traces/dai-doan-ket/1941-viet-minh-pac-bo.jpg"],
     ["dai-doan-ket:1945", "/images/traces/dai-doan-ket/1945-independence-declaration.jpg"],
     ["dao-duc-trach-nhiem:1927", "/images/traces/dao-duc-trach-nhiem/1927-duong-kach-menh-crop.jpg"],
+    ["dao-duc-trach-nhiem:1947", "/images/traces/dao-duc-trach-nhiem/1947-sua-doi-loi-lam-viec.jpg"],
+    ["dao-duc-trach-nhiem:1958", "/images/traces/dao-duc-trach-nhiem/1958-dao-duc-cach-mang.jpg"],
     ["con-nguoi:1945", "/images/traces/dai-doan-ket/1945-independence-declaration.jpg"],
+    ["con-nguoi:1958", "/images/traces/con-nguoi/1958-political-class-teachers.jpg"],
+    ["con-nguoi:1969", "/images/traces/con-nguoi/1969-testament.jpg"],
   ]);
-  const expectedPlaceholders = new Set([
-    "dao-duc-trach-nhiem:1947",
-    "dao-duc-trach-nhiem:1958",
-    "con-nguoi:1958",
-    "con-nguoi:1969",
-  ]);
+  const expectedPlaceholders = new Set<string>();
 
   for (const trace of traces) {
     for (const moment of trace.historicalMoments) {
@@ -150,13 +149,43 @@ test("historical assets expose explicit provenance, owner approval, and placehol
         assert.ok(image.sourceUrl?.startsWith("https://"));
         assert.equal(image.verificationStatus, "verified");
         assert.equal(image.usageStatus, "approved");
-        assert.match(
-          image.usageNote ?? "",
-          /Chủ dự án xác nhận phê duyệt sử dụng công khai/,
-        );
+        assert.ok(image.license || image.usageNote);
+        if (image.license !== "Public domain") {
+          assert.match(image.usageNote ?? "", /Chủ dự án/);
+        }
       }
     }
   }
+});
+
+test("phase 8 assets expose evidence-first provenance and presentation", () => {
+  const responsibility = getTraceBySlug("dao-duc-trach-nhiem");
+  const humanity = getTraceBySlug("con-nguoi");
+  const phase8Assets = [
+    responsibility?.historicalMoments[1].image,
+    responsibility?.historicalMoments[2].image,
+    humanity?.historicalMoments[1].image,
+    humanity?.historicalMoments[2].image,
+  ];
+
+  for (const image of phase8Assets) {
+    assert.equal(image?.isPlaceholder, undefined);
+    assert.equal(image?.verificationStatus, "verified");
+    assert.equal(image?.usageStatus, "approved");
+    assert.ok(image?.sourceUrl?.startsWith("https://"));
+    assert.ok(image?.license || image?.usageNote);
+  }
+
+  for (const image of [phase8Assets[0], phase8Assets[1], phase8Assets[3]]) {
+    assert.equal(image?.kind, "document");
+    assert.equal(image?.presentation?.fit, "contain");
+    assert.equal(image?.presentation?.aspectRatio, "document");
+    assert.equal(image?.presentation?.background, "paper");
+  }
+
+  assert.equal(phase8Assets[2]?.kind, "historical-photo");
+  assert.equal(phase8Assets[2]?.presentation?.fit, "cover");
+  assert.equal(phase8Assets[2]?.presentation?.aspectRatio, "landscape");
 });
 
 test("present-day images keep traceable Unsplash licensing metadata", () => {
@@ -213,26 +242,21 @@ test("every trace image declares the approved presentation taxonomy", () => {
   }
 });
 
-test("documents and placeholders expose explicit presentation rules", () => {
+test("documents expose explicit presentation rules", () => {
   const responsibility = getTraceBySlug("dao-duc-trach-nhiem");
   const humanity = getTraceBySlug("con-nguoi");
-  const documentImage = responsibility?.historicalMoments[0].image;
-  const placeholders = [
+  const documentImages = [
+    responsibility?.historicalMoments[0].image,
     responsibility?.historicalMoments[1].image,
     responsibility?.historicalMoments[2].image,
-    humanity?.historicalMoments[1].image,
     humanity?.historicalMoments[2].image,
   ];
 
-  assert.equal(documentImage?.kind, "document");
-  assert.equal(documentImage?.presentation?.fit, "contain");
-  assert.equal(documentImage?.presentation?.aspectRatio, "document");
-
-  for (const image of placeholders) {
-    assert.equal(image?.kind, "placeholder");
+  for (const image of documentImages) {
+    assert.equal(image?.kind, "document");
     assert.equal(image?.presentation?.fit, "contain");
+    assert.equal(image?.presentation?.aspectRatio, "document");
     assert.equal(image?.presentation?.background, "paper");
-    assert.equal(image?.isPlaceholder, true);
   }
 });
 
@@ -243,6 +267,7 @@ test("historical photographs and places use landscape presentation", () => {
     unity?.historicalMoments[1].image,
     unity?.historicalMoments[2].image,
     humanity?.historicalMoments[0].image,
+    humanity?.historicalMoments[1].image,
   ];
 
   for (const image of images) {
