@@ -159,4 +159,3 @@ commit is created.
 - Document pages remain uncropped and the 1958 event retains historical context
   at all required viewports.
 - Automated gates and production acceptance pass with no Homepage regression.
-
