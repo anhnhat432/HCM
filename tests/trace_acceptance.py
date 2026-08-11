@@ -23,6 +23,11 @@ TRACE_CASES = {
         "question": "Điều gì có thể giữ một tập thể cùng hướng?",
         "years": ["1930", "1941", "1945"],
         "conclusion": "ĐẠI ĐOÀN KẾT DÂN TỘC",
+        "application_titles": [
+            "Tìm mục tiêu chung",
+            "Tôn trọng khác biệt",
+            "Biến đồng thuận thành hành động",
+        ],
         "next_title": "Đạo đức & trách nhiệm",
         "next_path": "/trace/dao-duc-trach-nhiem",
         "placeholder_count": 0,
@@ -45,6 +50,11 @@ TRACE_CASES = {
         ),
         "years": ["1927", "1947", "1958"],
         "conclusion": "ĐẠO ĐỨC & TRÁCH NHIỆM",
+        "application_titles": [
+            "Trung thực với lựa chọn",
+            "Chịu trách nhiệm với hành động",
+            "Đặt lợi ích chung đúng chỗ",
+        ],
         "next_title": "Con người",
         "next_path": "/trace/con-nguoi",
         "placeholder_count": 0,
@@ -65,6 +75,11 @@ TRACE_CASES = {
         "question": "Giá trị của một con người được quyết định bởi điều gì?",
         "years": ["1945", "1958", "1969"],
         "conclusion": "CON NGƯỜI VỪA LÀ MỤC TIÊU, VỪA LÀ ĐỘNG LỰC",
+        "application_titles": [
+            "Không thu gọn con người vào thành tích",
+            "Tạo điều kiện để con người phát triển",
+            "Đặt con người vào trung tâm",
+        ],
         "placeholder_count": 0,
         "historical_image_source_count": 3,
         "formation_source_count": 3,
@@ -320,6 +335,29 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     assert header.get_by_text(trace_case["title"], exact=True).count() == 1
     header.get_by_text(trace_case["chapter"], exact=True).wait_for()
 
+    progress = page.get_by_role("navigation", name="Tiến trình Trace")
+    progress_links = progress.get_by_role("link")
+    assert progress_links.count() == 5
+    assert progress_links.all_inner_texts() == ["2026", *trace_case["years"], "2026"]
+    assert progress_links.evaluate_all(
+        "links => links.map(link => link.getAttribute('href'))"
+    ) == [
+        "#trace-opening",
+        *[f"#moment-{year}" for year in trace_case["years"]],
+        "#application",
+    ]
+    assert progress.locator('[aria-current="step"]').get_attribute("href") == (
+        "#trace-opening"
+    )
+
+    page.locator("#trace-recap").scroll_into_view_if_needed()
+    page.wait_for_function(
+        """() => document.querySelector(
+            '.trace-progress [aria-current="step"]'
+        )?.getAttribute('href') === '#application'""",
+        timeout=3_000,
+    )
+
     years = trace_case["years"]
     expected_stages = [
         "present-day",
@@ -388,6 +426,38 @@ def verify_trace(page: Page, trace_case: dict) -> None:
         f"{trace_case['path']} conclusion",
     )
     verify_conclusion_line_spacing(page, trace_case)
+
+    second_moment = page.locator(f"#moment-{years[1]}")
+    second_moment.scroll_into_view_if_needed()
+    page.wait_for_function(
+        """href => document.querySelector(
+            '.trace-progress [aria-current="step"]'
+        )?.getAttribute('href') === href""",
+        arg=f"#moment-{years[1]}",
+    )
+
+    application = page.locator("#application")
+    application.scroll_into_view_if_needed()
+    page.wait_for_function(
+        """() => document.querySelector(
+            '.trace-progress [aria-current="step"]'
+        )?.getAttribute('href') === '#application'"""
+    )
+
+    recap = page.locator("#trace-recap")
+    assert recap.get_by_role("heading", level=2).inner_text() == trace_case["question"]
+    assert recap.locator(".trace-recap__after li strong").all_text_contents() == (
+        trace_case["application_titles"]
+    )
+    assert page.locator(".present-application .trace-sequence-link").get_attribute(
+        "href"
+    ) == "#trace-recap"
+    ending_selector = (
+        ".trace-navigation"
+        if trace_case["ending"] == "next-trace"
+        else ".journey-closing"
+    )
+    assert page.locator(f"#trace-recap + {ending_selector}").count() == 1
     if trace_case["ending"] == "next-trace":
         expected_next_ratio = 1.07 if viewport_width <= 480 else 1.02
         assert_line_height_ratio(
@@ -473,13 +543,14 @@ def verify_mobile_targets(page: Page, trace_case: dict) -> None:
     ending_targets = (
         [trace_case["next_title"]]
         if trace_case["ending"] == "next-trace"
-        else ["Khép lại hành trình", "Bắt đầu lại"]
+        else ["Bắt đầu lại"]
     )
 
     for name in [
         "ĐUỐC HỒNG",
         "Nhìn lại quá khứ",
         "Xem cách áp dụng",
+        "Nhìn lại hành trình",
         *ending_targets,
         "Về trang chủ",
     ]:
@@ -488,6 +559,10 @@ def verify_mobile_targets(page: Page, trace_case: dict) -> None:
         assert box is not None and box["height"] >= 44
 
     for target in page.locator(".trace-source-link").all():
+        box = target.bounding_box()
+        assert box is not None and box["height"] >= 44
+
+    for target in page.locator(".trace-progress__link").all():
         box = target.bounding_box()
         assert box is not None and box["height"] >= 44
 
