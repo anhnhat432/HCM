@@ -33,10 +33,10 @@ export default function Home() {
 
             <Reveal delay={0.06}>
               <h1 className="home-hero__title" id="home-heading">
-                <span className="home-hero__title-line">Một vấn đề</span>
-                <span className="home-hero__title-line">hôm nay.</span>
-                <span className="home-hero__title-line">Một tư tưởng</span>
-                <span className="home-hero__title-line">từ quá khứ.</span>
+                <span className="home-hero__title-line">Một vấn đề{" "}</span>
+                <span className="home-hero__title-line">hôm nay.{" "}</span>
+                <span className="home-hero__title-line">Một tư tưởng{" "}</span>
+                <span className="home-hero__title-line">từ quá khứ.{" "}</span>
               </h1>
             </Reveal>
 

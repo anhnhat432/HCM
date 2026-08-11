@@ -20,7 +20,7 @@ export function JourneyClosing({ closing }: JourneyClosingProps) {
           <p className="journey-closing__brand">{closing.brand}</p>
           <h2 className="journey-closing__heading" id="journey-closing-title">
             {closing.heading.map((line) => (
-              <span key={line}>{line}</span>
+              <span key={line}>{line}{" "}</span>
             ))}
           </h2>
 

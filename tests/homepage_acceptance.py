@@ -137,6 +137,10 @@ def verify_homepage(page: Page) -> None:
     heading = page.get_by_role("heading", level=1)
     assert heading.count() == 1
     heading_text = " ".join(heading.inner_text().split())
+    heading_dom_text = heading.evaluate(
+        "element => element.textContent.replace(/\\s+/g, ' ').trim()"
+    )
+    assert heading_dom_text == heading_text
     assert "Một vấn đề hôm nay." in heading_text
     assert "Một tư tưởng từ quá khứ." in heading_text
     assert page.locator(".home-hero__title-line").count() == 4

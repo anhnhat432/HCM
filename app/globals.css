@@ -1851,7 +1851,7 @@ a {
   }
 
   .historical-moment__summary {
-    max-width: none;
+    max-width: 40ch;
     font-size: 0.95rem;
     line-height: 1.68;
     letter-spacing: -0.012em;
@@ -1865,6 +1865,12 @@ a {
 
   .historical-moment__sources {
     max-width: none;
+  }
+
+  .trace-source-link {
+    min-height: 2.75rem;
+    display: flex;
+    align-items: center;
   }
 
   .thought-formation,
@@ -1916,7 +1922,7 @@ a {
   }
 
   .application-item p {
-    max-width: none;
+    max-width: 40ch;
     font-size: 0.925rem;
     line-height: 1.65;
     letter-spacing: -0.012em;

@@ -297,6 +297,21 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     assert headings.count() == 1
     assert trace_case["headline"] in headings.inner_text()
 
+    for selector in [
+        ".trace-opening__title",
+        ".thought-formation__heading",
+        ".thought-formation__conclusion h3",
+        ".present-application__heading",
+    ]:
+        heading = page.locator(selector)
+        visible_text = " ".join(heading.inner_text().split())
+        dom_text = heading.evaluate(
+            "element => element.textContent.replace(/\\s+/g, ' ').trim()"
+        )
+        assert dom_text.casefold() == visible_text.casefold(), (
+            f"{selector} DOM text is concatenated"
+        )
+
     header = page.locator(".trace-header")
     header.wait_for()
     assert header.evaluate("element => getComputedStyle(element).position") == "sticky"
@@ -469,6 +484,10 @@ def verify_mobile_targets(page: Page, trace_case: dict) -> None:
         "Về trang chủ",
     ]:
         target = page.get_by_role("link", name=name, exact=True)
+        box = target.bounding_box()
+        assert box is not None and box["height"] >= 44
+
+    for target in page.locator(".trace-source-link").all():
         box = target.bounding_box()
         assert box is not None and box["height"] >= 44
 

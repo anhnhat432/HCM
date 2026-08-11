@@ -44,6 +44,7 @@ export function HistoricalMoment({
             <div>
               {moment.sources.map((source) => (
                 <a
+                  className="trace-source-link"
                   href={source.url}
                   key={source.url}
                   rel="noreferrer"

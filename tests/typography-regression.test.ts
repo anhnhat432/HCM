@@ -58,3 +58,28 @@ test("Next Trace titles use a mobile-only line-height guardrail", () => {
   assert.equal(getDeclaration(blocks[0], "line-height"), "1.02");
   assert.equal(getDeclaration(blocks[1], "line-height"), "1.07");
 });
+
+test("mobile source links provide a full-height touch target", () => {
+  const blocks = getRuleBlocks(".trace-source-link");
+
+  assert.equal(blocks.length, 1);
+  assert.equal(getDeclaration(blocks[0], "display"), "flex");
+  assert.equal(getDeclaration(blocks[0], "align-items"), "center");
+  assert.equal(getDeclaration(blocks[0], "min-height"), "2.75rem");
+});
+
+test("mobile narrative copy preserves approved line-length guardrails", () => {
+  const historicalBlocks = getRuleBlocks(".historical-moment__summary");
+  const applicationBlocks = getRuleBlocks(".application-item p");
+
+  assert.equal(historicalBlocks.length, 2);
+  assert.equal(applicationBlocks.length, 2);
+  assert.equal(getDeclaration(historicalBlocks[1], "max-width"), "40ch");
+  assert.equal(getDeclaration(applicationBlocks[1], "max-width"), "40ch");
+
+  for (const block of [historicalBlocks[1], applicationBlocks[1]]) {
+    assert.equal(getDeclaration(block, "line-clamp"), undefined);
+    assert.equal(getDeclaration(block, "-webkit-line-clamp"), undefined);
+    assert.equal(getDeclaration(block, "overflow"), undefined);
+  }
+});
