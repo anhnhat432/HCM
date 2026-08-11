@@ -227,9 +227,9 @@ def verify_conclusion_line_spacing(page: Page, trace_case: dict) -> None:
     margin_ratios = [
         metric["marginTop"] / metric["fontSize"] for metric in line_metrics[1:]
     ]
-    assert all(abs(ratio - 0.12) <= 0.01 for ratio in margin_ratios), (
+    assert all(abs(ratio - 0.18) <= 0.01 for ratio in margin_ratios), (
         f"{trace_case['path']} conclusion inter-line ratios are {margin_ratios}; "
-        "expected 0.12"
+        "expected 0.18"
     )
 
 
