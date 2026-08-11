@@ -188,28 +188,51 @@ test("phase 8 assets expose evidence-first provenance and presentation", () => {
   assert.equal(phase8Assets[2]?.presentation?.aspectRatio, "landscape");
 });
 
-test("present-day images keep traceable Unsplash licensing metadata", () => {
+test("present-day images expose owner-approved illustration metadata", () => {
   for (const trace of traces) {
     assert.ok(trace.presentDay);
-    assert.equal(trace.presentDay.image.verificationStatus, "verified");
-    assert.equal(trace.presentDay.image.usageStatus, "licensed");
-    assert.equal(trace.presentDay.image.license, "Unsplash License");
-    assert.match(trace.presentDay.image.sourceUrl ?? "", /^https:\/\/images\.unsplash\.com\/photo-/);
+    const image: TraceImage = trace.presentDay.image;
+
+    assert.equal(image.verificationStatus, "verified");
+    assert.equal(image.usageStatus, "approved");
+    assert.equal(
+      image.license,
+      "Không nêu giấy phép của công cụ tạo",
+    );
+    assert.equal(image.credit, "Ảnh minh họa");
+    assert.equal(image.sourceUrl, undefined);
+    assert.match(image.usageNote ?? "", /Chủ dự án.*AI/);
+    assert.doesNotMatch(image.alt, /\bAI\b/i);
+    assert.equal(image.kind, "present");
+    assert.equal(image.presentation?.fit, "cover");
+    assert.equal(image.presentation?.aspectRatio, "portrait");
   }
 });
 
-test("approved present-day crop decisions keep Trace 03 unchanged", () => {
+test("approved illustrations replace all Present Day assets and keep guarded historical assets unchanged", () => {
   assert.equal(
     getTraceBySlug("dai-doan-ket")?.presentDay?.image.src,
-    "/images/traces/dai-doan-ket/present-day-crop.jpg",
+    "/images/traces/dai-doan-ket/present-day-ai-group.jpg",
   );
   assert.equal(
     getTraceBySlug("dao-duc-trach-nhiem")?.presentDay?.image.src,
-    "/images/traces/dao-duc-trach-nhiem/present-day-crop.jpg",
+    "/images/traces/dao-duc-trach-nhiem/present-day-ai-decision.jpg",
   );
   assert.equal(
     getTraceBySlug("con-nguoi")?.presentDay?.image.src,
-    "/images/traces/con-nguoi/present-day.jpg",
+    "/images/traces/con-nguoi/present-day-ai-student.jpg",
+  );
+  assert.equal(
+    getTraceBySlug("dao-duc-trach-nhiem")?.historicalMoments[2].image?.src,
+    "/images/traces/dao-duc-trach-nhiem/1958-dao-duc-cach-mang.jpg",
+  );
+  assert.equal(
+    getTraceBySlug("dai-doan-ket")?.historicalMoments[2].image?.src,
+    "/images/traces/dai-doan-ket/1945-independence-declaration.jpg",
+  );
+  assert.equal(
+    getTraceBySlug("con-nguoi")?.historicalMoments[0].image?.src,
+    "/images/traces/dai-doan-ket/1945-independence-declaration.jpg",
   );
 });
 

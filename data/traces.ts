@@ -4,6 +4,8 @@ const HISTORICAL_ASSET_APPROVAL =
   "Chủ dự án xác nhận phê duyệt sử dụng công khai ngày 2026-08-10.";
 const PHASE_8_HISTORICAL_ASSET_APPROVAL =
   "Chủ dự án duyệt triển khai nguồn tư liệu Evidence-first ngày 2026-08-11; nguồn không nêu giấy phép tái sử dụng.";
+const PRESENT_AI_ASSET_APPROVAL =
+  "Chủ dự án cung cấp và duyệt ảnh minh họa AI ngày 2026-08-11; công cụ tạo và điều khoản giấy phép không được cung cấp.";
 
 export const traces = [
   {
@@ -19,15 +21,14 @@ export const traces = [
       summary:
         "Một nhóm sinh viên cùng làm việc hướng đến một dự án chung, nhưng sự khác biệt trong mức độ tham gia, quan điểm và trách nhiệm dần trở thành xung đột.",
       image: {
-        src: "/images/traces/dai-doan-ket/present-day-crop.jpg",
-        alt: "Nhóm sinh viên cùng làm việc nhưng có sự khác biệt trong mức độ tham gia",
+        src: "/images/traces/dai-doan-ket/present-day-ai-group.jpg",
+        alt: "Bốn sinh viên ngồi quanh bàn, cùng nhìn tài liệu trong lúc hai người trao đổi bằng cử chỉ",
         caption: "Cùng mục tiêu, khác hướng đi",
-        credit: "Unsplash",
-        sourceUrl:
-          "https://images.unsplash.com/photo-1552664730-d307ca884978",
+        credit: "Ảnh minh họa",
         verificationStatus: "verified",
-        usageStatus: "licensed",
-        license: "Unsplash License",
+        usageStatus: "approved",
+        usageNote: PRESENT_AI_ASSET_APPROVAL,
+        license: "Không nêu giấy phép của công cụ tạo",
         kind: "present",
         presentation: {
           fit: "cover",
@@ -228,15 +229,14 @@ export const traces = [
       summary:
         "Trong lúc chạy nước rút cho một project, một thành viên phát hiện nhóm có thể dùng lại nội dung của người khác để tiết kiệm thời gian. Lối tắt ấy giúp cả nhóm hoàn thành nhanh hơn, nhưng buộc mỗi người cân nhắc trách nhiệm của mình với kết quả chung.",
       image: {
-        src: "/images/traces/dao-duc-trach-nhiem/present-day-crop.jpg",
-        alt: "Nhóm sinh viên cùng xem tài liệu trên laptop khi làm project",
+        src: "/images/traces/dao-duc-trach-nhiem/present-day-ai-decision.jpg",
+        alt: "Nhóm sinh viên tập trung quanh laptop và tài liệu, một người chỉ vào màn hình",
         caption: "Một lối tắt đặt cả nhóm trước lựa chọn chung",
-        credit: "Unsplash",
-        sourceUrl:
-          "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+        credit: "Ảnh minh họa",
         verificationStatus: "verified",
-        usageStatus: "licensed",
-        license: "Unsplash License",
+        usageStatus: "approved",
+        usageNote: PRESENT_AI_ASSET_APPROVAL,
+        license: "Không nêu giấy phép của công cụ tạo",
         kind: "present",
         presentation: {
           fit: "cover",
@@ -436,15 +436,14 @@ export const traces = [
       summary:
         "Điểm số, thành tích, năng suất và những dòng trong CV dần trở thành thước đo quen thuộc. Khi kết quả không như mong đợi, một sinh viên bắt đầu tự hỏi liệu giá trị của mình có đang bị thu gọn vào những con số ấy.",
       image: {
-        src: "/images/traces/con-nguoi/present-day.jpg",
-        alt: "Một sinh viên tập trung trước laptop trong không gian học tập",
+        src: "/images/traces/con-nguoi/present-day-ai-student.jpg",
+        alt: "Một sinh viên ngồi suy tư trước laptop và tài liệu học tập trong căn phòng yên tĩnh",
         caption: "Khi kết quả dần trở thành thước đo duy nhất",
-        credit: "Unsplash",
-        sourceUrl:
-          "https://images.unsplash.com/photo-1513258496099-48168024aec0",
+        credit: "Ảnh minh họa",
         verificationStatus: "verified",
-        usageStatus: "licensed",
-        license: "Unsplash License",
+        usageStatus: "approved",
+        usageNote: PRESENT_AI_ASSET_APPROVAL,
+        license: "Không nêu giấy phép của công cụ tạo",
         kind: "present",
         presentation: {
           fit: "cover",

@@ -83,6 +83,12 @@ FOCUSED_MOMENTS = {
     "trace-03": ["1958", "1969"],
 }
 
+FOCUSED_OPENINGS = {
+    "trace-01": "trace-01-present-focused.png",
+    "trace-02": "trace-02-present-focused.png",
+    "trace-03": "trace-03-present-focused.png",
+}
+
 
 def text_contrast_ratio(page: Page, selector: str) -> float:
     return page.locator(selector).first.evaluate(
@@ -285,7 +291,9 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     assert page.locator(
         ".historical-moment .trace-figure__credit a"
     ).count() == trace_case["historical_image_source_count"]
-    assert page.locator(".trace-opening .trace-figure__credit a").count() == 1
+    opening_credit = page.locator(".trace-opening .trace-figure__credit")
+    assert opening_credit.inner_text() == "Nguồn ảnh: Ảnh minh họa"
+    assert opening_credit.locator("a").count() == 0
     assert page.locator(".thought-formation__sources a").count() == trace_case[
         "formation_source_count"
     ]
@@ -457,6 +465,12 @@ def main() -> None:
                     full_page=True,
                 )
                 if viewport_name == "desktop":
+                    opening_filename = FOCUSED_OPENINGS.get(trace_name)
+                    if opening_filename:
+                        opening = page.locator("section.trace-opening")
+                        opening.scroll_into_view_if_needed()
+                        page.wait_for_timeout(150)
+                        opening.screenshot(path=str(SCREENSHOT_DIR / opening_filename))
                     for year in FOCUSED_MOMENTS.get(trace_name, []):
                         moment = page.locator(f"#moment-{year}")
                         moment.scroll_into_view_if_needed()
