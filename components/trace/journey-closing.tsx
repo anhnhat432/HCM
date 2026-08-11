@@ -50,6 +50,12 @@ export function JourneyClosing({ closing }: JourneyClosingProps) {
               <span aria-hidden="true">→</span>
             </Link>
             <Link
+              className="journey-closing__method"
+              href={closing.methodAction.href}
+            >
+              {closing.methodAction.label}
+            </Link>
+            <Link
               aria-label={closing.secondaryAction.label}
               className="journey-closing__home"
               href={closing.secondaryAction.href}

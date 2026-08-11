@@ -3,6 +3,7 @@ import { Be_Vietnam_Pro, IBM_Plex_Sans, Newsreader } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { MotionProvider } from "@/components/motion-provider";
+import { siteUrl } from "@/lib/site";
 
 import "./globals.css";
 
@@ -28,12 +29,16 @@ const homepageFont = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
+  metadataBase: siteUrl,
   title: {
     default: "Đuốc Hồng",
     template: "%s | Đuốc Hồng",
   },
   description:
     "Bắt đầu từ những câu hỏi của hiện tại và lần theo quá trình hình thành tư tưởng Hồ Chí Minh.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Đuốc Hồng",
     description:
@@ -41,6 +46,19 @@ export const metadata: Metadata = {
     siteName: "Đuốc Hồng",
     locale: "vi_VN",
     type: "website",
+    images: [
+      {
+        url: "/images/homepage-independence-declaration.jpg",
+        alt: "Trang đầu bản Tuyên ngôn Độc lập với bút tích và dấu lưu trữ",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Đuốc Hồng",
+    description:
+      "Bắt đầu từ những câu hỏi của hiện tại và lần theo quá trình hình thành tư tưởng Hồ Chí Minh.",
+    images: ["/images/homepage-independence-declaration.jpg"],
   },
 };
 

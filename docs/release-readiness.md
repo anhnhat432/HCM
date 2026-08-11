@@ -11,19 +11,20 @@ notes remain recorded in `data/traces.ts`.
 ## Verified experience
 
 - Routes: `/`, `/trace/dai-doan-ket`, `/trace/dao-duc-trach-nhiem`,
-  `/trace/con-nguoi`, Journey Closing, and branded 404 states.
+  `/trace/con-nguoi`, `/phuong-phap`, Journey Closing, and branded 404 states.
 - Breakpoints: 1920x1080, 1440x900, 1366x768, 1024x768, 768x1024,
-  390x844, and 375x812.
+  640x900 reflow-equivalent, 390x844, and 375x812.
 - QA: full journey, direct entry, keyboard navigation, visible focus, reduced
-  motion, internal links, console/network state, responsive overflow, image
-  loading, metadata, and Vietnamese branding.
+  motion, forced colors, internal links, console/network state, responsive
+  overflow, image loading, metadata, and Vietnamese branding.
 - Trace support: progress timeline, Before/After recap, compact Trace switcher,
   data-driven Journey Closing takeaways, and per-moment Source Drawer.
 - Sources: content, theory, and image provenance links are recorded in data and
   exposed through the narrative or Source Drawer as appropriate.
 - Performance: production build uses `next/image`, lazy historical images,
   priority only for opening imagery, `next/font`, and bounded motion client
-  components. Lighthouse was not installed, so no numeric score is reported.
+  components. Lighthouse 12.8.2 lab scores are Homepage 87 and Trace 01 76;
+  both routes score 100 for Accessibility, Best Practices, and SEO.
 
 ## Historical asset status
 
@@ -49,7 +50,8 @@ terms were not provided, as recorded in `data/traces.ts`.
   recorded project-owner approval does not replace third-party license terms.
 - The generator and license terms for the three present-day illustrations are
   not recorded.
-- No Lighthouse score is available in this environment.
+- NVDA and Android TalkBack checks remain manual; the exact release checklist is
+  recorded in `docs/accessibility-qa.md`.
 - External URL availability is time-sensitive and should be rechecked before
   deployment.
 

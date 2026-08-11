@@ -41,12 +41,14 @@ export function HistoricalMoment({
           {moment.metadata ? (
             <p className="historical-moment__metadata">{moment.metadata}</p>
           ) : null}
-          <SourceDrawer details={getSourceDrawerDetails(moment)} />
-          <Link className="trace-sequence-link" href={nextHref}>
-            <span aria-hidden="true" />
-            {nextLabel}
-            <b aria-hidden="true">→</b>
-          </Link>
+          <div className="historical-moment__actions">
+            <SourceDrawer details={getSourceDrawerDetails(moment)} />
+            <Link className="trace-sequence-link" href={nextHref}>
+              <span aria-hidden="true" />
+              {nextLabel}
+              <b aria-hidden="true">→</b>
+            </Link>
+          </div>
         </TraceReveal>
 
         {image ? (

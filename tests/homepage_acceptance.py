@@ -110,6 +110,36 @@ def collect_console_errors(page: Page) -> list[str]:
     return errors
 
 
+def verify_no_horizontal_overflow(page: Page, label: str) -> None:
+    viewport_width, document_width = page.evaluate(
+        "[document.documentElement.clientWidth, document.documentElement.scrollWidth]"
+    )
+    assert document_width <= viewport_width, (
+        f"{label} overflows horizontally: {document_width}px > {viewport_width}px"
+    )
+
+
+def verify_focus_indicator(page: Page, selector: str) -> None:
+    locator = page.locator(selector).first
+    page.keyboard.press("Tab")
+    locator.focus()
+    assert locator.evaluate("element => element === document.activeElement")
+    assert locator.evaluate("element => element.matches(':focus-visible')")
+    focus_style = locator.evaluate(
+        """element => ({
+            outlineStyle: getComputedStyle(element).outlineStyle,
+            outlineWidth: Number.parseFloat(getComputedStyle(element).outlineWidth),
+            boxShadow: getComputedStyle(element).boxShadow,
+        })"""
+    )
+    has_outline = (
+        focus_style["outlineStyle"] != "none" and focus_style["outlineWidth"] >= 2
+    )
+    assert has_outline or focus_style["boxShadow"] != "none", (
+        f"{selector} has no visible keyboard focus indicator"
+    )
+
+
 def verify_homepage(page: Page) -> None:
     response = page.goto(BASE_URL, wait_until="domcontentloaded", timeout=60_000)
     assert response is not None and response.ok
@@ -131,6 +161,15 @@ def verify_homepage(page: Page) -> None:
         page.locator('meta[property="og:locale"]').get_attribute("content")
         == "vi_VN"
     )
+    canonical_href = page.locator('link[rel="canonical"]').get_attribute("href")
+    assert canonical_href is not None
+    assert canonical_href.rstrip("/") == "https://hcm-trace.vercel.app"
+    assert page.locator('meta[property="og:image"]').get_attribute(
+        "content"
+    ).endswith("/images/homepage-independence-declaration.jpg")
+    assert page.locator('meta[name="twitter:card"]').get_attribute(
+        "content"
+    ) == "summary_large_image"
     assert page.locator(".brand-mark").inner_text() == "ĐUỐC HỒNG"
     assert page.get_by_text("HCM // TRACE", exact=False).count() == 0
 
@@ -157,8 +196,12 @@ def verify_homepage(page: Page) -> None:
     )
     assert heading_weight == 600
     viewport_width = page.evaluate("window.innerWidth")
+    viewport_height = page.evaluate("window.innerHeight")
     if viewport_width >= 1024:
-        assert 84 <= heading_size <= 92
+        if viewport_height <= 820:
+            assert 72 <= heading_size <= 80
+        else:
+            assert 84 <= heading_size <= 92
     elif viewport_width <= 480:
         assert 48 <= heading_size <= 56
 
@@ -172,6 +215,13 @@ def verify_homepage(page: Page) -> None:
         "link", name="Bắt đầu hành trình", exact=True
     )
     assert primary_action.get_attribute("href") == "/trace/dai-doan-ket"
+    if viewport_width >= 1024 and viewport_height <= 820:
+        action_box = primary_action.bounding_box()
+        assert action_box is not None
+        assert action_box["y"] + action_box["height"] <= viewport_height, (
+            "Homepage primary action must remain visible in the initial "
+            "low-height viewport"
+        )
     cta_style = primary_action.evaluate(
         """element => ({
             backgroundColor: getComputedStyle(element).backgroundColor,
@@ -232,7 +282,79 @@ def verify_homepage(page: Page) -> None:
     page.locator(".home-footer").get_by_text(
         "ĐUỐC HỒNG — 2026", exact=True
     ).wait_for()
+    assert page.get_by_role(
+        "link", name="Về dự án & phương pháp", exact=True
+    ).get_attribute("href") == "/phuong-phap"
     assert page.get_by_text("Prototype", exact=False).count() == 0
+
+
+def verify_public_release_routes(page: Page) -> None:
+    response = page.goto(
+        f"{BASE_URL}/phuong-phap", wait_until="domcontentloaded", timeout=60_000
+    )
+    assert response is not None and response.ok
+    assert page.title() == "Về dự án & phương pháp | Đuốc Hồng"
+    assert page.locator('link[rel="canonical"]').get_attribute("href") == (
+        "https://hcm-trace.vercel.app/phuong-phap"
+    )
+    assert page.get_by_role("heading", level=1).inner_text() == "Về dự án"
+    assert page.get_by_role(
+        "heading", name="Cách một Trace được xây dựng"
+    ).count() == 1
+    assert page.get_by_role("heading", name="Nguồn và kiểm chứng").count() == 1
+    assert page.get_by_role(
+        "heading", name="Hình ảnh và quyền sử dụng"
+    ).count() == 1
+    assert page.get_by_role(
+        "heading", name="Giới hạn của trải nghiệm"
+    ).count() == 1
+    assert page.get_by_role(
+        "link", name="Bắt đầu hành trình", exact=True
+    ).get_attribute("href") == "/trace/dai-doan-ket"
+
+    viewport_width, document_width = page.evaluate(
+        "[document.documentElement.clientWidth, document.documentElement.scrollWidth]"
+    )
+    assert document_width <= viewport_width
+
+    sitemap = page.goto(f"{BASE_URL}/sitemap.xml", wait_until="domcontentloaded")
+    assert sitemap is not None and sitemap.ok
+    sitemap_text = page.locator("body").inner_text()
+    for path in [
+        "/trace/dai-doan-ket",
+        "/trace/dao-duc-trach-nhiem",
+        "/trace/con-nguoi",
+        "/phuong-phap",
+    ]:
+        assert f"https://hcm-trace.vercel.app{path}" in sitemap_text
+
+    robots = page.goto(f"{BASE_URL}/robots.txt", wait_until="domcontentloaded")
+    assert robots is not None and robots.ok
+    robots_text = page.locator("body").inner_text()
+    assert "Allow: /" in robots_text
+    assert "Sitemap: https://hcm-trace.vercel.app/sitemap.xml" in robots_text
+
+
+def verify_homepage_reflow(page: Page) -> None:
+    verify_homepage(page)
+    verify_no_horizontal_overflow(page, "Homepage at 640px reflow width")
+    verify_focus_indicator(page, ".primary-action")
+
+    method_link = page.get_by_role(
+        "link", name="Về dự án & phương pháp", exact=True
+    )
+    method_link.click()
+    page.wait_for_url(f"{BASE_URL}/phuong-phap")
+    verify_no_horizontal_overflow(page, "Methodology page at 640px reflow width")
+    verify_focus_indicator(page, ".methodology__primary")
+
+
+def verify_homepage_forced_colors(page: Page) -> None:
+    response = page.goto(BASE_URL, wait_until="domcontentloaded", timeout=60_000)
+    assert response is not None and response.ok
+    verify_no_horizontal_overflow(page, "Homepage in forced colors")
+    verify_focus_indicator(page, ".primary-action")
+    verify_focus_indicator(page, ".home-footer a")
 
 
 def verify_trace_routes(page: Page) -> None:
@@ -315,6 +437,7 @@ def main() -> None:
             full_page=True,
         )
         verify_trace_routes(desktop)
+        verify_public_release_routes(desktop)
 
         not_found = browser.new_page(viewport={"width": 1920, "height": 1080})
         verify_not_found(not_found)
@@ -381,6 +504,16 @@ def main() -> None:
         verify_homepage(reduced_motion)
         verify_reduced_motion_is_immediate(reduced_motion)
 
+        reflow = browser.new_page(viewport={"width": 640, "height": 900})
+        reflow_errors = collect_console_errors(reflow)
+        verify_homepage_reflow(reflow)
+
+        forced_colors = browser.new_page(
+            viewport={"width": 390, "height": 844}, forced_colors="active"
+        )
+        forced_colors_errors = collect_console_errors(forced_colors)
+        verify_homepage_forced_colors(forced_colors)
+
         browser.close()
 
     errors = (
@@ -389,6 +522,8 @@ def main() -> None:
         + mobile_errors
         + small_mobile_errors
         + reduced_motion_errors
+        + reflow_errors
+        + forced_colors_errors
     )
     assert not errors, f"Browser console errors: {errors}"
     print("Homepage acceptance passed")

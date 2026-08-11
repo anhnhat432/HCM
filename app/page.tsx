@@ -103,6 +103,7 @@ export default function Home() {
       <footer className="home-footer">
         <div className="site-container home-footer__inner">
           <p>ĐUỐC HỒNG — 2026</p>
+          <Link href="/phuong-phap">Về dự án & phương pháp</Link>
         </div>
       </footer>
     </main>
