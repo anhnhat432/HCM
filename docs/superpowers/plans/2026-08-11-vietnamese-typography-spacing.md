@@ -13,7 +13,7 @@
 - Change only line-height declarations for the three approved typography targets.
 - Thought Formation heading: `1.10` on desktop and mobile.
 - Conclusion climax: `1.04` on desktop and mobile.
-- Conclusion climax adjacent line spans: `margin-top: 0.12em` at every breakpoint.
+- Conclusion climax adjacent line spans: `margin-top: 0.18em` at every breakpoint.
 - Next Trace title: keep `1.02` on desktop/laptop and use `1.07` on mobile.
 - Keep existing font sizes, letter spacing, widths, layout, content, interactions, routes, and responsive structure.
 - Preserve Homepage behavior and reduced-motion behavior.
@@ -164,7 +164,7 @@ available checks, and stop without merging.
 
 **Interfaces:**
 - Consumes: block `span` lines rendered inside `.thought-formation__conclusion h3`.
-- Produces: a `0.12em` gap only between adjacent conclusion lines, with source-level and computed-style verification.
+- Produces: a `0.18em` gap only between adjacent conclusion lines, with source-level and computed-style verification.
 
 - [ ] **Step 1: Write the failing source regression test**
 
@@ -177,7 +177,7 @@ test("conclusion climax separates adjacent authored lines", () => {
   );
 
   assert.equal(blocks.length, 1);
-  assert.equal(getDeclaration(blocks[0], "margin-top"), "0.12em");
+  assert.equal(getDeclaration(blocks[0], "margin-top"), "0.18em");
 });
 ```
 
@@ -195,7 +195,7 @@ Add immediately after the conclusion `h3` rule:
 
 ```css
 .thought-formation__conclusion h3 span + span {
-  margin-top: 0.12em;
+  margin-top: 0.18em;
 }
 ```
 
@@ -203,7 +203,7 @@ Add immediately after the conclusion `h3` rule:
 
 For every Trace and viewport, inspect all conclusion spans after the first and
 assert that `parseFloat(marginTop) / parseFloat(fontSize)` is within `0.01` of
-`0.12`. Capture focused Thought Formation screenshots on desktop and mobile for
+`0.18`. Capture focused Thought Formation screenshots on desktop and mobile for
 visual inspection.
 
 - [ ] **Step 5: Verify and publish**

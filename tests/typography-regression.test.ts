@@ -48,7 +48,7 @@ test("conclusion climax separates adjacent authored lines", () => {
   );
 
   assert.equal(blocks.length, 1);
-  assert.equal(getDeclaration(blocks[0], "margin-top"), "0.12em");
+  assert.equal(getDeclaration(blocks[0], "margin-top"), "0.18em");
 });
 
 test("Next Trace titles use a mobile-only line-height guardrail", () => {
