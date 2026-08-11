@@ -17,7 +17,7 @@ export const traces = [
       summary:
         "Một nhóm sinh viên cùng làm việc hướng đến một dự án chung, nhưng sự khác biệt trong mức độ tham gia, quan điểm và trách nhiệm dần trở thành xung đột.",
       image: {
-        src: "/images/traces/dai-doan-ket/present-day.jpg",
+        src: "/images/traces/dai-doan-ket/present-day-crop.jpg",
         alt: "Nhóm sinh viên cùng làm việc nhưng có sự khác biệt trong mức độ tham gia",
         caption: "Cùng mục tiêu, khác hướng đi",
         credit: "Unsplash",
@@ -26,6 +26,14 @@ export const traces = [
         verificationStatus: "verified",
         usageStatus: "licensed",
         license: "Unsplash License",
+        kind: "present",
+        presentation: {
+          fit: "cover",
+          aspectRatio: "portrait",
+          tone: "natural",
+          objectPosition: "50% center",
+          background: "neutral",
+        },
       },
     },
     centralQuestion: "Điều gì có thể giữ một tập thể cùng hướng?",
@@ -51,7 +59,14 @@ export const traces = [
           usageStatus: "approved",
           usageNote: HISTORICAL_ASSET_APPROVAL,
           license: "Không nêu giấy phép tái sử dụng",
-          objectPosition: "50% center",
+          kind: "artwork",
+          presentation: {
+            fit: "contain",
+            aspectRatio: "landscape",
+            tone: "soft-archival",
+            objectPosition: "50% center",
+            background: "paper",
+          },
         },
         sources: [
           {
@@ -86,7 +101,14 @@ export const traces = [
           usageStatus: "approved",
           usageNote: HISTORICAL_ASSET_APPROVAL,
           license: "Không nêu giấy phép tái sử dụng",
-          objectPosition: "50% center",
+          kind: "historical-place",
+          presentation: {
+            fit: "cover",
+            aspectRatio: "landscape",
+            tone: "soft-archival",
+            objectPosition: "50% center",
+            background: "neutral",
+          },
         },
         sources: [
           {
@@ -122,7 +144,14 @@ export const traces = [
           usageStatus: "approved",
           usageNote: HISTORICAL_ASSET_APPROVAL,
           license: "Không nêu giấy phép tái sử dụng",
-          objectPosition: "18% center",
+          kind: "historical-photo",
+          presentation: {
+            fit: "contain",
+            aspectRatio: "landscape",
+            tone: "archival",
+            objectPosition: "50% center",
+            background: "neutral",
+          },
         },
         sources: [
           {
@@ -197,7 +226,7 @@ export const traces = [
       summary:
         "Trong lúc chạy nước rút cho một project, một thành viên phát hiện nhóm có thể dùng lại nội dung của người khác để tiết kiệm thời gian. Lối tắt ấy giúp cả nhóm hoàn thành nhanh hơn, nhưng buộc mỗi người cân nhắc trách nhiệm của mình với kết quả chung.",
       image: {
-        src: "/images/traces/dao-duc-trach-nhiem/present-day.jpg",
+        src: "/images/traces/dao-duc-trach-nhiem/present-day-crop.jpg",
         alt: "Nhóm sinh viên cùng xem tài liệu trên laptop khi làm project",
         caption: "Một lối tắt đặt cả nhóm trước lựa chọn chung",
         credit: "Unsplash",
@@ -206,6 +235,14 @@ export const traces = [
         verificationStatus: "verified",
         usageStatus: "licensed",
         license: "Unsplash License",
+        kind: "present",
+        presentation: {
+          fit: "cover",
+          aspectRatio: "portrait",
+          tone: "natural",
+          objectPosition: "50% center",
+          background: "neutral",
+        },
       },
     },
     centralQuestion:
@@ -221,7 +258,7 @@ export const traces = [
         verification:
           "Đã đối chiếu nguồn chính thống về năm 1927, bối cảnh các bài giảng và vai trò của chuẩn mực đạo đức; summary là diễn giải, không phải trích dẫn.",
         image: {
-          src: "/images/traces/dao-duc-trach-nhiem/1927-duong-kach-menh.jpg",
+          src: "/images/traces/dao-duc-trach-nhiem/1927-duong-kach-menh-crop.jpg",
           alt: "Bìa cuốn Đường Kách mệnh xuất bản năm 1927, hiện vật được công nhận là bảo vật quốc gia",
           caption: "Cuốn Đường Kách mệnh, xuất bản năm 1927",
           credit: "Cục Di sản văn hóa",
@@ -231,7 +268,14 @@ export const traces = [
           usageNote: HISTORICAL_ASSET_APPROVAL,
           license:
             "Website yêu cầu ghi rõ nguồn Cục Di sản văn hóa khi sử dụng lại thông tin",
-          objectPosition: "50% center",
+          kind: "document",
+          presentation: {
+            fit: "contain",
+            aspectRatio: "document",
+            tone: "natural",
+            objectPosition: "50% center",
+            background: "paper",
+          },
         },
         sources: [
           {
@@ -260,6 +304,13 @@ export const traces = [
           credit: "ĐUỐC HỒNG — placeholder trung tính",
           verificationStatus: "placeholder",
           usageStatus: "not-applicable",
+          kind: "placeholder",
+          presentation: {
+            fit: "contain",
+            aspectRatio: "landscape",
+            tone: "soft-archival",
+            background: "paper",
+          },
           isPlaceholder: true,
         },
         sources: [
@@ -290,6 +341,13 @@ export const traces = [
           credit: "ĐUỐC HỒNG — placeholder trung tính",
           verificationStatus: "placeholder",
           usageStatus: "not-applicable",
+          kind: "placeholder",
+          presentation: {
+            fit: "contain",
+            aspectRatio: "landscape",
+            tone: "soft-archival",
+            background: "paper",
+          },
           isPlaceholder: true,
         },
         sources: [
@@ -374,6 +432,14 @@ export const traces = [
         verificationStatus: "verified",
         usageStatus: "licensed",
         license: "Unsplash License",
+        kind: "present",
+        presentation: {
+          fit: "cover",
+          aspectRatio: "portrait",
+          tone: "natural",
+          objectPosition: "50% center",
+          background: "neutral",
+        },
       },
     },
     centralQuestion: "Giá trị của một con người được quyết định bởi điều gì?",
@@ -400,7 +466,14 @@ export const traces = [
           usageStatus: "approved",
           usageNote: HISTORICAL_ASSET_APPROVAL,
           license: "Không nêu giấy phép tái sử dụng",
-          objectPosition: "14% center",
+          kind: "historical-photo",
+          presentation: {
+            fit: "cover",
+            aspectRatio: "landscape",
+            tone: "archival",
+            objectPosition: "14% center",
+            background: "neutral",
+          },
         },
         sources: [
           {
@@ -430,6 +503,13 @@ export const traces = [
           credit: "ĐUỐC HỒNG — placeholder trung tính",
           verificationStatus: "placeholder",
           usageStatus: "not-applicable",
+          kind: "placeholder",
+          presentation: {
+            fit: "contain",
+            aspectRatio: "landscape",
+            tone: "soft-archival",
+            background: "paper",
+          },
           isPlaceholder: true,
         },
         sources: [
@@ -455,6 +535,13 @@ export const traces = [
           credit: "ĐUỐC HỒNG — placeholder trung tính",
           verificationStatus: "placeholder",
           usageStatus: "not-applicable",
+          kind: "placeholder",
+          presentation: {
+            fit: "contain",
+            aspectRatio: "landscape",
+            tone: "soft-archival",
+            background: "paper",
+          },
           isPlaceholder: true,
         },
         sources: [

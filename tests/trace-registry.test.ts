@@ -6,6 +6,15 @@ import { getNextTraceSlug, getTraceBySlug } from "@/lib/trace-registry";
 import { traceThemes } from "@/lib/trace-themes";
 import type { TraceImage } from "@/types/trace";
 
+const APPROVED_IMAGE_KINDS = new Set([
+  "present",
+  "historical-photo",
+  "historical-place",
+  "document",
+  "artwork",
+  "placeholder",
+]);
+
 test("registry exposes exactly three uniquely ordered traces", () => {
   assert.equal(traces.length, 3);
   assert.deepEqual(
@@ -110,7 +119,7 @@ test("historical assets expose explicit provenance, owner approval, and placehol
     ["dai-doan-ket:1930", "/images/traces/dai-doan-ket/1930-party-foundation.jpg"],
     ["dai-doan-ket:1941", "/images/traces/dai-doan-ket/1941-viet-minh-pac-bo.jpg"],
     ["dai-doan-ket:1945", "/images/traces/dai-doan-ket/1945-independence-declaration.jpg"],
-    ["dao-duc-trach-nhiem:1927", "/images/traces/dao-duc-trach-nhiem/1927-duong-kach-menh.jpg"],
+    ["dao-duc-trach-nhiem:1927", "/images/traces/dao-duc-trach-nhiem/1927-duong-kach-menh-crop.jpg"],
     ["con-nguoi:1945", "/images/traces/dai-doan-ket/1945-independence-declaration.jpg"],
   ]);
   const expectedPlaceholders = new Set([
@@ -157,6 +166,87 @@ test("present-day images keep traceable Unsplash licensing metadata", () => {
     assert.equal(trace.presentDay.image.usageStatus, "licensed");
     assert.equal(trace.presentDay.image.license, "Unsplash License");
     assert.match(trace.presentDay.image.sourceUrl ?? "", /^https:\/\/images\.unsplash\.com\/photo-/);
+  }
+});
+
+test("approved present-day crop decisions keep Trace 03 unchanged", () => {
+  assert.equal(
+    getTraceBySlug("dai-doan-ket")?.presentDay?.image.src,
+    "/images/traces/dai-doan-ket/present-day-crop.jpg",
+  );
+  assert.equal(
+    getTraceBySlug("dao-duc-trach-nhiem")?.presentDay?.image.src,
+    "/images/traces/dao-duc-trach-nhiem/present-day-crop.jpg",
+  );
+  assert.equal(
+    getTraceBySlug("con-nguoi")?.presentDay?.image.src,
+    "/images/traces/con-nguoi/present-day.jpg",
+  );
+});
+
+test("every trace image declares the approved presentation taxonomy", () => {
+  for (const trace of traces) {
+    const images: TraceImage[] = [];
+
+    if (trace.presentDay) {
+      images.push(trace.presentDay.image);
+    }
+
+    for (const moment of trace.historicalMoments) {
+      if (moment.image) {
+        images.push(moment.image);
+      }
+    }
+
+    for (const image of images) {
+      assert.equal(
+        APPROVED_IMAGE_KINDS.has(image.kind),
+        true,
+        `${image.alt} must declare an approved image kind`,
+      );
+      assert.equal(
+        "objectPosition" in image,
+        false,
+        `${image.alt} must keep crop metadata inside presentation`,
+      );
+    }
+  }
+});
+
+test("documents and placeholders expose explicit presentation rules", () => {
+  const responsibility = getTraceBySlug("dao-duc-trach-nhiem");
+  const humanity = getTraceBySlug("con-nguoi");
+  const documentImage = responsibility?.historicalMoments[0].image;
+  const placeholders = [
+    responsibility?.historicalMoments[1].image,
+    responsibility?.historicalMoments[2].image,
+    humanity?.historicalMoments[1].image,
+    humanity?.historicalMoments[2].image,
+  ];
+
+  assert.equal(documentImage?.kind, "document");
+  assert.equal(documentImage?.presentation?.fit, "contain");
+  assert.equal(documentImage?.presentation?.aspectRatio, "document");
+
+  for (const image of placeholders) {
+    assert.equal(image?.kind, "placeholder");
+    assert.equal(image?.presentation?.fit, "contain");
+    assert.equal(image?.presentation?.background, "paper");
+    assert.equal(image?.isPlaceholder, true);
+  }
+});
+
+test("historical photographs and places use landscape presentation", () => {
+  const unity = getTraceBySlug("dai-doan-ket");
+  const humanity = getTraceBySlug("con-nguoi");
+  const images = [
+    unity?.historicalMoments[1].image,
+    unity?.historicalMoments[2].image,
+    humanity?.historicalMoments[0].image,
+  ];
+
+  for (const image of images) {
+    assert.equal(image?.presentation?.aspectRatio, "landscape");
   }
 });
 
