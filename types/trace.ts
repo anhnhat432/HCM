@@ -13,6 +13,25 @@ export type TraceImageUsageStatus =
   | "approved"
   | "needs-review"
   | "not-applicable";
+export type TraceImageKind =
+  | "present"
+  | "historical-photo"
+  | "historical-place"
+  | "document"
+  | "artwork"
+  | "placeholder";
+export type TraceImageFit = "cover" | "contain";
+export type TraceImageAspectRatio = "portrait" | "landscape" | "document";
+export type TraceImageTone = "natural" | "archival" | "soft-archival";
+export type TraceImageBackground = "paper" | "neutral";
+
+export interface TraceImagePresentation {
+  readonly fit?: TraceImageFit;
+  readonly aspectRatio?: TraceImageAspectRatio;
+  readonly tone?: TraceImageTone;
+  readonly objectPosition?: string;
+  readonly background?: TraceImageBackground;
+}
 
 export interface TraceImage {
   readonly src?: string;
@@ -24,7 +43,8 @@ export interface TraceImage {
   readonly usageStatus: TraceImageUsageStatus;
   readonly usageNote?: string;
   readonly license?: string;
-  readonly objectPosition?: string;
+  readonly kind: TraceImageKind;
+  readonly presentation?: TraceImagePresentation;
   readonly isPlaceholder?: boolean;
 }
 

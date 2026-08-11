@@ -28,6 +28,11 @@ TRACE_CASES = {
         "placeholder_count": 0,
         "historical_image_source_count": 3,
         "formation_source_count": 0,
+        "presentations": [
+            ("1930", "artwork", "contain", "landscape"),
+            ("1941", "historical-place", "cover", "landscape"),
+            ("1945", "historical-photo", "contain", "landscape"),
+        ],
         "ending": "next-trace",
     },
     "trace-02": {
@@ -42,9 +47,14 @@ TRACE_CASES = {
         "conclusion": "ĐẠO ĐỨC & TRÁCH NHIỆM",
         "next_title": "Con người",
         "next_path": "/trace/con-nguoi",
-        "placeholder_count": 2,
-        "historical_image_source_count": 1,
+        "placeholder_count": 0,
+        "historical_image_source_count": 3,
         "formation_source_count": 0,
+        "presentations": [
+            ("1927", "document", "contain", "document"),
+            ("1947", "document", "contain", "document"),
+            ("1958", "document", "contain", "document"),
+        ],
         "ending": "next-trace",
     },
     "trace-03": {
@@ -55,11 +65,28 @@ TRACE_CASES = {
         "question": "Giá trị của một con người được quyết định bởi điều gì?",
         "years": ["1945", "1958", "1969"],
         "conclusion": "CON NGƯỜI VỪA LÀ MỤC TIÊU, VỪA LÀ ĐỘNG LỰC",
-        "placeholder_count": 2,
-        "historical_image_source_count": 1,
+        "placeholder_count": 0,
+        "historical_image_source_count": 3,
         "formation_source_count": 3,
+        "presentations": [
+            ("1945", "historical-photo", "cover", "landscape"),
+            ("1958", "historical-photo", "cover", "landscape"),
+            ("1969", "document", "contain", "document"),
+        ],
         "ending": "journey-closing",
     },
+}
+
+FOCUSED_MOMENTS = {
+    "trace-01": ["1930", "1941", "1945"],
+    "trace-02": ["1927", "1947", "1958"],
+    "trace-03": ["1958", "1969"],
+}
+
+FOCUSED_OPENINGS = {
+    "trace-01": "trace-01-present-focused.png",
+    "trace-02": "trace-02-present-focused.png",
+    "trace-03": "trace-03-present-focused.png",
 }
 
 
@@ -165,6 +192,43 @@ def rendered_line_count(page: Page, selector: str) -> list[int]:
     )
 
 
+def verify_image_presentation(page: Page, trace_case: dict) -> None:
+    opening_frame = page.locator(
+        ".trace-opening .trace-figure__frame--kind-present"
+    )
+    assert opening_frame.count() == 1
+    assert opening_frame.locator(".trace-figure__image").evaluate(
+        "element => getComputedStyle(element).objectFit"
+    ) == "cover"
+
+    for year, kind, fit, aspect in trace_case["presentations"]:
+        moment = page.locator(f"#moment-{year}")
+        frame = moment.locator(
+            f".trace-figure__frame--kind-{kind}.trace-figure__frame--aspect-{aspect}"
+        )
+        assert frame.count() == 1
+
+        image = frame.locator(".trace-figure__image")
+        if image.count() == 1:
+            assert image.evaluate(
+                "element => getComputedStyle(element).objectFit"
+            ) == fit
+
+        if aspect == "landscape":
+            box = frame.bounding_box()
+            assert box is not None
+            assert box["width"] > box["height"]
+
+    placeholders = page.locator(
+        ".trace-figure__frame--kind-placeholder .trace-figure__placeholder"
+    )
+    assert placeholders.count() == trace_case["placeholder_count"]
+    if placeholders.count():
+        assert placeholders.locator("p").all_inner_texts() == [
+            "Tư liệu đang được bổ sung"
+        ] * trace_case["placeholder_count"]
+
+
 def verify_trace(page: Page, trace_case: dict) -> None:
     response = page.goto(
         f"{BASE_URL}{trace_case['path']}",
@@ -219,7 +283,7 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     question.wait_for()
     assert trace_case["question"] in question.inner_text()
     assert page.locator(".historical-moment__year").all_inner_texts() == years
-    assert page.locator(".trace-figure__frame--placeholder").count() == trace_case[
+    assert page.locator(".trace-figure__frame--kind-placeholder").count() == trace_case[
         "placeholder_count"
     ]
     assert page.locator(".historical-moment__sources").count() == 3
@@ -227,11 +291,14 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     assert page.locator(
         ".historical-moment .trace-figure__credit a"
     ).count() == trace_case["historical_image_source_count"]
-    assert page.locator(".trace-opening .trace-figure__credit a").count() == 1
+    opening_credit = page.locator(".trace-opening .trace-figure__credit")
+    assert opening_credit.inner_text() == "Nguồn ảnh: Ảnh minh họa"
+    assert opening_credit.locator("a").count() == 0
     assert page.locator(".thought-formation__sources a").count() == trace_case[
         "formation_source_count"
     ]
     assert page.get_by_text("TODO:", exact=False).count() == 0
+    verify_image_presentation(page, trace_case)
     verify_text_contrast(page)
     assert trace_case["conclusion"] in " ".join(
         page.locator(".thought-formation__conclusion h3").inner_text().split()
@@ -397,6 +464,22 @@ def main() -> None:
                     path=str(SCREENSHOT_DIR / f"{trace_name}-{viewport_name}.png"),
                     full_page=True,
                 )
+                if viewport_name == "desktop":
+                    opening_filename = FOCUSED_OPENINGS.get(trace_name)
+                    if opening_filename:
+                        opening = page.locator("section.trace-opening")
+                        opening.scroll_into_view_if_needed()
+                        page.wait_for_timeout(150)
+                        opening.screenshot(path=str(SCREENSHOT_DIR / opening_filename))
+                    for year in FOCUSED_MOMENTS.get(trace_name, []):
+                        moment = page.locator(f"#moment-{year}")
+                        moment.scroll_into_view_if_needed()
+                        page.wait_for_timeout(150)
+                        moment.screenshot(
+                            path=str(
+                                SCREENSHOT_DIR / f"{trace_name}-{year}-focused.png"
+                            )
+                        )
                 page.close()
 
             reduced_motion = browser.new_page(

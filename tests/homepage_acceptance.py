@@ -178,12 +178,41 @@ def verify_homepage(page: Page) -> None:
     assert float(cta_style["borderBottomWidth"].removesuffix("px")) >= 1
 
     hero_image = page.get_by_role(
-        "img", name="Kho lưu trữ lịch sử và tài liệu", exact=True
+        "img",
+        name="Trang đầu bản Tuyên ngôn Độc lập với bút tích và dấu lưu trữ",
+        exact=True,
     )
     hero_image.wait_for()
+    assert "homepage-independence-declaration.jpg" in (
+        hero_image.get_attribute("src") or ""
+    )
+    hero_image_style = hero_image.evaluate(
+        """element => ({
+            objectFit: getComputedStyle(element).objectFit,
+            opacity: getComputedStyle(element).opacity,
+            mixBlendMode: getComputedStyle(element).mixBlendMode,
+        })"""
+    )
+    assert hero_image_style == {
+        "objectFit": "contain",
+        "opacity": "1",
+        "mixBlendMode": "normal",
+    }
     image_box = hero_image.bounding_box()
     assert image_box is not None
     assert 0.68 <= image_box["width"] / image_box["height"] <= 0.82
+    hero_caption = page.locator(".home-hero__figure figcaption")
+    assert "Bản Tuyên ngôn Độc lập — 1945" in hero_caption.inner_text()
+    assert hero_caption.get_by_role("link", name="Trung tâm Lưu trữ quốc gia III").get_attribute(
+        "href"
+    ) == (
+        "https://commons.wikimedia.org/wiki/"
+        "File:B%E1%BA%A3n_Tuy%C3%AAn_ng%C3%B4n_%C4%91%E1%BB%99c_l%E1%BA%ADp_"
+        "c%E1%BB%A7a_n%C6%B0%E1%BB%9Bc_Vi%E1%BB%87t_Nam_D%C3%A2n_ch%E1%BB%A7_"
+        "C%E1%BB%99ng_h%C3%B2a._-_Trung_t%C3%A2m_L%C6%B0u_tr%E1%BB%AF_qu%E1%BB%91c_"
+        "gia_III._Ph%C3%B4ng_Ph%E1%BB%A7_Th%E1%BB%A7_t%C6%B0%E1%BB%9Bng,_h%E1%BB%93_"
+        "s%C6%A1_586,_t%E1%BB%9D_s%E1%BB%91_1_%E2%80%93_3.jpg"
+    )
     assert page.locator(".trace-visual").count() == 0
     verify_text_contrast(page)
 

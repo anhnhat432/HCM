@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { TraceReveal } from "@/components/trace/reveal";
+import { getTraceImageFrameClassName } from "@/lib/trace-image-presentation";
 import type { HistoricalMoment as HistoricalMomentData } from "@/types/trace";
 
 interface HistoricalMomentProps {
@@ -64,16 +65,21 @@ export function HistoricalMoment({
           <TraceReveal className="historical-moment__visual" delay={0.08} image>
             <figure className="trace-figure">
               <div
-                className={`trace-figure__frame trace-figure__frame--historical${image.isPlaceholder ? " trace-figure__frame--placeholder" : ""}`}
+                className={getTraceImageFrameClassName(
+                  image,
+                  "trace-figure__frame",
+                )}
               >
                 {image.src ? (
                   <Image
                     alt={image.alt}
-                    className="trace-figure__image trace-figure__image--historical"
+                    className="trace-figure__image"
                     fill
                     sizes="(max-width: 48rem) calc(100vw - 4rem), 520px"
                     src={image.src}
-                    style={{ objectPosition: image.objectPosition }}
+                    style={{
+                      objectPosition: image.presentation?.objectPosition,
+                    }}
                   />
                 ) : (
                   <div
@@ -82,7 +88,8 @@ export function HistoricalMoment({
                     role="img"
                   >
                     <span>{moment.year}</span>
-                    <p>Tư liệu lịch sử đang bổ sung</p>
+                    <i aria-hidden="true" />
+                    <p>Tư liệu đang được bổ sung</p>
                   </div>
                 )}
               </div>

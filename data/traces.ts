@@ -2,6 +2,10 @@ import type { TraceData } from "@/types/trace";
 
 const HISTORICAL_ASSET_APPROVAL =
   "Chủ dự án xác nhận phê duyệt sử dụng công khai ngày 2026-08-10.";
+const PHASE_8_HISTORICAL_ASSET_APPROVAL =
+  "Chủ dự án duyệt triển khai nguồn tư liệu Evidence-first ngày 2026-08-11; nguồn không nêu giấy phép tái sử dụng.";
+const PRESENT_AI_ASSET_APPROVAL =
+  "Chủ dự án cung cấp và duyệt ảnh minh họa AI ngày 2026-08-11; công cụ tạo và điều khoản giấy phép không được cung cấp.";
 
 export const traces = [
   {
@@ -17,15 +21,22 @@ export const traces = [
       summary:
         "Một nhóm sinh viên cùng làm việc hướng đến một dự án chung, nhưng sự khác biệt trong mức độ tham gia, quan điểm và trách nhiệm dần trở thành xung đột.",
       image: {
-        src: "/images/traces/dai-doan-ket/present-day.jpg",
-        alt: "Nhóm sinh viên cùng làm việc nhưng có sự khác biệt trong mức độ tham gia",
+        src: "/images/traces/dai-doan-ket/present-day-ai-group.jpg",
+        alt: "Bốn sinh viên ngồi quanh bàn, cùng nhìn tài liệu trong lúc hai người trao đổi bằng cử chỉ",
         caption: "Cùng mục tiêu, khác hướng đi",
-        credit: "Unsplash",
-        sourceUrl:
-          "https://images.unsplash.com/photo-1552664730-d307ca884978",
+        credit: "Ảnh minh họa",
         verificationStatus: "verified",
-        usageStatus: "licensed",
-        license: "Unsplash License",
+        usageStatus: "approved",
+        usageNote: PRESENT_AI_ASSET_APPROVAL,
+        license: "Không nêu giấy phép của công cụ tạo",
+        kind: "present",
+        presentation: {
+          fit: "cover",
+          aspectRatio: "portrait",
+          tone: "natural",
+          objectPosition: "50% center",
+          background: "neutral",
+        },
       },
     },
     centralQuestion: "Điều gì có thể giữ một tập thể cùng hướng?",
@@ -51,7 +62,14 @@ export const traces = [
           usageStatus: "approved",
           usageNote: HISTORICAL_ASSET_APPROVAL,
           license: "Không nêu giấy phép tái sử dụng",
-          objectPosition: "50% center",
+          kind: "artwork",
+          presentation: {
+            fit: "contain",
+            aspectRatio: "landscape",
+            tone: "soft-archival",
+            objectPosition: "50% center",
+            background: "paper",
+          },
         },
         sources: [
           {
@@ -86,7 +104,14 @@ export const traces = [
           usageStatus: "approved",
           usageNote: HISTORICAL_ASSET_APPROVAL,
           license: "Không nêu giấy phép tái sử dụng",
-          objectPosition: "50% center",
+          kind: "historical-place",
+          presentation: {
+            fit: "cover",
+            aspectRatio: "landscape",
+            tone: "soft-archival",
+            objectPosition: "50% center",
+            background: "neutral",
+          },
         },
         sources: [
           {
@@ -122,7 +147,14 @@ export const traces = [
           usageStatus: "approved",
           usageNote: HISTORICAL_ASSET_APPROVAL,
           license: "Không nêu giấy phép tái sử dụng",
-          objectPosition: "18% center",
+          kind: "historical-photo",
+          presentation: {
+            fit: "contain",
+            aspectRatio: "landscape",
+            tone: "archival",
+            objectPosition: "50% center",
+            background: "neutral",
+          },
         },
         sources: [
           {
@@ -197,15 +229,22 @@ export const traces = [
       summary:
         "Trong lúc chạy nước rút cho một project, một thành viên phát hiện nhóm có thể dùng lại nội dung của người khác để tiết kiệm thời gian. Lối tắt ấy giúp cả nhóm hoàn thành nhanh hơn, nhưng buộc mỗi người cân nhắc trách nhiệm của mình với kết quả chung.",
       image: {
-        src: "/images/traces/dao-duc-trach-nhiem/present-day.jpg",
-        alt: "Nhóm sinh viên cùng xem tài liệu trên laptop khi làm project",
+        src: "/images/traces/dao-duc-trach-nhiem/present-day-ai-decision.jpg",
+        alt: "Nhóm sinh viên tập trung quanh laptop và tài liệu, một người chỉ vào màn hình",
         caption: "Một lối tắt đặt cả nhóm trước lựa chọn chung",
-        credit: "Unsplash",
-        sourceUrl:
-          "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+        credit: "Ảnh minh họa",
         verificationStatus: "verified",
-        usageStatus: "licensed",
-        license: "Unsplash License",
+        usageStatus: "approved",
+        usageNote: PRESENT_AI_ASSET_APPROVAL,
+        license: "Không nêu giấy phép của công cụ tạo",
+        kind: "present",
+        presentation: {
+          fit: "cover",
+          aspectRatio: "portrait",
+          tone: "natural",
+          objectPosition: "50% center",
+          background: "neutral",
+        },
       },
     },
     centralQuestion:
@@ -221,7 +260,7 @@ export const traces = [
         verification:
           "Đã đối chiếu nguồn chính thống về năm 1927, bối cảnh các bài giảng và vai trò của chuẩn mực đạo đức; summary là diễn giải, không phải trích dẫn.",
         image: {
-          src: "/images/traces/dao-duc-trach-nhiem/1927-duong-kach-menh.jpg",
+          src: "/images/traces/dao-duc-trach-nhiem/1927-duong-kach-menh-crop.jpg",
           alt: "Bìa cuốn Đường Kách mệnh xuất bản năm 1927, hiện vật được công nhận là bảo vật quốc gia",
           caption: "Cuốn Đường Kách mệnh, xuất bản năm 1927",
           credit: "Cục Di sản văn hóa",
@@ -231,7 +270,14 @@ export const traces = [
           usageNote: HISTORICAL_ASSET_APPROVAL,
           license:
             "Website yêu cầu ghi rõ nguồn Cục Di sản văn hóa khi sử dụng lại thông tin",
-          objectPosition: "50% center",
+          kind: "document",
+          presentation: {
+            fit: "contain",
+            aspectRatio: "document",
+            tone: "natural",
+            objectPosition: "50% center",
+            background: "paper",
+          },
         },
         sources: [
           {
@@ -255,12 +301,24 @@ export const traces = [
         verification:
           "Đã đối chiếu nguồn chính thống về bối cảnh Việt Bắc năm 1947, nội dung phê bình khuyết điểm và trách nhiệm của cán bộ, đảng viên; summary là diễn giải.",
         image: {
-          alt: "Khung tư liệu trung tính cho tác phẩm Sửa đổi lối làm việc năm 1947",
-          caption: "Chưa có tư liệu đúng bối cảnh và đủ điều kiện sử dụng",
-          credit: "ĐUỐC HỒNG — placeholder trung tính",
-          verificationStatus: "placeholder",
-          usageStatus: "not-applicable",
-          isPlaceholder: true,
+          src: "/images/traces/dao-duc-trach-nhiem/1947-sua-doi-loi-lam-viec.jpg",
+          alt: "Bìa cũ của tác phẩm Sửa đổi lối làm việc, ghi bút danh X.Y.Z và Nhà xuất bản Sự thật",
+          caption:
+            "Bìa tác phẩm Sửa đổi lối làm việc, xuất bản lần đầu năm 1947",
+          credit: "Quân đội nhân dân; Wikimedia Commons",
+          sourceUrl:
+            "https://commons.wikimedia.org/wiki/File:Bia_Sua_doi_loi_lam_viec.jpg",
+          verificationStatus: "verified",
+          usageStatus: "approved",
+          license: "Public domain",
+          kind: "document",
+          presentation: {
+            fit: "contain",
+            aspectRatio: "document",
+            tone: "natural",
+            objectPosition: "50% center",
+            background: "paper",
+          },
         },
         sources: [
           {
@@ -285,12 +343,25 @@ export const traces = [
         verification:
           "Đã đối chiếu nguồn chính thống về tên tác phẩm, bút danh Trần Lực và việc đăng trên Tạp chí Học tập số 12 năm 1958; summary là diễn giải, không phải trích dẫn.",
         image: {
-          alt: "Khung tư liệu trung tính cho tác phẩm Đạo đức cách mạng năm 1958",
-          caption: "Chưa có tư liệu đúng bối cảnh và đủ điều kiện sử dụng",
-          credit: "ĐUỐC HỒNG — placeholder trung tính",
-          verificationStatus: "placeholder",
-          usageStatus: "not-applicable",
-          isPlaceholder: true,
+          src: "/images/traces/dao-duc-trach-nhiem/1958-dao-duc-cach-mang.jpg",
+          alt: "Trang mở đầu bản số hóa Đạo đức cách mạng, ghi rõ tác phẩm tháng 12 năm 1958",
+          caption:
+            "Trang mở đầu bản số hóa tác phẩm Đạo đức cách mạng (12-1958)",
+          credit: "Thư viện sách Hồ Chí Minh, Thành phố Hồ Chí Minh",
+          sourceUrl:
+            "https://thuviensachhochiminh.tphcm.gov.vn/documents/35261/39007/DaoDucCachMang.pdf/abc46104-e61f-42a5-8a05-0857e617d6f0",
+          verificationStatus: "verified",
+          usageStatus: "approved",
+          usageNote: PHASE_8_HISTORICAL_ASSET_APPROVAL,
+          license: "Không nêu giấy phép tái sử dụng",
+          kind: "document",
+          presentation: {
+            fit: "contain",
+            aspectRatio: "document",
+            tone: "natural",
+            objectPosition: "50% center",
+            background: "paper",
+          },
         },
         sources: [
           {
@@ -365,15 +436,22 @@ export const traces = [
       summary:
         "Điểm số, thành tích, năng suất và những dòng trong CV dần trở thành thước đo quen thuộc. Khi kết quả không như mong đợi, một sinh viên bắt đầu tự hỏi liệu giá trị của mình có đang bị thu gọn vào những con số ấy.",
       image: {
-        src: "/images/traces/con-nguoi/present-day.jpg",
-        alt: "Một sinh viên tập trung trước laptop trong không gian học tập",
+        src: "/images/traces/con-nguoi/present-day-ai-student.jpg",
+        alt: "Một sinh viên ngồi suy tư trước laptop và tài liệu học tập trong căn phòng yên tĩnh",
         caption: "Khi kết quả dần trở thành thước đo duy nhất",
-        credit: "Unsplash",
-        sourceUrl:
-          "https://images.unsplash.com/photo-1513258496099-48168024aec0",
+        credit: "Ảnh minh họa",
         verificationStatus: "verified",
-        usageStatus: "licensed",
-        license: "Unsplash License",
+        usageStatus: "approved",
+        usageNote: PRESENT_AI_ASSET_APPROVAL,
+        license: "Không nêu giấy phép của công cụ tạo",
+        kind: "present",
+        presentation: {
+          fit: "cover",
+          aspectRatio: "portrait",
+          tone: "natural",
+          objectPosition: "50% center",
+          background: "neutral",
+        },
       },
     },
     centralQuestion: "Giá trị của một con người được quyết định bởi điều gì?",
@@ -400,7 +478,14 @@ export const traces = [
           usageStatus: "approved",
           usageNote: HISTORICAL_ASSET_APPROVAL,
           license: "Không nêu giấy phép tái sử dụng",
-          objectPosition: "14% center",
+          kind: "historical-photo",
+          presentation: {
+            fit: "cover",
+            aspectRatio: "landscape",
+            tone: "archival",
+            objectPosition: "14% center",
+            background: "neutral",
+          },
         },
         sources: [
           {
@@ -425,12 +510,25 @@ export const traces = [
         verification:
           "Đã đối chiếu biên niên Bảo tàng Hồ Chí Minh, Báo Quân đội nhân dân và dẫn chiếu Hồ Chí Minh Toàn tập, tập 11, trang 528; phần trong ngoặc kép là trích dẫn trực tiếp từ nguồn.",
         image: {
-          alt: "Khung tư liệu trung tính cho phát biểu về trồng người năm 1958",
-          caption: "Chưa có tư liệu đúng bối cảnh và đủ điều kiện sử dụng",
-          credit: "ĐUỐC HỒNG — placeholder trung tính",
-          verificationStatus: "placeholder",
-          usageStatus: "not-applicable",
-          isPlaceholder: true,
+          src: "/images/traces/con-nguoi/1958-political-class-teachers.jpg",
+          alt: "Chủ tịch Hồ Chí Minh vẫy chào đông đảo giáo viên tại lớp học chính trị ở Hà Nội ngày 13 tháng 9 năm 1958",
+          caption:
+            "Chủ tịch Hồ Chí Minh thăm lớp học chính trị của giáo viên cấp II, III toàn miền Bắc, ngày 13 tháng 9 năm 1958",
+          credit: "Cổng Thông tin điện tử Hồ Chí Minh",
+          sourceUrl:
+            "https://hochiminh.vn/tu-lieu-anh/tu-lieu-anh-chu-tich-ho-chi-minh-tu-nam-1954-1969.html",
+          verificationStatus: "verified",
+          usageStatus: "approved",
+          usageNote: PHASE_8_HISTORICAL_ASSET_APPROVAL,
+          license: "Không nêu giấy phép tái sử dụng",
+          kind: "historical-photo",
+          presentation: {
+            fit: "cover",
+            aspectRatio: "landscape",
+            tone: "archival",
+            objectPosition: "50% center",
+            background: "neutral",
+          },
         },
         sources: [
           {
@@ -450,12 +548,25 @@ export const traces = [
         verification:
           "Đã đối chiếu toàn văn Di chúc về giáo dục thanh niên, bồi dưỡng thế hệ cách mạng và kế hoạch nâng cao đời sống nhân dân; summary là diễn giải.",
         image: {
-          alt: "Khung tư liệu trung tính cho Di chúc năm 1969",
-          caption: "Chưa có tư liệu đúng bối cảnh và đủ điều kiện sử dụng",
-          credit: "ĐUỐC HỒNG — placeholder trung tính",
-          verificationStatus: "placeholder",
-          usageStatus: "not-applicable",
-          isPlaceholder: true,
+          src: "/images/traces/con-nguoi/1969-testament.jpg",
+          alt: "Trang bút tích Di chúc đề ngày 10 tháng 5 năm 1969 với các chỉnh sửa bằng mực đỏ",
+          caption:
+            "Bút tích Di chúc ngày 10 tháng 5 năm 1969, phần sửa lời mở đầu",
+          credit:
+            "Cơ quan quản lý Lăng Chủ tịch Hồ Chí Minh; Wikimedia Commons",
+          sourceUrl:
+            "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh%27s_will_1969_handwriting_version_correcting_the_opening.png",
+          verificationStatus: "verified",
+          usageStatus: "approved",
+          license: "Public domain",
+          kind: "document",
+          presentation: {
+            fit: "contain",
+            aspectRatio: "document",
+            tone: "natural",
+            objectPosition: "50% center",
+            background: "paper",
+          },
         },
         sources: [
           {

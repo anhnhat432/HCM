@@ -5,6 +5,16 @@ import { Reveal } from "@/components/home/reveal";
 import { TopicList } from "@/components/home/topic-list";
 import { traces } from "@/data/traces";
 
+const homepageHeroImage = {
+  alt: "Trang đầu bản Tuyên ngôn Độc lập với bút tích và dấu lưu trữ",
+  caption: "Bản Tuyên ngôn Độc lập — 1945",
+  credit: "Trung tâm Lưu trữ quốc gia III",
+  license: "Public domain",
+  sourceUrl:
+    "https://commons.wikimedia.org/wiki/File:B%E1%BA%A3n_Tuy%C3%AAn_ng%C3%B4n_%C4%91%E1%BB%99c_l%E1%BA%ADp_c%E1%BB%A7a_n%C6%B0%E1%BB%9Bc_Vi%E1%BB%87t_Nam_D%C3%A2n_ch%E1%BB%A7_C%E1%BB%99ng_h%C3%B2a._-_Trung_t%C3%A2m_L%C6%B0u_tr%E1%BB%AF_qu%E1%BB%91c_gia_III._Ph%C3%B4ng_Ph%E1%BB%A7_Th%E1%BB%A7_t%C6%B0%E1%BB%9Bng,_h%E1%BB%93_s%C6%A1_586,_t%E1%BB%9D_s%E1%BB%91_1_%E2%80%93_3.jpg",
+  src: "/images/homepage-independence-declaration.jpg",
+} as const;
+
 export default function Home() {
   return (
     <main className="home" id="main-content">
@@ -51,15 +61,28 @@ export default function Home() {
             <figure className="home-hero__figure">
               <div className="home-hero__image-frame">
                 <Image
-                  alt="Kho lưu trữ lịch sử và tài liệu"
+                  alt={homepageHeroImage.alt}
                   className="home-hero__image"
                   fill
                   priority
                   sizes="(max-width: 48rem) calc(100vw - 4rem), 435px"
-                  src="/images/homepage-archive.jpg"
+                  src={homepageHeroImage.src}
                 />
               </div>
-              <figcaption>Kho lưu trữ</figcaption>
+              <figcaption>
+                <span>{homepageHeroImage.caption}</span>
+                <span className="home-hero__credit">
+                  Nguồn ảnh:{" "}
+                  <a
+                    href={homepageHeroImage.sourceUrl}
+                    rel="noreferrer"
+                    target="_blank"
+                    title={`Giấy phép: ${homepageHeroImage.license}`}
+                  >
+                    {homepageHeroImage.credit}
+                  </a>
+                </span>
+              </figcaption>
             </figure>
           </Reveal>
         </div>

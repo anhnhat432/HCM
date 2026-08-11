@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { TraceReveal } from "@/components/trace/reveal";
+import { getTraceImageFrameClassName } from "@/lib/trace-image-presentation";
 import type { TracePresentDay } from "@/types/trace";
 
 interface TraceOpeningProps {
@@ -52,15 +53,22 @@ export function TraceOpening({
 
         <TraceReveal className="trace-opening__visual" delay={0.1} image>
           <figure className="trace-figure">
-            <div className="trace-figure__frame trace-figure__frame--opening">
+            <div
+              className={getTraceImageFrameClassName(
+                presentDay.image,
+                "trace-figure__frame",
+              )}
+            >
               <Image
                 alt={presentDay.image.alt}
-                className="trace-figure__image trace-figure__image--present"
+                className="trace-figure__image"
                 fill
                 priority
                 sizes="(max-width: 48rem) calc(100vw - 4rem), 520px"
                 src={presentDay.image.src}
-                style={{ objectPosition: presentDay.image.objectPosition }}
+                style={{
+                  objectPosition: presentDay.image.presentation?.objectPosition,
+                }}
               />
             </div>
             {presentDay.image.caption || presentDay.image.credit ? (
