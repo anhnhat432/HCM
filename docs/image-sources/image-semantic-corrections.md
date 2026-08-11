@@ -1,73 +1,94 @@
 # Image Semantic Correction Sources
 
-**Selection date:** 2026-08-11
+**Decision date:** 2026-08-11
 
-**Scope:** Replace the two approved Present Day images. Keep the existing 1945
-asset unchanged. Keep the current Trace 02 1958 production asset until an
-authentic original publication source passes the documentary gate.
+**Business approver:** Project owner
+
+**Decision:** Use the exact three owner-provided AI illustrations for the Present
+Day openings. The website uses the neutral visible credit `Ảnh minh họa`
+and factual alt text; AI provenance remains internal. Do not attach a stock-photo
+source or license. Keep the 1945 and Trace 02 historical 1958 assets unchanged.
+
+## Shared AI Provenance
+
+- **Visible credit:** Ảnh minh họa.
+- **Source URL:** None supplied.
+- **Generator:** Not supplied.
+- **License:** Không nêu giấy phép của công cụ tạo.
+- **Usage status:** `approved`.
+- **Verification status:** `verified`.
+- **Usage note:** Chủ dự án cung cấp và duyệt ảnh minh họa AI ngày 2026-08-11;
+  công cụ tạo và điều khoản giấy phép không được cung cấp.
+- **Representation boundary:** These are conceptual contemporary illustrations,
+  not documentary photographs of real people, institutions, or events.
 
 ## trace-01-present
 
-- **Subject:** A group of young adults examining a shared paper while several
-  people gesture toward it from different positions around the table.
-- **Source page:** https://www.pexels.com/photo/people-sitting-on-the-restaurant-table-9809808/
-- **Original file:** https://images.pexels.com/photos/9809808/pexels-photo-9809808.jpeg?cs=srgb&dl=pexels-ron-lach-9809808.jpg&fm=jpg
-- **Owner or creator:** Ron Lach.
-- **Original format and dimensions:** JPEG, 5906x3937, RGB.
-- **Original SHA-256:** `AC6D86328FFAB3C450062D878B68A075CA3357683EC73218E8C7FE2A08CFD361`.
-- **License:** Pexels License — https://www.pexels.com/license/
-- **Usage status:** `licensed`.
-- **Verification status:** `verified`.
+- **Approved source file:** `C:/Users/admin/Downloads/Trace 01 — Đại đoàn kết.png`
+- **Original format and dimensions:** PNG, 1122x1402, RGB.
+- **Original SHA-256:** `FFF906FD3A87C540534F6A707653B951F025526B43DCFE9FAD10A4A0EE75115D`.
+- **Subject:** Four students gathered around a shared project document while
+  two people gesture and the others show different levels of engagement.
 - **Caption:** Cùng mục tiêu, khác hướng đi.
-- **Alt:** Nhóm người trẻ trao đổi quanh một bản tài liệu, với nhiều cử chỉ cùng
-  hướng vào trang giấy.
+- **Alt:** Bốn sinh viên ngồi quanh bàn, cùng nhìn tài liệu trong lúc hai người
+  trao đổi bằng cử chỉ.
 - **Kind:** `present`.
 - **Presentation:** `cover`, `portrait`, `natural`, `neutral`, `50% center`.
-- **Semantic fit:** The shared document provides one common task while the
-  different body positions, expressions, and overlapping gestures make uneven
-  participation and unresolved discussion plausible without claiming a
-  specific conflict that is not visibly proven.
-- **Foreign or contextual cues:** The restaurant interior is contemporary and
-  not identifiable as a Vietnamese location. No flag, institution, landmark,
-  or corporate branding dominates the selected crop.
-- **Crop assessment:** A centered 4:5 crop keeps the document, pointing hand,
-  central expressions, and a foreground counter-gesture. The full five-person
-  group is not preserved in the portrait frame, so production copy and alt text
-  do not state a visible head count.
-- **Grayscale assessment:** The subject hierarchy remains legible in grayscale,
-  but the approved natural treatment better separates skin, paper, and the
-  muted red seating used by the product palette.
-- **Rights gate:** Passes through the explicit Pexels License shown by the source.
+- **Semantic fit:** The paper remains the common task while the open palm,
+  pointing hand, withdrawn posture, and divided attention support restrained
+  disagreement without staging an aggressive conflict.
+- **Crop assessment:** The source is effectively 4:5. Desktop and mobile frames
+  preserve all four students, both primary gestures, and the shared document.
+- **Artifact review:** No visible watermark or logo at production size. Generated
+  paper detail remains subordinate to the people and gesture hierarchy.
+- **Owner approval:** Approved after desktop and mobile in-frame review on
+  2026-08-11.
 
 ## trace-02-present
 
-- **Subject:** Multiple hands operating and pointing toward a shared laptop on a
-  glass table.
-- **Source page:** https://unsplash.com/photos/person-touching-and-pointing-macbook-pro-ZKBzlifgkgw
-- **Original file:** https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?fm=jpg&q=100&w=6000
-- **Owner or creator:** Mimi Thian.
-- **Original format and dimensions:** JPEG, 6000x4500, RGB.
-- **Original SHA-256:** `BE6A5066F271D04A09AC6FED8E1568123957175652AB7BB8F21A186285A33841`.
-- **License:** Unsplash License — https://unsplash.com/license
-- **Usage status:** `licensed`.
-- **Verification status:** `verified`.
+- **Approved source file:** `C:/Users/admin/Downloads/Trace 02 — Đạo đức & trách nhiệm.png`
+- **Original format and dimensions:** PNG, 1122x1402, RGB.
+- **Original SHA-256:** `B6A85966FFF869BC3D2F77ACC88E3EE39FBCF6A3318355EB9FE9215ED5758120`.
+- **Subject:** A student group concentrates around a laptop and printed notes
+  while one hand points toward the screen.
 - **Caption:** Một lối tắt đặt cả nhóm trước lựa chọn chung.
-- **Alt:** Nhiều bàn tay cùng thao tác và chỉ vào một laptop trên bàn kính.
+- **Alt:** Nhóm sinh viên tập trung quanh laptop và tài liệu, một người chỉ vào
+  màn hình.
 - **Kind:** `present`.
-- **Presentation:** `cover`, `portrait`, `natural`, `neutral`, `38% center`.
-- **Semantic fit:** The laptop is the shared decision surface and the competing
-  hand gestures imply active review. Identity stays secondary, and no smile or
-  celebratory group pose weakens the ethical-choice setup.
-- **Foreign or contextual cues:** The MacBook and clothing are generic modern
-  cues. No visible office branding, architecture, or identifiable researcher
-  establishes a foreign setting.
-- **Crop assessment:** A 38% horizontal object position in the existing 4:5
-  frame preserves the laptop keyboard, operating hand, and pointing hand. The
-  crop does not depend on the partial faces at the original image edges.
-- **Grayscale assessment:** The laptop, hands, and gesture direction remain
-  distinct in grayscale. Natural color is retained to match the approved
-  Present Day taxonomy and avoid making a contemporary scene appear archival.
-- **Rights gate:** Passes through the explicit Unsplash License shown by the source.
+- **Presentation:** `cover`, `portrait`, `natural`, `neutral`, `50% center`.
+- **Semantic fit:** The laptop and documents form one decision surface. Serious
+  expressions, hesitant posture, and the pointing gesture make a difficult
+  shared choice plausible without depicting literal plagiarism.
+- **Crop assessment:** The source is effectively 4:5. Desktop and mobile frames
+  keep the three visible faces, pointing gesture, laptop, and papers. The dark
+  foreground leg remains a secondary framing element.
+- **Artifact review:** No visible watermark or logo at production size. Generated
+  document detail is not readable or narratively dominant.
+- **Owner approval:** Approved after desktop and mobile in-frame review on
+  2026-08-11.
+
+## trace-03-present
+
+- **Approved source file:** `C:/Users/admin/Downloads/Trace 03 — Con người.png`
+- **Original format and dimensions:** PNG, 1856x2146, fully opaque RGBA.
+- **Original SHA-256:** `DE45489B20761BB0C54E6F8412304E4AED21EAD440B6A172C0839C29718203C2`.
+- **Subject:** One student pauses alone at a desk with a laptop, papers, and
+  books in a quiet study room.
+- **Caption:** Khi kết quả dần trở thành thước đo duy nhất.
+- **Alt:** Một sinh viên ngồi suy tư trước laptop và tài liệu học tập trong căn
+  phòng yên tĩnh.
+- **Kind:** `present`.
+- **Presentation:** `cover`, `portrait`, `natural`, `neutral`, `50% center`.
+- **Semantic fit:** The paused posture, unfocused gaze, laptop, and academic
+  material support the question of self-worth being reduced to performance
+  measures without showing a literal score or CV.
+- **Crop assessment:** The existing 4:5 frame trims only the far horizontal
+  edges. Desktop and mobile preserve the face, posture, laptop, papers, window,
+  and enough books to retain the academic context.
+- **Artifact review:** The revised file removes the visible lower-right
+  watermark. Small generated book detail is not dominant at production size.
+- **Owner approval:** Approved after desktop and mobile in-frame review on
+  2026-08-11.
 
 ## trace-02-1958
 
@@ -79,24 +100,15 @@ authentic original publication source passes the documentary gate.
 - **Current evidence status:** Official modern digital edition of the exact work;
   it is not an original scan or facsimile of *Tạp chí Học tập* issue 12.
 - **Authenticity gate:** Failed. No inspected candidate visibly and
-  authoritatively establishes both the exact work and the original December
-  1958 issue context.
-- **Rejected candidates:** *Tạp chí Học tập* issue 9 from 1958; modern re-typeset
-  PDFs; later commentary; a generic Hồ Chí Minh portrait; a 1959 book edition
-  without a verified original cover; year-adjacent documents.
-- **Repositories and catalogues checked:** Wikimedia Commons, Internet Archive,
-  Bảo tàng Hồ Chí Minh, Văn phòng Chủ tịch nước, Thư viện sách Hồ Chí Minh,
-  Google indexed documents and images, and the National Library newspaper
-  archive.
-- **Reason for no replacement:** Substituting a different issue, later edition,
-  portrait, or generic 1958 document would create stronger visual confidence
-  while providing weaker historical evidence. The replacement remains blocked
-  until an original scan, original issue cover with authoritative article
-  linkage, or explicit archival facsimile becomes available.
+  authoritatively establishes both the exact work and original issue context.
+- **Reason for no replacement:** A different issue, later edition, portrait, or
+  generic 1958 document would provide weaker historical evidence.
 
-## Unchanged Guardrail
+## Unchanged Guardrails
 
 - Trace 01 and Trace 03 continue to use
   `/images/traces/dai-doan-ket/1945-independence-declaration.jpg`.
-- No 1945 source, derivative, metadata, presentation rule, or crop value changes
-  in this correction pass.
+- Trace 02 historical 1958 continues to use
+  `/images/traces/dao-duc-trach-nhiem/1958-dao-duc-cach-mang.jpg`.
+- No historical source, derivative, metadata, presentation rule, or crop value
+  changes in this correction pass.

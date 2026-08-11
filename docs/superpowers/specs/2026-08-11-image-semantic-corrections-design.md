@@ -21,34 +21,31 @@ remain unchanged.
 
 ## Selected Approach
 
-Use a license-first, narrative-specific replacement pass.
+Use the three owner-provided and owner-approved AI illustrations as conceptual
+Present Day imagery.
 
-This approach is preferred over re-cropping because the owner explicitly
-requested replacement after reviewing the existing subjects. Staged, generated,
-or AI-created imagery is excluded because it would weaken documentary trust and
-would not solve the semantic mismatch reliably.
+The project owner reviewed each image inside the actual desktop and mobile Trace
+opening frames and approved all three on 2026-08-11. They must not be attributed
+to a stock-photo source or license. The website uses the neutral visible credit
+`Ảnh minh họa`; AI provenance remains in internal metadata and the source
+manifest rather than the rendered alt or credit copy.
 
-## Vietnamese Context Authenticity Gate
+## Owner-Approved AI Asset Gate
 
-Every Present Day replacement must be supported by source metadata that
-explicitly identifies either Vietnamese subjects or a photographed location in
-Vietnam. Visual appearance alone is not evidence of nationality and must not be
-used to classify a person as Vietnamese.
+Each Present Day replacement must:
 
-Accept a candidate only when:
+- use the exact file approved by the project owner;
+- describe the visible scene factually without adding medium labels to alt text;
+- use the visible credit `Ảnh minh họa`;
+- avoid a source link because no stable generator source page was supplied;
+- record that the generator and generator-license terms were not supplied;
+- keep all required faces, gestures, documents, and study surfaces legible in
+  the existing 4:5 desktop and mobile frame;
+- contain no visible watermark, logo, or dominant generated text at production
+  size.
 
-- the source title, description, tags, caption, location field, or creator notes
-  explicitly establish Vietnam or Vietnamese subject context;
-- the context is visible or remains plausible after the existing 4:5 crop;
-- no foreign landmark, institution, corporate office, or culturally specific
-  setting contradicts the Vietnamese context;
-- the source provides a compatible reuse license and stable source page;
-- factual alt text can describe the visible scene without claiming nationality
-  that is not supported by the source.
-
-If no candidate passes all gates for a Trace, do not select a foreign or merely
-East-Asian-looking substitute. Keep the previously approved production asset
-temporarily and report the failed gate.
+The images are conceptual contemporary scenes only. They are not evidence for
+historical facts, real identities, nationality, institutions, or actual events.
 
 ## Trace 01 Present Day Direction
 
@@ -56,7 +53,7 @@ The image must support the opening scenario: students share one project but
 different levels of participation, opinion, and responsibility are creating
 distance.
 
-Accept only a licensed contemporary photograph that:
+The approved AI illustration must:
 
 - shows a small student or young-adult group rather than one presenter;
 - contains visible separation, disagreement, unequal engagement, or unresolved
@@ -75,7 +72,7 @@ text must describe only what is visibly present.
 The image must support the ethical-choice scenario: a group is considering an
 easy shortcut while working under deadline pressure.
 
-Accept only a licensed contemporary photograph that:
+The approved AI illustration must:
 
 - emphasizes a shared laptop, document, notes, or hands under active review;
 - feels serious, uncertain, investigative, or pressured rather than cheerful;
@@ -92,10 +89,10 @@ The image must support the opening scenario: a student begins to question
 whether grades, productivity, achievements, and CV metrics have reduced their
 human value to numbers.
 
-Accept only a licensed contemporary photograph that:
+The approved AI illustration must:
 
-- shows a Vietnamese student or a student photographed in Vietnam, as verified
-  by source metadata;
+- depicts one Vietnamese university student as a conceptual character without
+  claiming a real identity;
 - centers one person working or pausing alone with a laptop, paper, notebook, or
   academic material;
 - feels introspective, pressured, uncertain, or emotionally quiet rather than
@@ -140,7 +137,7 @@ asset records:
 
 - `src`;
 - factual `alt` and `caption`;
-- `credit` and stable `sourceUrl`;
+- transparent AI `credit` with no `sourceUrl`;
 - `verificationStatus` and `usageStatus`;
 - `license` or an explicit `usageNote`;
 - existing `kind` and `presentation` fields.
@@ -153,9 +150,9 @@ data-driven through `presentation.objectPosition`.
 ## Testing And Acceptance
 
 Tests must first fail on the current three Present Day asset paths, then require
-the selected replacement paths, Vietnamese-context provenance fields, and
-presentation metadata. Trace 02 historical 1958 changes only when its separate
-authenticity gate passes.
+the selected replacement paths, owner-approved AI provenance fields, absent
+source links, and presentation metadata. Trace 02 historical 1958 changes only
+when its separate authenticity gate passes.
 
 Production acceptance covers Homepage and all Trace routes at:
 
@@ -165,9 +162,37 @@ Production acceptance covers Homepage and all Trace routes at:
 - reduced motion.
 
 Focused review checks all three Present Day frames and the unchanged 1958
-document for semantic fit, Vietnamese-context evidence, crop safety,
+document for semantic fit, AI disclosure, watermark absence, crop safety,
 readability, console errors, overflow, and regressions. The 1945 asset must
 retain its current path and presentation metadata.
+
+## Reconciliation Ledger
+
+### Source Of Truth
+
+| Source ID | Source and location | Revision/date | Evidence it can prove | Authority level | Owner | Conflicts |
+|---|---|---|---|---|---|---|
+| SRC-001 | Project owner approval in the active Codex task | 2026-08-11 | Exact approval of all three supplied AI images | Normative business decision | Project owner | Overrides the earlier no-AI constraint |
+| SRC-002 | `docs/superpowers/specs/2026-08-11-image-semantic-corrections-design.md` | Commit `64d9825` | Earlier Vietnamese stock-photo requirement | Superseded design evidence | Project owner | Excluded AI before the owner reviewed generated alternatives |
+| SRC-003 | Three files under `C:/Users/admin/Downloads/Trace 0*.png` | SHA-256 recorded in the source manifest on 2026-08-11 | Exact approved pixels | Approved asset evidence | Project owner | Generator and generator-license terms were not supplied |
+| SRC-004 | Project owner visible-credit instruction in the active Codex task | 2026-08-11 | Exact rendered credit copy | Normative business decision | Project owner | Replaces proposed AI or owner-supplied wording with `Ảnh minh họa` |
+
+### Business Decision
+
+| Decision ID | Slice ID | Question | Options considered | Approved decision | Rationale | Approver | Decision date | Affected requirements |
+|---|---|---|---|---|---|---|---|---|
+| BD-001 | SL-001 | Which Present Day imagery should ship? | Foreign licensed stock; verified Vietnamese stock; owner-generated AI illustrations | Use the three exact owner-provided AI illustrations with transparent disclosure | They fit the three narratives and Vietnamese visual context better in the actual Trace frames | Project owner | 2026-08-11 | BR-001 through BR-005 |
+| BD-002 | SL-001 | What credit should users see? | Explicit AI label; owner-supplied label; neutral illustration label | Display `Ảnh minh họa`; keep AI provenance internal | The owner requested neutral visible wording while retaining an accurate internal record | Project owner | 2026-08-11 | BR-004 |
+
+### Requirements And Traceability
+
+| Decision ID | Requirement ID | Slice/use case | Interface or API | Implementation location | Acceptance test ID | Evidence | Status |
+|---|---|---|---|---|---|---|---|
+| BD-001 | BR-001 | Trace 01 Present Day | `TraceImage` | `data/traces.ts` and `public/images/traces/dai-doan-ket/` | AT-001 | Fixed path and focused opening screenshot | approved-requirement |
+| BD-001 | BR-002 | Trace 02 Present Day | `TraceImage` | `data/traces.ts` and `public/images/traces/dao-duc-trach-nhiem/` | AT-002 | Fixed path and focused opening screenshot | approved-requirement |
+| BD-001 | BR-003 | Trace 03 Present Day | `TraceImage` | `data/traces.ts` and `public/images/traces/con-nguoi/` | AT-003 | Fixed path and focused opening screenshot | approved-requirement |
+| BD-002 | BR-004 | Neutral visible credit and internal provenance | Optional `sourceUrl`, `credit`, `usageNote` | `data/traces.ts` and `components/trace/trace-opening.tsx` | AT-004 | `Nguồn ảnh: Ảnh minh họa`, zero source links, internal AI usage note | approved-requirement |
+| BD-001 | BR-005 | Historical guardrails | Existing historical `TraceImage` records | `data/traces.ts` | AT-005 | 1945 and 1958 paths unchanged | approved-requirement |
 
 ## Release Boundary
 

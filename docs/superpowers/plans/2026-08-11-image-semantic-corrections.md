@@ -1,188 +1,127 @@
-# Verified Vietnamese Present-Day Imagery Implementation Plan
+# Owner-Approved AI Present-Day Imagery Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. Execute inline in this repository; do not dispatch subagents.
 
-**Goal:** Replace all three Present Day photographs with licensed imagery whose source metadata explicitly establishes Vietnamese subjects or a photographed location in Vietnam, while preserving the existing Trace renderer and layouts.
+**Goal:** Replace all three Present Day photographs with the exact AI illustrations supplied and approved by the project owner, disclose AI provenance transparently, and preserve the existing renderer and historical assets.
 
-**Architecture:** The existing `TraceImage` contract remains the only rendering interface. A provenance-first research task locks one Vietnamese-context source per Trace, tests require stable production paths and guarded historical assets, non-destructive derivatives preserve the full source, and `data/traces.ts` supplies factual metadata and crop position to the shared renderer. Trace 02 historical 1958 remains unchanged because no original-publication source has passed its separate authenticity gate.
+**Architecture:** The existing `TraceImage` contract remains the rendering interface. Tests first require three fixed production paths, owner-approved metadata, plain-text AI credit with no source link, and unchanged historical guardrails. Non-destructive RGB JPEG derivatives are created from the approved PNG files, then `data/traces.ts` supplies the assets and crop metadata to the unchanged shared renderer.
 
-**Tech Stack:** Next.js 16, React 19, TypeScript, Node test runner, Python Pillow, Python Playwright, licensed image-source pages, GitHub CLI.
+**Tech Stack:** Next.js 16, React 19, TypeScript, Node test runner, Python Pillow, Python Playwright, GitHub CLI.
 
 ## Global Constraints
 
-- Replace Trace 01, Trace 02, and Trace 03 Present Day imagery.
-- Each source must explicitly identify Vietnamese subjects or a photographed location in Vietnam through title, description, tags, caption, location, or creator notes.
-- Do not infer nationality from facial appearance.
-- Keep `public/images/traces/dai-doan-ket/1945-independence-declaration.jpg` and its production metadata unchanged.
-- Keep `public/images/traces/dao-duc-trach-nhiem/1958-dao-duc-cach-mang.jpg` unchanged until an original scan, issue cover with authoritative linkage, or explicit archival facsimile passes the documentary gate.
+- Use exactly these approved source files:
+  - `C:/Users/admin/Downloads/Trace 01 — Đại đoàn kết.png`
+  - `C:/Users/admin/Downloads/Trace 02 — Đạo đức & trách nhiệm.png`
+  - `C:/Users/admin/Downloads/Trace 03 — Con người.png`
+- Credit each production image as `Ảnh minh họa`.
+- Do not add a `sourceUrl`; the generator and generator-license terms were not supplied.
+- Set `verificationStatus: "verified"`, `usageStatus: "approved"`, and record the owner approval and missing generator terms in `usageNote` and `license`.
+- Keep `public/images/traces/dai-doan-ket/1945-independence-declaration.jpg` and its metadata unchanged.
+- Keep `public/images/traces/dao-duc-trach-nhiem/1958-dao-duc-cach-mang.jpg` and its metadata unchanged.
 - Preserve Homepage, historical assets, image taxonomy, shared renderer, routes, layout, typography, interaction, responsive behavior, and reduced motion.
-- Do not use AI-generated imagery, foreign-context stock imagery, generic corporate collaboration, celebratory student imagery, or nationality inferred from appearance.
-- Present Day photographs remain `kind: "present"`, `fit: "cover"`, `aspectRatio: "portrait"`, `tone: "natural"`, and `background: "neutral"`.
-- Source originals and screenshots stay outside the repository.
+- Present Day images remain `kind: "present"`, `fit: "cover"`, `aspectRatio: "portrait"`, `tone: "natural"`, `background: "neutral"`, and centered.
+- Source PNG files and screenshots stay outside the repository.
 - Production derivatives are RGB JPEG files, maximum dimension 2400 pixels, quality 92, with no baked semantic crop.
 - Push to the existing `phase-8-historical-assets` branch and update draft PR #1; do not merge.
 
 ---
 
-### Task 1: Research And Lock Three Verified Vietnamese Sources
+### Task 1: Reconcile Provenance Documentation
 
 **Files:**
 - Modify: `docs/image-sources/image-semantic-corrections.md`
-- Read: `docs/superpowers/specs/2026-08-11-image-semantic-corrections-design.md`
-- Read: `data/traces.ts`
-- Output outside repository: `C:/Users/admin/.codex/visualizations/2026/08/11/vietnamese-present-day-sources/`
+- Modify: `docs/superpowers/specs/2026-08-11-image-semantic-corrections-design.md`
+- Modify: `docs/superpowers/plans/2026-08-11-image-semantic-corrections.md`
 
 **Interfaces:**
-- Consumes: the approved Vietnamese-context authenticity gate and three Trace opening narratives.
-- Produces: accepted source records with stable keys `trace-01-present`, `trace-02-present`, and `trace-03-present`; retains the failed-gate record `trace-02-1958`.
-- Each accepted record contains: `subject`, `sourcePageUrl`, `originalFileUrl`, `ownerOrCreator`, `vietnamEvidence`, `license`, `usageStatus`, `verificationStatus`, `caption`, `alt`, `kind`, `fit`, `aspectRatio`, `tone`, `background`, and `objectPosition`.
+- Consumes: owner approval dated 2026-08-11 and exact source-file hashes.
+- Produces: a stable decision record for `trace-01-present`, `trace-02-present`, `trace-03-present`, and the unchanged `trace-02-1958` failed gate.
 
-- [ ] **Step 1: Search Trace 01 Vietnamese group candidates**
+- [ ] **Step 1: Record exact approved source properties**
 
-Search licensed sources with these query families:
-
-```text
-Vietnamese students group project discussion Vietnam
-sinh viên Việt Nam thảo luận nhóm tài liệu
-students teamwork Hanoi Vietnam serious discussion
-young adults project meeting Ho Chi Minh City Vietnam
-```
-
-Reject candidates dominated by smiles, presentations, corporate workshops,
-foreign landmarks, or one speaker. Require a shared document or project surface
-plus visible difference in posture, attention, or gesture.
-
-- [ ] **Step 2: Search Trace 02 Vietnamese decision candidates**
-
-Search licensed sources with these query families:
+Record:
 
 ```text
-Vietnamese students laptop discussion Vietnam
-sinh viên Việt Nam xem laptop thảo luận
-hands laptop university Vietnam decision
-students deadline documents Ho Chi Minh City Vietnam
+Trace 01: PNG, 1122x1402, RGB, SHA-256 FFF906FD3A87C540534F6A707653B951F025526B43DCFE9FAD10A4A0EE75115D
+Trace 02: PNG, 1122x1402, RGB, SHA-256 B6A85966FFF869BC3D2F77ACC88E3EE39FBCF6A3318355EB9FE9215ED5758120
+Trace 03: PNG, 1856x2146, RGBA, SHA-256 DE45489B20761BB0C54E6F8412304E4AED21EAD440B6A172C0839C29718203C2
 ```
 
-Reject candidates that read as celebration, generic productivity, or corporate
-collaboration. Require a laptop, document, notes, or hands under active review,
-with personal identity secondary to the decision surface.
+- [ ] **Step 2: Record transparent AI provenance**
 
-- [ ] **Step 3: Search Trace 03 Vietnamese student candidates**
-
-Search licensed sources with these query families:
+Use:
 
 ```text
-Vietnamese student alone laptop studying Vietnam
-sinh viên Việt Nam học một mình laptop suy tư
-student stressed studying Hanoi Vietnam
-university student notebook Ho Chi Minh City quiet
+Visible credit: Ảnh minh họa
+Usage status: approved
+Verification status: verified
+License: Không nêu giấy phép của công cụ tạo
+Usage note: Chủ dự án cung cấp và duyệt ảnh minh họa AI ngày 2026-08-11; công cụ tạo và điều khoản giấy phép không được cung cấp.
+Source URL: none
 ```
 
-Reject graduation, awards, smiling success poses, corporate offices, and images
-that require an invented visible score or CV. Require one student, a study
-surface, and an introspective or emotionally quiet composition.
-
-- [ ] **Step 4: Apply identity, semantic, crop, and rights gates**
-
-Accept a candidate only when all statements are true:
-
-```text
-The source metadata explicitly establishes Vietnam or Vietnamese subject context.
-The visible subject supports the exact Trace opening narrative.
-The source provides a stable page and compatible reuse license.
-The existing 4:5 frame preserves the required face, gesture, document, or laptop.
-No foreign contextual cue contradicts the Vietnamese metadata.
-Alt text remains factual and does not infer invisible actions or nationality.
-```
-
-- [ ] **Step 5: Download originals and produce frame previews outside the repository**
-
-Save each original under the audit root. Record SHA-256, MIME type, dimensions,
-and mode:
-
-```powershell
-Get-FileHash -Algorithm SHA256 $fullPath
-py -3 -c "from PIL import Image; p=r'$fullPath'; im=Image.open(p); print(im.format, im.size, im.mode)"
-```
-
-Create desktop and mobile 4:5 crop previews without modifying source pixels.
-Inspect each candidate in the actual opening-frame dimensions before selection.
-
-- [ ] **Step 6: Replace the three Present source records in the manifest**
-
-Record the exact interface fields plus semantic-fit rationale, Vietnamese-context
-evidence, crop assessment, grayscale assessment, contextual-cue review, original
-SHA-256, and rights-gate result. Keep the explicit failed authenticity record for
-Trace 02 historical 1958.
+- [ ] **Step 3: Self-review documentation**
 
 Run:
 
 ```text
-rg -n "TBD|TODO|unknown|unclear" docs/image-sources/image-semantic-corrections.md
+rg -n "TBD|TODO|unknown|unclear|Unsplash|Pexels|licensed contemporary photograph|AI-created imagery is excluded" docs/image-sources/image-semantic-corrections.md docs/superpowers/specs/2026-08-11-image-semantic-corrections-design.md docs/superpowers/plans/2026-08-11-image-semantic-corrections.md
 git diff --check
 ```
 
-Expected: no incomplete field and no whitespace error.
+Expected: no stale stock-photo decision, incomplete field, or whitespace error.
 
-- [ ] **Step 7: Commit the locked source records**
+- [ ] **Step 4: Commit reconciliation documentation**
 
 ```text
-git add -- docs/image-sources/image-semantic-corrections.md
-git commit -m "docs: record verified Vietnamese image sources"
+git add -- docs/image-sources/image-semantic-corrections.md docs/superpowers/specs/2026-08-11-image-semantic-corrections-design.md docs/superpowers/plans/2026-08-11-image-semantic-corrections.md
+git commit -m "docs: approve AI present-day illustrations"
 ```
 
 ---
 
-### Task 2: Write Failing Registry And Acceptance Requirements
+### Task 2: Write Failing AI Asset Requirements
 
 **Files:**
 - Modify: `tests/trace-registry.test.ts`
 - Modify: `tests/trace_acceptance.py`
-- Read: `docs/image-sources/image-semantic-corrections.md`
 
 **Interfaces:**
-- Consumes: the three locked source records from Task 1.
-- Produces: failing tests for stable paths, Vietnamese-context provenance, presentation, focused opening captures, and unchanged 1945/1958 historical assets.
+- Consumes: the three approved source records from Task 1.
+- Produces: failing tests for fixed paths, transparent AI metadata, absent source links, focused screenshots, and unchanged 1945/1958 assets.
 
-- [ ] **Step 1: Require fixed Present Day replacement paths**
+- [ ] **Step 1: Require fixed production paths**
 
-Require these paths:
+Require:
 
 ```ts
-const vietnamesePresentAssets = new Map([
-  ["dai-doan-ket", "/images/traces/dai-doan-ket/present-day-vietnamese-group.jpg"],
-  ["dao-duc-trach-nhiem", "/images/traces/dao-duc-trach-nhiem/present-day-vietnamese-decision.jpg"],
-  ["con-nguoi", "/images/traces/con-nguoi/present-day-vietnamese-student.jpg"],
+const approvedAiPresentAssets = new Map([
+  ["dai-doan-ket", "/images/traces/dai-doan-ket/present-day-ai-group.jpg"],
+  ["dao-duc-trach-nhiem", "/images/traces/dao-duc-trach-nhiem/present-day-ai-decision.jpg"],
+  ["con-nguoi", "/images/traces/con-nguoi/present-day-ai-student.jpg"],
 ]);
 ```
 
-For each image assert `verificationStatus: "verified"`,
-`usageStatus: "licensed"`, factual `credit`, stable `sourceUrl`, explicit
-license, `kind: "present"`, `fit: "cover"`, and portrait presentation.
+- [ ] **Step 2: Require transparent metadata**
 
-- [ ] **Step 2: Lock Vietnamese-context provenance**
-
-Add a test-only map using the exact `sourceUrl` and credit values from the
-manifest. Assert all three records match the accepted source pages and creators;
-do not infer nationality from alt text.
-
-- [ ] **Step 3: Lock unchanged historical assets**
-
-Assert Trace 01 and Trace 03 retain:
+For all three assert:
 
 ```text
-/images/traces/dai-doan-ket/1945-independence-declaration.jpg
+credit = Ảnh minh họa
+sourceUrl = undefined
+verificationStatus = verified
+usageStatus = approved
+license = Không nêu giấy phép của công cụ tạo
+usageNote contains Chủ dự án and AI
+kind = present
+fit = cover
+aspectRatio = portrait
 ```
 
-Assert Trace 02 historical 1958 retains:
+- [ ] **Step 3: Lock historical guardrails and focused openings**
 
-```text
-/images/traces/dao-duc-trach-nhiem/1958-dao-duc-cach-mang.jpg
-```
-
-- [ ] **Step 4: Capture all three focused Present Day openings**
-
-Use:
+Assert the 1945 and 1958 paths remain unchanged. Configure:
 
 ```python
 FOCUSED_OPENINGS = {
@@ -192,80 +131,49 @@ FOCUSED_OPENINGS = {
 }
 ```
 
-Capture `section.trace-opening` after the existing screenshot preparation.
+Acceptance must expect zero source links in `.trace-opening .trace-figure__credit`.
 
-- [ ] **Step 5: Run unit tests and verify RED**
-
-Run:
+- [ ] **Step 4: Run tests and verify RED**
 
 ```text
 npm test
 ```
 
-Expected: failures identify the rejected trial/current Present paths and missing
-Trace 03 replacement while unrelated tests remain green.
+Expected: failures identify the old trial/current paths and stock metadata while unrelated tests remain green.
 
 ---
 
-### Task 3: Produce Non-Destructive Derivatives And Update Production Data
+### Task 3: Produce Derivatives And Update Production Data
 
 **Files:**
-- Create: `public/images/traces/dai-doan-ket/present-day-vietnamese-group.jpg`
-- Create: `public/images/traces/dao-duc-trach-nhiem/present-day-vietnamese-decision.jpg`
-- Create: `public/images/traces/con-nguoi/present-day-vietnamese-student.jpg`
+- Create: `public/images/traces/dai-doan-ket/present-day-ai-group.jpg`
+- Create: `public/images/traces/dao-duc-trach-nhiem/present-day-ai-decision.jpg`
+- Create: `public/images/traces/con-nguoi/present-day-ai-student.jpg`
+- Modify: `data/traces.ts`
 - Remove rejected untracked trials: `public/images/traces/dai-doan-ket/present-day-tension.jpg`
 - Remove rejected untracked trials: `public/images/traces/dao-duc-trach-nhiem/present-day-decision.jpg`
-- Modify: `data/traces.ts`
-- Test: `tests/trace-registry.test.ts`
 
 **Interfaces:**
-- Consumes: accepted originals and exact metadata from the provenance manifest.
-- Produces: three RGB JPEG derivatives and three updated production `TraceImage` records.
+- Consumes: the exact approved PNG files.
+- Produces: three RGB JPEG derivatives and three owner-approved `TraceImage` records.
 
-- [ ] **Step 1: Generate derivatives without destructive crop**
+- [ ] **Step 1: Generate non-destructive JPEG derivatives**
 
-For each accepted original, run:
+Use `ImageOps.exif_transpose`, convert to RGB, thumbnail to `2400x2400`, and save
+JPEG quality 92 with optimize and progressive enabled. Do not use `ImageOps.fit`.
 
-```python
-from pathlib import Path
-from PIL import Image, ImageOps
+- [ ] **Step 2: Update all three Present Day records**
 
-source = Path(SOURCE_PATH)
-destination = Path(DESTINATION_PATH)
-image = ImageOps.exif_transpose(Image.open(source)).convert("RGB")
-image.thumbnail((2400, 2400), Image.Resampling.LANCZOS)
-destination.parent.mkdir(parents=True, exist_ok=True)
-image.save(destination, "JPEG", quality=92, optimize=True, progressive=True)
-```
+Use the fixed paths and metadata from Task 2. Alt text factually describes only
+the visible scene and does not include an AI medium label. Preserve the existing
+captions and use `objectPosition: "50% center"`.
 
-Do not use `ImageOps.fit` or bake the UI crop into the derivative.
+- [ ] **Step 3: Remove only the rejected trial derivatives**
 
-- [ ] **Step 2: Update Trace 01 Present Day metadata**
+Delete the two named untracked trial files. Do not delete previous production
+images or any historical file.
 
-Use `/images/traces/dai-doan-ket/present-day-vietnamese-group.jpg`, copy all
-provenance fields from `trace-01-present`, preserve `kind: "present"`, and use
-the accepted `objectPosition`.
-
-- [ ] **Step 3: Update Trace 02 Present Day metadata**
-
-Use `/images/traces/dao-duc-trach-nhiem/present-day-vietnamese-decision.jpg`,
-copy all provenance fields from `trace-02-present`, preserve `kind: "present"`,
-and use the accepted `objectPosition`.
-
-- [ ] **Step 4: Update Trace 03 Present Day metadata**
-
-Use `/images/traces/con-nguoi/present-day-vietnamese-student.jpg`, copy all
-provenance fields from `trace-03-present`, preserve `kind: "present"`, and use
-the accepted `objectPosition`.
-
-- [ ] **Step 5: Remove the two rejected trial derivatives**
-
-Delete only the two untracked trial files named in this task. Do not delete the
-previous production images or any historical asset.
-
-- [ ] **Step 6: Run unit tests and verify GREEN**
-
-Run:
+- [ ] **Step 4: Run tests and verify GREEN**
 
 ```text
 npm test
@@ -275,69 +183,16 @@ Expected: all registry, provenance, presentation, and narrative tests pass.
 
 ---
 
-### Task 4: Run Production Visual Acceptance
+### Task 4: Production Acceptance, Verification, Commit, And Publish
 
 **Files:**
-- Modify only when screenshot evidence requires: `data/traces.ts`
-- Output outside repository: `C:/Users/admin/.codex/visualizations/2026/08/11/vietnamese-present-day-final/`
+- Output outside repository: `C:/Users/admin/.codex/visualizations/2026/08/11/ai-present-day-final/`
 
 **Interfaces:**
-- Consumes: production build and three integrated Present Day assets.
-- Produces: Homepage, full Trace, focused opening, desktop, laptop, mobile, and reduced-motion acceptance evidence.
-
-- [ ] **Step 1: Build and start production**
-
-```text
-npm run build
-.\node_modules\.bin\next.cmd start -p 3700
-```
-
-- [ ] **Step 2: Run Homepage and Trace acceptance**
-
-```powershell
-$env:HCM_BASE_URL='http://localhost:3700'
-$env:HCM_SCREENSHOT_DIR='C:\Users\admin\.codex\visualizations\2026\08\11\vietnamese-present-day-final\homepage-pass-1'
-py -3 tests\homepage_acceptance.py
-$env:HCM_TRACE_SCREENSHOT_DIR='C:\Users\admin\.codex\visualizations\2026\08\11\vietnamese-present-day-final\traces-pass-1'
-py -3 tests\trace_acceptance.py
-```
-
-Expected: all routes pass with no console error or overflow.
-
-- [ ] **Step 3: Review semantic fit and crop at every breakpoint**
-
-Inspect all three focused openings at 1920x1080 plus full pages at 1366x768 and
-390x844. Confirm the source-backed Vietnamese context remains plausible in the
-crop, required faces/gestures/study surfaces remain visible, and the unchanged
-1945 and 1958 assets are identical.
-
-- [ ] **Step 4: Apply only metadata-level crop correction when required**
-
-Allowed corrections are limited to `presentation.objectPosition`, `tone`, and
-factual caption or alt wording. Do not change layout, shared CSS, architecture,
-or historical assets.
-
-- [ ] **Step 5: Capture release acceptance**
-
-```powershell
-$env:HCM_TRACE_SCREENSHOT_DIR='C:\Users\admin\.codex\visualizations\2026\08\11\vietnamese-present-day-final\traces-release'
-py -3 tests\trace_acceptance.py
-```
-
----
-
-### Task 5: Final Verification, Commit, Push, And PR Update
-
-**Files:**
-- Review all modified data, test, manifest, and image files.
-
-**Interfaces:**
-- Consumes: visually accepted implementation.
-- Produces: one implementation commit on the existing branch and an updated draft PR; no merge.
+- Consumes: production build and three integrated AI illustrations.
+- Produces: visual acceptance evidence, one implementation commit, and an updated draft PR; no merge.
 
 - [ ] **Step 1: Run the fresh verification gate**
-
-Stop the server, then run:
 
 ```text
 npm test
@@ -346,45 +201,31 @@ npm run lint
 npm run build
 ```
 
-Restart the final build and rerun Homepage and Trace production acceptance at
-desktop, laptop, mobile, and reduced motion.
+- [ ] **Step 2: Run production Homepage and Trace acceptance**
 
-- [ ] **Step 2: Inspect final scope**
+Start production on port 3700 and run `tests/homepage_acceptance.py` plus
+`tests/trace_acceptance.py` with screenshots outside the repository. Verify
+1920x1080, 1366x768, 390x844, and reduced motion.
+
+- [ ] **Step 3: Inspect final visual evidence**
+
+Confirm all three focused openings preserve the approved composition, Trace 03
+has no visible watermark, AI-generated text is not dominant at production size,
+and 1945/1958 remain unchanged.
+
+- [ ] **Step 4: Inspect scope and commit implementation**
 
 ```text
 git diff --check
 git status --short
 git diff --stat
 git diff --name-status
+git add -- data/traces.ts tests/trace-registry.test.ts tests/trace_acceptance.py public/images/traces/dai-doan-ket/present-day-ai-group.jpg public/images/traces/dao-duc-trach-nhiem/present-day-ai-decision.jpg public/images/traces/con-nguoi/present-day-ai-student.jpg
+git commit -m "fix: use approved AI present-day illustrations"
 ```
 
-Expected: only the source manifest, three Present assets, `data/traces.ts`, and
-required test changes appear. The 1945 and 1958 assets must not appear in the
-diff.
+- [ ] **Step 5: Push and update draft PR #1**
 
-- [ ] **Step 3: Commit implementation**
-
-```text
-git add -- docs/image-sources/image-semantic-corrections.md data/traces.ts tests/trace-registry.test.ts tests/trace_acceptance.py public/images/traces/dai-doan-ket/present-day-vietnamese-group.jpg public/images/traces/dao-duc-trach-nhiem/present-day-vietnamese-decision.jpg public/images/traces/con-nguoi/present-day-vietnamese-student.jpg
-git commit -m "fix: use verified Vietnamese present-day imagery"
-```
-
-- [ ] **Step 4: Push and update PR #1**
-
-```text
-git push origin phase-8-historical-assets
-```
-
-Update the PR body with the three sources, Vietnamese-context evidence,
-licenses, crop decisions, verification results, and confirmation that the 1945
-and 1958 historical assets are unchanged.
-
-- [ ] **Step 5: Inspect checks and stop without merging**
-
-```text
-gh pr checks 1 --repo anhnhat432/HCM --watch
-```
-
-Report the implementation commit, branch, PR URL, available check state, three
-source pages and licenses, final screenshot paths, and unchanged 1945/1958
-status. Do not merge.
+Push `phase-8-historical-assets`, update PR #1 with AI disclosure, hashes,
+visual evidence, verification results, and unchanged historical guardrails.
+Inspect available checks and stop without merging.
