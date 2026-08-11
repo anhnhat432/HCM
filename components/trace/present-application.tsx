@@ -27,7 +27,7 @@ export function PresentApplication({
             <p className="trace-eyebrow">{application.eyebrow}</p>
             <h2 className="present-application__heading" id="application-title">
               {application.heading.map((line) => (
-                <span key={line}>{line}</span>
+                <span key={line}>{line}{" "}</span>
               ))}
             </h2>
             <p className="present-application__bridge">{application.bridge}</p>

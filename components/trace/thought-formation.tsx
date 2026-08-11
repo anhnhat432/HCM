@@ -19,7 +19,7 @@ export function ThoughtFormation({ formation }: ThoughtFormationProps) {
         <TraceReveal>
           <h2 className="thought-formation__heading" id="thought-formation-title">
             {formation.heading.map((line) => (
-              <span key={line}>{line}</span>
+              <span key={line}>{line}{" "}</span>
             ))}
           </h2>
         </TraceReveal>
@@ -45,7 +45,7 @@ export function ThoughtFormation({ formation }: ThoughtFormationProps) {
                 <p>Tư tưởng hình thành</p>
                 <h3>
                   {formation.conclusion.map((line) => (
-                    <span key={line}>{line}</span>
+                    <span key={line}>{line}{" "}</span>
                   ))}
                 </h3>
                 {formation.sources?.length ? (
@@ -57,6 +57,7 @@ export function ThoughtFormation({ formation }: ThoughtFormationProps) {
                     <div>
                       {formation.sources.map((source) => (
                         <a
+                          className="trace-source-link"
                           href={source.url}
                           key={source.url}
                           rel="noreferrer"

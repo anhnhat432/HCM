@@ -29,7 +29,7 @@ export function TraceOpening({
           <TraceReveal delay={0.06}>
             <h1 className="trace-opening__title" id="trace-opening-title">
               {presentDay.headline.map((line) => (
-                <span key={line}>{line}</span>
+                <span key={line}>{line}{" "}</span>
               ))}
             </h1>
           </TraceReveal>
