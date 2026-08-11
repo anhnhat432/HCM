@@ -1207,6 +1207,10 @@ a {
   text-transform: uppercase;
 }
 
+.thought-formation__conclusion h3 span + span {
+  margin-top: 0.12em;
+}
+
 .thought-formation__sources {
   display: grid;
   grid-template-columns: 7.5rem minmax(0, 1fr);

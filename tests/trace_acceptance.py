@@ -209,6 +209,30 @@ def assert_line_height_ratio(locator, expected: float, label: str) -> None:
     )
 
 
+def verify_conclusion_line_spacing(page: Page, trace_case: dict) -> None:
+    line_metrics = page.locator(
+        ".thought-formation__conclusion h3 span"
+    ).evaluate_all(
+        """elements => elements.map(element => {
+            const style = getComputedStyle(element);
+            return {
+                marginTop: Number.parseFloat(style.marginTop),
+                fontSize: Number.parseFloat(style.fontSize),
+            };
+        })"""
+    )
+    assert len(line_metrics) >= 2
+    assert line_metrics[0]["marginTop"] == 0
+
+    margin_ratios = [
+        metric["marginTop"] / metric["fontSize"] for metric in line_metrics[1:]
+    ]
+    assert all(abs(ratio - 0.12) <= 0.01 for ratio in margin_ratios), (
+        f"{trace_case['path']} conclusion inter-line ratios are {margin_ratios}; "
+        "expected 0.12"
+    )
+
+
 def verify_image_presentation(page: Page, trace_case: dict) -> None:
     opening_frame = page.locator(
         ".trace-opening .trace-figure__frame--kind-present"
@@ -348,6 +372,7 @@ def verify_trace(page: Page, trace_case: dict) -> None:
         1.04,
         f"{trace_case['path']} conclusion",
     )
+    verify_conclusion_line_spacing(page, trace_case)
     if trace_case["ending"] == "next-trace":
         expected_next_ratio = 1.07 if viewport_width <= 480 else 1.02
         assert_line_height_ratio(
@@ -499,6 +524,16 @@ def main() -> None:
                     path=str(SCREENSHOT_DIR / f"{trace_name}-{viewport_name}.png"),
                     full_page=True,
                 )
+                if viewport_name in {"desktop", "mobile"}:
+                    thought_formation = page.locator("section.thought-formation")
+                    thought_formation.scroll_into_view_if_needed()
+                    page.wait_for_timeout(150)
+                    thought_formation.screenshot(
+                        path=str(
+                            SCREENSHOT_DIR
+                            / f"{trace_name}-thought-{viewport_name}.png"
+                        )
+                    )
                 if viewport_name == "desktop":
                     opening_filename = FOCUSED_OPENINGS.get(trace_name)
                     if opening_filename:
