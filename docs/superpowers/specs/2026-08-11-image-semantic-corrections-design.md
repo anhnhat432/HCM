@@ -2,17 +2,22 @@
 
 ## Scope
 
-Replace exactly three production assets whose current imagery does not meet the
-approved narrative standard:
+Replace the three Present Day production assets whose current imagery does not
+meet the approved Vietnamese-context and narrative standards:
 
 - Trace 01 Present Day;
 - Trace 02 Present Day;
-- Trace 02 historical moment 1958.
+- Trace 03 Present Day.
+
+Trace 02 historical moment 1958 remains a requested correction, but it changes
+only when an authentic original-publication source passes the documentary gate
+defined below. Until then, the current production asset remains unchanged and
+its limitation stays explicit in the source manifest.
 
 The 1945 Independence Declaration photograph remains unchanged. Homepage,
-Trace 03 Present Day, every other historical asset, image taxonomy, shared
-renderer, routes, layout, typography, interaction, responsive behavior, and
-reduced-motion behavior remain unchanged.
+every other historical asset, image taxonomy, shared renderer, routes, layout,
+typography, interaction, responsive behavior, and reduced-motion behavior
+remain unchanged.
 
 ## Selected Approach
 
@@ -22,6 +27,28 @@ This approach is preferred over re-cropping because the owner explicitly
 requested replacement after reviewing the existing subjects. Staged, generated,
 or AI-created imagery is excluded because it would weaken documentary trust and
 would not solve the semantic mismatch reliably.
+
+## Vietnamese Context Authenticity Gate
+
+Every Present Day replacement must be supported by source metadata that
+explicitly identifies either Vietnamese subjects or a photographed location in
+Vietnam. Visual appearance alone is not evidence of nationality and must not be
+used to classify a person as Vietnamese.
+
+Accept a candidate only when:
+
+- the source title, description, tags, caption, location field, or creator notes
+  explicitly establish Vietnam or Vietnamese subject context;
+- the context is visible or remains plausible after the existing 4:5 crop;
+- no foreign landmark, institution, corporate office, or culturally specific
+  setting contradicts the Vietnamese context;
+- the source provides a compatible reuse license and stable source page;
+- factual alt text can describe the visible scene without claiming nationality
+  that is not supported by the source.
+
+If no candidate passes all gates for a Trace, do not select a foreign or merely
+East-Asian-looking substitute. Keep the previously approved production asset
+temporarily and report the failed gate.
 
 ## Trace 01 Present Day Direction
 
@@ -58,6 +85,30 @@ Accept only a licensed contemporary photograph that:
 
 The image does not need to depict plagiarism literally. It must make a difficult
 group decision plausible without inventing visible evidence that is not present.
+
+## Trace 03 Present Day Direction
+
+The image must support the opening scenario: a student begins to question
+whether grades, productivity, achievements, and CV metrics have reduced their
+human value to numbers.
+
+Accept only a licensed contemporary photograph that:
+
+- shows a Vietnamese student or a student photographed in Vietnam, as verified
+  by source metadata;
+- centers one person working or pausing alone with a laptop, paper, notebook, or
+  academic material;
+- feels introspective, pressured, uncertain, or emotionally quiet rather than
+  celebratory, aspirational, or visibly successful;
+- does not require a visible grade, score, CV, or private personal information
+  to communicate the setup;
+- avoids graduation imagery, awards, staged success poses, corporate offices,
+  and generic smiling-student stock photography;
+- works in the existing 4:5 portrait frame while preserving the face, posture,
+  and study surface needed for the narrative.
+
+The caption continues to frame results as an overly narrow measure. Alt text
+describes only the visible student and study setting.
 
 ## Trace 02 Historical 1958 Direction
 
@@ -101,8 +152,10 @@ data-driven through `presentation.objectPosition`.
 
 ## Testing And Acceptance
 
-Tests must first fail on the current three asset paths, then require the selected
-replacement paths and provenance fields.
+Tests must first fail on the current three Present Day asset paths, then require
+the selected replacement paths, Vietnamese-context provenance fields, and
+presentation metadata. Trace 02 historical 1958 changes only when its separate
+authenticity gate passes.
 
 Production acceptance covers Homepage and all Trace routes at:
 
@@ -111,9 +164,10 @@ Production acceptance covers Homepage and all Trace routes at:
 - 390x844;
 - reduced motion.
 
-Focused review checks both Present Day frames and the 1958 document for semantic
-fit, crop safety, readability, console errors, overflow, and regressions. The
-1945 asset must retain its current path and presentation metadata.
+Focused review checks all three Present Day frames and the unchanged 1958
+document for semantic fit, Vietnamese-context evidence, crop safety,
+readability, console errors, overflow, and regressions. The 1945 asset must
+retain its current path and presentation metadata.
 
 ## Release Boundary
 
