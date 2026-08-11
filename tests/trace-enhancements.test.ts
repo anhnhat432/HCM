@@ -26,6 +26,10 @@ const sourceDetailsModuleUrl = new URL(
   "../lib/trace-sources.ts",
   import.meta.url,
 );
+const historicalMomentComponentUrl = new URL(
+  "../components/trace/historical-moment.tsx",
+  import.meta.url,
+);
 
 function requireCompleteTrace(trace: TraceData): asserts trace is CompleteTraceData {
   assert.ok(trace.presentDay);
@@ -207,4 +211,25 @@ test("Historical moments expose a compact source drawer trigger", async () => {
       assert.equal(markup.includes("historical-moment__sources"), false);
     }
   }
+});
+
+test("Historical moments separate source utilities from narrative continuation", async () => {
+  const { HistoricalMoment } = await import(historicalMomentComponentUrl.href);
+  const moment = traces[0].historicalMoments[0];
+  const markup = renderToStaticMarkup(
+    createElement(HistoricalMoment, {
+      moment,
+      imageRight: false,
+      nextHref: "#moment-1941",
+      nextLabel: "Tiếp theo",
+    }),
+  );
+
+  const actions = markup.match(
+    /<div class="historical-moment__actions">([\s\S]*?)<\/div>/,
+  )?.[1];
+
+  assert.ok(actions, "Historical actions need a dedicated hierarchy wrapper");
+  assert.ok(actions.indexOf("source-drawer-trigger") >= 0);
+  assert.ok(actions.indexOf("trace-sequence-link") > actions.indexOf("source-drawer-trigger"));
 });

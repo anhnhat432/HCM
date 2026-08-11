@@ -19,6 +19,7 @@ TRACE_CASES = {
         "path": "/trace/dai-doan-ket",
         "title": "Đại đoàn kết",
         "chapter": "01 / 03",
+        "og_image": "/images/traces/dai-doan-ket/present-day-ai-group.jpg",
         "headline": "Khi khác biệt",
         "question": "Điều gì có thể giữ một tập thể cùng hướng?",
         "years": ["1930", "1941", "1945"],
@@ -50,6 +51,9 @@ TRACE_CASES = {
         "path": "/trace/dao-duc-trach-nhiem",
         "title": "Đạo đức & trách nhiệm",
         "chapter": "02 / 03",
+        "og_image": (
+            "/images/traces/dao-duc-trach-nhiem/present-day-ai-decision.jpg"
+        ),
         "headline": "Khi điều dễ làm",
         "question": (
             "Điều gì định hướng một lựa chọn đúng khi không ai buộc ta phải làm đúng?"
@@ -83,6 +87,7 @@ TRACE_CASES = {
         "path": "/trace/con-nguoi",
         "title": "Con người",
         "chapter": "03 / 03",
+        "og_image": "/images/traces/con-nguoi/present-day-ai-student.jpg",
         "headline": "Khi một con người",
         "question": "Giá trị của một con người được quyết định bởi điều gì?",
         "years": ["1945", "1958", "1969"],
@@ -126,9 +131,25 @@ FOCUSED_OPENINGS = {
 
 
 def text_contrast_ratio(
-    page: Page, selector: str, *, include_opacity: bool = False
+    page: Page, selector: str, *, include_opacity: bool = True
 ) -> float:
-    return page.locator(selector).first.evaluate(
+    locator = page.locator(selector).first
+    locator.evaluate("element => element.scrollIntoView({ block: 'center' })")
+    handle = locator.element_handle()
+    page.wait_for_function(
+        """element => {
+            let current = element;
+            while (current) {
+                if (Number.parseFloat(getComputedStyle(current).opacity) < 0.99) {
+                    return false;
+                }
+                current = current.parentElement;
+            }
+            return true;
+        }""",
+        arg=handle,
+    )
+    return locator.evaluate(
         """(element, includeOpacity) => {
             const parseColor = color => {
                 if (color.startsWith('#')) {
@@ -163,13 +184,31 @@ def text_contrast_ratio(
                 return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
             };
             const foreground = parseColor(getComputedStyle(element).color);
-            const opacity = includeOpacity
-                ? Number.parseFloat(getComputedStyle(element).opacity)
-                : 1;
-            const background = parseColor(
+            let opacity = 1;
+            if (includeOpacity) {
+                let current = element;
+                while (current) {
+                    opacity *= Number.parseFloat(getComputedStyle(current).opacity);
+                    current = current.parentElement;
+                }
+            }
+            const canvas = parseColor(
                 getComputedStyle(document.documentElement)
                     .getPropertyValue('--color-canvas')
                     .trim()
+            );
+            const backgroundLayers = [];
+            let current = element;
+            while (current) {
+                const layer = parseColor(getComputedStyle(current).backgroundColor);
+                if (layer.a > 0) {
+                    backgroundLayers.push(layer);
+                }
+                current = current.parentElement;
+            }
+            const background = backgroundLayers.reverse().reduce(
+                (rendered, layer) => ({ ...blend(layer, rendered), a: 1 }),
+                canvas,
             );
             const renderedForeground = blend(
                 { ...foreground, a: foreground.a * opacity },
@@ -193,6 +232,8 @@ def verify_text_contrast(page: Page) -> None:
         ".trace-figure__credit",
         ".historical-moment__summary",
         ".historical-moment__metadata",
+        ".time-bridge__kicker",
+        ".time-bridge__cue",
         ".source-drawer-trigger",
         ".formation-factor p",
         ".application-item p",
@@ -200,7 +241,8 @@ def verify_text_contrast(page: Page) -> None:
     ]
 
     for selector in selectors:
-        if page.locator(selector).count() == 0:
+        locator = page.locator(selector).first
+        if page.locator(selector).count() == 0 or not locator.is_visible():
             continue
         ratio = text_contrast_ratio(page, selector)
         assert ratio >= 4.5, f"{selector} contrast is only {ratio:.2f}:1"
@@ -209,8 +251,19 @@ def verify_text_contrast(page: Page) -> None:
         '.trace-progress__link:not([aria-current="step"])',
         '.trace-progress__link[aria-current="step"]',
     ]:
+        if not page.locator(selector).first.is_visible():
+            continue
         ratio = text_contrast_ratio(page, selector, include_opacity=True)
         assert ratio >= 4.5, f"{selector} contrast is only {ratio:.2f}:1"
+
+    for selector in [
+        ".trace-line__year--to",
+        ".trace-line--return .trace-line__year--from",
+    ]:
+        if not page.locator(selector).first.is_visible():
+            continue
+        ratio = text_contrast_ratio(page, selector)
+        assert ratio >= 3, f"{selector} contrast is only {ratio:.2f}:1"
 
 
 def collect_console_errors(page: Page) -> list[str]:
@@ -223,6 +276,36 @@ def collect_console_errors(page: Page) -> list[str]:
     page.on("console", on_console)
     page.on("pageerror", lambda error: errors.append(str(error)))
     return errors
+
+
+def verify_no_horizontal_overflow(page: Page, label: str) -> None:
+    viewport_width, document_width = page.evaluate(
+        "[document.documentElement.clientWidth, document.documentElement.scrollWidth]"
+    )
+    assert document_width <= viewport_width, (
+        f"{label} overflows horizontally: {document_width}px > {viewport_width}px"
+    )
+
+
+def verify_focus_indicator(page: Page, selector: str) -> None:
+    locator = page.locator(selector).first
+    page.keyboard.press("Tab")
+    locator.focus()
+    assert locator.evaluate("element => element === document.activeElement")
+    assert locator.evaluate("element => element.matches(':focus-visible')")
+    focus_style = locator.evaluate(
+        """element => ({
+            outlineStyle: getComputedStyle(element).outlineStyle,
+            outlineWidth: Number.parseFloat(getComputedStyle(element).outlineWidth),
+            boxShadow: getComputedStyle(element).boxShadow,
+        })"""
+    )
+    has_outline = (
+        focus_style["outlineStyle"] != "none" and focus_style["outlineWidth"] >= 2
+    )
+    assert has_outline or focus_style["boxShadow"] != "none", (
+        f"{selector} has no visible keyboard focus indicator"
+    )
 
 
 def settle_page(page: Page) -> None:
@@ -477,6 +560,15 @@ def verify_trace(page: Page, trace_case: dict) -> None:
         page.locator('meta[property="og:locale"]').get_attribute("content")
         == "vi_VN"
     )
+    assert page.locator('link[rel="canonical"]').get_attribute("href") == (
+        f"https://hcm-trace.vercel.app{trace_case['path']}"
+    )
+    assert page.locator('meta[property="og:image"]').get_attribute(
+        "content"
+    ).endswith(trace_case["og_image"])
+    assert page.locator('meta[name="twitter:image"]').get_attribute(
+        "content"
+    ).endswith(trace_case["og_image"])
 
     headings = page.get_by_role("heading", level=1)
     assert headings.count() == 1
@@ -541,6 +633,21 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     question = page.locator(".trace-opening__question")
     question.wait_for()
     assert trace_case["question"] in question.inner_text()
+    viewport_width = page.evaluate("window.innerWidth")
+    viewport_height = page.evaluate("window.innerHeight")
+    opening_action = page.get_by_role("link", name="Nhìn lại quá khứ", exact=True)
+    if viewport_width >= 1024 and viewport_height <= 820:
+        action_box = opening_action.bounding_box()
+        assert action_box is not None
+        assert action_box["y"] + action_box["height"] <= viewport_height, (
+            f"{trace_case['path']} opening action falls below the laptop fold"
+        )
+    elif viewport_width <= 480:
+        question_box = question.bounding_box()
+        assert question_box is not None
+        assert question_box["y"] <= viewport_height * 0.88, (
+            f"{trace_case['path']} central question appears too late on mobile"
+        )
     assert page.locator(".historical-moment__year").all_inner_texts() == years
     assert page.locator(".trace-figure__frame--kind-placeholder").count() == trace_case[
         "placeholder_count"
@@ -580,7 +687,15 @@ def verify_trace(page: Page, trace_case: dict) -> None:
         "#thought-formation",
     ]
 
-    viewport_width = page.evaluate("window.innerWidth")
+    for year in years:
+        moment = page.locator(f"#moment-{year}")
+        source_box = moment.locator(".source-drawer-trigger").bounding_box()
+        sequence_box = moment.locator(".trace-sequence-link").bounding_box()
+        assert source_box is not None and sequence_box is not None
+        assert sequence_box["y"] >= source_box["y"] + source_box["height"] + 6, (
+            f"{trace_case['path']} {year} source utility competes with continuation"
+        )
+
     assert_line_height_ratio(
         page.locator(".thought-formation__heading"),
         1.10,
@@ -640,7 +755,7 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     )
     assert page.locator(f"#trace-recap + {ending_selector}").count() == 1
     if trace_case["ending"] == "next-trace":
-        expected_next_ratio = 1.07 if viewport_width <= 480 else 1.02
+        expected_next_ratio = 1.07 if viewport_width <= 768 else 1.02
         assert_line_height_ratio(
             page.locator(".trace-navigation__title"),
             expected_next_ratio,
@@ -712,6 +827,20 @@ def verify_trace(page: Page, trace_case: dict) -> None:
         assert page.get_by_role(
             "link", name="Bắt đầu lại", exact=True
         ).get_attribute("href") == "/trace/dai-doan-ket"
+        assert page.get_by_role(
+            "link", name="Về dự án & phương pháp", exact=True
+        ).get_attribute("href") == "/phuong-phap"
+        if viewport_width >= 1024 and viewport_height <= 820:
+            page.evaluate(
+                "() => document.querySelector('#journey-closing')?.scrollIntoView()"
+            )
+            first_takeaway = closing.locator(
+                ".journey-closing__topics p"
+            ).first.bounding_box()
+            assert first_takeaway is not None
+            assert first_takeaway["y"] + first_takeaway["height"] <= (
+                viewport_height
+            ), "Journey Closing takeaway must appear in the entry viewport"
 
     assert page.get_by_role("link", name="Về trang chủ", exact=True).get_attribute(
         "href"
@@ -736,6 +865,11 @@ def verify_mobile_targets(page: Page, trace_case: dict) -> None:
         "Xem cách áp dụng",
         "Nhìn lại hành trình",
         *ending_targets,
+        *(
+            ["Về dự án & phương pháp"]
+            if trace_case["ending"] == "journey-closing"
+            else []
+        ),
         "Về trang chủ",
     ]:
         target = page.get_by_role("link", name=name, exact=True)
@@ -784,6 +918,53 @@ def verify_reduced_motion_is_immediate(page: Page) -> None:
             "element => Number.parseFloat(getComputedStyle(element).opacity)"
         )
         assert opacity == 1, f"{selector} remains faded with reduced motion"
+
+
+def verify_source_drawer_keyboard(page: Page) -> None:
+    trigger = page.locator(".source-drawer-trigger").first
+    trigger.scroll_into_view_if_needed()
+    trigger.focus()
+    verify_focus_indicator(page, ".source-drawer-trigger")
+    page.keyboard.press("Enter")
+
+    dialog = page.get_by_role("dialog")
+    dialog.wait_for()
+    close_button = page.get_by_role("button", name="Đóng nguồn và kiểm chứng")
+    close_button.wait_for()
+    assert close_button.evaluate("element => element === document.activeElement")
+    verify_focus_indicator(page, ".source-drawer__close")
+
+    page.keyboard.press("Escape")
+    dialog.wait_for(state="hidden")
+    page.wait_for_function(
+        "element => element === document.activeElement", arg=trigger.element_handle()
+    )
+
+
+def verify_trace_reflow(page: Page, trace_case: dict) -> None:
+    verify_trace(page, trace_case)
+    verify_no_horizontal_overflow(page, "Trace 01 at 640px reflow width")
+    verify_focus_indicator(page, '.trace-progress__link[href="#moment-1930"]')
+
+    moment_link = page.locator('.trace-progress__link[href="#moment-1930"]')
+    moment_link.click()
+    page.wait_for_function("() => location.hash === '#moment-1930'")
+    assert page.locator("#moment-1930").count() == 1
+    verify_source_drawer_keyboard(page)
+
+
+def verify_trace_forced_colors(page: Page, trace_case: dict) -> None:
+    response = page.goto(
+        f"{BASE_URL}{trace_case['path']}",
+        wait_until="domcontentloaded",
+        timeout=60_000,
+    )
+    assert response is not None and response.ok
+    settle_page(page)
+    verify_no_horizontal_overflow(page, "Trace 01 in forced colors")
+    verify_focus_indicator(page, ".trace-switcher__trigger")
+    verify_focus_indicator(page, ".trace-progress__link")
+    verify_source_drawer_keyboard(page)
 
 
 def main() -> None:
@@ -846,6 +1027,18 @@ def main() -> None:
             verify_trace(reduced_motion, trace_case)
             verify_reduced_motion_is_immediate(reduced_motion)
             reduced_motion.close()
+
+        reflow = browser.new_page(viewport={"width": 640, "height": 900})
+        error_groups.append(collect_console_errors(reflow))
+        verify_trace_reflow(reflow, TRACE_CASES["trace-01"])
+        reflow.close()
+
+        forced_colors = browser.new_page(
+            viewport={"width": 390, "height": 844}, forced_colors="active"
+        )
+        error_groups.append(collect_console_errors(forced_colors))
+        verify_trace_forced_colors(forced_colors, TRACE_CASES["trace-01"])
+        forced_colors.close()
 
         switcher_navigation = browser.new_page(
             viewport={"width": 1366, "height": 768}

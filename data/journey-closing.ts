@@ -32,6 +32,10 @@ export const journeyClosing = {
     label: "Bắt đầu lại",
     href: "/trace/dai-doan-ket",
   },
+  methodAction: {
+    label: "Về dự án & phương pháp",
+    href: "/phuong-phap",
+  },
   secondaryAction: {
     label: "Về trang chủ",
     href: "/",

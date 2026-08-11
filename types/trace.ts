@@ -132,6 +132,7 @@ export interface JourneyClosingData {
   ];
   readonly statement: string;
   readonly primaryAction: JourneyClosingAction;
+  readonly methodAction: JourneyClosingAction;
   readonly secondaryAction: JourneyClosingAction;
 }
 

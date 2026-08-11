@@ -43,12 +43,31 @@ export async function generateMetadata({
   return {
     title: trace.title,
     description: trace.cardSummary,
+    alternates: {
+      canonical: `/trace/${trace.slug}`,
+    },
     openGraph: {
       title: `${trace.title} | Đuốc Hồng`,
       description: trace.cardSummary,
       siteName: "Đuốc Hồng",
       locale: "vi_VN",
       type: "website",
+      images: trace.presentDay?.image.src
+        ? [
+            {
+              url: trace.presentDay.image.src,
+              alt: trace.presentDay.image.alt,
+            },
+          ]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${trace.title} | Đuốc Hồng`,
+      description: trace.cardSummary,
+      images: trace.presentDay?.image.src
+        ? [trace.presentDay.image.src]
+        : undefined,
     },
   };
 }
