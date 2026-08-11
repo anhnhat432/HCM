@@ -18,6 +18,7 @@ export function TraceOpening({
     <section
       className="trace-opening"
       data-trace-stage="present-day"
+      id="trace-opening"
       aria-labelledby="trace-opening-title"
     >
       <div className="site-container trace-opening__grid">

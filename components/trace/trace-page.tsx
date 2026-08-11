@@ -6,6 +6,8 @@ import { TimeBridge } from "@/components/trace/time-bridge";
 import { TraceHeader } from "@/components/trace/trace-header";
 import { TraceNavigation } from "@/components/trace/trace-navigation";
 import { TraceOpening } from "@/components/trace/trace-opening";
+import { TraceProgress } from "@/components/trace/trace-progress";
+import { TraceRecap } from "@/components/trace/trace-recap";
 import { traceThemes } from "@/lib/trace-themes";
 import type {
   CompleteTraceData,
@@ -30,6 +32,7 @@ export function TracePage({ trace, nextTrace, closing }: TracePageProps) {
   return (
     <div className={`trace-experience ${traceThemes[trace.theme]}`}>
       <TraceHeader order={trace.order} title={trace.title} />
+      <TraceProgress moments={trace.historicalMoments} />
       <main id="main-content">
         <TraceOpening
           centralQuestion={trace.centralQuestion}
@@ -49,9 +52,10 @@ export function TracePage({ trace, nextTrace, closing }: TracePageProps) {
         />
         <PresentApplication
           application={trace.application}
-          continuationHref={closing ? "#journey-closing" : undefined}
-          continuationLabel={closing ? "Khép lại hành trình" : undefined}
+          continuationHref="#trace-recap"
+          continuationLabel="Nhìn lại hành trình"
         />
+        <TraceRecap trace={trace} />
         {nextTrace ? <TraceNavigation nextTrace={nextTrace} /> : null}
         {closing ? <JourneyClosing closing={closing} /> : null}
       </main>
