@@ -6,8 +6,7 @@
 - Runtime: Next.js production build served locally at `http://localhost:3800`.
 - Browser automation: Playwright Chromium.
 - Automated scope: Homepage, `/phuong-phap`, all three Trace routes, Journey
-  Closing, progress navigation, Source Drawer, local QR sharing, passive Trace
-  Back storytelling, Thought Formation convergence, and the Journey trace mark.
+  Closing, progress navigation, and Source Drawer.
 
 ## Automated evidence
 
@@ -17,17 +16,9 @@
 - Forced-colors acceptance runs at 390x844 and verifies visible keyboard focus,
   progress controls, Source Drawer operation, and horizontal overflow.
 - Reduced-motion acceptance runs on Homepage and all three Trace experiences.
-- Trace Back acceptance samples the historical-image reveal throughout the
-  sticky range and rejects any reversal while the page scrolls forward.
-- The 640px reflow and reduced-motion variants render the completed Trace Back
-  state without requiring animation or user input.
-- Thought Formation checks exactly three decorative convergence branches, one
-  merged line, readable conclusion content, and immediate reduced-motion paths.
-- Journey Closing checks exactly three decorative input lines, one final torch
-  line, bounded desktop/mobile height, reduced-motion completion, and absence
-  from Trace 01 and Trace 02.
-- QR dialog checks local data-URL generation, canonical URL use, keyboard focus
-  containment, Escape dismissal, focus restoration, and no external QR request.
+- Local QR sharing acceptance covers Homepage and Trace headers, canonical URL
+  generation, keyboard focus containment, Escape dismissal, focus restoration,
+  and confirmation that no external QR service is requested.
 - Contrast regression resolves the rendered foreground against the nearest
   rendered background and includes element opacity.
 - Source Drawer checks keyboard opening, dialog naming, initial close-button
@@ -37,16 +28,14 @@
 
 ## Lighthouse lab results
 
-Lighthouse 12.8.2 was run three times per route against the production build
-with the mobile default profile. Scores are lab measurements and can vary
+Lighthouse 12.8.2 was run three times per route against the QR-only production
+build with the mobile default profile. Scores are lab measurements and can vary
 between runs.
 
 | Route | Performance runs | Performance median | Accessibility | Best Practices | SEO |
 | --- | --- | ---: | ---: | ---: | ---: |
-| Homepage `/` | 87, 88, 88 | 88 | 100 | 100 | 100 |
-| Trace 01 `/trace/dai-doan-ket` | 76, 82, 80 | 80 | 100 | 100 | 100 |
-
-The medians exceed the release gates of 82 for Homepage and 71 for Trace 01.
+| Homepage `/` | 89, 88, 88 | 88 | 100 | 100 | 100 |
+| Trace 01 `/trace/dai-doan-ket` | 82, 82, 81 | 82 | 100 | 100 | 100 |
 
 ## Manual NVDA checklist
 
@@ -59,15 +48,13 @@ Status: **NOT EXECUTED**. NVDA is not available in this automated environment.
    verify every control has a visible focus indicator.
 5. Open Trace 01 and confirm the progress timeline announces the active item as
    the current step while scrolling through every historical milestone.
-6. Confirm the Trace Back images remain decorative and the reading order moves
-   directly from the Trace Back heading to the first historical section.
+6. Open QR sharing and confirm the dialog name, generated URL, focus trap,
+   Escape close, and trigger focus restoration.
 7. Open “Nguồn & kiểm chứng”; confirm the dialog name, verification description,
    source links, focus containment, Escape close, and focus restoration.
-8. Open QR sharing and confirm the dialog name, generated URL, focus trap,
-   Escape close, and trigger focus restoration.
-9. Confirm present-day illustrations and historical images announce their
+8. Confirm present-day illustrations and historical images announce their
    intended alternative text without duplicating visible captions excessively.
-10. Complete Trace 03 and confirm Journey Closing actions, including
+9. Complete Trace 03 and confirm Journey Closing actions, including
    “Về dự án & phương pháp”, are announced in a logical order.
 
 ## Manual TalkBack checklist

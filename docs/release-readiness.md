@@ -18,20 +18,15 @@ notes remain recorded in `data/traces.ts`.
   motion, forced colors, internal links, console/network state, responsive
   overflow, image loading, metadata, and Vietnamese branding.
 - Trace support: progress timeline, Before/After recap, compact Trace switcher,
-  data-driven Journey Closing takeaways, per-moment Source Drawer, passive
-  scroll-linked Trace Back, historical continuity, Thought Formation
-  convergence, and a line-only Journey trace finale.
-- Sharing: Homepage and Trace headers expose a locally generated QR dialog using
-  canonical URLs; no external QR service or required interaction is introduced.
-- Progressive enhancement: ordinary scrolling remains the only required user
-  behavior. Reflow, no-JavaScript, and reduced-motion variants expose complete
-  static content without sticky animation dependencies.
+  data-driven Journey Closing takeaways, and per-moment Source Drawer.
+- Sharing: Homepage and Trace headers expose an accessible, locally generated
+  QR dialog using canonical URLs and no external QR service.
 - Sources: content, theory, and image provenance links are recorded in data and
   exposed through the narrative or Source Drawer as appropriate.
 - Performance: production build uses `next/image`, lazy historical images,
   priority only for opening imagery, `next/font`, lazy local QR generation, and
   bounded motion client components. Three Lighthouse 12.8.2 trials produced
-  Performance medians of 88 for Homepage and 80 for Trace 01; both routes score
+  Performance medians of 88 for Homepage and 82 for Trace 01; both routes score
   100 for Accessibility, Best Practices, and SEO in every trial.
 
 ## Historical asset status

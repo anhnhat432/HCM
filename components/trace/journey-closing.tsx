@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { JourneyTraceMark } from "@/components/trace/journey-trace-mark";
 import { TraceReveal } from "@/components/trace/reveal";
 import type { JourneyClosingData } from "@/types/trace";
 
@@ -36,8 +35,6 @@ export function JourneyClosing({ closing }: JourneyClosingProps) {
               </li>
             ))}
           </ol>
-
-          <JourneyTraceMark />
 
           <p className="journey-closing__statement">{closing.statement}</p>
 
