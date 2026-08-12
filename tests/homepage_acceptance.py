@@ -140,6 +140,29 @@ def verify_focus_indicator(page: Page, selector: str) -> None:
     )
 
 
+def verify_qr_share_dialog(page: Page) -> None:
+    trigger = page.get_by_role(
+        "button", name="Chia sẻ trang Đuốc Hồng bằng mã QR", exact=True
+    )
+    trigger.click()
+    dialog = page.get_by_role("dialog", name="Chia sẻ bằng mã QR")
+    dialog.wait_for()
+    page.wait_for_function(
+        """() => document.querySelector(
+            '.qr-share__code img'
+        )?.getAttribute('src')?.startsWith('data:image/png')"""
+    )
+    assert "https://hcm-trace.vercel.app" in dialog.inner_text()
+    assert page.get_by_role(
+        "button", name="Đóng chia sẻ bằng mã QR"
+    ).evaluate("element => element === document.activeElement")
+    page.keyboard.press("Escape")
+    dialog.wait_for(state="detached")
+    page.wait_for_function(
+        "element => element === document.activeElement", arg=trigger.element_handle()
+    )
+
+
 def verify_homepage(page: Page) -> None:
     response = page.goto(BASE_URL, wait_until="domcontentloaded", timeout=60_000)
     assert response is not None and response.ok
@@ -197,6 +220,8 @@ def verify_homepage(page: Page) -> None:
     assert heading_weight == 600
     viewport_width = page.evaluate("window.innerWidth")
     viewport_height = page.evaluate("window.innerHeight")
+    if viewport_width in {1920, 390}:
+        verify_qr_share_dialog(page)
     if viewport_width >= 1024:
         if viewport_height <= 820:
             assert 72 <= heading_size <= 80
@@ -466,6 +491,9 @@ def main() -> None:
 
         for locator in [
             mobile.get_by_role("link", name="Bắt đầu hành trình", exact=True),
+            mobile.get_by_role(
+                "button", name="Chia sẻ trang Đuốc Hồng bằng mã QR", exact=True
+            ),
             *[
                 mobile.get_by_role("link", name=title, exact=True)
                 for title, _, _, _ in TOPICS

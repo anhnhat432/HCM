@@ -29,6 +29,7 @@ export function HistoricalMoment({
       id={`moment-${moment.year}`}
       aria-labelledby={`moment-${moment.year}-title`}
     >
+      <span className="historical-moment__continuity" aria-hidden="true" />
       <div className="site-container historical-moment__grid">
         <TraceReveal className="historical-moment__copy">
           <time className="historical-moment__year" dateTime={moment.year}>

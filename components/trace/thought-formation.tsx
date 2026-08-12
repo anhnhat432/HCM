@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { FormationConvergence } from "@/components/trace/formation-convergence";
 import { TraceReveal } from "@/components/trace/reveal";
 import type { TraceFormation } from "@/types/trace";
 
@@ -24,12 +25,7 @@ export function ThoughtFormation({ formation }: ThoughtFormationProps) {
           </h2>
         </TraceReveal>
 
-        <div className="thought-formation__convergence">
-          <div className="thought-formation__line" aria-hidden="true">
-            <span />
-            <b>↓</b>
-          </div>
-
+        <FormationConvergence>
           <div className="thought-formation__content">
             {formation.factors.map((factor, index) => (
               <TraceReveal delay={index * 0.06} key={factor.title}>
@@ -72,7 +68,7 @@ export function ThoughtFormation({ formation }: ThoughtFormationProps) {
               </div>
             </TraceReveal>
           </div>
-        </div>
+        </FormationConvergence>
 
         <Link className="trace-sequence-link" href="#return-2026">
           <span aria-hidden="true" />
