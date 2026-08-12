@@ -308,6 +308,31 @@ def verify_focus_indicator(page: Page, selector: str) -> None:
     )
 
 
+def verify_qr_share_dialog(page: Page, trace_case: dict) -> None:
+    trigger = page.get_by_role(
+        "button",
+        name=f"Chia sẻ Trace {trace_case['title']} bằng mã QR",
+        exact=True,
+    )
+    trigger.click()
+    dialog = page.get_by_role("dialog", name="Chia sẻ bằng mã QR")
+    dialog.wait_for()
+    page.wait_for_function(
+        """() => document.querySelector(
+            '.qr-share__code img'
+        )?.getAttribute('src')?.startsWith('data:image/png')"""
+    )
+    assert f"https://hcm-trace.vercel.app{trace_case['path']}" in dialog.inner_text()
+    assert page.get_by_role(
+        "button", name="Đóng chia sẻ bằng mã QR"
+    ).evaluate("element => element === document.activeElement")
+    page.keyboard.press("Escape")
+    dialog.wait_for(state="detached")
+    page.wait_for_function(
+        "element => element === document.activeElement", arg=trigger.element_handle()
+    )
+
+
 def settle_page(page: Page) -> None:
     try:
         page.wait_for_load_state("networkidle", timeout=10_000)
@@ -635,6 +660,11 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     assert trace_case["question"] in question.inner_text()
     viewport_width = page.evaluate("window.innerWidth")
     viewport_height = page.evaluate("window.innerHeight")
+    if trace_case["path"] == "/trace/dai-doan-ket" and viewport_width in {
+        1920,
+        390,
+    }:
+        verify_qr_share_dialog(page, trace_case)
     opening_action = page.get_by_role("link", name="Nhìn lại quá khứ", exact=True)
     if viewport_width >= 1024 and viewport_height <= 820:
         action_box = opening_action.bounding_box()
@@ -879,6 +909,14 @@ def verify_mobile_targets(page: Page, trace_case: dict) -> None:
     switcher = page.locator(".trace-switcher__trigger")
     switcher_box = switcher.bounding_box()
     assert switcher_box is not None and switcher_box["height"] >= 44
+
+    qr_trigger = page.get_by_role(
+        "button",
+        name=f"Chia sẻ Trace {trace_case['title']} bằng mã QR",
+        exact=True,
+    )
+    qr_box = qr_trigger.bounding_box()
+    assert qr_box is not None and qr_box["height"] >= 44
 
     for target in page.locator(".source-drawer-trigger").all():
         box = target.bounding_box()
