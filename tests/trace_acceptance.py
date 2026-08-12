@@ -333,6 +333,114 @@ def verify_qr_share_dialog(page: Page, trace_case: dict) -> None:
     )
 
 
+def verify_trace_back_story(page: Page, trace_case: dict) -> None:
+    story = page.locator(".trace-back-story")
+    assert story.count() == 1
+    assert story.get_attribute("data-scroll-story") == "passive"
+    assert story.locator('input, button, [role="slider"]').count() == 0
+    assert story.locator(".trace-back-story__layer").count() == 2
+
+    reduced_motion = page.evaluate(
+        "matchMedia('(prefers-reduced-motion: reduce)').matches"
+    )
+    viewport_width = page.evaluate("window.innerWidth")
+
+    if reduced_motion or 640 <= viewport_width <= 768:
+        historical_clip = story.locator(
+            ".trace-back-story__historical"
+        ).evaluate("element => getComputedStyle(element).clipPath")
+        assert historical_clip in {
+            "inset(0%)",
+            "inset(0px)",
+            "inset(0% 0px 0px)",
+        }
+        return
+
+    page.wait_for_function(
+        """() => document.querySelector(
+            '.trace-back-story'
+        )?.dataset.motionState === 'scroll'"""
+    )
+    story_handle = story.element_handle()
+    assert story_handle is not None
+    page.evaluate(
+        """element => window.scrollTo(
+            0,
+            element.getBoundingClientRect().top + window.scrollY
+        )""",
+        story_handle,
+    )
+    page.wait_for_function(
+        """() => getComputedStyle(
+            document.querySelector('.trace-back-story__historical')
+        ).clipPath.includes('100%')"""
+    )
+    start_clip = story.locator(".trace-back-story__historical").evaluate(
+        "element => getComputedStyle(element).clipPath"
+    )
+    historical_caption = story.locator("figcaption")
+    if historical_caption.count():
+        assert historical_caption.evaluate(
+            "element => Number.parseFloat(getComputedStyle(element).opacity)"
+        ) < 0.1
+
+    clip_samples = page.evaluate(
+        """async element => {
+            const start = element.getBoundingClientRect().top + window.scrollY;
+            const distance = element.offsetHeight - window.innerHeight;
+            const historical = element.querySelector(
+                '.trace-back-story__historical'
+            );
+            const samples = [];
+
+            for (let step = 0; step <= 8; step += 1) {
+                window.scrollTo(0, start + distance * (step / 8));
+                await new Promise(resolve => requestAnimationFrame(
+                    () => requestAnimationFrame(resolve)
+                ));
+                const clipPath = getComputedStyle(historical).clipPath;
+                samples.push(Number.parseFloat(clipPath.match(
+                    /inset\\(([-\\d.]+)%/
+                )?.[1] ?? 'NaN'));
+            }
+
+            return samples;
+        }""",
+        story_handle,
+    )
+    assert all(value == value for value in clip_samples), clip_samples
+    assert all(
+        next_value <= current_value + 0.75
+        for current_value, next_value in zip(clip_samples, clip_samples[1:])
+    ), f"Trace Back historical reveal reversed while scrolling: {clip_samples}"
+
+    page.evaluate(
+        """element => window.scrollTo(
+            0,
+            element.getBoundingClientRect().top + window.scrollY
+              + element.offsetHeight - window.innerHeight
+        )""",
+        story_handle,
+    )
+    page.wait_for_function(
+        """() => Number.parseFloat(getComputedStyle(
+            document.querySelector('.trace-back-story__to-year')
+        ).opacity) > 0.95"""
+    )
+    end_clip = story.locator(".trace-back-story__historical").evaluate(
+        "element => getComputedStyle(element).clipPath"
+    )
+    assert start_clip != end_clip
+    if historical_caption.count():
+        assert historical_caption.evaluate(
+            "element => Number.parseFloat(getComputedStyle(element).opacity)"
+        ) > 0.95
+
+    first_moment = page.locator(f"#moment-{trace_case['years'][0]}")
+    first_moment.evaluate("element => element.scrollIntoView({ block: 'start' })")
+    assert first_moment.get_by_role("heading", level=2).is_visible()
+
+
 def settle_page(page: Page) -> None:
     try:
         page.wait_for_load_state("networkidle", timeout=10_000)
@@ -665,6 +773,7 @@ def verify_trace(page: Page, trace_case: dict) -> None:
         390,
     }:
         verify_qr_share_dialog(page, trace_case)
+    verify_trace_back_story(page, trace_case)
     opening_action = page.get_by_role("link", name="Nhìn lại quá khứ", exact=True)
     if viewport_width >= 1024 and viewport_height <= 820:
         action_box = opening_action.bounding_box()

@@ -1,35 +1,43 @@
 import Link from "next/link";
 
+import { TraceBackStory } from "@/components/trace/trace-back-story";
 import { TraceReveal } from "@/components/trace/reveal";
 import { TraceLine } from "@/components/trace/trace-line";
+import type { TraceImage, TracePresentDay } from "@/types/trace";
 
-interface TimeBridgeProps {
-  readonly variant: "back" | "return";
-  readonly fromYear: string;
-  readonly toYear: string;
-}
+type TimeBridgeProps =
+  | {
+      readonly variant: "back";
+      readonly fromYear: string;
+      readonly toYear: string;
+      readonly presentImage: TracePresentDay["image"];
+      readonly historicalImage?: TraceImage;
+    }
+  | {
+      readonly variant: "return";
+      readonly fromYear: string;
+      readonly toYear: string;
+    };
 
-export function TimeBridge({ variant, fromYear, toYear }: TimeBridgeProps) {
+export function TimeBridge(props: TimeBridgeProps) {
+  const { variant, fromYear, toYear } = props;
+
   if (variant === "back") {
     return (
       <section
-        className="time-bridge"
+        className="time-bridge time-bridge--story"
         data-trace-stage="trace-back"
         id="trace-back"
         aria-labelledby="trace-back-title"
       >
-        <div className="site-container time-bridge__inner">
-          <TraceReveal>
-            <p className="time-bridge__kicker">Để hiểu câu trả lời,</p>
-            <h2 className="time-bridge__intro" id="trace-back-title">
-              hãy lần theo dấu vết
-              <br />
-              của tư tưởng.
-            </h2>
-          </TraceReveal>
-
-          <TraceLine direction="back" fromYear={fromYear} toYear={toYear} />
-
+        <TraceBackStory
+          fromYear={fromYear}
+          headingId="trace-back-title"
+          historicalImage={props.historicalImage}
+          presentImage={props.presentImage}
+          toYear={toYear}
+        />
+        <div className="site-container time-bridge__story-cue">
           <Link className="time-bridge__cue" href={`#moment-${toYear}`}>
             Bắt đầu ↓
           </Link>

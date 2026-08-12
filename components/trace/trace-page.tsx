@@ -40,6 +40,8 @@ export function TracePage({ trace, nextTrace, closing }: TracePageProps) {
         />
         <TimeBridge
           fromYear="2026"
+          historicalImage={trace.historicalMoments[0].image}
+          presentImage={trace.presentDay.image}
           toYear={firstHistoricalYear}
           variant="back"
         />
