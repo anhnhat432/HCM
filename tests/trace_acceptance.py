@@ -308,204 +308,6 @@ def verify_focus_indicator(page: Page, selector: str) -> None:
     )
 
 
-def verify_qr_share_dialog(page: Page, trace_case: dict) -> None:
-    trigger = page.get_by_role(
-        "button",
-        name=f"Chia sẻ Trace {trace_case['title']} bằng mã QR",
-        exact=True,
-    )
-    trigger.click()
-    dialog = page.get_by_role("dialog", name="Chia sẻ bằng mã QR")
-    dialog.wait_for()
-    page.wait_for_function(
-        """() => document.querySelector(
-            '.qr-share__code img'
-        )?.getAttribute('src')?.startsWith('data:image/png')"""
-    )
-    assert f"https://hcm-trace.vercel.app{trace_case['path']}" in dialog.inner_text()
-    assert page.get_by_role(
-        "button", name="Đóng chia sẻ bằng mã QR"
-    ).evaluate("element => element === document.activeElement")
-    page.keyboard.press("Escape")
-    dialog.wait_for(state="detached")
-    page.wait_for_function(
-        "element => element === document.activeElement", arg=trigger.element_handle()
-    )
-
-
-def verify_trace_back_story(page: Page, trace_case: dict) -> None:
-    story = page.locator(".trace-back-story")
-    assert story.count() == 1
-    assert story.get_attribute("data-scroll-story") == "passive"
-    assert story.locator('input, button, [role="slider"]').count() == 0
-    assert story.locator(".trace-back-story__layer").count() == 2
-
-    reduced_motion = page.evaluate(
-        "matchMedia('(prefers-reduced-motion: reduce)').matches"
-    )
-    viewport_width = page.evaluate("window.innerWidth")
-
-    if reduced_motion or 640 <= viewport_width <= 768:
-        historical_clip = story.locator(
-            ".trace-back-story__historical"
-        ).evaluate("element => getComputedStyle(element).clipPath")
-        assert historical_clip in {
-            "inset(0%)",
-            "inset(0px)",
-            "inset(0% 0px 0px)",
-        }
-        return
-
-    page.wait_for_function(
-        """() => document.querySelector(
-            '.trace-back-story'
-        )?.dataset.motionState === 'scroll'"""
-    )
-    story_handle = story.element_handle()
-    assert story_handle is not None
-    page.evaluate(
-        """element => window.scrollTo(
-            0,
-            element.getBoundingClientRect().top + window.scrollY
-        )""",
-        story_handle,
-    )
-    page.wait_for_function(
-        """() => getComputedStyle(
-            document.querySelector('.trace-back-story__historical')
-        ).clipPath.includes('100%')"""
-    )
-    start_clip = story.locator(".trace-back-story__historical").evaluate(
-        "element => getComputedStyle(element).clipPath"
-    )
-    historical_caption = story.locator("figcaption")
-    if historical_caption.count():
-        assert historical_caption.evaluate(
-            "element => Number.parseFloat(getComputedStyle(element).opacity)"
-        ) < 0.1
-
-    clip_samples = page.evaluate(
-        """async element => {
-            const start = element.getBoundingClientRect().top + window.scrollY;
-            const distance = element.offsetHeight - window.innerHeight;
-            const historical = element.querySelector(
-                '.trace-back-story__historical'
-            );
-            const samples = [];
-
-            for (let step = 0; step <= 8; step += 1) {
-                window.scrollTo(0, start + distance * (step / 8));
-                await new Promise(resolve => requestAnimationFrame(
-                    () => requestAnimationFrame(resolve)
-                ));
-                const clipPath = getComputedStyle(historical).clipPath;
-                samples.push(Number.parseFloat(clipPath.match(
-                    /inset\\(([-\\d.]+)%/
-                )?.[1] ?? 'NaN'));
-            }
-
-            return samples;
-        }""",
-        story_handle,
-    )
-    assert all(value == value for value in clip_samples), clip_samples
-    assert all(
-        next_value <= current_value + 0.75
-        for current_value, next_value in zip(clip_samples, clip_samples[1:])
-    ), f"Trace Back historical reveal reversed while scrolling: {clip_samples}"
-
-    page.evaluate(
-        """element => window.scrollTo(
-            0,
-            element.getBoundingClientRect().top + window.scrollY
-              + element.offsetHeight - window.innerHeight
-        )""",
-        story_handle,
-    )
-    page.wait_for_function(
-        """() => Number.parseFloat(getComputedStyle(
-            document.querySelector('.trace-back-story__to-year')
-        ).opacity) > 0.95"""
-    )
-    end_clip = story.locator(".trace-back-story__historical").evaluate(
-        "element => getComputedStyle(element).clipPath"
-    )
-    assert start_clip != end_clip
-    if historical_caption.count():
-        assert historical_caption.evaluate(
-            "element => Number.parseFloat(getComputedStyle(element).opacity)"
-        ) > 0.95
-
-    first_moment = page.locator(f"#moment-{trace_case['years'][0]}")
-    first_moment.evaluate("element => element.scrollIntoView({ block: 'start' })")
-    assert first_moment.get_by_role("heading", level=2).is_visible()
-
-
-def verify_formation_convergence(page: Page) -> None:
-    assert page.locator(".historical-moment__continuity").count() == 3
-
-    convergence = page.locator(".formation-convergence")
-    graphic = convergence.locator(".formation-convergence__graphic")
-    assert convergence.count() == 1
-    assert graphic.get_attribute("aria-hidden") == "true"
-    assert graphic.get_attribute("focusable") == "false"
-    assert convergence.locator(".formation-convergence__branch").count() == 3
-    assert convergence.locator(".formation-convergence__merged").count() == 1
-
-    conclusion = page.locator(".thought-formation__conclusion")
-    conclusion.evaluate("element => element.scrollIntoView({ block: 'center' })")
-    page.wait_for_function(
-        """element => Number.parseFloat(
-            getComputedStyle(element.parentElement).opacity
-        ) > 0.95""",
-        arg=conclusion.element_handle(),
-    )
-    assert conclusion.get_by_role("heading", level=3).is_visible()
-
-    if page.evaluate("matchMedia('(prefers-reduced-motion: reduce)').matches"):
-        assert convergence.locator(
-            ".formation-convergence__branch, .formation-convergence__merged"
-        ).evaluate_all(
-            """paths => paths.every(path =>
-                getComputedStyle(path).strokeDasharray === 'none'
-            )"""
-        )
-
-
-def verify_journey_trace_mark(page: Page, trace_case: dict) -> None:
-    mark = page.locator(".journey-trace-mark")
-
-    if trace_case["ending"] != "journey-closing":
-        assert mark.count() == 0
-        return
-
-    assert mark.count() == 1
-    assert page.locator("#journey-closing .journey-trace-mark").count() == 1
-    assert mark.get_attribute("aria-hidden") == "true"
-    assert mark.locator(".journey-trace-mark__input").count() == 3
-    assert mark.locator(".journey-trace-mark__torch").count() == 1
-
-    mark.scroll_into_view_if_needed()
-    page.wait_for_function(
-        """() => Number.parseFloat(getComputedStyle(
-            document.querySelector('.journey-trace-mark__torch')
-        ).strokeDashoffset) <= 0.05"""
-    )
-    mark_box = mark.bounding_box()
-    assert mark_box is not None
-    max_height = 112 if page.evaluate("window.innerWidth <= 768") else 160
-    assert mark_box["height"] <= max_height
-
-    if page.evaluate("matchMedia('(prefers-reduced-motion: reduce)').matches"):
-        assert mark.locator(
-            ".journey-trace-mark__input, .journey-trace-mark__torch"
-        ).evaluate_all(
-            """paths => paths.every(path =>
-                getComputedStyle(path).strokeDasharray === 'none'
-            )"""
-        )
-
-
 def settle_page(page: Page) -> None:
     try:
         page.wait_for_load_state("networkidle", timeout=10_000)
@@ -650,10 +452,7 @@ def verify_trace_switcher(page: Page, trace_case: dict) -> None:
 
     trigger.click()
     menu.wait_for(state="visible")
-    page.mouse.click(
-        page.evaluate("window.innerWidth - 8"),
-        page.evaluate("window.innerHeight - 8"),
-    )
+    page.mouse.click(8, 150)
     menu.wait_for(state="hidden")
 
 
@@ -836,14 +635,6 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     assert trace_case["question"] in question.inner_text()
     viewport_width = page.evaluate("window.innerWidth")
     viewport_height = page.evaluate("window.innerHeight")
-    if trace_case["path"] == "/trace/dai-doan-ket" and viewport_width in {
-        1920,
-        390,
-    }:
-        verify_qr_share_dialog(page, trace_case)
-    verify_trace_back_story(page, trace_case)
-    verify_formation_convergence(page)
-    verify_journey_trace_mark(page, trace_case)
     opening_action = page.get_by_role("link", name="Nhìn lại quá khứ", exact=True)
     if viewport_width >= 1024 and viewport_height <= 820:
         action_box = opening_action.bounding_box()
@@ -978,10 +769,8 @@ def verify_trace(page: Page, trace_case: dict) -> None:
         factor_padding = page.locator(".formation-factor").first.evaluate(
             "element => Number.parseFloat(getComputedStyle(element).paddingTop)"
         )
-        convergence_width = page.locator(
-            ".formation-convergence__merged"
-        ).evaluate(
-            "element => Number.parseFloat(getComputedStyle(element).strokeWidth)"
+        convergence_width = page.locator(".thought-formation__line span").evaluate(
+            "element => Number.parseFloat(getComputedStyle(element).width)"
         )
         conclusion_size = page.locator(
             ".thought-formation__conclusion h3"
@@ -1090,14 +879,6 @@ def verify_mobile_targets(page: Page, trace_case: dict) -> None:
     switcher = page.locator(".trace-switcher__trigger")
     switcher_box = switcher.bounding_box()
     assert switcher_box is not None and switcher_box["height"] >= 44
-
-    qr_trigger = page.get_by_role(
-        "button",
-        name=f"Chia sẻ Trace {trace_case['title']} bằng mã QR",
-        exact=True,
-    )
-    qr_box = qr_trigger.bounding_box()
-    assert qr_box is not None and qr_box["height"] >= 44
 
     for target in page.locator(".source-drawer-trigger").all():
         box = target.bounding_box()

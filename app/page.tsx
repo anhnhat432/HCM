@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { Reveal } from "@/components/home/reveal";
 import { TopicList } from "@/components/home/topic-list";
-import { QrShareDialog } from "@/components/share/qr-share-dialog";
 import { traces } from "@/data/traces";
 
 const homepageHeroImage = {
@@ -22,7 +21,6 @@ export default function Home() {
       <header className="home-header">
         <div className="site-container home-header__inner">
           <span className="brand-mark">ĐUỐC HỒNG</span>
-          <QrShareDialog label="Chia sẻ trang Đuốc Hồng bằng mã QR" />
         </div>
       </header>
 

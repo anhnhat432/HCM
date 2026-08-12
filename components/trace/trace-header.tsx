@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { QrShareDialog } from "@/components/share/qr-share-dialog";
 import { TraceSwitcher } from "@/components/trace/trace-switcher";
 import { traces } from "@/data/traces";
 import type { TraceSlug } from "@/types/trace";
@@ -24,10 +23,7 @@ export function TraceHeader({ title, slug }: TraceHeaderProps) {
           ĐUỐC HỒNG
         </Link>
         <span className="trace-header__title">{title}</span>
-        <div className="trace-header__actions">
-          <TraceSwitcher currentSlug={slug} items={switcherItems} />
-          <QrShareDialog label={`Chia sẻ Trace ${title} bằng mã QR`} />
-        </div>
+        <TraceSwitcher currentSlug={slug} items={switcherItems} />
       </div>
     </header>
   );
