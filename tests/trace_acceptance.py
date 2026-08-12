@@ -650,7 +650,10 @@ def verify_trace_switcher(page: Page, trace_case: dict) -> None:
 
     trigger.click()
     menu.wait_for(state="visible")
-    page.mouse.click(8, 150)
+    page.mouse.click(
+        page.evaluate("window.innerWidth - 8"),
+        page.evaluate("window.innerHeight - 8"),
+    )
     menu.wait_for(state="hidden")
 
 
