@@ -33,3 +33,32 @@ test("every complete Trace renders a passive story with existing images", () => 
     assert.equal(storyMarkup.includes("onpointer"), false);
   });
 });
+
+test("historical moments and Thought Formation expose one continuous line language", async () => {
+  const { HistoricalMoment } = await import(
+    "@/components/trace/historical-moment"
+  );
+  const { ThoughtFormation } = await import(
+    "@/components/trace/thought-formation"
+  );
+  const trace = traces[0] as CompleteTraceData;
+  const momentMarkup = renderToStaticMarkup(
+    createElement(HistoricalMoment, {
+      moment: trace.historicalMoments[0],
+      imageRight: false,
+      nextHref: "#moment-1941",
+      nextLabel: "Tiếp theo",
+    }),
+  );
+  const formationMarkup = renderToStaticMarkup(
+    createElement(ThoughtFormation, { formation: trace.thoughtFormation }),
+  );
+
+  assert.ok(momentMarkup.includes("historical-moment__continuity"));
+  assert.ok(formationMarkup.includes("formation-convergence"));
+  assert.equal(
+    (formationMarkup.match(/formation-convergence__branch/g) ?? []).length,
+    3,
+  );
+  assert.ok(formationMarkup.includes('aria-hidden="true"'));
+});

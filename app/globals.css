@@ -1636,12 +1636,31 @@ a {
 }
 
 .historical-moment {
+  position: relative;
   min-height: calc(100svh - 3.5625rem);
   display: flex;
   align-items: center;
   padding-block: clamp(5rem, 8vw, 8rem);
   background: #ede9df;
   border-bottom: 1px solid rgb(212 207 198 / 72%);
+}
+
+.historical-moment__continuity {
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: calc(
+    ((100% - min(100%, var(--container-max))) / 2) +
+      (var(--container-gutter) * 0.5)
+  );
+  width: 1px;
+  background: linear-gradient(
+    transparent,
+    rgb(152 46 48 / 42%) 12%,
+    rgb(152 46 48 / 42%) 88%,
+    transparent
+  );
+  pointer-events: none;
 }
 
 .historical-moment__grid {
@@ -1964,30 +1983,41 @@ a {
   text-transform: uppercase;
 }
 
-.thought-formation__convergence {
+.formation-convergence {
   display: grid;
-  grid-template-columns: 1.5rem 1fr;
-  gap: clamp(2.25rem, 4vw, 3.25rem);
+  grid-template-columns: 3rem 1fr;
+  gap: clamp(1.75rem, 3.5vw, 3rem);
 }
 
-.thought-formation__line {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 0.5rem;
-  color: var(--trace-accent);
+.formation-convergence__graphic {
+  width: 3rem;
+  height: 100%;
+  min-height: 34rem;
+  align-self: stretch;
+  overflow: visible;
 }
 
-.thought-formation__line span {
-  width: 2px;
-  flex: 1;
-  background: linear-gradient(rgb(152 46 48 / 32%), var(--trace-accent));
+.formation-convergence__guides,
+.formation-convergence__branch,
+.formation-convergence__merged {
+  fill: none;
+  stroke-linecap: square;
+  vector-effect: non-scaling-stroke;
 }
 
-.thought-formation__line b {
-  margin-top: 0.35rem;
-  font-size: 1.15rem;
-  font-weight: 400;
+.formation-convergence__guides {
+  stroke: rgb(152 46 48 / 16%);
+  stroke-width: 1;
+}
+
+.formation-convergence__branch {
+  stroke: rgb(152 46 48 / 58%);
+  stroke-width: 1.25;
+}
+
+.formation-convergence__merged {
+  stroke: var(--trace-accent);
+  stroke-width: 2;
 }
 
 .formation-factor {
@@ -2965,9 +2995,18 @@ a {
     line-height: 1.1;
   }
 
-  .thought-formation__convergence {
-    grid-template-columns: 1rem 1fr;
-    gap: 1rem;
+  .historical-moment__continuity {
+    display: none;
+  }
+
+  .formation-convergence {
+    grid-template-columns: 1.25rem 1fr;
+    gap: 1.25rem;
+  }
+
+  .formation-convergence__graphic {
+    width: 1.25rem;
+    min-height: 30rem;
   }
 
   .formation-factor {
@@ -3282,6 +3321,19 @@ a {
   .trace-back-story__track b {
     background: Highlight;
   }
+
+  .historical-moment__continuity {
+    background: CanvasText;
+  }
+
+  .formation-convergence__guides {
+    stroke: CanvasText;
+  }
+
+  .formation-convergence__branch,
+  .formation-convergence__merged {
+    stroke: Highlight;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3329,5 +3381,11 @@ a {
 
   .trace-back-story__figure figcaption {
     opacity: 1 !important;
+  }
+
+  .formation-convergence__branch,
+  .formation-convergence__merged {
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
   }
 }

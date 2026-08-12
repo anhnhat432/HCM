@@ -441,6 +441,37 @@ def verify_trace_back_story(page: Page, trace_case: dict) -> None:
     assert first_moment.get_by_role("heading", level=2).is_visible()
 
 
+def verify_formation_convergence(page: Page) -> None:
+    assert page.locator(".historical-moment__continuity").count() == 3
+
+    convergence = page.locator(".formation-convergence")
+    graphic = convergence.locator(".formation-convergence__graphic")
+    assert convergence.count() == 1
+    assert graphic.get_attribute("aria-hidden") == "true"
+    assert graphic.get_attribute("focusable") == "false"
+    assert convergence.locator(".formation-convergence__branch").count() == 3
+    assert convergence.locator(".formation-convergence__merged").count() == 1
+
+    conclusion = page.locator(".thought-formation__conclusion")
+    conclusion.evaluate("element => element.scrollIntoView({ block: 'center' })")
+    page.wait_for_function(
+        """element => Number.parseFloat(
+            getComputedStyle(element.parentElement).opacity
+        ) > 0.95""",
+        arg=conclusion.element_handle(),
+    )
+    assert conclusion.get_by_role("heading", level=3).is_visible()
+
+    if page.evaluate("matchMedia('(prefers-reduced-motion: reduce)').matches"):
+        assert convergence.locator(
+            ".formation-convergence__branch, .formation-convergence__merged"
+        ).evaluate_all(
+            """paths => paths.every(path =>
+                getComputedStyle(path).strokeDasharray === 'none'
+            )"""
+        )
+
+
 def settle_page(page: Page) -> None:
     try:
         page.wait_for_load_state("networkidle", timeout=10_000)
@@ -774,6 +805,7 @@ def verify_trace(page: Page, trace_case: dict) -> None:
     }:
         verify_qr_share_dialog(page, trace_case)
     verify_trace_back_story(page, trace_case)
+    verify_formation_convergence(page)
     opening_action = page.get_by_role("link", name="Nhìn lại quá khứ", exact=True)
     if viewport_width >= 1024 and viewport_height <= 820:
         action_box = opening_action.bounding_box()
@@ -908,8 +940,10 @@ def verify_trace(page: Page, trace_case: dict) -> None:
         factor_padding = page.locator(".formation-factor").first.evaluate(
             "element => Number.parseFloat(getComputedStyle(element).paddingTop)"
         )
-        convergence_width = page.locator(".thought-formation__line span").evaluate(
-            "element => Number.parseFloat(getComputedStyle(element).width)"
+        convergence_width = page.locator(
+            ".formation-convergence__merged"
+        ).evaluate(
+            "element => Number.parseFloat(getComputedStyle(element).strokeWidth)"
         )
         conclusion_size = page.locator(
             ".thought-formation__conclusion h3"
