@@ -472,6 +472,40 @@ def verify_formation_convergence(page: Page) -> None:
         )
 
 
+def verify_journey_trace_mark(page: Page, trace_case: dict) -> None:
+    mark = page.locator(".journey-trace-mark")
+
+    if trace_case["ending"] != "journey-closing":
+        assert mark.count() == 0
+        return
+
+    assert mark.count() == 1
+    assert page.locator("#journey-closing .journey-trace-mark").count() == 1
+    assert mark.get_attribute("aria-hidden") == "true"
+    assert mark.locator(".journey-trace-mark__input").count() == 3
+    assert mark.locator(".journey-trace-mark__torch").count() == 1
+
+    mark.scroll_into_view_if_needed()
+    page.wait_for_function(
+        """() => Number.parseFloat(getComputedStyle(
+            document.querySelector('.journey-trace-mark__torch')
+        ).strokeDashoffset) <= 0.05"""
+    )
+    mark_box = mark.bounding_box()
+    assert mark_box is not None
+    max_height = 112 if page.evaluate("window.innerWidth <= 768") else 160
+    assert mark_box["height"] <= max_height
+
+    if page.evaluate("matchMedia('(prefers-reduced-motion: reduce)').matches"):
+        assert mark.locator(
+            ".journey-trace-mark__input, .journey-trace-mark__torch"
+        ).evaluate_all(
+            """paths => paths.every(path =>
+                getComputedStyle(path).strokeDasharray === 'none'
+            )"""
+        )
+
+
 def settle_page(page: Page) -> None:
     try:
         page.wait_for_load_state("networkidle", timeout=10_000)
@@ -806,6 +840,7 @@ def verify_trace(page: Page, trace_case: dict) -> None:
         verify_qr_share_dialog(page, trace_case)
     verify_trace_back_story(page, trace_case)
     verify_formation_convergence(page)
+    verify_journey_trace_mark(page, trace_case)
     opening_action = page.get_by_role("link", name="Nhìn lại quá khứ", exact=True)
     if viewport_width >= 1024 and viewport_height <= 820:
         action_box = opening_action.bounding_box()

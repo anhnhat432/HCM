@@ -2451,6 +2451,43 @@ a {
   line-height: 1.65;
 }
 
+.journey-trace-mark {
+  width: min(100%, 28rem);
+  height: 8.5rem;
+  margin: clamp(2.5rem, 4vw, 3.5rem) 0 0;
+}
+
+.journey-trace-mark svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.journey-trace-mark__guides,
+.journey-trace-mark__input,
+.journey-trace-mark__torch {
+  fill: none;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  vector-effect: non-scaling-stroke;
+}
+
+.journey-trace-mark__guides {
+  stroke: rgb(152 46 48 / 14%);
+  stroke-width: 1;
+}
+
+.journey-trace-mark__input {
+  stroke: rgb(152 46 48 / 58%);
+  stroke-width: 1.25;
+}
+
+.journey-trace-mark__torch {
+  stroke: var(--trace-accent);
+  stroke-width: 2;
+}
+
 .journey-closing__statement {
   max-width: 42rem;
   margin: clamp(3rem, 5vw, 4.5rem) 0 0;
@@ -2458,6 +2495,10 @@ a {
   font-family: var(--font-display), serif;
   font-size: clamp(1.1rem, 1.8vw, 1.3rem);
   line-height: 1.7;
+}
+
+.journey-trace-mark + .journey-closing__statement {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
 }
 
 .journey-closing__actions {
@@ -3129,6 +3170,16 @@ a {
     line-height: 1.65;
   }
 
+  .journey-trace-mark {
+    width: min(100%, 22rem);
+    height: 6.5rem;
+    margin-top: 2.25rem;
+  }
+
+  .journey-trace-mark + .journey-closing__statement {
+    margin-top: 1.75rem;
+  }
+
   .journey-closing__actions {
     align-items: flex-start;
     flex-direction: column;
@@ -3200,6 +3251,16 @@ a {
   .trace-opening__summary {
     margin-top: 1.4rem;
     line-height: 1.65;
+  }
+
+  .journey-trace-mark {
+    width: min(100%, 22rem);
+    height: 6.5rem;
+    margin-top: 2.25rem;
+  }
+
+  .journey-trace-mark + .journey-closing__statement {
+    margin-top: 1.75rem;
   }
 
   .trace-opening__question {
@@ -3334,6 +3395,15 @@ a {
   .formation-convergence__merged {
     stroke: Highlight;
   }
+
+  .journey-trace-mark__guides {
+    stroke: CanvasText;
+  }
+
+  .journey-trace-mark__input,
+  .journey-trace-mark__torch {
+    stroke: Highlight;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3385,6 +3455,12 @@ a {
 
   .formation-convergence__branch,
   .formation-convergence__merged {
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+
+  .journey-trace-mark__input,
+  .journey-trace-mark__torch {
     stroke-dasharray: none !important;
     stroke-dashoffset: 0 !important;
   }

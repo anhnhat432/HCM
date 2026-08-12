@@ -3,7 +3,9 @@ import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
+import { JourneyClosing } from "@/components/trace/journey-closing";
 import { TracePage } from "@/components/trace/trace-page";
+import { journeyClosing } from "@/data/journey-closing";
 import { traces } from "@/data/traces";
 import type { CompleteTraceData } from "@/types/trace";
 
@@ -61,4 +63,15 @@ test("historical moments and Thought Formation expose one continuous line langua
     3,
   );
   assert.ok(formationMarkup.includes('aria-hidden="true"'));
+});
+
+test("Journey Closing resolves three Trace lines into one decorative mark", () => {
+  const markup = renderToStaticMarkup(
+    createElement(JourneyClosing, { closing: journeyClosing }),
+  );
+
+  assert.ok(markup.includes("journey-trace-mark"));
+  assert.equal((markup.match(/journey-trace-mark__input/g) ?? []).length, 3);
+  assert.ok(markup.includes("journey-trace-mark__torch"));
+  assert.match(markup, /journey-trace-mark[^>]*aria-hidden="true"/);
 });
