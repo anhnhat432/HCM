@@ -2,7 +2,7 @@
 
 ## Scope and environment
 
-- Date: 2026-08-11.
+- Date: 2026-08-12.
 - Runtime: Next.js production build served locally at `http://localhost:3800`.
 - Browser automation: Playwright Chromium.
 - Automated scope: Homepage, `/phuong-phap`, all three Trace routes, Journey
@@ -16,6 +16,9 @@
 - Forced-colors acceptance runs at 390x844 and verifies visible keyboard focus,
   progress controls, Source Drawer operation, and horizontal overflow.
 - Reduced-motion acceptance runs on Homepage and all three Trace experiences.
+- Local QR sharing acceptance covers Homepage and Trace headers, canonical URL
+  generation, keyboard focus containment, Escape dismissal, focus restoration,
+  and confirmation that no external QR service is requested.
 - Contrast regression resolves the rendered foreground against the nearest
   rendered background and includes element opacity.
 - Source Drawer checks keyboard opening, dialog naming, initial close-button
@@ -25,13 +28,14 @@
 
 ## Lighthouse lab results
 
-Lighthouse 12.8.2 was run against the production build with the mobile default
-profile. Scores are lab measurements and can vary between runs.
+Lighthouse 12.8.2 was run three times per route against the QR-only production
+build with the mobile default profile. Scores are lab measurements and can vary
+between runs.
 
-| Route | Performance | Accessibility | Best Practices | SEO |
-| --- | ---: | ---: | ---: | ---: |
-| Homepage `/` | 87 | 100 | 100 | 100 |
-| Trace 01 `/trace/dai-doan-ket` | 76 | 100 | 100 | 100 |
+| Route | Performance runs | Performance median | Accessibility | Best Practices | SEO |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Homepage `/` | 89, 88, 88 | 88 | 100 | 100 | 100 |
+| Trace 01 `/trace/dai-doan-ket` | 82, 82, 81 | 82 | 100 | 100 | 100 |
 
 ## Manual NVDA checklist
 
@@ -44,11 +48,13 @@ Status: **NOT EXECUTED**. NVDA is not available in this automated environment.
    verify every control has a visible focus indicator.
 5. Open Trace 01 and confirm the progress timeline announces the active item as
    the current step while scrolling through every historical milestone.
-6. Open “Nguồn & kiểm chứng”; confirm the dialog name, verification description,
+6. Open QR sharing and confirm the dialog name, generated URL, focus trap,
+   Escape close, and trigger focus restoration.
+7. Open “Nguồn & kiểm chứng”; confirm the dialog name, verification description,
    source links, focus containment, Escape close, and focus restoration.
-7. Confirm present-day illustrations and historical images announce their
+8. Confirm present-day illustrations and historical images announce their
    intended alternative text without duplicating visible captions excessively.
-8. Complete Trace 03 and confirm Journey Closing actions, including
+9. Complete Trace 03 and confirm Journey Closing actions, including
    “Về dự án & phương pháp”, are announced in a logical order.
 
 ## Manual TalkBack checklist
