@@ -96,6 +96,10 @@ a {
   transform: translateY(0);
 }
 
+body:has(.home) .skip-link {
+  font-family: var(--font-homepage), sans-serif;
+}
+
 .home {
   min-height: 100vh;
   background: var(--color-canvas);
@@ -2924,9 +2928,9 @@ a {
 .scenario-picker-section__heading h2 {
   max-width: 17ch;
   margin: 0;
-  font-family: var(--font-display), serif;
+  font-family: var(--font-homepage), sans-serif;
   font-size: clamp(2.8rem, 5.5vw, 5.75rem);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.05em;
   line-height: 0.98;
 }
@@ -2956,7 +2960,8 @@ a {
   align-self: start;
   padding-top: 0.25rem;
   color: var(--color-accent);
-  font-family: var(--font-display), serif;
+  font-family: var(--font-homepage), sans-serif;
+  font-weight: 500;
   font-size: 1.1rem;
 }
 
@@ -2975,9 +2980,9 @@ a {
 }
 
 .scenario-picker__copy strong {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-homepage), sans-serif;
   font-size: clamp(1.65rem, 2.8vw, 2.8rem);
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.05;
 }

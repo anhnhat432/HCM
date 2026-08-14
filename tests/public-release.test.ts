@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -16,6 +16,7 @@ const methodologyPageUrl = new URL(
   import.meta.url,
 );
 const siteIconUrl = new URL("../app/icon.svg", import.meta.url);
+const rootLayoutUrl = new URL("../app/layout.tsx", import.meta.url);
 
 test("public release metadata uses the verified stable production origin", async () => {
   assert.ok(existsSync(siteModuleUrl), "Public site origin helper must exist");
@@ -26,6 +27,30 @@ test("public release metadata uses the verified stable production origin", async
 
 test("public release provides a site icon without a browser 404", () => {
   assert.ok(existsSync(siteIconUrl), "App Router site icon must exist");
+});
+
+test("font loading avoids preloading every family and unused homepage weights", () => {
+  const layout = readFileSync(rootLayoutUrl, "utf8");
+
+  assert.equal((layout.match(/preload: false/g) ?? []).length, 3);
+  assert.doesNotMatch(layout, /"700"/);
+});
+
+test("Homepage suggestions do not pull Trace-only display fonts", () => {
+  const stylesheet = readFileSync(
+    new URL("../app/globals.css", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(
+    stylesheet,
+    /\.scenario-picker-section__heading h2\s*\{[\s\S]*?font-family:\s*var\(--font-homepage\)/,
+  );
+  assert.match(
+    stylesheet,
+    /\.scenario-picker__copy strong\s*\{[\s\S]*?font-family:\s*var\(--font-homepage\)/,
+  );
+  assert.match(stylesheet, /body:has\(\.home\) \.skip-link/);
 });
 
 test("sitemap and robots expose every public experience route", async () => {

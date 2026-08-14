@@ -12,6 +12,7 @@ const displayFont = Newsreader({
   subsets: ["vietnamese"],
   weight: "variable",
   display: "swap",
+  preload: false,
 });
 
 const bodyFont = IBM_Plex_Sans({
@@ -19,13 +20,15 @@ const bodyFont = IBM_Plex_Sans({
   subsets: ["vietnamese"],
   weight: ["400", "500", "600"],
   display: "swap",
+  preload: false,
 });
 
 const homepageFont = Be_Vietnam_Pro({
   variable: "--font-homepage",
   subsets: ["vietnamese"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {

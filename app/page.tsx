@@ -33,37 +33,29 @@ export default function Home() {
       <section className="home-hero" aria-labelledby="home-heading">
         <div className="site-container home-hero__grid">
           <div className="home-hero__copy">
-            <Reveal>
-              <p className="section-kicker">ĐUỐC HỒNG — 2026</p>
-            </Reveal>
+            <p className="section-kicker">ĐUỐC HỒNG — 2026</p>
 
-            <Reveal delay={0.06}>
-              <h1 className="home-hero__title" id="home-heading">
-                <span className="home-hero__title-line">Một vấn đề{" "}</span>
-                <span className="home-hero__title-line">hôm nay.{" "}</span>
-                <span className="home-hero__title-line">Một tư tưởng{" "}</span>
-                <span className="home-hero__title-line">từ quá khứ.{" "}</span>
-              </h1>
-            </Reveal>
+            <h1 className="home-hero__title" id="home-heading">
+              <span className="home-hero__title-line">Một vấn đề{" "}</span>
+              <span className="home-hero__title-line">hôm nay.{" "}</span>
+              <span className="home-hero__title-line">Một tư tưởng{" "}</span>
+              <span className="home-hero__title-line">từ quá khứ.{" "}</span>
+            </h1>
 
-            <Reveal delay={0.12}>
-              <p className="home-hero__supporting">
-                Bắt đầu từ những câu hỏi của hiện tại, lần theo lịch sử và
-                khám phá cách tư tưởng Hồ Chí Minh được hình thành.
-              </p>
-            </Reveal>
+            <p className="home-hero__supporting">
+              Bắt đầu từ những câu hỏi của hiện tại, lần theo lịch sử và khám
+              phá cách tư tưởng Hồ Chí Minh được hình thành.
+            </p>
 
-            <Reveal delay={0.18}>
-              <Link className="primary-action" href="/ho-so">
-                <span>Mở một hồ sơ</span>
-                <span className="primary-action__arrow" aria-hidden="true">
-                  →
-                </span>
-              </Link>
-            </Reveal>
+            <Link className="primary-action" href="/ho-so">
+              <span>Mở một hồ sơ</span>
+              <span className="primary-action__arrow" aria-hidden="true">
+                →
+              </span>
+            </Link>
           </div>
 
-          <Reveal className="home-hero__visual" delay={0.1}>
+          <div className="home-hero__visual">
             <figure className="home-hero__figure">
               <div className="home-hero__image-frame">
                 <Image
@@ -90,7 +82,7 @@ export default function Home() {
                 </span>
               </figcaption>
             </figure>
-          </Reveal>
+          </div>
         </div>
       </section>
 

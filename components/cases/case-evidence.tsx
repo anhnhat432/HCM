@@ -68,6 +68,22 @@ export function CaseEvidence({
               Đến mốc lịch sử <span aria-hidden="true">→</span>
             </Link>
           </div>
+
+          <noscript>
+            <section
+              aria-label={`Nguồn nội dung cho ${moment.title}, ${moment.year}`}
+              className="case-evidence__no-script-sources"
+            >
+              <p>Nguồn nội dung</p>
+              <ol>
+                {moment.sources.map((source) => (
+                  <li key={source.url}>
+                    <a href={source.url}>{source.title}</a>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          </noscript>
         </div>
 
         {image ? (

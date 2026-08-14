@@ -42,6 +42,18 @@ test("Homepage makes living cases primary while retaining QR and Trace foundatio
   assert.match(homepage, /TopicList/);
 });
 
+test("Homepage LCP image is not delayed by a decorative reveal wrapper", () => {
+  const homepage = readSource("app/page.tsx");
+  const hero = homepage.match(
+    /<section className="home-hero"[\s\S]*?<\/section>/,
+  )?.[0];
+
+  assert.ok(hero);
+  assert.doesNotMatch(hero, /<Reveal/);
+  assert.doesNotMatch(homepage, /<Reveal className="home-hero__visual"/);
+  assert.match(homepage, /<div className="home-hero__visual">/);
+});
+
 test("scenario picker shows exactly three suggestions per rotation", () => {
   const picker = readSource("components/cases/scenario-picker.tsx");
 
@@ -70,6 +82,7 @@ test("case page server markup contains the complete six-act narrative", () => {
   assert.equal((html.match(/<h1/g) ?? []).length, 1);
   assert.equal((html.match(/case-evidence__reveal/g) ?? []).length, 3);
   assert.equal((html.match(/Nguồn &amp; kiểm chứng/g) ?? []).length, 3);
+  assert.equal((html.match(/case-evidence__no-script-sources/g) ?? []).length, 3);
   assert.match(html, /Mở hồ sơ khác/);
   assert.match(html, /Đọc Trace đầy đủ/);
 });

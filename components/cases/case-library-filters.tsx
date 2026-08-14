@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
+import { normalizeCaseSearchValue } from "@/lib/thought-case-search";
 import {
   CASE_CATEGORIES,
   CASE_CATEGORY_LABELS,
@@ -16,26 +17,18 @@ interface CaseLibraryFiltersProps {
 
 type ActiveCategory = CaseCategory | "all";
 
-function normalizeSearchValue(value: string): string {
-  return value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/đ/g, "d")
-    .toLocaleLowerCase("vi-VN");
-}
-
 export function CaseLibraryFilters({ previews }: CaseLibraryFiltersProps) {
   const [activeCategory, setActiveCategory] =
     useState<ActiveCategory>("all");
   const [query, setQuery] = useState("");
-  const normalizedQuery = normalizeSearchValue(query.trim());
+  const normalizedQuery = normalizeCaseSearchValue(query.trim());
 
   const filteredPreviews = useMemo(
     () =>
       previews.filter((item) => {
         const matchesCategory =
           activeCategory === "all" || item.category === activeCategory;
-        const searchCorpus = normalizeSearchValue(
+        const searchCorpus = normalizeCaseSearchValue(
           `${item.title} ${item.shortPrompt} ${CASE_CATEGORY_LABELS[item.category]}`,
         );
 
