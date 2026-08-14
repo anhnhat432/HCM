@@ -37,8 +37,12 @@ test("case library exposes labelled optional filters without gating links", () =
 test("Homepage makes living cases primary while retaining QR and Trace foundations", () => {
   const homepage = readSource("app/page.tsx");
 
-  assert.match(homepage, /href="\/ho-so"/);
-  assert.match(homepage, /Mở một hồ sơ/);
+  assert.match(homepage, /href="#tinh-huong-goi-y"/);
+  assert.match(homepage, /id="tinh-huong-goi-y"/);
+  assert.match(homepage, /Bắt đầu với một tình huống/);
+  assert.match(homepage, /Khoảng 2 phút/);
+  assert.match(homepage, /Không có đáp án đúng hoặc sai/);
+  assert.doesNotMatch(homepage, /Mở một hồ sơ/);
   assert.match(homepage, /ScenarioPicker/);
   assert.match(homepage, /Kho tư liệu nền/);
   assert.match(homepage, /QrShareDialog/);
@@ -80,8 +84,8 @@ test("case journey shell renders three route-backed stages without scroll tracki
   assert.equal((html.match(/case-stage-progress__link/g) ?? []).length, 3);
   assert.match(html, /aria-current="step"/);
   assert.match(html, new RegExp(`/ho-so/${item.slug}/dau-vet`));
-  assert.match(html, /Quay lại vấn đề/);
-  assert.match(html, /Kết nối và trở lại/);
+  assert.match(html, /Đọc lại vấn đề/);
+  assert.match(html, /Nhận gợi ý áp dụng/);
   assert.match(html, /id="main-content"/);
   assert.doesNotMatch(html, /requestAnimationFrame|addEventListener/);
 });
@@ -93,9 +97,16 @@ test("present stage keeps the perspective optional and points to historical evid
   const html = renderToStaticMarkup(createElement(CasePresentStage, { item }));
 
   assert.equal((html.match(/<h1/g) ?? []).length, 1);
-  assert.match(html, /HỒI 1 \/ VẤN ĐỀ HIỆN TẠI/);
-  assert.match(html, /HỒI 2 \/ GIẢ ĐỊNH BAN ĐẦU/);
-  assert.match(html, /Bạn không cần chọn đáp án để tiếp tục/);
+  assert.match(html, /BƯỚC 1 \/ ĐỌC VẤN ĐỀ/);
+  assert.match(html, /GÓC NHÌN BAN ĐẦU \(TÙY CHỌN\)/);
+  assert.match(html, /Khoảng 2 phút/);
+  assert.match(html, /Không có đáp án đúng hoặc sai/);
+  assert.match(html, /Xem 3 mốc lịch sử/);
+  assert.ok(
+    html.indexOf("experience-guide") < html.indexOf("case-scroll-cue"),
+    "The three-step guide must appear before the next action",
+  );
+  assert.doesNotMatch(html, /Mở ba dấu vết/);
   assert.match(html, new RegExp(`/ho-so/${item.slug}/dau-vet`));
   assert.doesNotMatch(html, /case-evidence__reveal/);
   assert.doesNotMatch(html, /HỒI 5 \/ KẾT NỐI TƯ TƯỞNG/);
@@ -112,8 +123,11 @@ test("evidence stage renders all three source-backed reveals in server markup", 
   assert.equal((html.match(/case-evidence__reveal/g) ?? []).length, 3);
   assert.equal((html.match(/Nguồn &amp; kiểm chứng/g) ?? []).length, 3);
   assert.equal((html.match(/case-evidence__no-script-sources/g) ?? []).length, 3);
-  assert.match(html, /HỒI 3 \/ MỞ HỒ SƠ/);
-  assert.match(html, /HỒI 4 \/ BA DẤU VẾT LỊCH SỬ/);
+  assert.match(html, /BƯỚC 2 \/ XEM 3 MỐC LỊCH SỬ/);
+  assert.match(html, /Xem ba mốc lịch sử để nhìn lại vấn đề/);
+  assert.match(html, /chỉ để đọc sâu, không bắt buộc/);
+  assert.doesNotMatch(html, /Mở dấu vết đầu tiên/);
+  assert.doesNotMatch(html, /case-evidence__heading/);
   assert.doesNotMatch(html, /perspective-prompt/);
   assert.doesNotMatch(html, /case-return__next/);
   assert.match(route, /generateStaticParams/);
@@ -130,11 +144,14 @@ test("return stage connects the thought formation to practical next steps", () =
   const route = readSource("app/ho-so/[slug]/tro-lai/page.tsx");
 
   assert.equal((html.match(/<h1/g) ?? []).length, 1);
-  assert.match(html, /HỒI 5 \/ KẾT NỐI TƯ TƯỞNG/);
-  assert.deepEqual(html.match(/00:0[1-3]/g), ["00:01", "00:02", "00:03"]);
-  assert.match(html, /KẾT LUẬN KHÔNG PHẢI TRÍCH DẪN/);
-  assert.match(html, /ĐIỀU MANG THEO/);
-  assert.match(html, /HỒI 6 \/ TRỞ LẠI HIỆN TẠI/);
+  assert.match(html, /BƯỚC 3 \/ NHẬN GỢI Ý ÁP DỤNG/);
+  assert.equal((html.match(/case-connection__timestamp/g) ?? []).length, 3);
+  assert.doesNotMatch(html, /00:0[1-3]/);
+  assert.match(html, /GÓC NHÌN KẾT NỐI/);
+  assert.match(html, /Xem ba gợi ý áp dụng/);
+  assert.match(html, /BA GỢI Ý CHO TÌNH HUỐNG NÀY/);
+  assert.match(html, /Đọc sâu \(tùy chọn\)/);
+  assert.doesNotMatch(html, /KẾT LUẬN KHÔNG PHẢI TRÍCH DẪN/);
   assert.equal((html.match(/case-return__lenses/g) ?? []).length, 1);
   assert.equal((html.match(/case-return__next/g) ?? []).length, 1);
   assert.match(html, new RegExp(`/ho-so/${item.slug}/dau-vet`));
@@ -154,7 +171,8 @@ test("case enhancements remain optional and expose accessible guidance", () => {
 
   assert.match(page, /PerspectivePrompt/);
   assert.match(guide, /aria-label="Cách trải nghiệm"/);
-  assert.match(guide, /Bạn không cần chọn/);
+  assert.match(guide, /Ba bước/);
+  assert.match(guide, /Không có đáp án đúng hoặc sai/);
   assert.match(prompt, /aria-pressed/);
   assert.match(prompt, /aria-live="polite"/);
   assert.match(progress, /aria-current/);

@@ -21,8 +21,7 @@ export function CaseReturn({
     >
       <div className="site-container case-return__grid">
         <div className="case-return__intro">
-          <p className="case-act-label">HỒI 6 / TRỞ LẠI HIỆN TẠI</p>
-          <p className="case-return__takeaway-label">ĐIỀU MANG THEO</p>
+          <p className="case-act-label">BA GỢI Ý CHO TÌNH HUỐNG NÀY</p>
           <h2 id="case-return-heading">{item.returnHeading}</h2>
           <p>{item.returnSummary}</p>
         </div>
@@ -39,8 +38,8 @@ export function CaseReturn({
 
         <div className="case-return__next">
           <div>
-            <p>TIẾP TỤC LẦN THEO</p>
-            <h3>Một tình huống khác có thể đổi góc nhìn của bạn.</h3>
+            <p>NẾU MUỐN TIẾP TỤC</p>
+            <h3>Chọn một tình huống khác.</h3>
           </div>
           <ol>
             {relatedCases.map((related) => (
@@ -56,11 +55,14 @@ export function CaseReturn({
 
         <div className="case-return__actions">
           <Link className="primary-action" href="/ho-so">
-            <span>Mở hồ sơ khác</span>
+            <span>Xem tất cả tình huống</span>
             <span aria-hidden="true">→</span>
           </Link>
-          <Link href={`/trace/${item.primaryTrace}`}>Đọc Trace đầy đủ</Link>
-          <Link href={evidenceHref}>Xem lại nguồn tư liệu</Link>
+          <div className="case-return__deep-links">
+            <p>Đọc sâu (tùy chọn)</p>
+            <Link href={`/trace/${item.primaryTrace}`}>Xem tư liệu đầy đủ</Link>
+            <Link href={evidenceHref}>Kiểm tra nguồn lịch sử</Link>
+          </div>
         </div>
       </div>
     </section>

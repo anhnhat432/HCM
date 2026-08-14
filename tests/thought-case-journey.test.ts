@@ -16,20 +16,20 @@ test("case journey exposes exactly three route-backed stages", () => {
     {
       id: "hien-tai",
       href: `/ho-so/${slug}`,
-      label: "Hiện tại",
-      ariaLabel: "Bước 1: Hiện tại",
+      label: "Đọc vấn đề",
+      ariaLabel: "Bước 1: Đọc vấn đề hiện tại",
     },
     {
       id: "dau-vet",
       href: `/ho-so/${slug}/dau-vet`,
-      label: "Dấu vết",
-      ariaLabel: "Bước 2: Dấu vết lịch sử",
+      label: "Xem 3 mốc",
+      ariaLabel: "Bước 2: Xem ba mốc lịch sử",
     },
     {
       id: "tro-lai",
       href: `/ho-so/${slug}/tro-lai`,
-      label: "Trở lại",
-      ariaLabel: "Bước 3: Trở lại hiện tại",
+      label: "Nhận gợi ý",
+      ariaLabel: "Bước 3: Nhận gợi ý áp dụng",
     },
   ]);
 });
@@ -42,18 +42,18 @@ test("case stage hrefs keep the present stage on the canonical base route", () =
 
 test("case stages provide one clear previous and next route action", () => {
   assert.deepEqual(getCaseStageNavigation(slug, "hien-tai"), {
-    previous: { href: "/ho-so", label: "Chọn hồ sơ khác" },
-    next: { href: `/ho-so/${slug}/dau-vet`, label: "Mở ba dấu vết" },
+    previous: { href: "/ho-so", label: "Chọn tình huống khác" },
+    next: { href: `/ho-so/${slug}/dau-vet`, label: "Xem 3 mốc lịch sử" },
   });
   assert.deepEqual(getCaseStageNavigation(slug, "dau-vet"), {
-    previous: { href: `/ho-so/${slug}`, label: "Quay lại vấn đề" },
+    previous: { href: `/ho-so/${slug}`, label: "Đọc lại vấn đề" },
     next: {
       href: `/ho-so/${slug}/tro-lai`,
-      label: "Kết nối và trở lại",
+      label: "Nhận gợi ý áp dụng",
     },
   });
   assert.deepEqual(getCaseStageNavigation(slug, "tro-lai"), {
-    previous: { href: `/ho-so/${slug}/dau-vet`, label: "Xem lại dấu vết" },
-    next: { href: "/ho-so", label: "Chọn hồ sơ tiếp theo" },
+    previous: { href: `/ho-so/${slug}/dau-vet`, label: "Xem lại 3 mốc" },
+    next: { href: "/ho-so", label: "Chọn tình huống khác" },
   });
 });

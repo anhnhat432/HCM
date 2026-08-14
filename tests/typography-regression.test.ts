@@ -213,8 +213,8 @@ test("paged case stages share one editorial grid and remove redundant framing", 
     "none",
   );
   assert.equal(
-    getDeclaration(getRuleBlocks(".experience-guide")[0], "grid-column"),
-    "2",
+    getDeclaration(getRuleBlocks(".experience-guide")[0], "margin-top"),
+    "2rem",
   );
   assert.equal(
     getDeclaration(getRuleBlocks(".case-present__file-mark span")[0], "display"),
@@ -385,7 +385,7 @@ test("case intros use the approved compact vertical rhythm", () => {
   );
   assert.deepEqual(
     pagedFileBlocks.map((block) => getDeclaration(block, "padding-block")),
-    ["clamp(3.5rem, 6vw, 5.5rem)", "4rem"],
+    ["clamp(2.5rem, 4vw, 3.5rem)", "2.75rem"],
   );
   assert.deepEqual(
     pagedConnectionBlocks.map((block) => getDeclaration(block, "padding-block")),

@@ -158,31 +158,33 @@ def verify_route_transition_flow(browser: Browser) -> None:
     slug = CASE_SLUGS[0]
 
     open_page(page, "/")
-    page.get_by_role("link", name="Mở một hồ sơ", exact=True).click()
-    page.wait_for_url(f"{BASE_URL}/ho-so")
+    page.get_by_role(
+        "link", name="Bắt đầu với một tình huống", exact=True
+    ).click()
+    page.wait_for_url(f"{BASE_URL}/#tinh-huong-goi-y")
 
-    first_case = page.locator(".case-library__item a").first
+    first_case = page.locator(".scenario-picker__list a").first
     first_case.click()
     page.wait_for_url(f"{BASE_URL}/ho-so/{slug}")
     assert_case_stage(page, stage_path(slug, ""), "hien-tai")
 
-    page.get_by_role("link", name="Mở ba dấu vết", exact=True).first.click()
+    page.get_by_role("link", name="Xem 3 mốc lịch sử", exact=True).first.click()
     evidence_path = stage_path(slug, "/dau-vet")
     page.wait_for_url(f"{BASE_URL}{evidence_path}")
     assert_case_stage(page, evidence_path, "dau-vet")
     assert (
-        page.get_by_role("link", name="Quay lại vấn đề", exact=True).get_attribute(
+        page.get_by_role("link", name="Đọc lại vấn đề", exact=True).get_attribute(
             "href"
         )
         == stage_path(slug, "")
     )
 
-    page.get_by_role("link", name="Kết nối và trở lại", exact=True).click()
+    page.get_by_role("link", name="Nhận gợi ý áp dụng", exact=True).click()
     return_path = stage_path(slug, "/tro-lai")
     page.wait_for_url(f"{BASE_URL}{return_path}")
     assert_case_stage(page, return_path, "tro-lai")
     assert (
-        page.get_by_role("link", name="Xem lại dấu vết", exact=True).get_attribute(
+        page.get_by_role("link", name="Xem lại 3 mốc", exact=True).get_attribute(
             "href"
         )
         == evidence_path
@@ -191,7 +193,7 @@ def verify_route_transition_flow(browser: Browser) -> None:
     page.go_back(wait_until="domcontentloaded")
     page.wait_for_url(f"{BASE_URL}{evidence_path}")
     assert_case_stage(page, evidence_path, "dau-vet")
-    page.get_by_role("link", name="Kết nối và trở lại", exact=True).click()
+    page.get_by_role("link", name="Nhận gợi ý áp dụng", exact=True).click()
     page.wait_for_url(f"{BASE_URL}{return_path}")
 
     related_href = page.locator(".case-return__next a").first.get_attribute("href")
@@ -241,7 +243,7 @@ def verify_stage_interactions(browser: Browser) -> None:
     return_path = stage_path(slug, "/tro-lai")
     open_page(page, return_path)
     assert page.locator(".case-return__next a").count() == 2
-    trace_link = page.get_by_role("link", name="Đọc Trace đầy đủ")
+    trace_link = page.get_by_role("link", name="Xem tư liệu đầy đủ")
     assert trace_link.get_attribute("href") == "/trace/dai-doan-ket"
 
     open_page(page, present_path)
@@ -295,7 +297,9 @@ def verify_accessibility_modes(browser: Browser) -> None:
     open_page(no_script_page, present_path)
     assert_case_stage(no_script_page, present_path, "hien-tai")
     assert (
-        no_script_page.get_by_role("link", name="Mở ba dấu vết", exact=True).count()
+        no_script_page.get_by_role(
+            "link", name="Xem 3 mốc lịch sử", exact=True
+        ).count()
         >= 1
     )
 

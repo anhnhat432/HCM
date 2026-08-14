@@ -27,18 +27,18 @@ export function CasePresentStage({ item }: CasePresentStageProps) {
             <i />
           </div>
           <div className="case-present__copy">
-            <p className="case-act-label">HỒI 1 / VẤN ĐỀ HIỆN TẠI</p>
+            <p className="case-act-label">BƯỚC 1 / ĐỌC VẤN ĐỀ</p>
             <h1 id="case-present-heading">{item.title}</h1>
             <p className="case-present__context">{item.context}</p>
             <blockquote>{item.openingQuestion}</blockquote>
+            <ExperienceGuide />
             <Link
               className="case-scroll-cue"
               href={getCaseStageHref(item.slug, "dau-vet")}
             >
-              Mở ba dấu vết <span aria-hidden="true">→</span>
+              Xem 3 mốc lịch sử <span aria-hidden="true">→</span>
             </Link>
           </div>
-          <ExperienceGuide />
         </div>
       </section>
 
@@ -48,7 +48,7 @@ export function CasePresentStage({ item }: CasePresentStageProps) {
         id="case-assumption"
       >
         <div className="site-container case-assumption__grid">
-          <p className="case-act-label">HỒI 2 / GIẢ ĐỊNH BAN ĐẦU</p>
+          <p className="case-act-label">GÓC NHÌN BAN ĐẦU (TÙY CHỌN)</p>
           <div>
             <h2 id="case-assumption-heading">
               Cách nhìn đầu tiên thường rất nhanh.

@@ -29,10 +29,10 @@ export function CaseReturnStage({ item }: CaseReturnStageProps) {
         id="case-connection"
       >
         <div className="site-container case-connection__grid">
-          <p className="case-act-label">HỒI 5 / KẾT NỐI TƯ TƯỞNG</p>
+          <p className="case-act-label">BƯỚC 3 / NHẬN GỢI Ý ÁP DỤNG</p>
           <div>
             <h1 id="case-connection-heading">
-              Ba dấu vết gặp nhau trong một cách nhìn.
+              Từ ba mốc lịch sử đến một cách xử lý hôm nay.
             </h1>
             <ol>
               {primaryTrace.thoughtFormation.factors.map((factor, index) => (
@@ -41,7 +41,7 @@ export function CaseReturnStage({ item }: CaseReturnStageProps) {
                     aria-hidden="true"
                     className="case-connection__timestamp"
                   >
-                    00:{String(index + 1).padStart(2, "0")}
+                    {String(index + 1).padStart(2, "0")}
                   </span>
                   <h2>{factor.title}</h2>
                   <p>{factor.summary}</p>
@@ -50,7 +50,7 @@ export function CaseReturnStage({ item }: CaseReturnStageProps) {
             </ol>
             <div className="case-connection__conclusion">
               <span className="case-connection__conclusion-label">
-                KẾT LUẬN KHÔNG PHẢI TRÍCH DẪN
+                GÓC NHÌN KẾT NỐI
               </span>
               <p>
                 {primaryTrace.thoughtFormation.conclusion.map((line) => (
@@ -58,6 +58,9 @@ export function CaseReturnStage({ item }: CaseReturnStageProps) {
                 ))}
               </p>
             </div>
+            <a className="case-connection__continue" href="#case-return">
+              Xem ba gợi ý áp dụng <span aria-hidden="true">↓</span>
+            </a>
           </div>
         </div>
       </section>

@@ -28,16 +28,16 @@ const CASE_STAGE_COPY: Record<
   Pick<CaseJourneyStageItem, "label" | "ariaLabel">
 > = {
   "hien-tai": {
-    label: "Hiện tại",
-    ariaLabel: "Bước 1: Hiện tại",
+    label: "Đọc vấn đề",
+    ariaLabel: "Bước 1: Đọc vấn đề hiện tại",
   },
   "dau-vet": {
-    label: "Dấu vết",
-    ariaLabel: "Bước 2: Dấu vết lịch sử",
+    label: "Xem 3 mốc",
+    ariaLabel: "Bước 2: Xem ba mốc lịch sử",
   },
   "tro-lai": {
-    label: "Trở lại",
-    ariaLabel: "Bước 3: Trở lại hiện tại",
+    label: "Nhận gợi ý",
+    ariaLabel: "Bước 3: Nhận gợi ý áp dụng",
   },
 };
 
@@ -65,10 +65,10 @@ export function getCaseStageNavigation(
 ): CaseStageNavigation {
   if (stage === "hien-tai") {
     return {
-      previous: { href: "/ho-so", label: "Chọn hồ sơ khác" },
+      previous: { href: "/ho-so", label: "Chọn tình huống khác" },
       next: {
         href: getCaseStageHref(slug, "dau-vet"),
-        label: "Mở ba dấu vết",
+        label: "Xem 3 mốc lịch sử",
       },
     };
   }
@@ -77,11 +77,11 @@ export function getCaseStageNavigation(
     return {
       previous: {
         href: getCaseStageHref(slug, "hien-tai"),
-        label: "Quay lại vấn đề",
+        label: "Đọc lại vấn đề",
       },
       next: {
         href: getCaseStageHref(slug, "tro-lai"),
-        label: "Kết nối và trở lại",
+        label: "Nhận gợi ý áp dụng",
       },
     };
   }
@@ -89,8 +89,8 @@ export function getCaseStageNavigation(
   return {
     previous: {
       href: getCaseStageHref(slug, "dau-vet"),
-      label: "Xem lại dấu vết",
+      label: "Xem lại 3 mốc",
     },
-    next: { href: "/ho-so", label: "Chọn hồ sơ tiếp theo" },
+    next: { href: "/ho-so", label: "Chọn tình huống khác" },
   };
 }

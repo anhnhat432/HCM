@@ -237,9 +237,10 @@ def verify_homepage(page: Page) -> None:
     assert page.get_by_text("DESIGN SYSTEM", exact=True).count() == 0
 
     primary_action = page.get_by_role(
-        "link", name="Mở một hồ sơ", exact=True
+        "link", name="Bắt đầu với một tình huống", exact=True
     )
-    assert primary_action.get_attribute("href") == "/ho-so"
+    assert primary_action.get_attribute("href") == "#tinh-huong-goi-y"
+    assert page.get_by_text("Khoảng 2 phút", exact=False).count() >= 1
     if viewport_width >= 1024 and viewport_height <= 820:
         action_box = primary_action.bounding_box()
         assert action_box is not None
@@ -494,7 +495,9 @@ def main() -> None:
         assert mobile_body_font >= 16
 
         for locator in [
-            mobile.get_by_role("link", name="Mở một hồ sơ", exact=True),
+            mobile.get_by_role(
+                "link", name="Bắt đầu với một tình huống", exact=True
+            ),
             mobile.get_by_role(
                 "button", name="Chia sẻ trang Đuốc Hồng bằng mã QR", exact=True
             ),

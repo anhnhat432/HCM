@@ -176,6 +176,18 @@ body:has(.home) .skip-link {
   line-height: 1.75;
 }
 
+.home-hero__journey-meta {
+  margin: 1.25rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.035em;
+}
+
+.home-hero__journey-meta + .primary-action {
+  margin-top: 1.25rem;
+}
+
 .primary-action {
   width: fit-content;
   min-height: 2.75rem;
@@ -2907,6 +2919,7 @@ body:has(.home) .skip-link {
 .scenario-picker-section {
   padding-block: clamp(5rem, 10vw, 9rem);
   border-top: 1px solid var(--color-line);
+  scroll-margin-top: 1rem;
 }
 
 .scenario-picker-section__heading {
@@ -3294,10 +3307,8 @@ body:has(.home) .skip-link {
 }
 
 .experience-guide {
-  grid-column: 2;
   width: min(100%, 44rem);
-  align-self: start;
-  margin-top: 0;
+  margin-top: 2rem;
   padding-block: 1rem 1.15rem;
   border-top: 1px solid var(--color-ink);
   border-bottom: 1px solid var(--color-line);
@@ -3311,11 +3322,31 @@ body:has(.home) .skip-link {
   text-transform: uppercase;
 }
 
+.experience-guide ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem 1.25rem;
+  padding: 0;
+  margin: 0.85rem 0 0;
+  list-style-position: inside;
+}
+
+.experience-guide li {
+  color: var(--color-ink);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
 .experience-guide p {
-  margin: 0.75rem 0 0;
+  margin: 0.85rem 0 0;
   color: var(--color-muted);
   font-size: 0.82rem;
   line-height: 1.65;
+}
+
+.experience-guide + .case-scroll-cue {
+  margin-top: 1.25rem;
 }
 
 .case-assumption {
@@ -3518,6 +3549,15 @@ body:has(.home) .skip-link {
   line-height: 1.7;
 }
 
+.case-file__guide {
+  max-width: 42rem;
+  margin: 1rem 0 0;
+  color: var(--case-archive);
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
 .case-file__first-record {
   display: grid;
   grid-template-columns: minmax(5rem, 0.2fr) minmax(0, 1fr);
@@ -3561,7 +3601,7 @@ body:has(.home) .skip-link {
 
 .case-evidence {
   position: relative;
-  padding-block: clamp(4.5rem, 8vw, 7rem) 0;
+  padding-block: 0;
 }
 
 .case-evidence::before {
@@ -3898,13 +3938,28 @@ body:has(.home) .skip-link {
   margin-top: 0.12em;
 }
 
+.case-connection__continue {
+  width: fit-content;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+  padding-block: 0.2rem;
+  border-bottom: 1px solid currentColor;
+  color: var(--case-archive);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
 .case-experience--paged .case-present {
   min-height: auto;
   padding-block: clamp(3rem, 5vw, 4.75rem);
 }
 
 .case-experience--paged .case-file {
-  padding-block: clamp(3.5rem, 6vw, 5.5rem);
+  padding-block: clamp(2.5rem, 4vw, 3.5rem);
 }
 
 .case-experience--paged .case-connection {
@@ -4084,7 +4139,24 @@ body:has(.home) .skip-link {
   margin-top: 3rem;
 }
 
-.case-return__actions > a:not(.primary-action) {
+.case-return__deep-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: center;
+}
+
+.case-return__deep-links p {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--case-archive);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.case-return__deep-links a {
   min-height: 2.75rem;
   display: inline-flex;
   align-items: center;
@@ -4457,8 +4529,12 @@ body:has(.home) .skip-link {
   }
 
   .experience-guide {
-    grid-column: auto;
-    margin-top: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .experience-guide ol {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
   }
 
   .case-assumption {
@@ -4498,7 +4574,7 @@ body:has(.home) .skip-link {
   }
 
   .case-experience--paged .case-file {
-    padding-block: 4rem;
+    padding-block: 2.75rem;
   }
 
   .case-file::before,
@@ -4542,7 +4618,7 @@ body:has(.home) .skip-link {
   }
 
   .case-evidence {
-    padding-top: 4.5rem;
+    padding-top: 0;
   }
 
   .case-evidence__heading {
@@ -4724,6 +4800,12 @@ body:has(.home) .skip-link {
     align-items: flex-start;
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  .case-return__deep-links {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
   }
 
   .scenario-picker-section {

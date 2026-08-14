@@ -47,8 +47,12 @@ export default function Home() {
               phá cách tư tưởng Hồ Chí Minh được hình thành.
             </p>
 
-            <Link className="primary-action" href="/ho-so">
-              <span>Mở một hồ sơ</span>
+            <p className="home-hero__journey-meta">
+              Khoảng 2 phút · Không có đáp án đúng hoặc sai.
+            </p>
+
+            <Link className="primary-action" href="#tinh-huong-goi-y">
+              <span>Bắt đầu với một tình huống</span>
               <span className="primary-action__arrow" aria-hidden="true">
                 →
               </span>
@@ -89,6 +93,7 @@ export default function Home() {
       <section
         aria-labelledby="scenario-picker-heading"
         className="scenario-picker-section"
+        id="tinh-huong-goi-y"
       >
         <div className="site-container">
           <Reveal>
