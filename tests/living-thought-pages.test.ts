@@ -131,6 +131,8 @@ test("return stage connects the thought formation to practical next steps", () =
 
   assert.equal((html.match(/<h1/g) ?? []).length, 1);
   assert.match(html, /HỒI 5 \/ KẾT NỐI TƯ TƯỞNG/);
+  assert.deepEqual(html.match(/00:0[1-3]/g), ["00:01", "00:02", "00:03"]);
+  assert.match(html, /KẾT LUẬN KHÔNG PHẢI TRÍCH DẪN/);
   assert.match(html, /ĐIỀU MANG THEO/);
   assert.match(html, /HỒI 6 \/ TRỞ LẠI HIỆN TẠI/);
   assert.equal((html.match(/case-return__lenses/g) ?? []).length, 1);

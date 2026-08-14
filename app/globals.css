@@ -3052,6 +3052,11 @@ body:has(.home) .skip-link {
   background: var(--color-canvas);
 }
 
+.case-experience--paged {
+  --case-archive: #315044;
+  --focus-ring: 0 0 0 3px var(--color-canvas), 0 0 0 5px var(--case-archive);
+}
+
 .case-header {
   position: relative;
   z-index: 32;
@@ -3135,8 +3140,9 @@ body:has(.home) .skip-link {
 }
 
 .case-stage-progress__link > span:first-child {
-  color: var(--color-accent);
-  font-family: var(--font-display), serif;
+  color: var(--case-archive);
+  font-family: var(--font-body), sans-serif;
+  font-variant-numeric: tabular-nums;
 }
 
 .case-stage-progress__link:hover,
@@ -3147,7 +3153,7 @@ body:has(.home) .skip-link {
 
 .case-stage-progress__link[aria-current="step"] {
   font-weight: 600;
-  border-bottom-color: var(--trace-accent, var(--color-accent));
+  border-bottom-color: var(--case-archive);
 }
 
 .case-stage-navigation {
@@ -3189,7 +3195,7 @@ body:has(.home) .skip-link {
 
 .case-act-label {
   margin: 0;
-  color: var(--color-muted);
+  color: var(--case-archive);
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.13em;
@@ -3227,9 +3233,11 @@ body:has(.home) .skip-link {
 }
 
 .case-present__file-mark strong {
-  color: var(--color-accent);
+  color: var(--case-archive);
+  font-family: var(--font-body), sans-serif;
   font-size: clamp(1.15rem, 1.8vw, 1.65rem);
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
   letter-spacing: 0.06em;
 }
 
@@ -3241,18 +3249,18 @@ body:has(.home) .skip-link {
 }
 
 .case-present__copy h1 {
-  max-width: 14ch;
+  max-width: 18ch;
   margin: 1.25rem 0 0;
   font-family: var(--font-display), serif;
-  font-size: clamp(3.25rem, 5.1vw, 5.25rem);
+  font-size: clamp(2.35rem, 3.4vw, 3.4rem);
   font-weight: 400;
-  letter-spacing: -0.06em;
-  line-height: 0.9;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
 }
 
 .case-present__context {
   max-width: 44rem;
-  margin: 2.25rem 0 0;
+  margin: 1.5rem 0 0;
   color: var(--color-muted);
   font-size: clamp(1rem, 1.35vw, 1.17rem);
   line-height: 1.75;
@@ -3262,7 +3270,7 @@ body:has(.home) .skip-link {
   max-width: 32ch;
   margin: 2rem 0 0;
   padding-left: 1.25rem;
-  border-left: 2px solid var(--trace-accent, var(--color-accent));
+  border-left: 2px solid var(--case-archive);
   font-family: var(--font-body), sans-serif;
   font-size: clamp(1.2rem, 1.6vw, 1.5rem);
   font-weight: 500;
@@ -3312,8 +3320,9 @@ body:has(.home) .skip-link {
 
 .case-assumption {
   padding-block: clamp(4.5rem, 8vw, 7.5rem);
-  color: var(--color-clear);
-  background: var(--color-slate);
+  color: var(--color-ink);
+  border-block: 1px solid var(--color-line);
+  background: var(--color-canvas);
 }
 
 .case-assumption__grid {
@@ -3323,14 +3332,14 @@ body:has(.home) .skip-link {
 }
 
 .case-assumption .case-act-label {
-  color: rgb(251 250 246 / 58%);
+  color: var(--case-archive);
 }
 
 .case-assumption h2 {
   max-width: 16ch;
   margin: 0;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(2.4rem, 4vw, 4rem);
+  font-size: clamp(2rem, 3vw, 3rem);
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1.05;
@@ -3339,7 +3348,7 @@ body:has(.home) .skip-link {
 .case-assumption__statement {
   max-width: 38ch;
   margin: 2.5rem 0 0;
-  color: rgb(251 250 246 / 72%);
+  color: var(--color-muted);
   font-family: var(--font-body), sans-serif;
   font-size: clamp(1.1rem, 1.8vw, 1.45rem);
   line-height: 1.65;
@@ -3349,13 +3358,13 @@ body:has(.home) .skip-link {
   max-width: 52rem;
   margin-top: 3rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgb(251 250 246 / 22%);
+  border-top: 1px solid var(--color-line);
 }
 
 .perspective-prompt__label,
 .perspective-prompt__status {
   margin: 0;
-  color: rgb(251 250 246 / 64%);
+  color: var(--color-muted);
   font-size: 0.78rem;
   line-height: 1.6;
 }
@@ -3374,8 +3383,8 @@ body:has(.home) .skip-link {
   gap: 0.75rem;
   align-items: center;
   padding: 0.8rem 1rem;
-  border: 1px solid rgb(251 250 246 / 25%);
-  color: var(--color-clear);
+  border: 1px solid var(--color-line);
+  color: var(--color-ink);
   background: transparent;
   font: inherit;
   font-size: 0.84rem;
@@ -3393,7 +3402,7 @@ body:has(.home) .skip-link {
 .perspective-prompt__choices button:hover,
 .perspective-prompt__choices button:focus-visible,
 .perspective-prompt__choices button[aria-pressed="true"] {
-  border-color: var(--color-clear);
+  border-color: var(--case-archive);
 }
 
 .perspective-prompt__choices button[aria-pressed="true"] {
@@ -3401,8 +3410,8 @@ body:has(.home) .skip-link {
 }
 
 .perspective-prompt__choices button[aria-pressed="true"] > span {
-  background: var(--trace-accent, var(--color-accent));
-  box-shadow: inset 0 0 0 2px var(--color-slate);
+  background: var(--case-archive);
+  box-shadow: inset 0 0 0 2px var(--color-canvas);
 }
 
 .perspective-prompt__status {
@@ -3416,7 +3425,7 @@ body:has(.home) .skip-link {
   align-items: center;
   padding: 0;
   border: 0;
-  color: var(--color-clear);
+  color: var(--color-ink);
   background: transparent;
   font: inherit;
   font-size: 0.72rem;
@@ -3483,6 +3492,7 @@ body:has(.home) .skip-link {
 }
 
 .case-file__sheet > p:first-child strong {
+  color: var(--case-archive);
   font-family: var(--font-body), sans-serif;
   font-size: 0.82rem;
   font-weight: 600;
@@ -3491,13 +3501,13 @@ body:has(.home) .skip-link {
 }
 
 .case-file__sheet h1 {
-  max-width: 15ch;
+  max-width: 20ch;
   margin: 2.5rem 0 0;
   font-family: var(--font-display), serif;
-  font-size: clamp(3rem, 4.8vw, 5rem);
+  font-size: clamp(2.2rem, 3.2vw, 3.2rem);
   font-weight: 400;
-  letter-spacing: -0.05em;
-  line-height: 0.98;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
 }
 
 .case-file__sheet > h1 + p {
@@ -3519,9 +3529,11 @@ body:has(.home) .skip-link {
 }
 
 .case-file__first-record time {
-  color: var(--trace-accent, var(--color-accent));
-  font-family: var(--font-display), serif;
-  font-size: 2rem;
+  color: var(--case-archive);
+  font-family: var(--font-body), sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .case-file__first-record span {
@@ -3577,7 +3589,7 @@ body:has(.home) .skip-link {
   max-width: 18ch;
   margin: 0;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(2.4rem, 4vw, 4rem);
+  font-size: clamp(2rem, 3vw, 3rem);
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1.05;
@@ -3620,9 +3632,10 @@ body:has(.home) .skip-link {
   grid-template-rows: auto 1fr;
   gap: 1rem;
   padding-left: 1.5rem;
-  color: var(--color-muted);
+  color: var(--case-archive);
   font-size: 0.62rem;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
   letter-spacing: 0.12em;
 }
 
@@ -3679,15 +3692,17 @@ body:has(.home) .skip-link {
 }
 
 .case-evidence__record time {
-  color: var(--trace-accent, var(--color-accent));
-  font-family: var(--font-display), serif;
-  font-size: 2.5rem;
+  color: var(--case-archive);
+  font-family: var(--font-body), sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .case-evidence__record h3 {
   margin: 1.25rem 0 0;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(1.9rem, 2.8vw, 3rem);
+  font-size: clamp(1.55rem, 2.2vw, 2.3rem);
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.05;
@@ -3716,7 +3731,7 @@ body:has(.home) .skip-link {
 
 .case-evidence__interpretation p:last-child {
   padding-left: 1rem;
-  border-left: 2px solid var(--trace-accent, var(--color-accent));
+  border-left: 2px solid var(--case-archive);
 }
 
 .case-evidence__actions {
@@ -3759,7 +3774,7 @@ body:has(.home) .skip-link {
 
 .case-connection {
   position: relative;
-  padding-block: clamp(6rem, 13vw, 12rem);
+  padding-block: clamp(4.5rem, 7vw, 7rem);
   color: var(--color-ink);
   background: var(--color-canvas);
 }
@@ -3786,13 +3801,13 @@ body:has(.home) .skip-link {
 }
 
 .case-connection h1 {
-  max-width: 15ch;
+  max-width: 20ch;
   margin: 0;
   font-family: var(--font-display), serif;
-  font-size: clamp(3.5rem, 7.3vw, 7.8rem);
+  font-size: clamp(2.2rem, 3.2vw, 3.2rem);
   font-weight: 400;
-  letter-spacing: -0.06em;
-  line-height: 0.92;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
 }
 
 .case-connection ol {
@@ -3801,53 +3816,86 @@ body:has(.home) .skip-link {
   gap: 0;
   max-width: 48rem;
   padding: 0;
-  margin: clamp(3rem, 5.5vw, 5rem) 0 0;
+  margin: clamp(2.5rem, 4vw, 3.75rem) 0 0;
   list-style: none;
 }
 
 .case-connection li {
-  padding-block: 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(4.5rem, 0.16fr) minmax(0, 1fr);
+  gap: 0.5rem 1.5rem;
+  padding-block: 1.65rem;
   border-top: 1px solid var(--color-line);
 }
 
+.case-connection__timestamp {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  color: var(--case-archive);
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+
 .case-connection li h2 {
+  grid-column: 2;
   margin: 0;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
-  font-weight: 700;
-  letter-spacing: 0.035em;
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
   line-height: 1.25;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .case-connection li p {
+  grid-column: 2;
   max-width: 42rem;
-  margin: 0.8rem 0 0;
+  margin: 0.45rem 0 0;
   color: var(--color-muted);
   font-size: 0.94rem;
   line-height: 1.75;
 }
 
 .case-connection__conclusion {
-  max-width: 16ch;
-  margin: clamp(4.5rem, 8vw, 7rem) 0 0;
-  padding-left: clamp(1.5rem, 4vw, 4rem);
-  border-left: 3px solid var(--trace-accent, var(--color-accent));
-  color: var(--trace-accent, var(--color-accent));
-  font-family: var(--font-body), sans-serif;
-  font-size: clamp(3.5rem, 6.2vw, 6.25rem);
-  font-weight: 700;
-  letter-spacing: -0.06em;
-  line-height: 0.94;
-  text-transform: uppercase;
+  max-width: 48rem;
+  margin: clamp(3rem, 5vw, 4.5rem) 0 0;
+  padding: 1.5rem 0 0;
+  border-top: 4px solid var(--case-archive);
+  border-left: 0;
+  color: var(--color-ink);
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.65rem, 2.5vw, 2.3rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  text-transform: none;
 }
 
-.case-connection__conclusion span {
+.case-connection__conclusion-label {
+  display: block;
+  margin-bottom: 1.5rem;
+  color: var(--case-archive);
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+}
+
+.case-connection__conclusion p {
+  max-width: 24ch;
+  margin: 0;
+}
+
+.case-connection__conclusion p span {
   display: block;
 }
 
-.case-connection__conclusion span + span {
-  margin-top: 0.08em;
+.case-connection__conclusion p span + span {
+  margin-top: 0.12em;
 }
 
 .case-experience--paged .case-present {
@@ -3860,16 +3908,16 @@ body:has(.home) .skip-link {
 }
 
 .case-experience--paged .case-connection {
-  padding-block: clamp(4.25rem, 7vw, 6.5rem);
+  padding-block: clamp(3.5rem, 5.5vw, 5rem);
 }
 
 .case-experience--paged .case-file__sheet h1 {
   margin-top: clamp(2rem, 2.5vw, 2.5rem);
-  font-size: clamp(3rem, 4.6vw, 4.75rem);
+  font-size: clamp(2.2rem, 3.2vw, 3.2rem);
 }
 
 .case-experience--paged .case-connection h1 {
-  font-size: clamp(3rem, 4.6vw, 4.75rem);
+  font-size: clamp(2.2rem, 3.2vw, 3.2rem);
 }
 
 .case-return {
@@ -3899,7 +3947,7 @@ body:has(.home) .skip-link {
 
 .case-return__takeaway-label {
   margin: 1.25rem 0 0;
-  color: var(--trace-accent, var(--color-accent));
+  color: var(--case-archive);
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -3913,7 +3961,7 @@ body:has(.home) .skip-link {
   max-width: 15ch;
   margin: 0;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(2.5rem, 3.8vw, 3.75rem);
+  font-size: clamp(2rem, 3vw, 3rem);
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 1.02;
@@ -3948,16 +3996,19 @@ body:has(.home) .skip-link {
 }
 
 .case-return__lenses span {
-  color: var(--trace-accent, var(--color-accent));
-  font-family: var(--font-display), serif;
-  font-size: 1rem;
+  color: var(--case-archive);
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
 }
 
 .case-return__lenses h3 {
-  margin: 2rem 0 0;
+  margin: 1.25rem 0 0;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(1.4rem, 2vw, 2rem);
-  font-weight: 700;
+  font-size: clamp(1.25rem, 1.8vw, 1.65rem);
+  font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.15;
 }
@@ -3990,8 +4041,8 @@ body:has(.home) .skip-link {
 .case-return__next > div > h3 {
   margin: 1rem 0 0;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(1.8rem, 3vw, 3rem);
-  font-weight: 700;
+  font-size: clamp(1.55rem, 2.4vw, 2.25rem);
+  font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.05;
 }
@@ -4014,14 +4065,14 @@ body:has(.home) .skip-link {
   justify-content: space-between;
   gap: 1rem;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
   font-weight: 600;
   text-decoration: none;
 }
 
 .case-return__next a:hover,
 .case-return__next a:focus-visible {
-  color: var(--trace-accent, var(--color-accent));
+  color: var(--case-archive);
 }
 
 .case-return__actions {
@@ -4043,6 +4094,14 @@ body:has(.home) .skip-link {
   letter-spacing: 0.07em;
   text-underline-offset: 0.35rem;
   text-transform: uppercase;
+}
+
+.case-experience--paged .case-present__file-mark i,
+.case-experience--paged .case-file::before,
+.case-experience--paged .case-evidence::before,
+.case-experience--paged .case-connection::before,
+.case-experience--paged .case-return::before {
+  display: none;
 }
 
 .case-library-page {
@@ -4380,10 +4439,10 @@ body:has(.home) .skip-link {
   }
 
   .case-present__copy h1 {
-    max-width: 12ch;
+    max-width: 16ch;
     margin-top: 1rem;
-    font-size: clamp(2.8rem, 12.5vw, 3.5rem);
-    line-height: 0.96;
+    font-size: clamp(2.1rem, 8.8vw, 2.65rem);
+    line-height: 1.04;
   }
 
   .case-present__context {
@@ -4414,7 +4473,7 @@ body:has(.home) .skip-link {
   }
 
   .case-assumption h2 {
-    font-size: clamp(2.35rem, 9.5vw, 3rem);
+    font-size: clamp(1.9rem, 7.8vw, 2.45rem);
   }
 
   .case-assumption__statement {
@@ -4456,7 +4515,7 @@ body:has(.home) .skip-link {
   }
 
   .case-file__sheet {
-    margin-left: 1rem;
+    margin-left: 0;
     padding: 0;
   }
 
@@ -4468,12 +4527,12 @@ body:has(.home) .skip-link {
 
   .case-file__sheet h1 {
     margin-top: 2rem;
-    font-size: clamp(2.55rem, 10.5vw, 3.1rem);
+    font-size: clamp(2rem, 8.2vw, 2.55rem);
   }
 
   .case-experience--paged .case-file__sheet h1 {
     margin-top: 2rem;
-    font-size: clamp(2.55rem, 10.5vw, 3.1rem);
+    font-size: clamp(2rem, 8.2vw, 2.55rem);
   }
 
   .case-file__first-record {
@@ -4495,11 +4554,11 @@ body:has(.home) .skip-link {
   .case-evidence__heading h2,
   .case-evidence__heading > p:last-child {
     grid-column: auto;
-    margin-left: 1rem;
+    margin-left: 0;
   }
 
   .case-evidence__heading h2 {
-    font-size: clamp(2.35rem, 9.5vw, 3rem);
+    font-size: clamp(1.9rem, 7.8vw, 2.45rem);
   }
 
   .case-evidence__reveal {
@@ -4532,12 +4591,12 @@ body:has(.home) .skip-link {
 
   .case-evidence__copy,
   .case-evidence__figure {
-    margin-left: 1rem;
+    margin-left: 0;
   }
 
   .case-evidence__assumption,
   .case-evidence__interpretation p {
-    font-size: 1.35rem;
+    font-size: 1.08rem;
   }
 
   .case-evidence__record {
@@ -4545,7 +4604,7 @@ body:has(.home) .skip-link {
   }
 
   .case-evidence__record h3 {
-    font-size: clamp(2rem, 8.5vw, 2.75rem);
+    font-size: clamp(1.55rem, 6.8vw, 2.1rem);
   }
 
   .case-evidence__record h3 + p {
@@ -4567,34 +4626,44 @@ body:has(.home) .skip-link {
   }
 
   .case-experience--paged .case-connection {
-    padding-block: 4.75rem;
+    padding-block: 3.5rem;
   }
 
   .case-connection h1,
   .case-connection ol,
   .case-connection__conclusion {
-    margin-left: 1rem;
+    margin-left: 0;
   }
 
   .case-connection h1 {
-    font-size: clamp(2.55rem, 10.5vw, 3.1rem);
+    font-size: clamp(2rem, 8.2vw, 2.55rem);
   }
 
   .case-experience--paged .case-connection h1 {
-    font-size: clamp(2.55rem, 10.5vw, 3.1rem);
+    font-size: clamp(2rem, 8.2vw, 2.55rem);
   }
 
   .case-connection ol {
     grid-template-columns: 1fr;
     gap: 0;
-    margin-top: 2.75rem;
+    margin-top: 2.25rem;
+  }
+
+  .case-connection li {
+    grid-template-columns: 3.75rem minmax(0, 1fr);
+    gap: 0.4rem 0.85rem;
+    padding-block: 1.4rem;
+  }
+
+  .case-connection__timestamp {
+    font-size: 0.68rem;
   }
 
   .case-connection__conclusion {
-    margin-top: 4.5rem;
-    padding-left: 1rem;
-    font-size: clamp(2.65rem, 10.8vw, 3.2rem);
-    line-height: 0.96;
+    margin-top: 3rem;
+    padding: 1.25rem 0 0;
+    font-size: clamp(1.5rem, 6.4vw, 1.95rem);
+    line-height: 1.16;
   }
 
   .case-return {
@@ -4610,11 +4679,11 @@ body:has(.home) .skip-link {
   .case-return__next,
   .case-return__actions {
     grid-column: auto;
-    margin-left: 1rem;
+    margin-left: 0;
   }
 
   .case-return__intro h2 {
-    font-size: clamp(2.35rem, 9.5vw, 2.9rem);
+    font-size: clamp(1.9rem, 7.8vw, 2.45rem);
   }
 
   .case-return__lenses {
@@ -4634,7 +4703,7 @@ body:has(.home) .skip-link {
   .case-return__lenses h3 {
     max-width: 18ch;
     margin-top: 1rem;
-    font-size: 1.65rem;
+    font-size: 1.4rem;
   }
 
   .case-return__lenses p {
@@ -4648,7 +4717,7 @@ body:has(.home) .skip-link {
   }
 
   .case-return__next > div > h3 {
-    font-size: 2rem;
+    font-size: 1.65rem;
   }
 
   .case-return__actions {
@@ -4938,16 +5007,26 @@ body:has(.home) .skip-link {
   .case-stage-navigation a,
   .case-header__library,
   .case-act-label,
+  .case-present__file-mark strong,
   .case-present__context,
   .case-assumption__statement,
   .perspective-prompt__label,
   .perspective-prompt__status,
+  .case-file__first-record time,
+  .case-evidence__record time,
   .case-evidence__record h3 + p,
   .case-evidence__heading > p:last-child,
+  .case-connection__timestamp,
+  .case-connection__conclusion-label,
   .case-connection li p,
+  .case-return__lenses span,
   .case-return__intro > p:last-child,
   .case-return__lenses p {
     color: CanvasText;
+  }
+
+  .case-connection__conclusion {
+    border-color: CanvasText;
   }
 
   .case-stage-progress__link[aria-current="step"] {

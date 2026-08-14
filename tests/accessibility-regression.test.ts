@@ -97,6 +97,10 @@ test("living case styles preserve touch, reflow, forced-color, and motion guardr
   );
   assert.match(
     stylesheet,
+    /@media \(forced-colors: active\)[\s\S]*?\.case-connection__timestamp,[\s\S]*?\.case-connection__conclusion-label[\s\S]*?color:\s*CanvasText/,
+  );
+  assert.match(
+    stylesheet,
     /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.case-experience/,
   );
   assert.doesNotMatch(
