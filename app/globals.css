@@ -2900,6 +2900,318 @@ a {
   text-underline-offset: 0.35rem;
 }
 
+.case-library-page {
+  min-height: 100vh;
+  overflow-x: clip;
+  background:
+    linear-gradient(90deg, transparent 0 6.5%, rgb(152 46 48 / 7%) 6.5% 6.58%, transparent 6.58%),
+    var(--color-canvas);
+}
+
+.case-library-page__header {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.case-library-page__header-inner {
+  min-height: 5.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.case-library-page__header .brand-mark {
+  text-decoration: none;
+}
+
+.case-library-page__header-inner > span,
+.case-library-page__kicker,
+.case-library__category,
+.case-library__count {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.case-library-page__intro {
+  padding-block: clamp(4.5rem, 9vw, 8.5rem) clamp(3.5rem, 7vw, 6rem);
+}
+
+.case-library-page__intro-grid {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.32fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: start;
+}
+
+.case-library-page__kicker {
+  margin: 0.65rem 0 0;
+}
+
+.case-library-page__intro h1 {
+  max-width: 14ch;
+  margin: 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(3.4rem, 7vw, 7.25rem);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.94;
+}
+
+.case-library-page__intro div > p {
+  max-width: 43rem;
+  margin: 2.25rem 0 0;
+  color: var(--color-muted);
+  font-size: clamp(1rem, 1.35vw, 1.18rem);
+  line-height: 1.75;
+}
+
+.case-library-page__body {
+  padding-bottom: clamp(5rem, 10vw, 9rem);
+}
+
+.case-library__tools {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.28fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  padding-block: 1.5rem 2rem;
+  border-block: 1px solid var(--color-line);
+}
+
+.case-library__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.case-library__categories button {
+  min-height: 2.75rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--color-line);
+  color: var(--color-muted);
+  background: transparent;
+  font: inherit;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.case-library__categories button:hover,
+.case-library__categories button:focus-visible,
+.case-library__categories button[aria-pressed="true"] {
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+}
+
+.case-library__categories button[aria-pressed="true"] {
+  font-weight: 600;
+}
+
+.case-library__search {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.case-library__search label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.case-library__search input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.65rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--color-ink);
+  border-radius: 0;
+  color: var(--color-ink);
+  background: transparent;
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.case-library__search input::placeholder {
+  color: var(--color-muted);
+  opacity: 1;
+}
+
+.case-library__count {
+  margin: 2rem 0 1rem;
+}
+
+.case-library__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-line);
+}
+
+.case-library__item {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.case-library__item > a {
+  min-height: 9rem;
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr) auto;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  padding-block: 1.75rem;
+  text-decoration: none;
+}
+
+.case-library__number {
+  align-self: start;
+  padding-top: 0.3rem;
+  color: var(--color-accent);
+  font-family: var(--font-display), serif;
+  font-size: 1.15rem;
+}
+
+.case-library__copy {
+  min-width: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.case-library__copy strong {
+  max-width: 25ch;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+
+.case-library__copy > span:last-child {
+  max-width: 46rem;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.case-library__action {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case-library__item > a:hover .case-library__copy strong,
+.case-library__item > a:focus-visible .case-library__copy strong {
+  color: var(--color-accent);
+}
+
+.case-library__empty {
+  min-height: 14rem;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.case-library-page__footer {
+  padding-block: 2rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.case-library-page__footer a {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 48rem) {
+  .case-library-page {
+    background: var(--color-canvas);
+  }
+
+  .case-library-page__header-inner {
+    min-height: 4.5rem;
+  }
+
+  .case-library-page__header-inner > span {
+    max-width: 9rem;
+    font-size: 0.62rem;
+    text-align: right;
+  }
+
+  .case-library-page__intro {
+    padding-block: 3.5rem 3rem;
+  }
+
+  .case-library-page__intro-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .case-library-page__kicker {
+    margin: 0;
+  }
+
+  .case-library-page__intro h1 {
+    max-width: 12ch;
+    font-size: clamp(3rem, 14vw, 4.7rem);
+  }
+
+  .case-library-page__intro div > p {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .case-library__tools {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .case-library__categories {
+    flex-wrap: nowrap;
+    margin-inline: calc(var(--container-gutter) * -1);
+    padding-inline: var(--container-gutter);
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .case-library__categories button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .case-library__item > a {
+    min-height: 0;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 1.5rem;
+  }
+
+  .case-library__copy strong {
+    font-size: clamp(1.65rem, 8vw, 2.25rem);
+  }
+
+  .case-library__copy > span:last-child {
+    font-size: 0.88rem;
+  }
+
+  .case-library__action {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+
 @media (min-width: 48.0625rem) and (max-height: 51.25rem) {
   .home-header {
     padding-top: 1.25rem;

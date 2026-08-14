@@ -1,18 +1,8 @@
 import type { TraceSlug } from "@/types/trace";
 import type {
-  CaseCategory,
   CaseEvidenceReference,
   ThoughtCase,
 } from "@/types/thought-case";
-
-export const CASE_CATEGORY_LABELS: Record<CaseCategory, string> = {
-  "study-teamwork": "Học tập & làm việc nhóm",
-  "leadership-responsibility": "Lãnh đạo & trách nhiệm",
-  "conflicting-interests": "Xung đột lợi ích",
-  "social-media": "Mạng xã hội",
-  "human-development": "Phát triển con người",
-  "community-society": "Cộng đồng & xã hội",
-};
 
 const PRIMARY_EVIDENCE_IDS = {
   "dai-doan-ket": [
