@@ -169,7 +169,11 @@ export function CaseFilePage({ item }: CaseFilePageProps) {
           </div>
         </section>
 
-        <CaseReturn item={item} relatedCases={relatedCases} />
+        <CaseReturn
+          evidenceHref="#case-evidence"
+          item={item}
+          relatedCases={relatedCases}
+        />
       </main>
     </div>
   );

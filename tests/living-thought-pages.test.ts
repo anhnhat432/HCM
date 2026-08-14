@@ -7,6 +7,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { CaseJourneyShell } from "@/components/cases/case-journey-shell";
 import { CaseEvidenceStage } from "@/components/cases/case-evidence-stage";
 import { CasePresentStage } from "@/components/cases/case-present-stage";
+import { CaseReturnStage } from "@/components/cases/case-return-stage";
 import { getCasePreviews } from "@/lib/thought-case-registry";
 import { getThoughtCaseBySlug } from "@/lib/thought-case-registry";
 
@@ -119,6 +120,27 @@ test("evidence stage renders all three source-backed reveals in server markup", 
   assert.match(route, /getThoughtCaseMetadata/);
   assert.match(route, /notFound\(\)/);
   assert.match(route, /stage="dau-vet"/);
+});
+
+test("return stage connects the thought formation to practical next steps", () => {
+  const item = getThoughtCaseBySlug("nhom-gioi-nhung-khong-hop-tac");
+  assert.ok(item);
+
+  const html = renderToStaticMarkup(createElement(CaseReturnStage, { item }));
+  const route = readSource("app/ho-so/[slug]/tro-lai/page.tsx");
+
+  assert.equal((html.match(/<h1/g) ?? []).length, 1);
+  assert.match(html, /HỒI 5 \/ KẾT NỐI TƯ TƯỞNG/);
+  assert.match(html, /ĐIỀU MANG THEO/);
+  assert.match(html, /HỒI 6 \/ TRỞ LẠI HIỆN TẠI/);
+  assert.equal((html.match(/case-return__lenses/g) ?? []).length, 1);
+  assert.equal((html.match(/case-return__next/g) ?? []).length, 1);
+  assert.match(html, new RegExp(`/ho-so/${item.slug}/dau-vet`));
+  assert.doesNotMatch(html, /href="#case-evidence"/);
+  assert.match(route, /generateStaticParams/);
+  assert.match(route, /getThoughtCaseMetadata/);
+  assert.match(route, /notFound\(\)/);
+  assert.match(route, /stage="tro-lai"/);
 });
 
 test("case enhancements remain optional and expose accessible guidance", () => {
