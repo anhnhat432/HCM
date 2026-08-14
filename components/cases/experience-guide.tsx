@@ -1,12 +1,11 @@
 export function ExperienceGuide() {
   return (
-    <details className="experience-guide">
-      <summary>Cách trải nghiệm</summary>
-      <ol>
-        <li>Bắt đầu từ câu hỏi đang xảy ra ở hiện tại.</li>
-        <li>Cuộn qua ba dấu vết và mở nguồn khi muốn kiểm tra sâu hơn.</li>
-        <li>Trở lại tình huống đầu để cân nhắc ba góc nhìn thực tiễn.</li>
-      </ol>
-    </details>
+    <aside aria-label="Cách trải nghiệm" className="experience-guide">
+      <strong>Cách trải nghiệm</strong>
+      <p>
+        Đọc tình huống, mở ba dấu vết, rồi trở lại hiện tại. Bạn không cần chọn
+        đáp án để tiếp tục.
+      </p>
+    </aside>
   );
 }

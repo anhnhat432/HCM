@@ -5,6 +5,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { CaseJourneyShell } from "@/components/cases/case-journey-shell";
+import { CasePresentStage } from "@/components/cases/case-present-stage";
 import { getCasePreviews } from "@/lib/thought-case-registry";
 import { getThoughtCaseBySlug } from "@/lib/thought-case-registry";
 
@@ -83,6 +84,21 @@ test("case journey shell renders three route-backed stages without scroll tracki
   assert.doesNotMatch(html, /requestAnimationFrame|addEventListener/);
 });
 
+test("present stage keeps the perspective optional and points to historical evidence", () => {
+  const item = getThoughtCaseBySlug("nhom-gioi-nhung-khong-hop-tac");
+  assert.ok(item);
+
+  const html = renderToStaticMarkup(createElement(CasePresentStage, { item }));
+
+  assert.equal((html.match(/<h1/g) ?? []).length, 1);
+  assert.match(html, /HỒI 1 \/ VẤN ĐỀ HIỆN TẠI/);
+  assert.match(html, /HỒI 2 \/ GIẢ ĐỊNH BAN ĐẦU/);
+  assert.match(html, /Bạn không cần chọn đáp án để tiếp tục/);
+  assert.match(html, new RegExp(`/ho-so/${item.slug}/dau-vet`));
+  assert.doesNotMatch(html, /case-evidence__reveal/);
+  assert.doesNotMatch(html, /HỒI 5 \/ KẾT NỐI TƯ TƯỞNG/);
+});
+
 test("case enhancements remain optional and expose accessible guidance", () => {
   const page = readSource("components/cases/case-file-page.tsx");
   const prompt = readSource("components/cases/perspective-prompt.tsx");
@@ -102,10 +118,14 @@ test("case enhancements remain optional and expose accessible guidance", () => {
 
 test("case routes are statically generated with canonical social metadata", () => {
   const route = readSource("app/ho-so/[slug]/page.tsx");
+  const metadata = readSource("lib/thought-case-metadata.ts");
 
   assert.match(route, /generateStaticParams/);
-  assert.match(route, /canonical: `\/ho-so\/\$\{item\.slug\}`/);
-  assert.match(route, /openGraph/);
-  assert.match(route, /primaryTrace/);
+  assert.match(route, /getThoughtCaseMetadata/);
+  assert.match(route, /stage="hien-tai"/);
   assert.match(route, /notFound\(\)/);
+  assert.match(metadata, /getCaseStageHref/);
+  assert.match(metadata, /alternates/);
+  assert.match(metadata, /openGraph/);
+  assert.match(metadata, /primaryTrace/);
 });

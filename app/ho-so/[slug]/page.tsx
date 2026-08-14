@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { CaseFilePage } from "@/components/cases/case-file-page";
+import { CaseJourneyShell } from "@/components/cases/case-journey-shell";
+import { CasePresentStage } from "@/components/cases/case-present-stage";
 import { thoughtCases } from "@/data/thought-cases";
+import { getThoughtCaseMetadata } from "@/lib/thought-case-metadata";
 import { getThoughtCaseBySlug } from "@/lib/thought-case-registry";
-import { getTraceBySlug } from "@/lib/trace-registry";
 
 interface ThoughtCasePageProps {
   readonly params: Promise<{ slug: string }>;
@@ -27,37 +28,7 @@ export async function generateMetadata({
     };
   }
 
-  const primaryTrace = getTraceBySlug(item.primaryTrace);
-  const image = primaryTrace?.presentDay?.image;
-
-  return {
-    title: item.title,
-    description: item.shortPrompt,
-    alternates: {
-      canonical: `/ho-so/${item.slug}`,
-    },
-    openGraph: {
-      title: `${item.title} | Đuốc Hồng`,
-      description: item.shortPrompt,
-      siteName: "Đuốc Hồng",
-      locale: "vi_VN",
-      type: "article",
-      images: image?.src
-        ? [
-            {
-              url: image.src,
-              alt: image.alt,
-            },
-          ]
-        : undefined,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${item.title} | Đuốc Hồng`,
-      description: item.shortPrompt,
-      images: image?.src ? [image.src] : undefined,
-    },
-  };
+  return getThoughtCaseMetadata(item, "hien-tai");
 }
 
 export default async function ThoughtCasePage({ params }: ThoughtCasePageProps) {
@@ -68,5 +39,9 @@ export default async function ThoughtCasePage({ params }: ThoughtCasePageProps) 
     notFound();
   }
 
-  return <CaseFilePage item={item} />;
+  return (
+    <CaseJourneyShell item={item} stage="hien-tai">
+      <CasePresentStage item={item} />
+    </CaseJourneyShell>
+  );
 }
