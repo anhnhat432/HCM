@@ -240,6 +240,8 @@ folders avoid accepting unknown stage values.
 - Keep body copy at least 16px on mobile.
 - Keep every interactive target at least 44px high on mobile.
 - Use a three-column progress grid at 375px and above with no horizontal rail.
+- Replace the mobile case-library category rail with a two-column wrapping grid
+  so category selection never requires a horizontal gesture.
 - Use existing borders and Trace Line language; add no cards, shadows,
   gradients, icons, or decorative diagrams.
 - Preserve reduced motion and forced-colors fallbacks.
