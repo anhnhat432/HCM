@@ -158,4 +158,3 @@ git push origin feat/living-thought-cases
 ```
 
 Update PR #12 with the new typography evidence and stop without merging.
-

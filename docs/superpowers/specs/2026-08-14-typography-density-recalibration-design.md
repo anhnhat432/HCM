@@ -69,4 +69,3 @@ at 1366x768 and 390x844.
 3. Stage 1 and Stage 2 show their primary action within the initial viewport.
 4. Homepage and Trace retain their approved visual identity.
 5. Unit tests, typecheck, lint, build, and production acceptance pass.
-
