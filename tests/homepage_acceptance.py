@@ -237,9 +237,9 @@ def verify_homepage(page: Page) -> None:
     assert page.get_by_text("DESIGN SYSTEM", exact=True).count() == 0
 
     primary_action = page.get_by_role(
-        "link", name="Bắt đầu hành trình", exact=True
+        "link", name="Mở một hồ sơ", exact=True
     )
-    assert primary_action.get_attribute("href") == "/trace/dai-doan-ket"
+    assert primary_action.get_attribute("href") == "/ho-so"
     if viewport_width >= 1024 and viewport_height <= 820:
         action_box = primary_action.bounding_box()
         assert action_box is not None
@@ -295,7 +295,7 @@ def verify_homepage(page: Page) -> None:
     assert page.locator(".trace-visual").count() == 0
     verify_text_contrast(page)
 
-    page.get_by_text("Bạn muốn khám phá điều gì?", exact=True).wait_for()
+    page.get_by_text("Kho tư liệu nền", exact=True).wait_for()
 
     visible_topic_titles = page.locator(".topic-link__title").all_inner_texts()
     assert visible_topic_titles == [visible for _, visible, _, _ in TOPICS]
@@ -310,6 +310,9 @@ def verify_homepage(page: Page) -> None:
     assert page.get_by_role(
         "link", name="Về dự án & phương pháp", exact=True
     ).get_attribute("href") == "/phuong-phap"
+    assert page.get_by_role(
+        "link", name="Hồ sơ tư tưởng sống", exact=True
+    ).get_attribute("href") == "/ho-so"
     assert page.get_by_text("Prototype", exact=False).count() == 0
 
 
@@ -346,6 +349,7 @@ def verify_public_release_routes(page: Page) -> None:
     assert sitemap is not None and sitemap.ok
     sitemap_text = page.locator("body").inner_text()
     for path in [
+        "/ho-so",
         "/trace/dai-doan-ket",
         "/trace/dao-duc-trach-nhiem",
         "/trace/con-nguoi",
@@ -490,7 +494,7 @@ def main() -> None:
         assert mobile_body_font >= 16
 
         for locator in [
-            mobile.get_by_role("link", name="Bắt đầu hành trình", exact=True),
+            mobile.get_by_role("link", name="Mở một hồ sơ", exact=True),
             mobile.get_by_role(
                 "button", name="Chia sẻ trang Đuốc Hồng bằng mã QR", exact=True
             ),

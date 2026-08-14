@@ -3,20 +3,28 @@
 ## Current status
 
 **READY WITH LIMITATIONS for public release.** The functional experience and
-technical QA are release-ready. All nine historical moments now use verified
-assets across eight unique files; the 1945 declaration image is intentionally
-reused in Trace 01 and Trace 03. Source, license, and project-owner approval
-notes remain recorded in `data/traces.ts`.
+technical QA are release-ready. The release now includes the 30-case "Hồ sơ tư
+tưởng sống" library and source-backed six-act case journeys while preserving
+the approved Trace experience. All nine historical moments use verified assets
+across eight unique files; the 1945 declaration image is intentionally reused
+in Trace 01 and Trace 03. Source, license, and project-owner approval notes
+remain recorded in `data/traces.ts`.
 
 ## Verified experience
 
-- Routes: `/`, `/trace/dai-doan-ket`, `/trace/dao-duc-trach-nhiem`,
-  `/trace/con-nguoi`, `/phuong-phap`, Journey Closing, and branded 404 states.
+- Routes: `/`, `/ho-so`, all 30 statically generated `/ho-so/[slug]` routes,
+  `/trace/dai-doan-ket`, `/trace/dao-duc-trach-nhiem`, `/trace/con-nguoi`,
+  `/phuong-phap`, Journey Closing, and branded 404 states.
 - Breakpoints: 1920x1080, 1440x900, 1366x768, 1024x768, 768x1024,
   640x900 reflow-equivalent, 390x844, and 375x812.
 - QA: full journey, direct entry, keyboard navigation, visible focus, reduced
-  motion, forced colors, internal links, console/network state, responsive
-  overflow, image loading, metadata, and Vietnamese branding.
+  motion, forced colors, no-JavaScript case readability, internal links,
+  console/network state, responsive overflow, image loading, metadata, and
+  Vietnamese branding.
+- Living cases: exactly 30 curated situations across six categories; the
+  library keeps all case links in server-rendered markup, and each case exposes
+  three evidence reveals, six named acts, optional perspective selection,
+  related cases, Trace links, and no-JavaScript source fallbacks.
 - Trace support: progress timeline, Before/After recap, compact Trace switcher,
   data-driven Journey Closing takeaways, and per-moment Source Drawer.
 - Sharing: Homepage and Trace headers expose an accessible, locally generated
@@ -25,9 +33,20 @@ notes remain recorded in `data/traces.ts`.
   exposed through the narrative or Source Drawer as appropriate.
 - Performance: production build uses `next/image`, lazy historical images,
   priority only for opening imagery, `next/font`, lazy local QR generation, and
-  bounded motion client components. Three Lighthouse 12.8.2 trials produced
-  Performance medians of 88 for Homepage and 82 for Trace 01; both routes score
-  100 for Accessibility, Best Practices, and SEO in every trial.
+  bounded motion client components. Homepage above-fold content is not delayed
+  by decorative reveal wrappers, and Homepage-only content no longer requests
+  the Trace display family.
+
+### Lighthouse lab results
+
+Three Lighthouse 12.8.2 mobile-profile trials per route produced the following
+results:
+
+| Route | Performance runs | Median | Accessibility | Best Practices | SEO |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Homepage `/` | 91, 91, 92 | 91 | 100 | 100 | 100 |
+| Case library `/ho-so` | 92, 91, 91 | 91 | 100 | 100 | 100 |
+| Representative case `/ho-so/nhom-gioi-nhung-khong-hop-tac` | 85, 85, 85 | 85 | 100 | 100 | 100 |
 
 ## Historical asset status
 
