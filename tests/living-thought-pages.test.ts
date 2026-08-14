@@ -90,3 +90,13 @@ test("case enhancements remain optional and expose accessible guidance", () => {
   assert.doesNotMatch(corpus, /completionGate/);
   assert.doesNotMatch(corpus, /preventDefault\(\)/);
 });
+
+test("case routes are statically generated with canonical social metadata", () => {
+  const route = readSource("app/ho-so/[slug]/page.tsx");
+
+  assert.match(route, /generateStaticParams/);
+  assert.match(route, /canonical: `\/ho-so\/\$\{item\.slug\}`/);
+  assert.match(route, /openGraph/);
+  assert.match(route, /primaryTrace/);
+  assert.match(route, /notFound\(\)/);
+});

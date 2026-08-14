@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+import { thoughtCases } from "@/data/thought-cases";
 import { siteUrl } from "@/lib/site";
 
 const publicRoutes = [
@@ -11,7 +12,10 @@ const publicRoutes = [
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return publicRoutes.map((route) => ({
+  const caseRoutes = thoughtCases.map((item) => `/ho-so/${item.slug}`);
+  const routes = [...publicRoutes, "/ho-so", ...caseRoutes];
+
+  return routes.map((route) => ({
     url: new URL(route, siteUrl).toString(),
   }));
 }

@@ -6,6 +6,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import { JourneyClosing } from "@/components/trace/journey-closing";
 import { journeyClosing } from "@/data/journey-closing";
+import { thoughtCases } from "@/data/thought-cases";
 
 const siteModuleUrl = new URL("../lib/site.ts", import.meta.url);
 const sitemapModuleUrl = new URL("../app/sitemap.ts", import.meta.url);
@@ -35,16 +36,25 @@ test("sitemap and robots expose every public experience route", async () => {
     import(robotsModuleUrl.href),
   ]);
 
-  assert.deepEqual(
-    sitemap().map((entry: { url: string }) => entry.url),
-    [
-      "https://hcm-trace.vercel.app/",
-      "https://hcm-trace.vercel.app/trace/dai-doan-ket",
-      "https://hcm-trace.vercel.app/trace/dao-duc-trach-nhiem",
-      "https://hcm-trace.vercel.app/trace/con-nguoi",
-      "https://hcm-trace.vercel.app/phuong-phap",
-    ],
+  const urls = sitemap().map((entry: { url: string }) => entry.url);
+  const existingRoutes = [
+    "https://hcm-trace.vercel.app/",
+    "https://hcm-trace.vercel.app/trace/dai-doan-ket",
+    "https://hcm-trace.vercel.app/trace/dao-duc-trach-nhiem",
+    "https://hcm-trace.vercel.app/trace/con-nguoi",
+    "https://hcm-trace.vercel.app/phuong-phap",
+  ];
+  const caseRoutes = thoughtCases.map(
+    (item) => `https://hcm-trace.vercel.app/ho-so/${item.slug}`,
   );
+
+  assert.deepEqual(urls.slice(0, existingRoutes.length), existingRoutes);
+  assert.equal(
+    urls.filter((url: string) => url.endsWith("/ho-so")).length,
+    1,
+  );
+  assert.deepEqual(urls.slice(existingRoutes.length + 1), caseRoutes);
+  assert.equal(urls.length, 36);
 
   const robotsData = robots();
   assert.equal(robotsData.sitemap, "https://hcm-trace.vercel.app/sitemap.xml");
