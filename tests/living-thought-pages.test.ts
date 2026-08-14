@@ -26,3 +26,22 @@ test("case library exposes labelled optional filters without gating links", () =
   assert.match(filters, /filteredPreviews\.map/);
   assert.doesNotMatch(filters, /fetch\(/);
 });
+
+test("Homepage makes living cases primary while retaining QR and Trace foundations", () => {
+  const homepage = readSource("app/page.tsx");
+
+  assert.match(homepage, /href="\/ho-so"/);
+  assert.match(homepage, /Mở một hồ sơ/);
+  assert.match(homepage, /ScenarioPicker/);
+  assert.match(homepage, /Kho tư liệu nền/);
+  assert.match(homepage, /QrShareDialog/);
+  assert.match(homepage, /TopicList/);
+});
+
+test("scenario picker shows exactly three suggestions per rotation", () => {
+  const picker = readSource("components/cases/scenario-picker.tsx");
+
+  assert.match(picker, /VISIBLE_CASE_COUNT = 3/);
+  assert.match(picker, /Đổi tình huống/);
+  assert.match(picker, /aria-live="polite"/);
+});

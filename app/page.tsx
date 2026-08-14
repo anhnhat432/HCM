@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { ScenarioPicker } from "@/components/cases/scenario-picker";
 import { Reveal } from "@/components/home/reveal";
 import { TopicList } from "@/components/home/topic-list";
 import { QrShareDialog } from "@/components/share/qr-share-dialog";
 import { traces } from "@/data/traces";
+import { getCasePreviews } from "@/lib/thought-case-registry";
 
 const homepageHeroImage = {
   alt: "Trang đầu bản Tuyên ngôn Độc lập với bút tích và dấu lưu trữ",
@@ -17,6 +19,8 @@ const homepageHeroImage = {
 } as const;
 
 export default function Home() {
+  const casePreviews = getCasePreviews();
+
   return (
     <main className="home" id="main-content">
       <header className="home-header">
@@ -50,8 +54,8 @@ export default function Home() {
             </Reveal>
 
             <Reveal delay={0.18}>
-              <Link className="primary-action" href="/trace/dai-doan-ket">
-                <span>Bắt đầu hành trình</span>
+              <Link className="primary-action" href="/ho-so">
+                <span>Mở một hồ sơ</span>
                 <span className="primary-action__arrow" aria-hidden="true">
                   →
                 </span>
@@ -90,11 +94,29 @@ export default function Home() {
         </div>
       </section>
 
+      <section
+        aria-labelledby="scenario-picker-heading"
+        className="scenario-picker-section"
+      >
+        <div className="site-container">
+          <Reveal>
+            <div className="scenario-picker-section__heading">
+              <p>TÌNH HUỐNG GỢI Ý</p>
+              <h2 id="scenario-picker-heading">
+                Có thể bạn đang gặp một câu hỏi như thế này.
+              </h2>
+            </div>
+          </Reveal>
+
+          <ScenarioPicker previews={casePreviews} />
+        </div>
+      </section>
+
       <section className="topic-section" aria-labelledby="topic-heading">
         <div className="site-container">
           <Reveal>
             <h2 className="topic-section__label" id="topic-heading">
-              Bạn muốn khám phá điều gì?
+              Kho tư liệu nền
             </h2>
           </Reveal>
 
@@ -105,7 +127,10 @@ export default function Home() {
       <footer className="home-footer">
         <div className="site-container home-footer__inner">
           <p>ĐUỐC HỒNG — 2026</p>
-          <Link href="/phuong-phap">Về dự án & phương pháp</Link>
+          <div className="home-footer__links">
+            <Link href="/ho-so">Hồ sơ tư tưởng sống</Link>
+            <Link href="/phuong-phap">Về dự án & phương pháp</Link>
+          </div>
         </div>
       </footer>
     </main>

@@ -2900,6 +2900,146 @@ a {
   text-underline-offset: 0.35rem;
 }
 
+.scenario-picker-section {
+  padding-block: clamp(5rem, 10vw, 9rem);
+  border-top: 1px solid var(--color-line);
+}
+
+.scenario-picker-section__heading {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.28fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: start;
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.scenario-picker-section__heading p {
+  margin: 0.6rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.scenario-picker-section__heading h2 {
+  max-width: 17ch;
+  margin: 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(2.8rem, 5.5vw, 5.75rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+}
+
+.scenario-picker__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-line);
+}
+
+.scenario-picker__list li {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.scenario-picker__list a {
+  min-height: 8.5rem;
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr) 3rem;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  padding-block: 1.5rem;
+  text-decoration: none;
+}
+
+.scenario-picker__number {
+  align-self: start;
+  padding-top: 0.25rem;
+  color: var(--color-accent);
+  font-family: var(--font-display), serif;
+  font-size: 1.1rem;
+}
+
+.scenario-picker__copy {
+  min-width: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.scenario-picker__copy > span:first-child {
+  color: var(--color-muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.scenario-picker__copy strong {
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.65rem, 2.8vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.scenario-picker__copy > span:last-child {
+  max-width: 48rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.scenario-picker__arrow {
+  color: var(--color-muted);
+  font-size: 1.5rem;
+}
+
+.scenario-picker__list a:hover strong,
+.scenario-picker__list a:focus-visible strong {
+  color: var(--color-accent);
+}
+
+.scenario-picker__list a:hover .scenario-picker__arrow,
+.scenario-picker__list a:focus-visible .scenario-picker__arrow {
+  color: var(--color-accent);
+}
+
+.scenario-picker__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.scenario-picker__actions button,
+.scenario-picker__actions a {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0;
+  border: 0;
+  color: var(--color-ink);
+  background: transparent;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.35rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.home-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 1rem 1.75rem;
+}
+
 .case-library-page {
   min-height: 100vh;
   overflow-x: clip;
@@ -3135,6 +3275,54 @@ a {
 }
 
 @media (max-width: 48rem) {
+  .scenario-picker-section {
+    padding-block: 4.5rem;
+  }
+
+  .scenario-picker-section__heading {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .scenario-picker-section__heading p {
+    margin: 0;
+  }
+
+  .scenario-picker-section__heading h2 {
+    font-size: clamp(2.65rem, 12vw, 4rem);
+  }
+
+  .scenario-picker__list a {
+    min-height: 0;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 1.4rem;
+  }
+
+  .scenario-picker__copy strong {
+    font-size: clamp(1.55rem, 7.5vw, 2.15rem);
+  }
+
+  .scenario-picker__copy > span:last-child {
+    font-size: 0.86rem;
+  }
+
+  .scenario-picker__arrow {
+    display: none;
+  }
+
+  .scenario-picker__actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .home-footer__links {
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
   .case-library-page {
     background: var(--color-canvas);
   }
