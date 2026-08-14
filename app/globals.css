@@ -2929,7 +2929,7 @@ body:has(.home) .skip-link {
   max-width: 17ch;
   margin: 0;
   font-family: var(--font-homepage), sans-serif;
-  font-size: clamp(2.8rem, 5.5vw, 5.75rem);
+  font-size: clamp(2.6rem, 4.6vw, 4.25rem);
   font-weight: 500;
   letter-spacing: -0.05em;
   line-height: 0.98;
@@ -3243,7 +3243,7 @@ body:has(.home) .skip-link {
   max-width: 14ch;
   margin: 1.25rem 0 0;
   font-family: var(--font-display), serif;
-  font-size: clamp(4rem, 8vw, 8.6rem);
+  font-size: clamp(3.75rem, 6.4vw, 6.75rem);
   font-weight: 400;
   letter-spacing: -0.06em;
   line-height: 0.9;
@@ -3306,7 +3306,7 @@ body:has(.home) .skip-link {
 }
 
 .case-assumption {
-  padding-block: clamp(5.5rem, 11vw, 10rem);
+  padding-block: clamp(4.5rem, 8vw, 7.5rem);
   color: var(--color-clear);
   background: var(--color-slate);
 }
@@ -3325,7 +3325,7 @@ body:has(.home) .skip-link {
   max-width: 16ch;
   margin: 0;
   font-family: var(--font-display), serif;
-  font-size: clamp(3rem, 6vw, 6.5rem);
+  font-size: clamp(2.8rem, 4.8vw, 5rem);
   font-weight: 400;
   letter-spacing: -0.05em;
   line-height: 0.98;
@@ -3449,7 +3449,7 @@ body:has(.home) .skip-link {
 .case-file__sheet {
   position: relative;
   max-width: 60rem;
-  padding: clamp(2rem, 5vw, 4.5rem);
+  padding: clamp(2rem, 4vw, 3.5rem);
   border: 1px solid var(--color-line);
   background: var(--color-clear);
 }
@@ -3487,9 +3487,9 @@ body:has(.home) .skip-link {
 
 .case-file__sheet h1 {
   max-width: 15ch;
-  margin: 3.25rem 0 0;
+  margin: 2.5rem 0 0;
   font-family: var(--font-display), serif;
-  font-size: clamp(3rem, 5.8vw, 6.25rem);
+  font-size: clamp(3rem, 4.8vw, 5rem);
   font-weight: 400;
   letter-spacing: -0.05em;
   line-height: 0.98;
@@ -3540,7 +3540,7 @@ body:has(.home) .skip-link {
 
 .case-evidence {
   position: relative;
-  padding-block: clamp(6rem, 12vw, 11rem) 0;
+  padding-block: clamp(4.5rem, 8vw, 7rem) 0;
 }
 
 .case-evidence::before {
@@ -3557,7 +3557,7 @@ body:has(.home) .skip-link {
   display: grid;
   grid-template-columns: minmax(9rem, 0.25fr) minmax(0, 1fr);
   gap: 1.25rem clamp(2rem, 7vw, 8rem);
-  padding-bottom: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(3rem, 5vw, 4.5rem);
 }
 
 .case-evidence__heading .case-act-label {
@@ -3568,7 +3568,7 @@ body:has(.home) .skip-link {
   max-width: 18ch;
   margin: 0;
   font-family: var(--font-display), serif;
-  font-size: clamp(3.2rem, 6.3vw, 6.75rem);
+  font-size: clamp(3rem, 5vw, 5.5rem);
   font-weight: 400;
   letter-spacing: -0.055em;
   line-height: 0.96;
@@ -3584,7 +3584,7 @@ body:has(.home) .skip-link {
 
 .case-evidence__reveal {
   position: relative;
-  padding-block: clamp(5rem, 10vw, 9rem);
+  padding-block: clamp(4rem, 7vw, 6.5rem);
   border-top: 1px solid var(--color-line);
   scroll-margin-top: 4.25rem;
 }
@@ -3678,7 +3678,7 @@ body:has(.home) .skip-link {
 .case-evidence__record h3 {
   margin: 1.25rem 0 0;
   font-family: var(--font-display), serif;
-  font-size: clamp(2.5rem, 4.5vw, 4.8rem);
+  font-size: clamp(2.3rem, 3.6vw, 4rem);
   font-weight: 400;
   letter-spacing: -0.045em;
   line-height: 0.98;
@@ -3791,7 +3791,7 @@ body:has(.home) .skip-link {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1.5rem, 4vw, 4rem);
   padding: 0;
-  margin: clamp(4rem, 8vw, 7rem) 0 0;
+  margin: clamp(3rem, 5.5vw, 5rem) 0 0;
   list-style: none;
 }
 
@@ -3833,22 +3833,29 @@ body:has(.home) .skip-link {
 
 .case-experience--paged .case-present {
   min-height: auto;
-  padding-block: clamp(3.75rem, 7vw, 6.5rem);
+  padding-block: clamp(3rem, 5vw, 4.75rem);
 }
 
-.case-experience--paged .case-file,
+.case-experience--paged .case-file {
+  padding-block: clamp(3.5rem, 6vw, 5.5rem);
+}
+
 .case-experience--paged .case-connection {
-  padding-block: clamp(4.5rem, 8vw, 7rem);
+  padding-block: clamp(4.25rem, 7vw, 6.5rem);
 }
 
-.case-experience--paged .case-file__sheet h1,
+.case-experience--paged .case-file__sheet h1 {
+  margin-top: clamp(2rem, 2.5vw, 2.5rem);
+  font-size: clamp(2.9rem, 4.8vw, 5rem);
+}
+
 .case-experience--paged .case-connection h1 {
-  font-size: clamp(2.9rem, 5.4vw, 5.8rem);
+  font-size: clamp(2.9rem, 4.8vw, 5rem);
 }
 
 .case-return {
   position: relative;
-  padding-block: clamp(6rem, 12vw, 11rem) 3rem;
+  padding-block: clamp(4.5rem, 8vw, 7rem) 3rem;
 }
 
 .case-return::before {
@@ -3887,7 +3894,7 @@ body:has(.home) .skip-link {
   max-width: 15ch;
   margin: 0;
   font-family: var(--font-display), serif;
-  font-size: clamp(3.5rem, 7vw, 7.4rem);
+  font-size: clamp(3.1rem, 5.2vw, 5.75rem);
   font-weight: 400;
   letter-spacing: -0.06em;
   line-height: 0.93;
@@ -3907,7 +3914,7 @@ body:has(.home) .skip-link {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
   padding: 0;
-  margin: clamp(3.5rem, 7vw, 6rem) 0 0;
+  margin: clamp(2.75rem, 5vw, 4.5rem) 0 0;
   list-style: none;
   border-block: 1px solid var(--color-line);
 }
@@ -4070,7 +4077,7 @@ body:has(.home) .skip-link {
 }
 
 .case-library-page__intro {
-  padding-block: clamp(4.5rem, 9vw, 8.5rem) clamp(3.5rem, 7vw, 6rem);
+  padding-block: clamp(3.5rem, 6vw, 5.25rem) clamp(2.5rem, 4.5vw, 4rem);
 }
 
 .case-library-page__intro-grid {
@@ -4088,7 +4095,7 @@ body:has(.home) .skip-link {
   max-width: 14ch;
   margin: 0;
   font-family: var(--font-display), serif;
-  font-size: clamp(3.4rem, 7vw, 7.25rem);
+  font-size: clamp(3.4rem, 5.5vw, 5rem);
   font-weight: 400;
   letter-spacing: -0.055em;
   line-height: 0.94;
@@ -4322,7 +4329,11 @@ body:has(.home) .skip-link {
 
   .case-present {
     min-height: auto;
-    padding-block: 4rem 5rem;
+    padding-block: 3.25rem 4rem;
+  }
+
+  .case-experience--paged .case-present {
+    padding-block: 3.25rem 4rem;
   }
 
   .case-present__grid {
@@ -4351,7 +4362,7 @@ body:has(.home) .skip-link {
   .case-present__copy h1 {
     max-width: 12ch;
     margin-top: 1rem;
-    font-size: clamp(3.5rem, 16vw, 5.2rem);
+    font-size: clamp(3.25rem, 14vw, 4.4rem);
     line-height: 0.92;
   }
 
@@ -4371,7 +4382,7 @@ body:has(.home) .skip-link {
   }
 
   .case-assumption {
-    padding-block: 5rem;
+    padding-block: 4.25rem;
   }
 
   .case-assumption__grid,
@@ -4382,7 +4393,7 @@ body:has(.home) .skip-link {
   }
 
   .case-assumption h2 {
-    font-size: clamp(3rem, 13vw, 4.4rem);
+    font-size: clamp(2.75rem, 11vw, 3.6rem);
   }
 
   .case-assumption__statement {
@@ -4403,7 +4414,11 @@ body:has(.home) .skip-link {
   }
 
   .case-file {
-    padding-block: 5.5rem;
+    padding-block: 4.5rem;
+  }
+
+  .case-experience--paged .case-file {
+    padding-block: 4rem;
   }
 
   .case-file::before,
@@ -4431,8 +4446,13 @@ body:has(.home) .skip-link {
   }
 
   .case-file__sheet h1 {
-    margin-top: 2.5rem;
-    font-size: clamp(3rem, 13vw, 4.5rem);
+    margin-top: 2rem;
+    font-size: clamp(2.65rem, 11vw, 3.25rem);
+  }
+
+  .case-experience--paged .case-file__sheet h1 {
+    margin-top: 2rem;
+    font-size: clamp(2.65rem, 11vw, 3.25rem);
   }
 
   .case-file__first-record {
@@ -4442,13 +4462,13 @@ body:has(.home) .skip-link {
   }
 
   .case-evidence {
-    padding-top: 5.5rem;
+    padding-top: 4.5rem;
   }
 
   .case-evidence__heading {
     grid-template-columns: 1fr;
     gap: 1.25rem;
-    padding-bottom: 4rem;
+    padding-bottom: 3rem;
   }
 
   .case-evidence__heading h2,
@@ -4458,11 +4478,11 @@ body:has(.home) .skip-link {
   }
 
   .case-evidence__heading h2 {
-    font-size: clamp(3rem, 13vw, 4.6rem);
+    font-size: clamp(2.65rem, 11vw, 3.4rem);
   }
 
   .case-evidence__reveal {
-    padding-block: 4.5rem;
+    padding-block: 4rem;
   }
 
   .case-evidence__grid {
@@ -4504,7 +4524,7 @@ body:has(.home) .skip-link {
   }
 
   .case-evidence__record h3 {
-    font-size: clamp(2.7rem, 12vw, 4rem);
+    font-size: clamp(2.35rem, 10.5vw, 3.25rem);
   }
 
   .case-evidence__record h3 + p {
@@ -4522,7 +4542,11 @@ body:has(.home) .skip-link {
   }
 
   .case-connection {
-    padding-block: 5.5rem;
+    padding-block: 4.75rem;
+  }
+
+  .case-experience--paged .case-connection {
+    padding-block: 4.75rem;
   }
 
   .case-connection h1,
@@ -4532,13 +4556,17 @@ body:has(.home) .skip-link {
   }
 
   .case-connection h1 {
-    font-size: clamp(3.2rem, 14vw, 5rem);
+    font-size: clamp(2.75rem, 11.5vw, 3.5rem);
+  }
+
+  .case-experience--paged .case-connection h1 {
+    font-size: clamp(2.75rem, 11.5vw, 3.5rem);
   }
 
   .case-connection ol {
     grid-template-columns: 1fr;
     gap: 2.25rem;
-    margin-top: 3.5rem;
+    margin-top: 2.75rem;
   }
 
   .case-connection__conclusion {
@@ -4549,7 +4577,7 @@ body:has(.home) .skip-link {
   }
 
   .case-return {
-    padding-block: 5.5rem 2.5rem;
+    padding-block: 4.5rem 2.5rem;
   }
 
   .case-return__grid {
@@ -4565,7 +4593,7 @@ body:has(.home) .skip-link {
   }
 
   .case-return__intro h2 {
-    font-size: clamp(3.2rem, 14vw, 5rem);
+    font-size: clamp(2.75rem, 11.5vw, 3.5rem);
   }
 
   .case-return__lenses {
@@ -4622,7 +4650,7 @@ body:has(.home) .skip-link {
   }
 
   .scenario-picker-section__heading h2 {
-    font-size: clamp(2.65rem, 12vw, 4rem);
+    font-size: clamp(2.4rem, 10.5vw, 3.4rem);
   }
 
   .scenario-picker__list a {
@@ -4671,7 +4699,7 @@ body:has(.home) .skip-link {
   }
 
   .case-library-page__intro {
-    padding-block: 3.5rem 3rem;
+    padding-block: 2.75rem 2.5rem;
   }
 
   .case-library-page__intro-grid {
@@ -4685,7 +4713,7 @@ body:has(.home) .skip-link {
 
   .case-library-page__intro h1 {
     max-width: 12ch;
-    font-size: clamp(3rem, 14vw, 4.7rem);
+    font-size: clamp(2.75rem, 12.5vw, 3.25rem);
   }
 
   .case-library-page__intro div > p {
