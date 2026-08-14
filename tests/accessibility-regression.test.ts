@@ -52,10 +52,12 @@ test("Homepage multiline heading includes real whitespace between visual lines",
 
 test("living case styles preserve touch, reflow, forced-color, and motion guardrails", () => {
   const stylesheet = readSource("app/globals.css");
+  const filters = readSource("components/cases/case-library-filters.tsx");
 
   for (const selector of [
     ".case-experience",
-    ".case-progress",
+    ".case-stage-progress",
+    ".case-stage-navigation",
     ".case-file",
     ".case-evidence",
     ".case-connection",
@@ -71,7 +73,19 @@ test("living case styles preserve touch, reflow, forced-color, and motion guardr
   );
   assert.match(
     stylesheet,
-    /\.case-progress[\s\S]*?min-height:\s*2\.75rem/,
+    /\.case-stage-progress ol[\s\S]*?grid-template-columns:\s*repeat\(3/,
+  );
+  assert.doesNotMatch(
+    stylesheet,
+    /\.case-stage-progress ol[\s\S]*?min-width:\s*40rem/,
+  );
+  assert.match(
+    stylesheet,
+    /\.case-stage-navigation a[\s\S]*?min-height:\s*2\.75rem/,
+  );
+  assert.match(
+    stylesheet,
+    /@media \(max-width: 48rem\)[\s\S]*?\.case-library__categories[\s\S]*?grid-template-columns:\s*repeat\(2/,
   );
   assert.match(
     stylesheet,
@@ -79,7 +93,7 @@ test("living case styles preserve touch, reflow, forced-color, and motion guardr
   );
   assert.match(
     stylesheet,
-    /@media \(forced-colors: active\)[\s\S]*?\.case-progress/,
+    /@media \(forced-colors: active\)[\s\S]*?\.case-stage-progress/,
   );
   assert.match(
     stylesheet,
@@ -89,4 +103,6 @@ test("living case styles preserve touch, reflow, forced-color, and motion guardr
     stylesheet,
     /\.case[^\{]*:focus-visible\s*\{[^}]*outline:\s*none/,
   );
+  assert.match(filters, /case-library__category-all/);
+  assert.doesNotMatch(filters, /carousel|Cuộn ngang|scrollLeft/);
 });

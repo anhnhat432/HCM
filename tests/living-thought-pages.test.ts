@@ -70,11 +70,11 @@ test("case journey shell renders three route-backed stages without scroll tracki
   assert.ok(item);
 
   const html = renderToStaticMarkup(
-    createElement(CaseJourneyShell, {
-      item,
-      stage: "dau-vet",
-      children: createElement("h1", null, "Dấu vết"),
-    }),
+    createElement(
+      CaseJourneyShell,
+      { item, stage: "dau-vet" } as Parameters<typeof CaseJourneyShell>[0],
+      createElement("h1", null, "Dấu vết"),
+    ),
   );
 
   assert.equal((html.match(/case-stage-progress__link/g) ?? []).length, 3);

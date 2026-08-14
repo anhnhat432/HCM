@@ -47,6 +47,7 @@ export function CaseLibraryFilters({ previews }: CaseLibraryFiltersProps) {
         >
           <button
             aria-pressed={activeCategory === "all"}
+            className="case-library__category-all"
             onClick={() => setActiveCategory("all")}
             type="button"
           >
