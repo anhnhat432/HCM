@@ -1,8 +1,12 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 
+import { CaseFilePage } from "@/components/cases/case-file-page";
 import { getCasePreviews } from "@/lib/thought-case-registry";
+import { getThoughtCaseBySlug } from "@/lib/thought-case-registry";
 
 function readSource(path: string): string {
   return readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
@@ -44,4 +48,28 @@ test("scenario picker shows exactly three suggestions per rotation", () => {
   assert.match(picker, /VISIBLE_CASE_COUNT = 3/);
   assert.match(picker, /Đổi tình huống/);
   assert.match(picker, /aria-live="polite"/);
+});
+
+test("case page server markup contains the complete six-act narrative", () => {
+  const item = getThoughtCaseBySlug("nhom-gioi-nhung-khong-hop-tac");
+  assert.ok(item);
+
+  const html = renderToStaticMarkup(createElement(CaseFilePage, { item }));
+
+  for (const id of [
+    "case-present",
+    "case-assumption",
+    "case-file",
+    "case-evidence",
+    "case-connection",
+    "case-return",
+  ]) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+
+  assert.equal((html.match(/<h1/g) ?? []).length, 1);
+  assert.equal((html.match(/case-evidence__reveal/g) ?? []).length, 3);
+  assert.equal((html.match(/Nguồn &amp; kiểm chứng/g) ?? []).length, 3);
+  assert.match(html, /Mở hồ sơ khác/);
+  assert.match(html, /Đọc Trace đầy đủ/);
 });
