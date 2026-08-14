@@ -230,6 +230,12 @@ def verify_stage_interactions(browser: Browser) -> None:
     assert drawer.get_by_role("heading", name="Nguồn nội dung").count() == 1
     page.get_by_role("button", name="Đóng nguồn và kiểm chứng").click()
     assert not drawer.is_visible()
+    trigger_handle = trigger.element_handle()
+    assert trigger_handle is not None
+    page.wait_for_function(
+        "element => element === document.activeElement",
+        arg=trigger_handle,
+    )
     assert trigger.evaluate("element => element === document.activeElement")
 
     return_path = stage_path(slug, "/tro-lai")

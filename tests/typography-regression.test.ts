@@ -119,27 +119,27 @@ test("case and library display headings use the approved restrained scale", () =
     [
       ".case-present__copy h1",
       [
-        "clamp(3.75rem, 6.4vw, 6.75rem)",
-        "clamp(3.25rem, 14vw, 4.4rem)",
+        "clamp(3.25rem, 5.1vw, 5.25rem)",
+        "clamp(2.8rem, 12.5vw, 3.5rem)",
       ],
     ],
     [
       ".case-assumption h2",
-      ["clamp(2.8rem, 4.8vw, 5rem)", "clamp(2.75rem, 11vw, 3.6rem)"],
+      ["clamp(2.4rem, 4vw, 4rem)", "clamp(2.35rem, 9.5vw, 3rem)"],
     ],
     [
       ".case-evidence__heading h2",
-      ["clamp(3rem, 5vw, 5.5rem)", "clamp(2.65rem, 11vw, 3.4rem)"],
+      ["clamp(2.4rem, 4vw, 4rem)", "clamp(2.35rem, 9.5vw, 3rem)"],
     ],
     [
       ".case-evidence__record h3",
-      ["clamp(2.3rem, 3.6vw, 4rem)", "clamp(2.35rem, 10.5vw, 3.25rem)"],
+      ["clamp(1.9rem, 2.8vw, 3rem)", "clamp(2rem, 8.5vw, 2.75rem)"],
     ],
     [
       ".case-return__intro h2",
       [
-        "clamp(3.1rem, 5.2vw, 5.75rem)",
-        "clamp(2.75rem, 11.5vw, 3.5rem)",
+        "clamp(2.5rem, 3.8vw, 3.75rem)",
+        "clamp(2.35rem, 9.5vw, 2.9rem)",
       ],
     ],
     [
@@ -172,16 +172,147 @@ test("paged case headings override desktop and mobile sizes at equal specificity
   assert.equal(connectionHeadingBlocks.length, 2);
   assert.deepEqual(
     fileHeadingBlocks.map((block) => getDeclaration(block, "font-size")),
-    ["clamp(2.9rem, 4.8vw, 5rem)", "clamp(2.65rem, 11vw, 3.25rem)"],
+    ["clamp(3rem, 4.6vw, 4.75rem)", "clamp(2.55rem, 10.5vw, 3.1rem)"],
   );
   assert.deepEqual(
     connectionHeadingBlocks.map((block) => getDeclaration(block, "font-size")),
-    ["clamp(2.9rem, 4.8vw, 5rem)", "clamp(2.75rem, 11.5vw, 3.5rem)"],
+    ["clamp(3rem, 4.6vw, 4.75rem)", "clamp(2.55rem, 10.5vw, 3.1rem)"],
   );
   assert.equal(
     getDeclaration(fileHeadingBlocks[0], "margin-top"),
     "clamp(2rem, 2.5vw, 2.5rem)",
   );
+});
+
+test("paged case stages share one editorial grid and remove redundant framing", () => {
+  const editorialGrid = "minmax(9rem, 0.32fr) minmax(0, 1fr)";
+
+  for (const selector of [
+    ".case-present__grid",
+    ".case-file__grid",
+    ".case-evidence__heading",
+    ".case-connection__grid",
+    ".case-return__grid",
+  ]) {
+    const block = getRuleBlocks(selector)[0];
+
+    assert.ok(block, `${selector} must have a base rule`);
+    assert.equal(
+      getDeclaration(block, "grid-template-columns"),
+      editorialGrid,
+      `${selector} must use the shared editorial grid`,
+    );
+  }
+
+  assert.equal(
+    getDeclaration(getRuleBlocks(".case-stage-progress__inner")[0], "grid-template-columns"),
+    "1fr",
+  );
+  assert.equal(
+    getDeclaration(getRuleBlocks(".case-stage-position")[0], "display"),
+    "none",
+  );
+  assert.equal(
+    getDeclaration(getRuleBlocks(".experience-guide")[0], "grid-column"),
+    "2",
+  );
+  assert.equal(
+    getDeclaration(getRuleBlocks(".case-present__file-mark span")[0], "display"),
+    "none",
+  );
+  assert.equal(
+    getDeclaration(
+      getRuleBlocks(".case-file__sheet > p:first-child span")[0],
+      "display",
+    ),
+    "none",
+  );
+
+  const sheet = getRuleBlocks(".case-file__sheet")[0];
+
+  assert.equal(getDeclaration(sheet, "padding"), "0");
+  assert.equal(getDeclaration(sheet, "border"), "0");
+  assert.equal(getDeclaration(sheet, "background"), "transparent");
+  assert.equal(
+    getDeclaration(getRuleBlocks(".case-file__sheet::before")[0], "display"),
+    "none",
+  );
+});
+
+test("case pages reserve serif for opening statements and keep one Stage 3 climax", () => {
+  for (const selector of [
+    ".case-assumption h2",
+    ".case-evidence__heading h2",
+    ".case-evidence__record h3",
+    ".case-connection li h2",
+    ".case-return__intro h2",
+    ".case-return__lenses h3",
+    ".case-return__next > div > h3",
+  ]) {
+    assert.equal(
+      getDeclaration(getRuleBlocks(selector)[0], "font-family"),
+      "var(--font-body), sans-serif",
+      `${selector} must use the structural body face`,
+    );
+  }
+
+  const connection = getRuleBlocks(".case-connection")[0];
+
+  assert.equal(getDeclaration(connection, "color"), "var(--color-ink)");
+  assert.equal(getDeclaration(connection, "background"), "var(--color-canvas)");
+  assert.equal(
+    getDeclaration(getRuleBlocks(".case-connection ol")[0], "grid-template-columns"),
+    "1fr",
+  );
+
+  const conclusionBlocks = getRuleBlocks(".case-connection__conclusion");
+  const conclusion = conclusionBlocks[0];
+  const mobileConclusion = conclusionBlocks.find(
+    (block, index) => index > 0 && getDeclaration(block, "font-size"),
+  );
+
+  assert.equal(
+    getDeclaration(conclusion, "font-family"),
+    "var(--font-body), sans-serif",
+  );
+  assert.equal(
+    getDeclaration(conclusion, "font-size"),
+    "clamp(3.5rem, 6.2vw, 6.25rem)",
+  );
+  assert.equal(
+    getDeclaration(mobileConclusion ?? "", "font-size"),
+    "clamp(2.65rem, 10.8vw, 3.2rem)",
+  );
+  assert.equal(getDeclaration(conclusion, "font-weight"), "700");
+  assert.equal(
+    getDeclaration(conclusion, "color"),
+    "var(--trace-accent, var(--color-accent))",
+  );
+  assert.equal(
+    getDeclaration(getRuleBlocks(".case-connection__conclusion span")[0], "display"),
+    "block",
+  );
+  assert.equal(
+    getDeclaration(
+      getRuleBlocks(".case-connection__conclusion span + span")[0],
+      "margin-top",
+    ),
+    "0.08em",
+  );
+});
+
+test("case stage entry links share one restrained primary treatment", () => {
+  for (const selector of [".case-scroll-cue", ".case-file__sheet > a"]) {
+    const block = getRuleBlocks(selector)[0];
+
+    assert.ok(block, `${selector} must have a base rule`);
+    assert.equal(getDeclaration(block, "border-bottom"), "1px solid currentColor");
+    assert.equal(getDeclaration(block, "font-size"), "0.95rem");
+    assert.equal(getDeclaration(block, "font-weight"), "500");
+    assert.equal(getDeclaration(block, "letter-spacing"), "normal");
+    assert.equal(getDeclaration(block, "text-decoration"), "none");
+    assert.equal(getDeclaration(block, "text-transform"), "none");
+  }
 });
 
 test("case intros use the approved compact vertical rhythm", () => {
