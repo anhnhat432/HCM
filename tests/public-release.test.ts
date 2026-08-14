@@ -69,17 +69,20 @@ test("sitemap and robots expose every public experience route", async () => {
     "https://hcm-trace.vercel.app/trace/con-nguoi",
     "https://hcm-trace.vercel.app/phuong-phap",
   ];
-  const caseRoutes = thoughtCases.map(
-    (item) => `https://hcm-trace.vercel.app/ho-so/${item.slug}`,
-  );
+  const caseRoutes = thoughtCases.flatMap((item) => [
+    `https://hcm-trace.vercel.app/ho-so/${item.slug}`,
+    `https://hcm-trace.vercel.app/ho-so/${item.slug}/dau-vet`,
+    `https://hcm-trace.vercel.app/ho-so/${item.slug}/tro-lai`,
+  ]);
 
   assert.deepEqual(urls.slice(0, existingRoutes.length), existingRoutes);
   assert.equal(
     urls.filter((url: string) => url.endsWith("/ho-so")).length,
     1,
   );
+  assert.equal(caseRoutes.length, 90);
   assert.deepEqual(urls.slice(existingRoutes.length + 1), caseRoutes);
-  assert.equal(urls.length, 36);
+  assert.equal(urls.length, 96);
 
   const robotsData = robots();
   assert.equal(robotsData.sitemap, "https://hcm-trace.vercel.app/sitemap.xml");

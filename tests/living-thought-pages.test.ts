@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -144,13 +144,15 @@ test("return stage connects the thought formation to practical next steps", () =
 });
 
 test("case enhancements remain optional and expose accessible guidance", () => {
-  const page = readSource("components/cases/case-file-page.tsx");
+  const page = readSource("components/cases/case-present-stage.tsx");
+  const guide = readSource("components/cases/experience-guide.tsx");
   const prompt = readSource("components/cases/perspective-prompt.tsx");
-  const progress = readSource("components/cases/case-progress.tsx");
-  const corpus = `${page}\n${prompt}\n${progress}`;
+  const progress = readSource("components/cases/case-stage-progress.tsx");
+  const corpus = `${page}\n${guide}\n${prompt}\n${progress}`;
 
-  assert.match(page, /CaseProgress/);
   assert.match(page, /PerspectivePrompt/);
+  assert.match(guide, /aria-label="Cách trải nghiệm"/);
+  assert.match(guide, /Bạn không cần chọn/);
   assert.match(prompt, /aria-pressed/);
   assert.match(prompt, /aria-live="polite"/);
   assert.match(progress, /aria-current/);
@@ -158,6 +160,33 @@ test("case enhancements remain optional and expose accessible guidance", () => {
   assert.doesNotMatch(corpus, /localStorage/);
   assert.doesNotMatch(corpus, /completionGate/);
   assert.doesNotMatch(corpus, /preventDefault\(\)/);
+});
+
+test("legacy six-act scroll composition is removed after all stage routes exist", () => {
+  const legacyPage = new URL(
+    "../components/cases/case-file-page.tsx",
+    import.meta.url,
+  );
+  const legacyProgress = new URL(
+    "../components/cases/case-progress.tsx",
+    import.meta.url,
+  );
+  const routes = [
+    readSource("app/ho-so/[slug]/page.tsx"),
+    readSource("app/ho-so/[slug]/dau-vet/page.tsx"),
+    readSource("app/ho-so/[slug]/tro-lai/page.tsx"),
+  ].join("\n");
+
+  assert.equal(existsSync(legacyPage), false);
+  assert.equal(existsSync(legacyProgress), false);
+  assert.doesNotMatch(routes, /CaseFilePage|CaseProgress/);
+});
+
+test("historical verification copy uses a fully Vietnamese interpretation label", () => {
+  const traces = readSource("data/traces.ts");
+
+  assert.doesNotMatch(traces, /summary là diễn giải/);
+  assert.match(traces, /phần tóm lược là diễn giải/);
 });
 
 test("case routes are statically generated with canonical social metadata", () => {

@@ -49,7 +49,7 @@ export const traces = [
           "Đầu năm 1930 tại Hương Cảng, Nguyễn Ái Quốc chủ trì Hội nghị hợp nhất các tổ chức cộng sản, quy tụ lực lượng quanh mục tiêu chung và dẫn tới sự ra đời của Đảng Cộng sản Việt Nam.",
         metadata: "Hương Cảng — đầu tháng 2 năm 1930",
         verification:
-          "Đã đối chiếu nguồn chính thống về vai trò chủ trì của Nguyễn Ái Quốc, Hội nghị hợp nhất và ngày thành lập Đảng; summary là diễn giải, không coi năm 1930 là điểm khởi nguồn tuyệt đối của tư tưởng đại đoàn kết.",
+          "Đã đối chiếu nguồn chính thống về vai trò chủ trì của Nguyễn Ái Quốc, Hội nghị hợp nhất và ngày thành lập Đảng; phần tóm lược là diễn giải, không coi năm 1930 là điểm khởi nguồn tuyệt đối của tư tưởng đại đoàn kết.",
         image: {
           src: "/images/traces/dai-doan-ket/1930-party-foundation.jpg",
           alt: "Tranh tái hiện Nguyễn Ái Quốc chủ trì Hội nghị hợp nhất các tổ chức cộng sản tại Hương Cảng đầu năm 1930",
@@ -258,7 +258,7 @@ export const traces = [
           "Trong Đường Kách mệnh, Nguyễn Ái Quốc đặt “Tư cách một người cách mệnh” ở đầu tác phẩm, nêu yêu cầu về bản thân, với người và công việc. Đạo đức được xác lập sớm như nền tảng gắn với hành động cách mạng.",
         metadata: "Tác phẩm Đường Kách mệnh — xuất bản năm 1927",
         verification:
-          "Đã đối chiếu nguồn chính thống về năm 1927, bối cảnh các bài giảng và vai trò của chuẩn mực đạo đức; summary là diễn giải, không phải trích dẫn.",
+          "Đã đối chiếu nguồn chính thống về năm 1927, bối cảnh các bài giảng và vai trò của chuẩn mực đạo đức; phần tóm lược là diễn giải, không phải trích dẫn.",
         image: {
           src: "/images/traces/dao-duc-trach-nhiem/1927-duong-kach-menh-crop.jpg",
           alt: "Bìa cuốn Đường Kách mệnh xuất bản năm 1927, hiện vật được công nhận là bảo vật quốc gia",
@@ -299,7 +299,7 @@ export const traces = [
           "Trong Sửa đổi lối làm việc, Hồ Chí Minh đưa yêu cầu về phẩm chất vào thực tiễn công tác: nhận diện bệnh chủ quan, hẹp hòi, sửa cách nghĩ, cách làm và nhấn mạnh trách nhiệm của cán bộ, đảng viên với tổ chức, tập thể.",
         metadata: "ATK Định Hóa, Thái Nguyên — tháng 10 năm 1947",
         verification:
-          "Đã đối chiếu nguồn chính thống về bối cảnh Việt Bắc năm 1947, nội dung phê bình khuyết điểm và trách nhiệm của cán bộ, đảng viên; summary là diễn giải.",
+          "Đã đối chiếu nguồn chính thống về bối cảnh Việt Bắc năm 1947, nội dung phê bình khuyết điểm và trách nhiệm của cán bộ, đảng viên; phần tóm lược là diễn giải.",
         image: {
           src: "/images/traces/dao-duc-trach-nhiem/1947-sua-doi-loi-lam-viec.jpg",
           alt: "Bìa cũ của tác phẩm Sửa đổi lối làm việc, ghi bút danh X.Y.Z và Nhà xuất bản Sự thật",
@@ -341,7 +341,7 @@ export const traces = [
           "Trong Đạo đức cách mạng, Hồ Chí Minh trình bày có hệ thống hơn về đạo đức, tu dưỡng, lợi ích chung và chống chủ nghĩa cá nhân. Tác phẩm phát triển mạch tư tưởng về phẩm chất, trách nhiệm đã đặt ra từ 1927, 1947.",
         metadata: "Tạp chí Học tập, số 12 — tháng 12 năm 1958",
         verification:
-          "Đã đối chiếu nguồn chính thống về tên tác phẩm, bút danh Trần Lực và việc đăng trên Tạp chí Học tập số 12 năm 1958; summary là diễn giải, không phải trích dẫn.",
+          "Đã đối chiếu nguồn chính thống về tên tác phẩm, bút danh Trần Lực và việc đăng trên Tạp chí Học tập số 12 năm 1958; phần tóm lược là diễn giải, không phải trích dẫn.",
         image: {
           src: "/images/traces/dao-duc-trach-nhiem/1958-dao-duc-cach-mang.jpg",
           alt: "Trang mở đầu bản số hóa Đạo đức cách mạng, ghi rõ tác phẩm tháng 12 năm 1958",
@@ -464,7 +464,7 @@ export const traces = [
           "Tuyên ngôn Độc lập dẫn lại quyền sống, quyền tự do và bình đẳng, rồi phát triển lập luận về quyền độc lập, tự do của dân tộc Việt Nam. Dấu mốc làm rõ mối liên hệ giữa quyền con người và quyền dân tộc.",
         metadata: "Quảng trường Ba Đình, Hà Nội — 2 tháng 9 năm 1945",
         verification:
-          "Đã đối chiếu nguồn chính thống về ngày công bố, quyền sống, tự do, bình đẳng và mối liên hệ giữa quyền con người với quyền dân tộc; summary là diễn giải.",
+          "Đã đối chiếu nguồn chính thống về ngày công bố, quyền sống, tự do, bình đẳng và mối liên hệ giữa quyền con người với quyền dân tộc; phần tóm lược là diễn giải.",
         image: {
           src: "/images/traces/dai-doan-ket/1945-independence-declaration.jpg",
           alt: "Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập trên lễ đài tại vườn hoa Ba Đình ngày 2 tháng 9 năm 1945",
@@ -546,7 +546,7 @@ export const traces = [
           "Trong Di chúc công bố năm 1969, Hồ Chí Minh căn dặn giáo dục thanh niên, bồi dưỡng thế hệ cách mạng và nâng cao đời sống nhân dân. Những nội dung ấy gắn việc xây dựng xã hội với sự phát triển con người.",
         metadata: "Di chúc — công bố năm 1969, đề ngày 10 tháng 5",
         verification:
-          "Đã đối chiếu toàn văn Di chúc về giáo dục thanh niên, bồi dưỡng thế hệ cách mạng và kế hoạch nâng cao đời sống nhân dân; summary là diễn giải.",
+          "Đã đối chiếu toàn văn Di chúc về giáo dục thanh niên, bồi dưỡng thế hệ cách mạng và kế hoạch nâng cao đời sống nhân dân; phần tóm lược là diễn giải.",
         image: {
           src: "/images/traces/con-nguoi/1969-testament.jpg",
           alt: "Trang bút tích Di chúc đề ngày 10 tháng 5 năm 1969 với các chỉnh sửa bằng mực đỏ",

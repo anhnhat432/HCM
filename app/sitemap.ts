@@ -1,6 +1,10 @@
 import type { MetadataRoute } from "next";
 
 import { thoughtCases } from "@/data/thought-cases";
+import {
+  CASE_JOURNEY_STAGES,
+  getCaseStageHref,
+} from "@/lib/thought-case-journey";
 import { siteUrl } from "@/lib/site";
 
 const publicRoutes = [
@@ -12,7 +16,9 @@ const publicRoutes = [
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const caseRoutes = thoughtCases.map((item) => `/ho-so/${item.slug}`);
+  const caseRoutes = thoughtCases.flatMap((item) =>
+    CASE_JOURNEY_STAGES.map((stage) => getCaseStageHref(item.slug, stage)),
+  );
   const routes = [...publicRoutes, "/ho-so", ...caseRoutes];
 
   return routes.map((route) => ({
