@@ -73,3 +73,20 @@ test("case page server markup contains the complete six-act narrative", () => {
   assert.match(html, /Mở hồ sơ khác/);
   assert.match(html, /Đọc Trace đầy đủ/);
 });
+
+test("case enhancements remain optional and expose accessible guidance", () => {
+  const page = readSource("components/cases/case-file-page.tsx");
+  const prompt = readSource("components/cases/perspective-prompt.tsx");
+  const progress = readSource("components/cases/case-progress.tsx");
+  const corpus = `${page}\n${prompt}\n${progress}`;
+
+  assert.match(page, /CaseProgress/);
+  assert.match(page, /PerspectivePrompt/);
+  assert.match(prompt, /aria-pressed/);
+  assert.match(prompt, /aria-live="polite"/);
+  assert.match(progress, /aria-current/);
+  assert.match(progress, /Tiến trình hồ sơ/);
+  assert.doesNotMatch(corpus, /localStorage/);
+  assert.doesNotMatch(corpus, /completionGate/);
+  assert.doesNotMatch(corpus, /preventDefault\(\)/);
+});

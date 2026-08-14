@@ -1,8 +1,10 @@
 import Link from "next/link";
 
 import { CaseEvidence } from "@/components/cases/case-evidence";
+import { CaseProgress } from "@/components/cases/case-progress";
 import { CaseReturn } from "@/components/cases/case-return";
 import { ExperienceGuide } from "@/components/cases/experience-guide";
+import { PerspectivePrompt } from "@/components/cases/perspective-prompt";
 import {
   getCaseEvidence,
   getRelatedCases,
@@ -42,6 +44,8 @@ export function CaseFilePage({ item }: CaseFilePageProps) {
         </div>
       </header>
 
+      <CaseProgress />
+
       <main id="main-content">
         <section
           aria-labelledby="case-present-heading"
@@ -80,14 +84,7 @@ export function CaseFilePage({ item }: CaseFilePageProps) {
                 {item.reveals[0].assumption}
               </p>
               {item.optionalPerspective ? (
-                <div className="case-perspective-fallback">
-                  <p>Hai góc nhìn bạn có thể cân nhắc:</p>
-                  <ul>
-                    {item.optionalPerspective.map((perspective) => (
-                      <li key={perspective}>{perspective}</li>
-                    ))}
-                  </ul>
-                </div>
+                <PerspectivePrompt perspectives={item.optionalPerspective} />
               ) : null}
             </div>
           </div>
