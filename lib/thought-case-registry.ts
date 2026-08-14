@@ -57,6 +57,16 @@ export function getCasePreviews(): readonly ThoughtCasePreview[] {
   );
 }
 
+export function getCaseFileNumber(item: ThoughtCase): string {
+  const index = thoughtCases.findIndex((candidate) => candidate.slug === item.slug);
+
+  if (index < 0) {
+    throw new Error(`Unknown case file: ${item.slug}`);
+  }
+
+  return `HS-${String(index + 1).padStart(3, "0")}`;
+}
+
 export function getRelatedCases(
   item: ThoughtCase,
 ): readonly [ThoughtCase, ThoughtCase] {

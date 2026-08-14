@@ -7,6 +7,7 @@ import { ExperienceGuide } from "@/components/cases/experience-guide";
 import { PerspectivePrompt } from "@/components/cases/perspective-prompt";
 import {
   getCaseEvidence,
+  getCaseFileNumber,
   getRelatedCases,
 } from "@/lib/thought-case-registry";
 import { traceThemes } from "@/lib/trace-themes";
@@ -30,6 +31,7 @@ export function CaseFilePage({ item }: CaseFilePageProps) {
   }
 
   const relatedCases = getRelatedCases(item);
+  const fileNumber = getCaseFileNumber(item);
 
   return (
     <div className={`case-experience ${traceThemes[primaryTrace.theme]}`}>
@@ -55,7 +57,7 @@ export function CaseFilePage({ item }: CaseFilePageProps) {
           <div className="site-container case-present__grid">
             <div className="case-present__file-mark" aria-hidden="true">
               <span>HỒ SƠ</span>
-              <strong>{String(item.slug.length).padStart(3, "0")}</strong>
+              <strong>{fileNumber}</strong>
               <i />
             </div>
             <div className="case-present__copy">

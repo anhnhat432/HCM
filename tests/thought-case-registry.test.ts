@@ -4,6 +4,7 @@ import test from "node:test";
 import { thoughtCases } from "@/data/thought-cases";
 import {
   getCaseEvidence,
+  getCaseFileNumber,
   getRelatedCases,
   getThoughtCaseBySlug,
 } from "@/lib/thought-case-registry";
@@ -119,4 +120,9 @@ test("invalid evidence fails loudly", () => {
       }),
     /Unknown historical moment/,
   );
+});
+
+test("case file numbers follow the approved registry order", () => {
+  assert.equal(getCaseFileNumber(thoughtCases[0]), "HS-001");
+  assert.equal(getCaseFileNumber(thoughtCases[29]), "HS-030");
 });

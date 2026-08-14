@@ -49,3 +49,44 @@ test("Homepage multiline heading includes real whitespace between visual lines",
     "Every Homepage heading line must end with real DOM whitespace",
   );
 });
+
+test("living case styles preserve touch, reflow, forced-color, and motion guardrails", () => {
+  const stylesheet = readSource("app/globals.css");
+
+  for (const selector of [
+    ".case-experience",
+    ".case-progress",
+    ".case-file",
+    ".case-evidence",
+    ".case-connection",
+    ".case-return",
+    ".perspective-prompt__choices button",
+  ]) {
+    assert.ok(stylesheet.includes(selector), `${selector} must be styled`);
+  }
+
+  assert.match(
+    stylesheet,
+    /\.perspective-prompt__choices button\s*\{[\s\S]*?min-height:\s*2\.75rem/,
+  );
+  assert.match(
+    stylesheet,
+    /\.case-progress[\s\S]*?min-height:\s*2\.75rem/,
+  );
+  assert.match(
+    stylesheet,
+    /@media \(max-width: 48rem\)[\s\S]*?\.case-evidence__grid/,
+  );
+  assert.match(
+    stylesheet,
+    /@media \(forced-colors: active\)[\s\S]*?\.case-progress/,
+  );
+  assert.match(
+    stylesheet,
+    /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.case-experience/,
+  );
+  assert.doesNotMatch(
+    stylesheet,
+    /\.case[^\{]*:focus-visible\s*\{[^}]*outline:\s*none/,
+  );
+});
