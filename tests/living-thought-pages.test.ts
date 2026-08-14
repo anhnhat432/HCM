@@ -4,7 +4,7 @@ import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { CaseFilePage } from "@/components/cases/case-file-page";
+import { CaseJourneyShell } from "@/components/cases/case-journey-shell";
 import { getCasePreviews } from "@/lib/thought-case-registry";
 import { getThoughtCaseBySlug } from "@/lib/thought-case-registry";
 
@@ -62,29 +62,25 @@ test("scenario picker shows exactly three suggestions per rotation", () => {
   assert.match(picker, /aria-live="polite"/);
 });
 
-test("case page server markup contains the complete six-act narrative", () => {
+test("case journey shell renders three route-backed stages without scroll tracking", () => {
   const item = getThoughtCaseBySlug("nhom-gioi-nhung-khong-hop-tac");
   assert.ok(item);
 
-  const html = renderToStaticMarkup(createElement(CaseFilePage, { item }));
+  const html = renderToStaticMarkup(
+    createElement(CaseJourneyShell, {
+      item,
+      stage: "dau-vet",
+      children: createElement("h1", null, "Dấu vết"),
+    }),
+  );
 
-  for (const id of [
-    "case-present",
-    "case-assumption",
-    "case-file",
-    "case-evidence",
-    "case-connection",
-    "case-return",
-  ]) {
-    assert.match(html, new RegExp(`id="${id}"`));
-  }
-
-  assert.equal((html.match(/<h1/g) ?? []).length, 1);
-  assert.equal((html.match(/case-evidence__reveal/g) ?? []).length, 3);
-  assert.equal((html.match(/Nguồn &amp; kiểm chứng/g) ?? []).length, 3);
-  assert.equal((html.match(/case-evidence__no-script-sources/g) ?? []).length, 3);
-  assert.match(html, /Mở hồ sơ khác/);
-  assert.match(html, /Đọc Trace đầy đủ/);
+  assert.equal((html.match(/case-stage-progress__link/g) ?? []).length, 3);
+  assert.match(html, /aria-current="step"/);
+  assert.match(html, new RegExp(`/ho-so/${item.slug}/dau-vet`));
+  assert.match(html, /Quay lại vấn đề/);
+  assert.match(html, /Kết nối và trở lại/);
+  assert.match(html, /id="main-content"/);
+  assert.doesNotMatch(html, /requestAnimationFrame|addEventListener/);
 });
 
 test("case enhancements remain optional and expose accessible guidance", () => {
