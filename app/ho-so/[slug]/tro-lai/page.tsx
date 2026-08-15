@@ -1,0 +1,49 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+import { CaseJourneyShell } from "@/components/cases/case-journey-shell";
+import { CaseReturnStage } from "@/components/cases/case-return-stage";
+import { thoughtCases } from "@/data/thought-cases";
+import { getThoughtCaseMetadata } from "@/lib/thought-case-metadata";
+import { getThoughtCaseBySlug } from "@/lib/thought-case-registry";
+
+interface ThoughtCaseReturnPageProps {
+  readonly params: Promise<{ slug: string }>;
+}
+
+export function generateStaticParams() {
+  return thoughtCases.map((item) => ({ slug: item.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: ThoughtCaseReturnPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const item = getThoughtCaseBySlug(slug);
+
+  if (!item) {
+    return {
+      title: "Không tìm thấy hồ sơ",
+      description: "Hồ sơ bạn tìm kiếm không tồn tại trong Đuốc Hồng.",
+    };
+  }
+
+  return getThoughtCaseMetadata(item, "tro-lai");
+}
+
+export default async function ThoughtCaseReturnPage({
+  params,
+}: ThoughtCaseReturnPageProps) {
+  const { slug } = await params;
+  const item = getThoughtCaseBySlug(slug);
+
+  if (!item) {
+    notFound();
+  }
+
+  return (
+    <CaseJourneyShell item={item} stage="tro-lai">
+      <CaseReturnStage item={item} />
+    </CaseJourneyShell>
+  );
+}

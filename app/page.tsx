@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { ScenarioPicker } from "@/components/cases/scenario-picker";
 import { Reveal } from "@/components/home/reveal";
 import { TopicList } from "@/components/home/topic-list";
 import { QrShareDialog } from "@/components/share/qr-share-dialog";
 import { traces } from "@/data/traces";
+import { getCasePreviews } from "@/lib/thought-case-registry";
 
 const homepageHeroImage = {
   alt: "Trang đầu bản Tuyên ngôn Độc lập với bút tích và dấu lưu trữ",
@@ -17,6 +19,8 @@ const homepageHeroImage = {
 } as const;
 
 export default function Home() {
+  const casePreviews = getCasePreviews();
+
   return (
     <main className="home" id="main-content">
       <header className="home-header">
@@ -29,37 +33,33 @@ export default function Home() {
       <section className="home-hero" aria-labelledby="home-heading">
         <div className="site-container home-hero__grid">
           <div className="home-hero__copy">
-            <Reveal>
-              <p className="section-kicker">ĐUỐC HỒNG — 2026</p>
-            </Reveal>
+            <p className="section-kicker">ĐUỐC HỒNG — 2026</p>
 
-            <Reveal delay={0.06}>
-              <h1 className="home-hero__title" id="home-heading">
-                <span className="home-hero__title-line">Một vấn đề{" "}</span>
-                <span className="home-hero__title-line">hôm nay.{" "}</span>
-                <span className="home-hero__title-line">Một tư tưởng{" "}</span>
-                <span className="home-hero__title-line">từ quá khứ.{" "}</span>
-              </h1>
-            </Reveal>
+            <h1 className="home-hero__title" id="home-heading">
+              <span className="home-hero__title-line">Một vấn đề{" "}</span>
+              <span className="home-hero__title-line">hôm nay.{" "}</span>
+              <span className="home-hero__title-line">Một tư tưởng{" "}</span>
+              <span className="home-hero__title-line">từ quá khứ.{" "}</span>
+            </h1>
 
-            <Reveal delay={0.12}>
-              <p className="home-hero__supporting">
-                Bắt đầu từ những câu hỏi của hiện tại, lần theo lịch sử và
-                khám phá cách tư tưởng Hồ Chí Minh được hình thành.
-              </p>
-            </Reveal>
+            <p className="home-hero__supporting">
+              Bắt đầu từ những câu hỏi của hiện tại, lần theo lịch sử và khám
+              phá cách tư tưởng Hồ Chí Minh được hình thành.
+            </p>
 
-            <Reveal delay={0.18}>
-              <Link className="primary-action" href="/trace/dai-doan-ket">
-                <span>Bắt đầu hành trình</span>
-                <span className="primary-action__arrow" aria-hidden="true">
-                  →
-                </span>
-              </Link>
-            </Reveal>
+            <p className="home-hero__journey-meta">
+              Khoảng 2 phút · Không có đáp án đúng hoặc sai.
+            </p>
+
+            <Link className="primary-action" href="#tinh-huong-goi-y">
+              <span>Bắt đầu với một tình huống</span>
+              <span className="primary-action__arrow" aria-hidden="true">
+                →
+              </span>
+            </Link>
           </div>
 
-          <Reveal className="home-hero__visual" delay={0.1}>
+          <div className="home-hero__visual">
             <figure className="home-hero__figure">
               <div className="home-hero__image-frame">
                 <Image
@@ -86,7 +86,26 @@ export default function Home() {
                 </span>
               </figcaption>
             </figure>
+          </div>
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="scenario-picker-heading"
+        className="scenario-picker-section"
+        id="tinh-huong-goi-y"
+      >
+        <div className="site-container">
+          <Reveal>
+            <div className="scenario-picker-section__heading">
+              <p>TÌNH HUỐNG GỢI Ý</p>
+              <h2 id="scenario-picker-heading">
+                Có thể bạn đang gặp một câu hỏi như thế này.
+              </h2>
+            </div>
           </Reveal>
+
+          <ScenarioPicker previews={casePreviews} />
         </div>
       </section>
 
@@ -94,7 +113,7 @@ export default function Home() {
         <div className="site-container">
           <Reveal>
             <h2 className="topic-section__label" id="topic-heading">
-              Bạn muốn khám phá điều gì?
+              Kho tư liệu nền
             </h2>
           </Reveal>
 
@@ -105,7 +124,10 @@ export default function Home() {
       <footer className="home-footer">
         <div className="site-container home-footer__inner">
           <p>ĐUỐC HỒNG — 2026</p>
-          <Link href="/phuong-phap">Về dự án & phương pháp</Link>
+          <div className="home-footer__links">
+            <Link href="/ho-so">Hồ sơ tư tưởng sống</Link>
+            <Link href="/phuong-phap">Về dự án & phương pháp</Link>
+          </div>
         </div>
       </footer>
     </main>
