@@ -59,7 +59,7 @@ export function PerspectivePrompt({
         {selectedText ? (
           <div className="perspective-prompt__active-state">
             <p>
-              💡 <strong>Góc nhìn bạn chọn:</strong> “{selectedText}”
+              <strong>Góc nhìn bạn chọn:</strong> “{selectedText}”
             </p>
             <p className="perspective-prompt__hint">
               Hãy cùng ngược dòng lịch sử để xem các quyết sách của Chủ tịch Hồ Chí Minh đối thoại và mở rộng góc nhìn này như thế nào.

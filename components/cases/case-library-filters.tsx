@@ -98,35 +98,35 @@ export function CaseLibraryFilters({ previews }: CaseLibraryFiltersProps) {
       </div>
 
       {filteredPreviews.length ? (
-        <div className="case-library__grid">
+        <ol aria-live="polite" className="case-library__ledger">
           {filteredPreviews.map((item, index) => {
             const caseNumber = String(index + 1).padStart(2, "0");
             return (
-              <article className="case-card" key={item.slug}>
-                <Link className="case-card__link" href={`/ho-so/${item.slug}`}>
-                  <div className="case-card__header">
-                    <span className="case-card__badge">
+              <li className="case-library__row" key={item.slug}>
+                <Link className="case-library__link" href={`/ho-so/${item.slug}`}>
+                  <div className="case-library__meta">
+                    <span className="case-library__number">{caseNumber}</span>
+                    <span className="case-library__category">
                       {CASE_CATEGORY_LABELS[item.category]}
                     </span>
-                    <span className="case-card__number">#{caseNumber}</span>
                   </div>
 
-                  <div className="case-card__body">
-                    <h3 className="case-card__title">{item.title}</h3>
-                    <p className="case-card__prompt">{item.shortPrompt}</p>
+                  <div className="case-library__body">
+                    <h2 className="case-library__title">{item.title}</h2>
+                    <p className="case-library__prompt">{item.shortPrompt}</p>
                   </div>
 
-                  <div className="case-card__footer">
-                    <span className="case-card__action">Mở hồ sơ & liên hệ thực tiễn</span>
-                    <span className="case-card__arrow" aria-hidden="true">
+                  <div className="case-library__action">
+                    <span className="case-library__action-label">Mở hồ sơ</span>
+                    <span className="case-library__arrow" aria-hidden="true">
                       →
                     </span>
                   </div>
                 </Link>
-              </article>
+              </li>
             );
           })}
-        </div>
+        </ol>
       ) : (
         <div className="case-library__empty">
           <p className="case-library__empty-title">Không tìm thấy hồ sơ phù hợp</p>

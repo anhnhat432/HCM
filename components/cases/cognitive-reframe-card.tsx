@@ -30,42 +30,36 @@ export function CognitiveReframeCard({
         <span className="case-reframe-scene__kicker">
           KHOẢNH KHẮC CHUYỂN HÓA GÓC NHÌN
         </span>
-        <p className="case-reframe-scene__lead">
-          Sau khi đối thoại cùng 3 dấu mốc lịch sử, đây là sự dịch chuyển nhận thức cốt lõi:
-        </p>
       </div>
 
-      <div className="case-reframe-scene__stage">
-        {/* Before: Mental Starting Point */}
-        <div className="case-reframe-scene__pole case-reframe-scene__pole--before">
-          <div className="case-reframe-scene__pole-header">
-            <span className="case-reframe-scene__tag">
-              {chosenPerspective ? "GÓC NHÌN BẠN CHỌN BAN ĐẦU" : "GIẢ ĐỊNH THƯỜNG THẤY LÚC BẮT ĐẦU"}
-            </span>
-          </div>
-          <blockquote className="case-reframe-scene__before-text">
+      <div className="case-reframe-scene__flow">
+        {/* 1. Before: Mental Starting Point */}
+        <div className="case-reframe-scene__before">
+          <span className="case-reframe-scene__label">
+            {chosenPerspective ? "GÓC NHÌN BẠN CHỌN BAN ĐẦU" : "GIẢ ĐỊNH THƯỜNG THẤY LÚC BẮT ĐẦU"}
+          </span>
+          <blockquote className="case-reframe-scene__quote">
             “{beforeText}”
           </blockquote>
         </div>
 
-        {/* The Epistemic Shift Axis */}
-        <div className="case-reframe-scene__axis" aria-hidden="true">
-          <div className="case-reframe-scene__axis-line" />
-          <span className="case-reframe-scene__axis-badge">DỊCH CHUYỂN QUA 3 DẤU VẾT</span>
-          <div className="case-reframe-scene__axis-line" />
-          <span className="case-reframe-scene__axis-arrow">↓</span>
+        {/* 2. Central Epistemic Shift Axis */}
+        <div className="case-reframe-scene__shift" aria-hidden="true">
+          <div className="case-reframe-scene__shift-line" />
+          <span className="case-reframe-scene__shift-badge">3 DẤU VẾT LỊCH SỬ</span>
+          <div className="case-reframe-scene__shift-line" />
+          <span className="case-reframe-scene__shift-arrow">↓</span>
         </div>
 
-        {/* After: The Reframe Awakening */}
-        <div className="case-reframe-scene__pole case-reframe-scene__pole--after">
-          <div className="case-reframe-scene__pole-header">
-            <span className="case-reframe-scene__tag case-reframe-scene__tag--gold">
-              NHẬN THỨC MỚI SAU LỊCH SỬ
-            </span>
-          </div>
+        {/* 3. After: The Signature Reframe Climax */}
+        <div className="case-reframe-scene__after">
+          <span className="case-reframe-scene__label case-reframe-scene__label--gold">
+            SAU KHI ĐỐI THOẠI CÙNG LỊCH SỬ
+          </span>
           <h2 className="case-reframe-scene__heading" id="case-reframe-title">
             {item.returnHeading}
           </h2>
+          <div className="case-reframe-scene__gold-rule" aria-hidden="true" />
           <p className="case-reframe-scene__summary">
             {item.returnSummary}
           </p>
