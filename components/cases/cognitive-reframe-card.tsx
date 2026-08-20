@@ -25,41 +25,48 @@ export function CognitiveReframeCard({
   const beforeText = chosenPerspective || item.reveals[0].assumption;
 
   return (
-    <div className="case-reframe-card" id="khoanh-khac-chuyen-hoa">
-      <div className="case-reframe-card__header">
-        <span className="case-reframe-card__badge">
-          <span aria-hidden="true">🔥</span> KHOẢNH KHẮC CHUYỂN HÓA GÓC NHÌN
+    <div className="case-reframe-scene" id="khoanh-khac-chuyen-hoa">
+      <div className="case-reframe-scene__preamble">
+        <span className="case-reframe-scene__kicker">
+          KHOẢNH KHẮC CHUYỂN HÓA GÓC NHÌN
         </span>
-        <p className="case-reframe-card__intro">
-          Sau khi đi qua 3 dấu mốc lịch sử, đây là sự dịch chuyển nhận thức cốt lõi cho tình huống này:
+        <p className="case-reframe-scene__lead">
+          Sau khi đối thoại cùng 3 dấu mốc lịch sử, đây là sự dịch chuyển nhận thức cốt lõi:
         </p>
       </div>
 
-      <div className="case-reframe-card__comparison">
-        {/* Before */}
-        <div className="case-reframe-card__side case-reframe-card__side--before">
-          <span className="case-reframe-card__side-label">
-            {chosenPerspective ? "GÓC NHÌN BẠN CHỌN BAN ĐẦU" : "LÚC BẮT ĐẦU (GIẢ ĐỊNH THƯỜNG GẶP)"}
-          </span>
-          <blockquote className="case-reframe-card__quote">
+      <div className="case-reframe-scene__stage">
+        {/* Before: Mental Starting Point */}
+        <div className="case-reframe-scene__pole case-reframe-scene__pole--before">
+          <div className="case-reframe-scene__pole-header">
+            <span className="case-reframe-scene__tag">
+              {chosenPerspective ? "GÓC NHÌN BẠN CHỌN BAN ĐẦU" : "GIẢ ĐỊNH THƯỜNG THẤY LÚC BẮT ĐẦU"}
+            </span>
+          </div>
+          <blockquote className="case-reframe-scene__before-text">
             “{beforeText}”
           </blockquote>
         </div>
 
-        {/* Shift Indicator */}
-        <div className="case-reframe-card__arrow-col" aria-hidden="true">
-          <span className="case-reframe-card__arrow-circle">↓</span>
+        {/* The Epistemic Shift Axis */}
+        <div className="case-reframe-scene__axis" aria-hidden="true">
+          <div className="case-reframe-scene__axis-line" />
+          <span className="case-reframe-scene__axis-badge">DỊCH CHUYỂN QUA 3 DẤU VẾT</span>
+          <div className="case-reframe-scene__axis-line" />
+          <span className="case-reframe-scene__axis-arrow">↓</span>
         </div>
 
-        {/* After */}
-        <div className="case-reframe-card__side case-reframe-card__side--after">
-          <span className="case-reframe-card__side-label">
-            SAU 3 DẤU VẾT LỊCH SỬ (TƯ DUY MỚI)
-          </span>
-          <h2 className="case-reframe-card__reframe-title" id="case-reframe-title">
+        {/* After: The Reframe Awakening */}
+        <div className="case-reframe-scene__pole case-reframe-scene__pole--after">
+          <div className="case-reframe-scene__pole-header">
+            <span className="case-reframe-scene__tag case-reframe-scene__tag--gold">
+              NHẬN THỨC MỚI SAU LỊCH SỬ
+            </span>
+          </div>
+          <h2 className="case-reframe-scene__heading" id="case-reframe-title">
             {item.returnHeading}
           </h2>
-          <p className="case-reframe-card__reframe-desc">
+          <p className="case-reframe-scene__summary">
             {item.returnSummary}
           </p>
         </div>

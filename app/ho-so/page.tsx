@@ -29,8 +29,8 @@ export default function CaseLibraryPage() {
       <header className="case-library-page__header">
         <div className="site-container case-library-page__header-inner">
           <Link className="brand-mark" href="/">
-            <span aria-hidden="true">🔥 </span>
-            <span>ĐUỐC HỒNG</span>
+            <span className="brand-mark__line" aria-hidden="true" />
+            <span className="brand-mark__text">ĐUỐC HỒNG</span>
           </Link>
 
           <span>30 HỒ SƠ / 06 CHỦ ĐỀ</span>

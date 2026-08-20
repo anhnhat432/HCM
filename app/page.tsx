@@ -28,7 +28,7 @@ export default function Home() {
       <header className="home-header">
         <div className="site-container home-header__inner">
           <Link className="brand-mark" href="/">
-            <span className="brand-mark__torch" aria-hidden="true">🔥</span>
+            <span className="brand-mark__line" aria-hidden="true" />
             <span className="brand-mark__text">ĐUỐC HỒNG</span>
           </Link>
 
@@ -48,10 +48,9 @@ export default function Home() {
       <section className="home-hero" aria-labelledby="home-heading">
         <div className="site-container home-hero__grid">
           <div className="home-hero__copy">
-            <div className="section-kicker-badge">
-              <span className="section-kicker-badge__dot" />
-              <span>TƯ TƯỞNG HỒ CHÍ MINH & THỰC TIỄN 2026</span>
-            </div>
+            <p className="home-hero__kicker">
+              TƯ TƯỞNG HỒ CHÍ MINH &amp; THỰC TIỄN ĐƯƠNG ĐẠI
+            </p>
 
             <h1 className="home-hero__title" id="home-heading">
               <span className="home-hero__title-line">Một vấn đề{" "}</span>
@@ -75,44 +74,30 @@ export default function Home() {
                   →
                 </span>
               </Link>
-              <Link className="secondary-action" href="/ho-so">
-                <span>Xem thư viện hồ sơ</span>
+              <Link className="home-hero__secondary-link" href="/ho-so">
+                <span>Xem danh mục 30 hồ sơ</span>
+                <span aria-hidden="true">→</span>
               </Link>
             </div>
-
-            <div className="home-hero__stats">
-              <div className="home-hero__stat-item">
-                <strong>30</strong>
-                <span>Hồ sơ tình huống</span>
-              </div>
-              <div className="home-hero__stat-divider" />
-              <div className="home-hero__stat-item">
-                <strong>03</strong>
-                <span>Trục tư tưởng lớn</span>
-              </div>
-              <div className="home-hero__stat-divider" />
-              <div className="home-hero__stat-item">
-                <strong>Lưu trữ</strong>
-                <span>Tư liệu có nguồn kiểm chứng</span>
-              </div>
-            </div>
-
           </div>
 
           <div className="home-hero__visual">
             <figure className="home-hero__figure">
-              <div className="home-hero__image-badge">TƯ LIỆU GỐC 1945</div>
+              <div className="home-hero__image-tag">
+                <span className="home-hero__image-tag-dot" aria-hidden="true" />
+                <span>TƯ LIỆU GỐC 1945</span>
+              </div>
               <div className="home-hero__image-frame">
                 <Image
                   alt={homepageHeroImage.alt}
                   className="home-hero__image"
                   fill
                   priority
-                  sizes="(max-width: 48rem) calc(100vw - 4rem), 435px"
+                  sizes="(max-width: 48rem) calc(100vw - 4rem), 480px"
                   src={homepageHeroImage.src}
                 />
               </div>
-              <figcaption>
+              <figcaption className="home-hero__caption">
                 <strong className="home-hero__caption-title">{homepageHeroImage.caption}</strong>
                 <span className="home-hero__credit">
                   Nguồn:{" "}
@@ -139,7 +124,7 @@ export default function Home() {
         <div className="site-container">
           <Reveal>
             <div className="scenario-picker-section__heading">
-              <div className="section-pill">TRẢI NGHIỆM CHÍNH / 30 TÌNH HUỐNG THỰC TẾ</div>
+              <p className="section-label">HỒ SƠ TÌNH HUỐNG THỰC TẾ</p>
               <h2 id="scenario-picker-heading">
                 Có thể bạn đang gặp một câu hỏi như thế này.
               </h2>
@@ -157,9 +142,9 @@ export default function Home() {
         <div className="site-container">
           <Reveal>
             <div className="topic-section__header-block">
-              <div className="section-pill" style={{ marginBottom: "0.75rem" }}>
-                NỀN TẢNG HỌC THUẬT & ĐỌC SÂU
-              </div>
+              <p className="section-label">
+                NỀN TẢNG HỌC THUẬT &amp; ĐỌC SÂU
+              </p>
               <h2 className="topic-section__label" id="topic-heading">
                 Kho tư liệu nền: 3 Trục tư tưởng lớn
               </h2>
@@ -173,18 +158,20 @@ export default function Home() {
         </div>
       </section>
 
-
       <footer className="home-footer">
         <div className="site-container home-footer__inner">
           <div className="home-footer__brand">
-            <span className="brand-mark">🔥 ĐUỐC HỒNG — 2026</span>
+            <span className="brand-mark">
+              <span className="brand-mark__line" aria-hidden="true" />
+              <span className="brand-mark__text">ĐUỐC HỒNG — 2026</span>
+            </span>
             <p className="home-footer__tagline">
               Dự án học tập và trải nghiệm tương tác Tư tưởng Hồ Chí Minh qua lăng kính đương đại.
             </p>
           </div>
           <div className="home-footer__links">
             <Link href="/ho-so">Hồ sơ tư tưởng sống</Link>
-            <Link href="/phuong-phap">Về dự án & phương pháp</Link>
+            <Link href="/phuong-phap">Về dự án &amp; phương pháp</Link>
             <Link href="#main-content">Về đầu trang ↑</Link>
           </div>
         </div>

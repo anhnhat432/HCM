@@ -72,7 +72,12 @@ export function CaseLibraryFilters({ previews }: CaseLibraryFiltersProps) {
 
         <div className="case-library__search">
           <label htmlFor="case-search">
-            <span className="case-library__search-icon" aria-hidden="true">🔍</span>
+            <span className="case-library__search-icon" aria-hidden="true">
+              <svg fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="16">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" x2="16.65" y1="21" y2="16.65" />
+              </svg>
+            </span>
             <span>Tìm tình huống</span>
           </label>
           <input

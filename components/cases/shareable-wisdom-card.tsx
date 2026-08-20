@@ -28,7 +28,7 @@ export function ShareableWisdomCard({
   const handleCopyQuote = async () => {
     try {
       const shareContent = reframeHeading
-        ? `🔥 ĐUỐC HỒNG — ${title}\n“${reframeHeading}: ${mainQuote}”\n🔗 https://hcm-trace.vercel.app/ho-so/${caseSlug}`
+        ? `ĐUỐC HỒNG — ${title}\n“${reframeHeading}: ${mainQuote}”\n🔗 https://hcm-trace.vercel.app/ho-so/${caseSlug}`
         : `“${mainQuote}”\n— Trích từ Hồ sơ: ${title} (Dự án Đuốc Hồng)\n🔗 https://hcm-trace.vercel.app/ho-so/${caseSlug}`;
       await navigator.clipboard.writeText(shareContent);
       setCopied(true);
@@ -44,7 +44,7 @@ export function ShareableWisdomCard({
         {/* Top header with seal */}
         <div className="wisdom-card__header">
           <div className="wisdom-card__stamp" aria-hidden="true">
-            <span>🔥</span>
+            <span className="brand-mark__line" />
             <span>ĐUỐC HỒNG</span>
             <small>2026</small>
           </div>

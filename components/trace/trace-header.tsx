@@ -21,7 +21,7 @@ export function TraceHeader({ title, slug }: TraceHeaderProps) {
     <header className="trace-header">
       <div className="site-container trace-header__inner">
         <Link className="trace-header__brand" href="/">
-          <span aria-hidden="true">🔥 </span>
+          <span className="brand-mark__line" aria-hidden="true" />
           <span>ĐUỐC HỒNG</span>
         </Link>
 

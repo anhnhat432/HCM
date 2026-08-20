@@ -29,24 +29,24 @@ export function ScenarioPicker({ previews }: ScenarioPickerProps) {
 
   return (
     <div className="scenario-picker">
-      <ol aria-live="polite" className="scenario-picker__list">
+      <ol aria-live="polite" className="scenario-picker__ledger">
         {visiblePreviews.map((item, index) => {
           const itemNumber = String(page * VISIBLE_CASE_COUNT + index + 1).padStart(2, "0");
           return (
-            <li className="scenario-picker__item" key={item.slug}>
-              <Link className="scenario-picker__card" href={`/ho-so/${item.slug}`}>
-                <div className="scenario-picker__card-top">
-                  <span className="scenario-picker__badge">
+            <li className="scenario-picker__row" key={item.slug}>
+              <Link className="scenario-picker__link" href={`/ho-so/${item.slug}`}>
+                <div className="scenario-picker__meta">
+                  <span className="scenario-picker__number">{itemNumber}</span>
+                  <span className="scenario-picker__category">
                     {CASE_CATEGORY_LABELS[item.category]}
                   </span>
-                  <span className="scenario-picker__number">HỒ SƠ #{itemNumber}</span>
                 </div>
-                <div className="scenario-picker__copy">
+                <div className="scenario-picker__body">
                   <strong className="scenario-picker__title">{item.title}</strong>
                   <p className="scenario-picker__prompt">{item.shortPrompt}</p>
                 </div>
-                <div className="scenario-picker__footer">
-                  <span className="scenario-picker__cta">Mở hồ sơ & suy ngẫm</span>
+                <div className="scenario-picker__action">
+                  <span className="scenario-picker__action-label">Mở hồ sơ</span>
                   <span className="scenario-picker__arrow" aria-hidden="true">
                     →
                   </span>
@@ -67,7 +67,6 @@ export function ScenarioPicker({ previews }: ScenarioPickerProps) {
           <span aria-hidden="true">→</span>
         </Link>
       </div>
-
     </div>
   );
 }

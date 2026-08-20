@@ -34,7 +34,7 @@ export function CaseJourneyShell({
       <header className="case-header">
         <div className="site-container case-header__inner">
           <Link className="case-header__brand" href="/">
-            <span aria-hidden="true">🔥 </span>
+            <span className="brand-mark__line" aria-hidden="true" />
             <span>ĐUỐC HỒNG</span>
           </Link>
           <Link className="case-header__library" href="/ho-so">
