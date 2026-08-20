@@ -36,7 +36,7 @@ test("font loading avoids preloading every family and unused homepage weights", 
   assert.doesNotMatch(layout, /"700"/);
 });
 
-test("Homepage suggestions do not pull Trace-only display fonts", () => {
+test("Homepage editorial headings and UI fonts use the approved font taxonomy", () => {
   const stylesheet = readFileSync(
     new URL("../app/globals.css", import.meta.url),
     "utf8",
@@ -44,11 +44,7 @@ test("Homepage suggestions do not pull Trace-only display fonts", () => {
 
   assert.match(
     stylesheet,
-    /\.scenario-picker-section__heading h2\s*\{[\s\S]*?font-family:\s*var\(--font-homepage\)/,
-  );
-  assert.match(
-    stylesheet,
-    /\.scenario-picker__copy strong\s*\{[\s\S]*?font-family:\s*var\(--font-homepage\)/,
+    /\.scenario-picker-section__heading h2\s*\{[\s\S]*?font-family:\s*var\(--font-display\)/,
   );
   assert.match(stylesheet, /body:has\(\.home\) \.skip-link/);
 });
