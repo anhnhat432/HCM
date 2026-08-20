@@ -6205,9 +6205,18 @@ body:has(.home) .skip-link {
    Signature Moment: Cognitive Reframe Card (Stage 3 Payoff)
    ========================================================================== */
 
+.case-reframe-section {
+  padding-block: clamp(3.5rem, 6vw, 5rem) clamp(1rem, 2vw, 2rem);
+  position: relative;
+}
+
+.case-reframe-section .site-container {
+  max-width: 58rem;
+}
+
 .case-reframe-card {
-  grid-column: 2;
-  margin-bottom: 3.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
   padding: clamp(2rem, 4vw, 3rem);
   background: linear-gradient(145deg, #ffffff 0%, #fdfbf7 100%);
   border: 2px solid var(--color-line-gold);

@@ -82,9 +82,18 @@ export function PerspectivePrompt({
             </div>
           </div>
         ) : (
-          <p className="perspective-prompt__neutral">
-            Không bắt buộc — bạn có thể chọn một góc nhìn ở trên để cá nhân hóa hành trình, hoặc tiếp tục xem ngay bên dưới.
-          </p>
+          <div className="perspective-prompt__neutral-state">
+            <p className="perspective-prompt__neutral">
+              Không bắt buộc — hãy chọn một phản xạ ở trên để mang theo vào lịch sử, hoặc:
+            </p>
+            <Link
+              className="case-scroll-cue perspective-prompt__skip-link"
+              href={getCaseStageHref(slug, "dau-vet", null)}
+            >
+              <span>Xem 3 mốc lịch sử (Bỏ qua lựa chọn)</span>
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         )}
       </div>
     </div>

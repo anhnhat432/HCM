@@ -1,8 +1,5 @@
-import Link from "next/link";
-
 import { ExperienceGuide } from "@/components/cases/experience-guide";
 import { PerspectivePrompt } from "@/components/cases/perspective-prompt";
-import { getCaseStageHref } from "@/lib/thought-case-journey";
 import { getCaseFileNumber } from "@/lib/thought-case-registry";
 import type { ThoughtCase } from "@/types/thought-case";
 
@@ -33,12 +30,6 @@ export function CasePresentStage({ item, perspective }: CasePresentStageProps) {
             <p className="case-present__context">{item.context}</p>
             <blockquote>{item.openingQuestion}</blockquote>
             <ExperienceGuide />
-            <Link
-              className="case-scroll-cue"
-              href={getCaseStageHref(item.slug, "dau-vet", perspective)}
-            >
-              Xem 3 mốc lịch sử <span aria-hidden="true">→</span>
-            </Link>
           </div>
         </div>
       </section>

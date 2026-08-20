@@ -1,4 +1,5 @@
 import { CaseReturn } from "@/components/cases/case-return";
+import { CognitiveReframeCard } from "@/components/cases/cognitive-reframe-card";
 import { getCaseStageHref } from "@/lib/thought-case-journey";
 import {
   getCaseEvidence,
@@ -24,13 +25,25 @@ export function CaseReturnStage({ item, perspective }: CaseReturnStageProps) {
 
   return (
     <>
+      {/* 1. PAYOFF MOMENT: COGNITIVE REFRAME CARD RIGHT AT THE TOP */}
+      <section
+        aria-labelledby="case-reframe-title"
+        className="case-reframe-section"
+      >
+        <div className="site-container">
+          <p className="case-act-label">BƯỚC 3 / NHẬN GỢI Ý ÁP DỤNG</p>
+          <CognitiveReframeCard item={item} perspective={perspective} />
+        </div>
+      </section>
+
+      {/* 2. EXPLANATION: THOUGHT FORMATION FACTORS & CONCLUSION */}
       <section
         aria-labelledby="case-connection-heading"
         className="case-connection"
         id="case-connection"
       >
         <div className="site-container case-connection__grid">
-          <p className="case-act-label">BƯỚC 3 / NHẬN GỢI Ý ÁP DỤNG</p>
+          <p className="case-act-label">VÌ SAO CÓ SỰ CHUYỂN DỊCH NÀY?</p>
           <div>
             <h1 id="case-connection-heading">
               Từ ba mốc lịch sử đến một cách xử lý hôm nay.
@@ -66,10 +79,10 @@ export function CaseReturnStage({ item, perspective }: CaseReturnStageProps) {
         </div>
       </section>
 
+      {/* 3. ACTIONABLE STEPS: THREE LENSES, WISDOM CARD & NEXT CASES */}
       <CaseReturn
         evidenceHref={getCaseStageHref(item.slug, "dau-vet", perspective)}
         item={item}
-        perspective={perspective}
         relatedCases={relatedCases}
       />
     </>

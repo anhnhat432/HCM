@@ -92,8 +92,8 @@ export default function Home() {
               </div>
               <div className="home-hero__stat-divider" />
               <div className="home-hero__stat-item">
-                <strong>100%</strong>
-                <span>Tư liệu lịch sử xác thực</span>
+                <strong>Lưu trữ</strong>
+                <span>Tư liệu có nguồn kiểm chứng</span>
               </div>
             </div>
 
