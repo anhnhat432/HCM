@@ -1,0 +1,63 @@
+{
+  "slug": "ap-luc-nang-suat",
+  "category": "human-development",
+  "title": "Khi năng suất trở thành thước đo duy nhất",
+  "shortPrompt": "Mọi phút nghỉ đều tạo cảm giác có lỗi, còn con người bị nhìn như một chuỗi đầu việc.",
+  "context": "Bạn đã quen đo ngày của mình bằng số nhiệm vụ hoàn thành. Khi làm ít hơn kế hoạch, dù vì mệt hoặc cần chăm sóc người khác, bạn thấy mình vô dụng và cố bù bằng cách kéo dài thời gian làm việc.",
+  "openingQuestion": "Một cách sống tạo ra nhiều kết quả nhưng làm con người cạn kiệt có còn là phát triển?",
+  "primaryTrace": "con-nguoi",
+  "supportingTrace": "dao-duc-trach-nhiem",
+  "optionalPerspective": [
+    "Tăng kỷ luật để vượt qua cảm giác mệt",
+    "Điều chỉnh nhịp làm việc để giữ khả năng lâu dài"
+  ],
+  "reveals": [
+    {
+      "assumption": "Giá trị của một người tăng giảm theo lượng sản phẩm tạo ra mỗi ngày.",
+      "finding": "Con người có phẩm giá và nhu cầu vượt ra ngoài vai trò tạo ra kết quả đo được.",
+      "reframe": "Năng suất là một năng lực hữu ích, không phải đơn vị đo toàn bộ giá trị sống.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    },
+    {
+      "assumption": "Muốn trưởng thành thì phải liên tục tăng tốc và chịu nhiều áp lực hơn.",
+      "finding": "Bồi dưỡng con người là quá trình lâu dài cần điều kiện học tập và phát triển bền vững.",
+      "reframe": "Tăng tốc không ngừng có thể làm mất chính khả năng học sâu và đóng góp lâu dài.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "trong-nguoi"
+      }
+    },
+    {
+      "assumption": "Nghỉ ngơi là phần thời gian không tạo giá trị cho xã hội.",
+      "finding": "Phát triển hướng tới đời sống con người, không chỉ lượng công việc mà xã hội có thể lấy từ họ.",
+      "reframe": "Nghỉ ngơi hợp lý bảo vệ khả năng sống, học và đóng góp; nó không đối lập với trách nhiệm.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "di-chuc"
+      }
+    }
+  ],
+  "returnHeading": "Đo hiệu quả mà không biến mình thành công cụ",
+  "returnSummary": "Giữ mục tiêu rõ, giới hạn số việc quan trọng và theo dõi cả năng lượng lẫn kết quả. Một nhịp bền vững phải cho phép bạn tiếp tục vào ngày mai.",
+  "presentLenses": [
+    {
+      "title": "Chọn ít việc thật sự quan trọng",
+      "summary": "Phân biệt tiến bộ có ý nghĩa với cảm giác bận rộn do danh sách dài."
+    },
+    {
+      "title": "Đặt giới hạn kết thúc ngày",
+      "summary": "Dùng một mốc dừng rõ để công việc không mở rộng chiếm toàn bộ đời sống."
+    },
+    {
+      "title": "Theo dõi khả năng hồi phục",
+      "summary": "Xem giấc ngủ, sự tập trung và sức khỏe là dữ kiện của hiệu suất, không phải trở ngại cá nhân."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "giao-duc-vi-thanh-tich",
+    "thanh-tich-va-hinh-anh-ca-nhan"
+  ]
+}

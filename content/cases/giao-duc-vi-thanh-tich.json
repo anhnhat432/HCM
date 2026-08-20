@@ -1,0 +1,63 @@
+{
+  "slug": "giao-duc-vi-thanh-tich",
+  "category": "human-development",
+  "title": "Khi giáo dục chỉ còn phục vụ thành tích",
+  "shortPrompt": "Lớp đạt chỉ số đẹp nhưng người học ngày càng sợ sai và ít hiểu sâu.",
+  "context": "Một chương trình học liên tục luyện đúng dạng bài để tăng điểm kiểm tra. Kết quả thống kê cải thiện nhanh, nhưng học viên tránh câu hỏi lạ, không dám thử cách mới và quên kiến thức ngay sau kỳ đánh giá.",
+  "openingQuestion": "Một hệ thống giáo dục đạt mục tiêu đo lường nhưng làm người học ngừng tò mò có thành công không?",
+  "primaryTrace": "con-nguoi",
+  "supportingTrace": "dai-doan-ket",
+  "optionalPerspective": [
+    "Ưu tiên kết quả đo được để bảo đảm chuẩn chung",
+    "Chấp nhận chỉ số chậm hơn để giữ khả năng học thật"
+  ],
+  "reveals": [
+    {
+      "assumption": "Khi điểm số tăng, giá trị người học và chất lượng giáo dục tự nhiên tăng theo.",
+      "finding": "Giá trị con người không thể được đại diện đầy đủ bởi một hệ đo thành tích.",
+      "reframe": "Chỉ số cần phục vụ việc hiểu người học, không biến người học thành phương tiện làm đẹp chỉ số.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    },
+    {
+      "assumption": "Nhiệm vụ của giáo dục là tạo đáp án đúng nhanh nhất.",
+      "finding": "Giáo dục là công việc lâu dài nhằm bồi dưỡng khả năng suy nghĩ, trưởng thành và đóng góp.",
+      "reframe": "Dạy để qua một dạng bài có thể tạo kết quả ngắn nhưng không tạo năng lực bước vào vấn đề mới.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "trong-nguoi"
+      }
+    },
+    {
+      "assumption": "Miễn hệ thống có nhiều người đạt chuẩn thì những người bị bỏ lại là chi phí chấp nhận được.",
+      "finding": "Phát triển xã hội cần hướng tới đời sống và khả năng của con người, không chỉ tổng số thành tích.",
+      "reframe": "Một hệ thống tốt phải hỏi ai đang tiến bộ, ai đang bị loại và chuẩn hiện tại đang tạo ra kiểu con người nào.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "di-chuc"
+      }
+    }
+  ],
+  "returnHeading": "Để thành tích phục vụ việc học",
+  "returnSummary": "Giữ đánh giá nhưng bổ sung nhiệm vụ mở, phản hồi quá trình và cơ hội sửa. Kết quả cần giúp người học biết bước tiếp theo, không chỉ xếp họ vào vị trí.",
+  "presentLenses": [
+    {
+      "title": "Đo cả cách nghĩ",
+      "summary": "Đánh giá lập luận, thử nghiệm và khả năng giải thích bên cạnh đáp án cuối."
+    },
+    {
+      "title": "Cho phép sửa sau phản hồi",
+      "summary": "Biến lỗi thành đầu vào của học tập thay vì chỉ là phần điểm bị mất."
+    },
+    {
+      "title": "Theo dõi người bị bỏ lại",
+      "summary": "Không để điểm trung bình đẹp che số người không còn theo được quá trình."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "diem-so-co-dinh-nghia-con-nguoi",
+    "phat-trien-nhung-bo-quen-con-nguoi"
+  ]
+}

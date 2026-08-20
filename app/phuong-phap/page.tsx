@@ -22,8 +22,10 @@ export default function MethodologyPage() {
       <header className="methodology__header">
         <div className="site-container methodology__header-inner">
           <Link className="methodology__brand" href="/">
-            ĐUỐC HỒNG
+            <span aria-hidden="true">🔥 </span>
+            <span>ĐUỐC HỒNG</span>
           </Link>
+
           <span>VỀ DỰ ÁN & PHƯƠNG PHÁP</span>
         </div>
       </header>

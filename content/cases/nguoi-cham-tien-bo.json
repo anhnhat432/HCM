@@ -1,0 +1,63 @@
+{
+  "slug": "nguoi-cham-tien-bo",
+  "category": "human-development",
+  "title": "Khi một người tiến bộ quá chậm",
+  "shortPrompt": "Nỗ lực có thật nhưng kết quả thay đổi rất ít, khiến mọi người dần mất kiên nhẫn.",
+  "context": "Một thành viên đã cố gắng qua nhiều tuần nhưng vẫn cần nhiều thời gian hơn người khác để làm cùng một nhiệm vụ. Nhóm bắt đầu cho rằng đầu tư hỗ trợ thêm chỉ làm chậm tiến độ và không còn đáng công.",
+  "openingQuestion": "Ta nên kiên nhẫn đến đâu trước khi kết luận một người không thể tiến bộ?",
+  "primaryTrace": "con-nguoi",
+  "supportingTrace": "dai-doan-ket",
+  "optionalPerspective": [
+    "Chuyển nguồn lực sang người có khả năng tiến nhanh hơn",
+    "Tiếp tục đầu tư nhưng thay cách hỗ trợ"
+  ],
+  "reveals": [
+    {
+      "assumption": "Tốc độ thấp cho thấy một người có ít giá trị hơn trong tập thể.",
+      "finding": "Quyền được tôn trọng và phát triển không phụ thuộc vào việc một người theo kịp chuẩn chung nhanh đến đâu.",
+      "reframe": "Chậm hơn là thông tin về điều kiện và phương pháp, không phải phán quyết về phẩm giá.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    },
+    {
+      "assumption": "Nếu đã hướng dẫn nhiều lần mà chưa được, cách duy nhất là dừng hỗ trợ.",
+      "finding": "Bồi dưỡng con người là quá trình dài cần thay đổi cách dạy, cơ hội thực hành và mức trách nhiệm phù hợp.",
+      "reframe": "Lặp lại cùng một cách hỗ trợ không hiệu quả không chứng minh mọi cách hỗ trợ đều vô ích.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "trong-nguoi"
+      }
+    },
+    {
+      "assumption": "Đầu tư vào người chậm luôn lấy mất cơ hội của cả tập thể.",
+      "finding": "Sự phát triển xã hội có ý nghĩa khi mở rộng khả năng đóng góp của con người, không chỉ tối ưu kết quả tức thời.",
+      "reframe": "Cần đo cả chi phí hỗ trợ và giá trị của việc thêm một người có thể tham gia bền vững.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "di-chuc"
+      }
+    }
+  ],
+  "returnHeading": "Đổi cách hỗ trợ trước khi bỏ cuộc",
+  "returnSummary": "Đặt một mục tiêu nhỏ có thể quan sát, thay phương pháp và thống nhất mốc đánh giá lại. Kiên nhẫn không có nghĩa là hỗ trợ vô thời hạn mà không đo thay đổi.",
+  "presentLenses": [
+    {
+      "title": "Thu nhỏ đơn vị tiến bộ",
+      "summary": "Đo một kỹ năng hoặc bước làm cụ thể thay vì chờ thay đổi toàn bộ cùng lúc."
+    },
+    {
+      "title": "Đổi người hoặc cách hướng dẫn",
+      "summary": "Thử ví dụ, thực hành cặp đôi hoặc phản hồi sớm thay cho nhắc lại cùng một lời giải thích."
+    },
+    {
+      "title": "Đặt mốc đánh giá minh bạch",
+      "summary": "Cho người học biết tiêu chí tiếp tục hỗ trợ, thay vai trò hoặc cần phương án khác."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "thanh-vien-yeu-bi-bo-lai",
+    "co-hoi-thu-hai"
+  ]
+}

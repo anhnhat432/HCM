@@ -47,68 +47,100 @@ export function CaseLibraryFilters({ previews }: CaseLibraryFiltersProps) {
         >
           <button
             aria-pressed={activeCategory === "all"}
-            className="case-library__category-all"
+            className="case-library__category-pill case-library__category-all"
             onClick={() => setActiveCategory("all")}
             type="button"
           >
-            Tất cả
+            Tất cả ({previews.length})
           </button>
-          {CASE_CATEGORIES.map((category) => (
-            <button
-              aria-pressed={activeCategory === category}
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              type="button"
-            >
-              {CASE_CATEGORY_LABELS[category]}
-            </button>
-          ))}
+
+          {CASE_CATEGORIES.map((category) => {
+            const count = previews.filter((p) => p.category === category).length;
+            return (
+              <button
+                aria-pressed={activeCategory === category}
+                className="case-library__category-pill"
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                type="button"
+              >
+                {CASE_CATEGORY_LABELS[category]} ({count})
+              </button>
+            );
+          })}
         </div>
 
         <div className="case-library__search">
-          <label htmlFor="case-search">Tìm tình huống</label>
+          <label htmlFor="case-search">
+            <span className="case-library__search-icon" aria-hidden="true">🔍</span>
+            <span>Tìm tình huống</span>
+          </label>
           <input
             id="case-search"
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Ví dụ: deadline, trách nhiệm, điểm số"
+            placeholder="Nhập từ khóa (ví dụ: deadline, trách nhiệm, điểm số, tập thể...)"
             type="search"
             value={query}
           />
         </div>
+
       </div>
 
-      <p aria-live="polite" className="case-library__count">
-        {filteredPreviews.length} hồ sơ phù hợp
-      </p>
+      <div className="case-library__meta-bar">
+        <p aria-live="polite" className="case-library__count">
+          Đang hiển thị <strong>{filteredPreviews.length}</strong> / {previews.length} hồ sơ tư tưởng
+        </p>
+      </div>
 
       {filteredPreviews.length ? (
-        <ol className="case-library__list">
-          {filteredPreviews.map((item, index) => (
-            <li className="case-library__item" key={item.slug}>
-              <Link href={`/ho-so/${item.slug}`}>
-                <span className="case-library__number">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="case-library__copy">
-                  <span className="case-library__category">
-                    {CASE_CATEGORY_LABELS[item.category]}
-                  </span>
-                  <strong>{item.title}</strong>
-                  <span>{item.shortPrompt}</span>
-                </span>
-                <span className="case-library__action">
-                  Mở hồ sơ <span aria-hidden="true">→</span>
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ol>
+        <div className="case-library__grid">
+          {filteredPreviews.map((item, index) => {
+            const caseNumber = String(index + 1).padStart(2, "0");
+            return (
+              <article className="case-card" key={item.slug}>
+                <Link className="case-card__link" href={`/ho-so/${item.slug}`}>
+                  <div className="case-card__header">
+                    <span className="case-card__badge">
+                      {CASE_CATEGORY_LABELS[item.category]}
+                    </span>
+                    <span className="case-card__number">#{caseNumber}</span>
+                  </div>
+
+                  <div className="case-card__body">
+                    <h3 className="case-card__title">{item.title}</h3>
+                    <p className="case-card__prompt">{item.shortPrompt}</p>
+                  </div>
+
+                  <div className="case-card__footer">
+                    <span className="case-card__action">Mở hồ sơ & liên hệ thực tiễn</span>
+                    <span className="case-card__arrow" aria-hidden="true">
+                      →
+                    </span>
+                  </div>
+                </Link>
+              </article>
+            );
+          })}
+        </div>
       ) : (
-        <p className="case-library__empty">
-          Chưa có hồ sơ khớp với cách tìm này. Hãy thử một từ khóa hoặc chủ đề
-          khác.
-        </p>
+        <div className="case-library__empty">
+          <p className="case-library__empty-title">Không tìm thấy hồ sơ phù hợp</p>
+          <p className="case-library__empty-desc">
+            Hãy thử tìm kiếm với từ khóa khác hoặc bấm nút &quot;Tất cả&quot; để xem toàn bộ 30 hồ sơ.
+          </p>
+          <button
+            className="case-library__empty-btn"
+            onClick={() => {
+              setActiveCategory("all");
+              setQuery("");
+            }}
+            type="button"
+          >
+            Đặt lại bộ lọc
+          </button>
+        </div>
       )}
     </div>
   );
 }
+

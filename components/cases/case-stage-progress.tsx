@@ -8,13 +8,15 @@ import {
 interface CaseStageProgressProps {
   readonly currentStage: CaseJourneyStage;
   readonly slug: string;
+  readonly perspective?: string | null;
 }
 
 export function CaseStageProgress({
   currentStage,
   slug,
+  perspective,
 }: CaseStageProgressProps) {
-  const stages = getCaseJourneyStages(slug);
+  const stages = getCaseJourneyStages(slug, perspective);
   const currentIndex = stages.findIndex((item) => item.id === currentStage);
 
   return (

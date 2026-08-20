@@ -1,0 +1,63 @@
+{
+  "slug": "nguoi-moi-trong-cong-dong",
+  "category": "community-society",
+  "title": "Khi người mới luôn đứng ngoài cộng đồng",
+  "shortPrompt": "Cánh cửa mở về hình thức, nhưng mọi quan hệ và quyết định vẫn thuộc về người cũ.",
+  "context": "Một thành viên mới được mời tham gia đầy đủ các buổi gặp, nhưng mọi câu chuyện đều dựa trên kinh nghiệm cũ, các quyết định quan trọng được bàn trước trong nhóm thân quen và ý kiến của người mới hiếm khi được nối tiếp.",
+  "openingQuestion": "Có mặt trong một cộng đồng đã đủ để thật sự thuộc về cộng đồng ấy chưa?",
+  "primaryTrace": "dai-doan-ket",
+  "supportingTrace": "con-nguoi",
+  "optionalPerspective": [
+    "Người mới cần tự thích nghi và chứng minh mình",
+    "Cộng đồng cần chủ động tạo chỗ tham gia thật"
+  ],
+  "reveals": [
+    {
+      "assumption": "Chỉ cần không ai cấm cản thì cộng đồng đã mở với người mới.",
+      "finding": "Sự quy tụ cần một mục tiêu chung mà mỗi người có thể nhìn thấy vị trí của mình trong đó.",
+      "reframe": "Không bị loại trừ chưa đồng nghĩa với được trao một vai trò có ý nghĩa.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "dang-cong-san-viet-nam"
+      }
+    },
+    {
+      "assumption": "Người mới phải tự học mọi quy tắc ngầm trước khi được tin tưởng.",
+      "finding": "Một tập hợp rộng cần cách kết nối những người khác nền tảng vào cùng hoạt động chung.",
+      "reframe": "Giải thích bối cảnh và mở đường tham gia là trách nhiệm của cộng đồng, không chỉ bài kiểm tra của người mới.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "viet-minh"
+      }
+    },
+    {
+      "assumption": "Mời người mới vào nhóm chat và cuộc họp là đủ để tạo cảm giác thuộc về.",
+      "finding": "Đồng thuận trở nên thật khi được chuyển thành quyền tham gia và trách nhiệm cụ thể.",
+      "reframe": "Cảm giác thuộc về xuất hiện khi đóng góp của người mới làm thay đổi một phần kết quả chung.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    }
+  ],
+  "returnHeading": "Biến lời chào thành một vị trí thật",
+  "returnSummary": "Cộng đồng cần người giới thiệu bối cảnh, một phần việc có chủ quyền và một không gian nơi ý kiến mới được phản hồi thay vì chỉ được nghe lịch sự.",
+  "presentLenses": [
+    {
+      "title": "Giải thích lịch sử và quy tắc ngầm",
+      "summary": "Không để người mới phải đoán các mối quan hệ và cách quyết định được hình thành."
+    },
+    {
+      "title": "Trao một phần việc có quyền quyết định",
+      "summary": "Để người mới tạo dấu ấn thật thay vì chỉ hỗ trợ việc đã được định sẵn."
+    },
+    {
+      "title": "Nối ý kiến với hành động",
+      "summary": "Phản hồi điều gì được dùng, điều gì chưa phù hợp và vì sao."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "khac-biet-the-he",
+    "thanh-vien-yeu-bi-bo-lai"
+  ]
+}

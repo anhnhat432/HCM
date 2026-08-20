@@ -1,0 +1,64 @@
+{
+  "slug": "nhom-gioi-nhung-khong-hop-tac",
+  "category": "study-teamwork",
+  "title": "Khi người giỏi nhất không muốn hợp tác",
+  "shortPrompt": "Một thành viên làm rất tốt phần mình nhưng từ chối phối hợp với cả nhóm.",
+  "context": "Nhóm của bạn có một thành viên nổi bật về năng lực. Bạn ấy hoàn thành phần việc nhanh và tốt, nhưng không chia sẻ tiến độ, không lắng nghe góp ý và cho rằng kết quả cá nhân đủ để bảo đảm thành công chung.",
+  "openingQuestion": "Một tập thể có thể đi xa nếu người giỏi nhất đứng ngoài nhịp chung không?",
+  "primaryTrace": "dai-doan-ket",
+  "supportingTrace": "con-nguoi",
+  "optionalPerspective": [
+    "Ưu tiên để người giỏi tự quyết phần việc của mình",
+    "Ưu tiên một cách phối hợp mà mọi người cùng theo được"
+  ],
+  "reveals": [
+    {
+      "assumption": "Chỉ cần từng người làm tốt phần của mình thì nhóm tự khắc sẽ mạnh.",
+      "finding": "Năng lực riêng chỉ trở thành sức mạnh chung khi được đặt vào một mục tiêu có thể cùng chia sẻ.",
+      "reframe": "Câu hỏi không còn là ai giỏi nhất, mà là điều gì khiến các năng lực khác nhau cùng hướng.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "dang-cong-san-viet-nam"
+      }
+    },
+    {
+      "assumption": "Muốn phối hợp thì mọi người phải suy nghĩ giống nhau.",
+      "finding": "Một mục tiêu chung có thể quy tụ nhiều vị trí và cách đóng góp khác nhau.",
+      "reframe": "Đoàn kết không xóa khác biệt; nó tạo một lý do đủ rõ để khác biệt cùng hành động.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "viet-minh"
+      }
+    },
+    {
+      "assumption": "Kết quả cuối cùng quan trọng hơn cách cả nhóm đi đến đó.",
+      "finding": "Một kết quả chung bền hơn khi mỗi người nhìn thấy vị trí và trách nhiệm của mình trong đó.",
+      "reframe": "Thành công tập thể cần được xây bằng sự tham gia, không chỉ ghép từ các phần việc riêng lẻ.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    }
+  ],
+  "returnHeading": "Đưa người giỏi trở lại nhịp chung",
+  "returnSummary": "Bạn không cần làm giảm năng lực cá nhân. Điều cần thay đổi là cách năng lực ấy kết nối với mục tiêu, trách nhiệm và những người còn lại.",
+  "presentLenses": [
+    {
+      "title": "Nói rõ mục tiêu chung",
+      "summary": "Đặt kết quả cả nhóm cần đạt lên trước cách làm riêng của từng người."
+    },
+    {
+      "title": "Thiết kế điểm phối hợp",
+      "summary": "Chọn những thời điểm bắt buộc phải chia sẻ tiến độ, quyết định và trở ngại."
+    },
+    {
+      "title": "Ghi nhận cả đóng góp lẫn kết nối",
+      "summary": "Đánh giá chất lượng phần việc cùng khả năng giúp tập thể tiến lên."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "bat-dong-khi-chay-deadline",
+    "thanh-tich-cua-nhom-cong-cua-ai"
+  ],
+  "featured": true
+}

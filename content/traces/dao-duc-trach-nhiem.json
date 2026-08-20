@@ -1,0 +1,198 @@
+{
+  "slug": "dao-duc-trach-nhiem",
+  "order": 2,
+  "title": "Đạo đức & trách nhiệm",
+  "shortTitle": "Trách nhiệm",
+  "theme": "responsibility",
+  "cardSummary": "Khi mỗi lựa chọn cá nhân đều tác động đến người khác.",
+  "presentDay": {
+    "label": "2026 — Điểm xuất phát",
+    "headline": [
+      "Khi điều dễ làm",
+      "không phải lúc nào",
+      "cũng là điều nên làm."
+    ],
+    "summary": "Trong lúc chạy nước rút cho một project, một thành viên phát hiện nhóm có thể dùng lại nội dung của người khác để tiết kiệm thời gian. Lối tắt ấy giúp cả nhóm hoàn thành nhanh hơn, nhưng buộc mỗi người cân nhắc trách nhiệm của mình với kết quả chung.",
+    "image": {
+      "src": "/images/traces/dao-duc-trach-nhiem/present-day-ai-decision.jpg",
+      "alt": "Nhóm sinh viên tập trung quanh laptop và tài liệu, một người chỉ vào màn hình",
+      "caption": "Một lối tắt đặt cả nhóm trước lựa chọn chung",
+      "credit": "Ảnh minh họa",
+      "verificationStatus": "verified",
+      "usageStatus": "approved",
+      "usageNote": "Chủ dự án cung cấp và duyệt ảnh minh họa AI ngày 2026-08-11; công cụ tạo và điều khoản giấy phép không được cung cấp.",
+      "license": "Không nêu giấy phép của công cụ tạo",
+      "kind": "present",
+      "presentation": {
+        "fit": "cover",
+        "aspectRatio": "portrait",
+        "tone": "natural",
+        "objectPosition": "50% center",
+        "background": "neutral"
+      }
+    }
+  },
+  "centralQuestion": "Điều gì định hướng một lựa chọn đúng khi không ai buộc ta phải làm đúng?",
+  "historicalMoments": [
+    {
+      "id": "tu-cach-nguoi-cach-menh",
+      "year": "1927",
+      "title": "Tư cách một người cách mệnh",
+      "summary": "Trong Đường Kách mệnh, Nguyễn Ái Quốc đặt “Tư cách một người cách mệnh” ở đầu tác phẩm, nêu yêu cầu về bản thân, với người và công việc. Đạo đức được xác lập sớm như nền tảng gắn với hành động cách mạng.",
+      "metadata": "Tác phẩm Đường Kách mệnh — xuất bản năm 1927",
+      "verification": "Đã đối chiếu nguồn chính thống về năm 1927, bối cảnh các bài giảng và vai trò của chuẩn mực đạo đức; phần tóm lược là diễn giải, không phải trích dẫn.",
+      "image": {
+        "src": "/images/traces/dao-duc-trach-nhiem/1927-duong-kach-menh-crop.jpg",
+        "alt": "Bìa cuốn Đường Kách mệnh xuất bản năm 1927, hiện vật được công nhận là bảo vật quốc gia",
+        "caption": "Cuốn Đường Kách mệnh, xuất bản năm 1927",
+        "credit": "Cục Di sản văn hóa",
+        "sourceUrl": "https://dsvh.gov.vn/cuon-duong-kach-menh-3022",
+        "verificationStatus": "verified",
+        "usageStatus": "approved",
+        "usageNote": "Chủ dự án xác nhận phê duyệt sử dụng công khai ngày 2026-08-10.",
+        "license": "Website yêu cầu ghi rõ nguồn Cục Di sản văn hóa khi sử dụng lại thông tin",
+        "kind": "document",
+        "presentation": {
+          "fit": "contain",
+          "aspectRatio": "document",
+          "tone": "natural",
+          "objectPosition": "50% center",
+          "background": "paper"
+        }
+      },
+      "sources": [
+        {
+          "title": "Vận dụng tư tưởng tác phẩm “Đường cách mệnh” trong xây dựng, chỉnh đốn Đảng",
+          "url": "https://hochiminh.vn/tu-tuong-dao-duc-ho-chi-minh/nghien-cuu-tu-tuong-dao-duc-ho-chi-minh/van-dung-tu-tuong-tac-pham-duong-cach-menh-trong-xay-dung-chinh-don-dang-6549"
+        },
+        {
+          "title": "Cuốn “Đường Kách mệnh”",
+          "url": "https://dsvh.gov.vn/cuon-duong-kach-menh-3022"
+        }
+      ]
+    },
+    {
+      "id": "sua-doi-loi-lam-viec",
+      "year": "1947",
+      "title": "Sửa đổi lối làm việc",
+      "summary": "Trong Sửa đổi lối làm việc, Hồ Chí Minh đưa yêu cầu về phẩm chất vào thực tiễn công tác: nhận diện bệnh chủ quan, hẹp hòi, sửa cách nghĩ, cách làm và nhấn mạnh trách nhiệm của cán bộ, đảng viên với tổ chức, tập thể.",
+      "metadata": "ATK Định Hóa, Thái Nguyên — tháng 10 năm 1947",
+      "verification": "Đã đối chiếu nguồn chính thống về bối cảnh Việt Bắc năm 1947, nội dung phê bình khuyết điểm và trách nhiệm của cán bộ, đảng viên; phần tóm lược là diễn giải.",
+      "image": {
+        "src": "/images/traces/dao-duc-trach-nhiem/1947-sua-doi-loi-lam-viec.jpg",
+        "alt": "Bìa cũ của tác phẩm Sửa đổi lối làm việc, ghi bút danh X.Y.Z và Nhà xuất bản Sự thật",
+        "caption": "Bìa tác phẩm Sửa đổi lối làm việc, xuất bản lần đầu năm 1947",
+        "credit": "Quân đội nhân dân; Wikimedia Commons",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bia_Sua_doi_loi_lam_viec.jpg",
+        "verificationStatus": "verified",
+        "usageStatus": "approved",
+        "license": "Public domain",
+        "kind": "document",
+        "presentation": {
+          "fit": "contain",
+          "aspectRatio": "document",
+          "tone": "natural",
+          "objectPosition": "50% center",
+          "background": "paper"
+        }
+      },
+      "sources": [
+        {
+          "title": "60 năm tác phẩm Sửa đổi lối làm việc của Chủ tịch Hồ Chí Minh",
+          "url": "https://tulieuvankien.dangcongsan.vn/c-mac-angghen-lenin-ho-chi-minh/ho-chi-minh/nghien-cuu-hoc-tap-tu-tuong/60-nam-tac-pham-sua-doi-loi-lam-viec-cua-chu-tich-ho-chi-minh-10-1947-102007-y-nghia-va-gia-tri-tu-tuong-sua-doi-2488"
+        },
+        {
+          "title": "Tác phẩm “Sửa đổi lối làm việc” của Chủ tịch Hồ Chí Minh",
+          "url": "https://baotanglichsu.vn/vi/Articles/1002/12914/tac-pham-sua-djoi-loi-lam-viec-cua-chu-tich-ho-chi-minh-ky-niem-65-nam-ngay-tac-pham-ra-djoi.html"
+        }
+      ]
+    },
+    {
+      "id": "dao-duc-cach-mang",
+      "year": "1958",
+      "title": "Đạo đức cách mạng",
+      "summary": "Trong Đạo đức cách mạng, Hồ Chí Minh trình bày có hệ thống hơn về đạo đức, tu dưỡng, lợi ích chung và chống chủ nghĩa cá nhân. Tác phẩm phát triển mạch tư tưởng về phẩm chất, trách nhiệm đã đặt ra từ 1927, 1947.",
+      "metadata": "Tạp chí Học tập, số 12 — tháng 12 năm 1958",
+      "verification": "Đã đối chiếu nguồn chính thống về tên tác phẩm, bút danh Trần Lực và việc đăng trên Tạp chí Học tập số 12 năm 1958; phần tóm lược là diễn giải, không phải trích dẫn.",
+      "image": {
+        "src": "/images/traces/dao-duc-trach-nhiem/1958-dao-duc-cach-mang.jpg",
+        "alt": "Trang mở đầu bản số hóa Đạo đức cách mạng, ghi rõ tác phẩm tháng 12 năm 1958",
+        "caption": "Trang mở đầu bản số hóa tác phẩm Đạo đức cách mạng (12-1958)",
+        "credit": "Thư viện sách Hồ Chí Minh, Thành phố Hồ Chí Minh",
+        "sourceUrl": "https://thuviensachhochiminh.tphcm.gov.vn/documents/35261/39007/DaoDucCachMang.pdf/abc46104-e61f-42a5-8a05-0857e617d6f0",
+        "verificationStatus": "verified",
+        "usageStatus": "approved",
+        "usageNote": "Chủ dự án duyệt triển khai nguồn tư liệu Evidence-first ngày 2026-08-11; nguồn không nêu giấy phép tái sử dụng.",
+        "license": "Không nêu giấy phép tái sử dụng",
+        "kind": "document",
+        "presentation": {
+          "fit": "contain",
+          "aspectRatio": "document",
+          "tone": "natural",
+          "objectPosition": "50% center",
+          "background": "paper"
+        }
+      },
+      "sources": [
+        {
+          "title": "Tác phẩm Đạo đức cách mạng của Chủ tịch Hồ Chí Minh, ký bút danh Trần Lực, đăng trên Tạp chí Học tập, số 12 năm 1958",
+          "url": "https://baotanghochiminh.vn/tac-pham-dao-duc-cach-mang-cua-chu-tich-ho-chi-minh-ky-but-danh-tran-luc-dang-tren-tap-chi-hoc-tap-so-12-nam-1958.htm"
+        },
+        {
+          "title": "Đạo đức cách mạng (12-1958)",
+          "url": "https://vpctn.gov.vn/hoc-tap-tu-tuong-dao-duc-ho-chi-minh/dao-duc-cach-mang-12-1958-.html"
+        }
+      ]
+    }
+  ],
+  "thoughtFormation": {
+    "heading": [
+      "Tư tưởng ấy",
+      "được hình thành",
+      "như thế nào?"
+    ],
+    "factors": [
+      {
+        "title": "Đạo đức là nền tảng",
+        "summary": "Lựa chọn đúng bắt đầu từ việc tự rèn mình, không chỉ từ quy định bên ngoài."
+      },
+      {
+        "title": "Trách nhiệm trong hành động",
+        "summary": "Một nguyên tắc chỉ có ý nghĩa khi được thể hiện trong cách làm việc và nhận trách nhiệm."
+      },
+      {
+        "title": "Lợi ích chung",
+        "summary": "Lợi ích cá nhân cần được đặt trong quan hệ với tập thể và những người chịu tác động."
+      }
+    ],
+    "conclusion": [
+      "Đạo đức &",
+      "trách nhiệm"
+    ]
+  },
+  "application": {
+    "eyebrow": "Đạo đức & trách nhiệm trong thực tiễn",
+    "heading": [
+      "Điều này có nghĩa gì",
+      "với bạn hôm nay?"
+    ],
+    "bridge": "Quay lại nhóm sinh viên ban đầu.",
+    "items": [
+      {
+        "number": "01",
+        "title": "Trung thực với lựa chọn",
+        "summary": "Kiểm tra nguồn, nói rõ điều nhóm định sử dụng và chọn cách có thể giải thích minh bạch với mọi người."
+      },
+      {
+        "number": "02",
+        "title": "Chịu trách nhiệm với hành động",
+        "summary": "Cùng nhận phần hậu quả của quyết định và chủ động sửa lại khi lựa chọn của nhóm có vấn đề."
+      },
+      {
+        "number": "03",
+        "title": "Đặt lợi ích chung đúng chỗ",
+        "summary": "Ưu tiên kết quả bền vững của cả nhóm, kể cả khi điều đó cần thêm thời gian thay vì một lối tắt."
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "slug": "chia-se-tai-nguyen-khan-hiem",
+  "category": "conflicting-interests",
+  "title": "Chia sẻ một nguồn lực đang khan hiếm",
+  "shortPrompt": "Nhiều người cùng cần một nguồn lực, nhưng không thể chia đều mà vẫn hiệu quả.",
+  "context": "Cả lớp chỉ có một thiết bị tốt cho nhiều nhóm dùng trong thời gian ngắn. Nhóm nào cũng có lý do chính đáng và việc chia đều số phút có thể khiến không ai đủ thời gian hoàn thành phần quan trọng.",
+  "openingQuestion": "Công bằng là chia bằng nhau, hay ưu tiên nơi nguồn lực tạo ra tác động lớn nhất?",
+  "primaryTrace": "dai-doan-ket",
+  "supportingTrace": "con-nguoi",
+  "optionalPerspective": [
+    "Chia đều để mọi người có phần như nhau",
+    "Ưu tiên theo mức cần thiết và tác động"
+  ],
+  "reveals": [
+    {
+      "assumption": "Mọi người nhận một phần bằng nhau thì tự nhiên sẽ đoàn kết.",
+      "finding": "Một hướng chung cần xuất phát từ mục tiêu và hoàn cảnh cụ thể của các bên, không chỉ từ phép chia hình thức.",
+      "reframe": "Bình đẳng về lượng có thể tạo bất bình đẳng về khả năng hoàn thành mục tiêu.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "dang-cong-san-viet-nam"
+      }
+    },
+    {
+      "assumption": "Nhóm mạnh hơn nên được ưu tiên vì có khả năng tạo kết quả tốt hơn.",
+      "finding": "Sự quy tụ rộng chỉ tồn tại khi cả những nhóm yếu thế vẫn nhìn thấy quyền lợi và tiếng nói của mình.",
+      "reframe": "Hiệu quả không thể là lý do để một số người bị loại khỏi cơ hội sử dụng nguồn lực chung.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "viet-minh"
+      }
+    },
+    {
+      "assumption": "Chỉ cần người quản lý đưa ra lịch là tranh chấp sẽ kết thúc.",
+      "finding": "Đồng thuận cần được biến thành quy tắc sử dụng, trách nhiệm bàn giao và cách xử lý khi nhu cầu thay đổi.",
+      "reframe": "Một lịch chia tốt không chỉ phân thời gian; nó tạo cách để các nhóm cùng bảo vệ nguồn lực chung.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    }
+  ],
+  "returnHeading": "Chia nguồn lực theo nguyên tắc mọi người hiểu được",
+  "returnSummary": "Nhóm cần thống nhất mục tiêu ưu tiên, bảo đảm mức tiếp cận tối thiểu và công khai lý do của mọi khác biệt trong phân bổ.",
+  "presentLenses": [
+    {
+      "title": "Bảo đảm một mức tiếp cận tối thiểu",
+      "summary": "Không để nhóm nào bị loại hoàn toàn khỏi nguồn lực chung."
+    },
+    {
+      "title": "Ưu tiên theo nhu cầu có bằng chứng",
+      "summary": "Dùng mốc công việc và mức phụ thuộc thực tế thay vì sức ảnh hưởng của người xin."
+    },
+    {
+      "title": "Công khai lịch và lý do",
+      "summary": "Để mọi người nhìn thấy nguyên tắc, thời lượng và cách điều chỉnh khi có thay đổi."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "uu-tien-nguoi-quen",
+    "muc-tieu-chung-khi-loi-ich-khac-nhau"
+  ]
+}

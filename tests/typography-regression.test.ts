@@ -119,8 +119,8 @@ test("case and library display headings use the approved restrained scale", () =
     [
       ".case-present__copy h1",
       [
-        "clamp(2.35rem, 3.4vw, 3.4rem)",
-        "clamp(2.1rem, 8.8vw, 2.65rem)",
+        "clamp(1.85rem, 2.6vw, 2.45rem)",
+        "clamp(1.6rem, 6.5vw, 2.05rem)",
       ],
     ],
     [
@@ -144,7 +144,7 @@ test("case and library display headings use the approved restrained scale", () =
     ],
     [
       ".case-library-page__intro h1",
-      ["clamp(3.4rem, 5.5vw, 5rem)", "clamp(2.75rem, 12.5vw, 3.25rem)"],
+      ["clamp(2.1rem, 3.5vw, 2.85rem)", "clamp(1.85rem, 6.5vw, 2.25rem)"],
     ],
   ]);
 
@@ -172,15 +172,15 @@ test("paged case headings override desktop and mobile sizes at equal specificity
   assert.equal(connectionHeadingBlocks.length, 2);
   assert.deepEqual(
     fileHeadingBlocks.map((block) => getDeclaration(block, "font-size")),
-    ["clamp(2.2rem, 3.2vw, 3.2rem)", "clamp(2rem, 8.2vw, 2.55rem)"],
+    ["clamp(1.85rem, 2.6vw, 2.45rem)", "clamp(1.6rem, 6.5vw, 2.05rem)"],
   );
   assert.deepEqual(
     connectionHeadingBlocks.map((block) => getDeclaration(block, "font-size")),
-    ["clamp(2.2rem, 3.2vw, 3.2rem)", "clamp(2rem, 8.2vw, 2.55rem)"],
+    ["clamp(1.85rem, 2.6vw, 2.45rem)", "clamp(1.6rem, 6.5vw, 2.05rem)"],
   );
   assert.equal(
     getDeclaration(fileHeadingBlocks[0], "margin-top"),
-    "clamp(2rem, 2.5vw, 2.5rem)",
+    "clamp(1.5rem, 2vw, 2rem)",
   );
 });
 

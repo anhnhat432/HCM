@@ -1,0 +1,64 @@
+{
+  "slug": "dam-dong-dang-cong-kich-mot-nguoi",
+  "category": "social-media",
+  "title": "Khi đám đông đang công kích một người",
+  "shortPrompt": "Một sai lầm bị lan truyền nhanh và người trong cuộc bị thu gọn thành mục tiêu công kích.",
+  "context": "Một đoạn video ngắn cho thấy một người có hành vi đáng phản đối. Hàng nghìn bình luận xuất hiện, nhiều người tìm thông tin cá nhân và kêu gọi trừng phạt trước khi bối cảnh đầy đủ được xác minh.",
+  "openingQuestion": "Phản đối một hành vi đến đâu thì biến thành phủ nhận toàn bộ một con người?",
+  "primaryTrace": "con-nguoi",
+  "supportingTrace": "dao-duc-trach-nhiem",
+  "optionalPerspective": [
+    "Tham gia lên án để tạo áp lực",
+    "Dừng lại cho đến khi có đủ bối cảnh"
+  ],
+  "reveals": [
+    {
+      "assumption": "Một hành vi xấu đủ để xác định toàn bộ giá trị của người thực hiện.",
+      "finding": "Phẩm giá và quyền của con người không biến mất chỉ vì một khoảnh khắc bị đưa ra phán xét.",
+      "reframe": "Có thể phản đối mạnh một hành vi mà không biến con người thành đối tượng bị tước mọi giới hạn bảo vệ.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    },
+    {
+      "assumption": "Trừng phạt công khai càng mạnh thì người khác càng học được bài học.",
+      "finding": "Sự phát triển con người cần khả năng học, sửa và được dẫn trở lại trách nhiệm.",
+      "reframe": "Một môi trường chỉ biết loại bỏ có thể tạo sợ hãi nhưng không chắc tạo ra sự trưởng thành.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "trong-nguoi"
+      }
+    },
+    {
+      "assumption": "Trên mạng, mỗi bình luận cá nhân quá nhỏ để tạo hậu quả thật.",
+      "finding": "Con người vừa là mục tiêu vừa là chủ thể của xã hội; từng hành động góp phần tạo môi trường mà mọi người phải sống trong đó.",
+      "reframe": "Một lời công kích nhỏ khi nhập vào đám đông có thể trở thành áp lực vượt xa sai phạm ban đầu.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "di-chuc"
+      }
+    }
+  ],
+  "returnHeading": "Phản đối hành vi mà không tham gia hủy hoại con người",
+  "returnSummary": "Bạn có thể từ chối lan truyền, yêu cầu bằng chứng, tập trung vào hành vi cụ thể và để việc xử lý thuộc về nơi có trách nhiệm.",
+  "presentLenses": [
+    {
+      "title": "Không khuếch đại dữ liệu cá nhân",
+      "summary": "Không chia sẻ địa chỉ, trường lớp hoặc thông tin gia đình để tăng áp lực."
+    },
+    {
+      "title": "Nói về hành vi có bằng chứng",
+      "summary": "Tránh gắn nhãn toàn bộ nhân cách từ một đoạn nội dung ngắn."
+    },
+    {
+      "title": "Chừa đường cho sửa sai",
+      "summary": "Đòi hỏi trách nhiệm nhưng không biến trừng phạt vô hạn thành mục tiêu giải trí."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "tin-chua-kiem-chung",
+    "co-hoi-thu-hai"
+  ],
+  "featured": true
+}

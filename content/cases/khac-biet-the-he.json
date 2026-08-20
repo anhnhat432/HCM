@@ -1,0 +1,63 @@
+{
+  "slug": "khac-biet-the-he",
+  "category": "community-society",
+  "title": "Khi các thế hệ hiểu khác nhau về tiến bộ",
+  "shortPrompt": "Người trẻ muốn thay đổi nhanh, người lớn tuổi sợ những giá trị quan trọng bị bỏ lại.",
+  "context": "Trong một hoạt động cộng đồng, nhóm trẻ đề xuất chuyển hoàn toàn sang cách làm mới. Những người lớn tuổi cho rằng thay đổi quá nhanh sẽ làm mất kinh nghiệm và mối liên kết đã duy trì nhiều năm.",
+  "openingQuestion": "Làm sao tạo hướng đi chung khi mỗi thế hệ đang bảo vệ một điều khác nhau?",
+  "primaryTrace": "dai-doan-ket",
+  "supportingTrace": "con-nguoi",
+  "optionalPerspective": [
+    "Ưu tiên tốc độ đổi mới",
+    "Ưu tiên sự tiếp nối và đồng thuận"
+  ],
+  "reveals": [
+    {
+      "assumption": "Muốn tiến bộ thì phải để cách cũ và người bảo vệ nó ở lại phía sau.",
+      "finding": "Một mục tiêu chung có thể quy tụ các lực lượng khác nhau khi điều cần bảo vệ được nói rõ.",
+      "reframe": "Bất đồng thế hệ thường che một điểm chung: cả hai đều muốn cộng đồng tiếp tục có ý nghĩa.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "dang-cong-san-viet-nam"
+      }
+    },
+    {
+      "assumption": "Giữ truyền thống nghĩa là từ chối mọi thay đổi về phương pháp.",
+      "finding": "Sự quy tụ rộng cho phép nhiều cách tham gia khi chúng cùng phục vụ một mục tiêu lớn hơn.",
+      "reframe": "Có thể giữ giá trị cốt lõi và thay công cụ, vai trò hoặc nhịp triển khai.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "viet-minh"
+      }
+    },
+    {
+      "assumption": "Chỉ cần tổ chức một cuộc họp chung là khoảng cách thế hệ sẽ được giải quyết.",
+      "finding": "Đồng thuận cần được chuyển thành trách nhiệm và hành động mà từng nhóm có thể cùng thực hiện.",
+      "reframe": "Hiểu nhau chỉ trở thành thay đổi khi mỗi thế hệ có một phần quyền quyết định và phần việc thật.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    }
+  ],
+  "returnHeading": "Đổi mới mà không cắt đứt sự tiếp nối",
+  "returnSummary": "Tách giá trị cần giữ khỏi phương pháp có thể đổi, thử một phạm vi nhỏ và để cả hai thế hệ cùng đánh giá tác động trước khi mở rộng.",
+  "presentLenses": [
+    {
+      "title": "Hỏi điều mỗi bên đang bảo vệ",
+      "summary": "Đi qua ngôn ngữ 'cũ' và 'mới' để thấy giá trị, nỗi lo và lợi ích cụ thể."
+    },
+    {
+      "title": "Thử thay đổi ở quy mô nhỏ",
+      "summary": "Tạo bằng chứng thực tế thay vì buộc mọi người đặt niềm tin vào lời hứa."
+    },
+    {
+      "title": "Chia quyền đánh giá kết quả",
+      "summary": "Để cả người đề xuất lẫn người chịu tác động cùng quyết định bước tiếp theo."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "bat-dong-tren-mang",
+    "nguoi-moi-trong-cong-dong"
+  ]
+}

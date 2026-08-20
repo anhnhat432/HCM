@@ -1,0 +1,63 @@
+{
+  "slug": "thanh-tich-va-hinh-anh-ca-nhan",
+  "category": "social-media",
+  "title": "Khi hình ảnh cá nhân chỉ còn là thành tích",
+  "shortPrompt": "Bạn thấy mình phải liên tục chứng minh giá trị bằng kết quả được công khai.",
+  "context": "Trang cá nhân của bạn dần chỉ còn chứng chỉ, giải thưởng và những khoảnh khắc thành công. Mỗi khi không có kết quả mới để đăng, bạn cảm thấy mình đang tụt lại và sợ người khác nhìn thấy những phần chưa hoàn thiện.",
+  "openingQuestion": "Nếu hình ảnh luôn phải hoàn hảo, con người thật còn chỗ nào để phát triển?",
+  "primaryTrace": "con-nguoi",
+  "supportingTrace": "dao-duc-trach-nhiem",
+  "optionalPerspective": [
+    "Duy trì hình ảnh mạnh để mở cơ hội",
+    "Cho phép bản thân xuất hiện cả khi chưa hoàn hảo"
+  ],
+  "reveals": [
+    {
+      "assumption": "Giá trị xã hội của một người bằng tổng thành tích có thể nhìn thấy.",
+      "finding": "Phẩm giá và giá trị con người không thể bị thu gọn vào thước đo hay hình ảnh đang được công nhận.",
+      "reframe": "Thành tích kể một phần hành trình, không có quyền đại diện toàn bộ con người.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    },
+    {
+      "assumption": "Chỉ những phần đã hoàn thiện mới xứng đáng được xuất hiện.",
+      "finding": "Phát triển con người là quá trình dài cần học tập, thử nghiệm và cả những giai đoạn chưa có kết quả đẹp.",
+      "reframe": "Che mọi bước chưa hoàn thiện có thể bảo vệ hình ảnh nhưng làm mất không gian học thật.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "trong-nguoi"
+      }
+    },
+    {
+      "assumption": "Xây dựng thương hiệu cá nhân là chuyện riêng, không ảnh hưởng cách ta nhìn người khác.",
+      "finding": "Mỗi người vừa chịu tác động vừa góp phần tạo ra chuẩn mực đánh giá con người trong xã hội.",
+      "reframe": "Cách ta trình bày bản thân cũng có thể củng cố một môi trường nơi ai cũng bị buộc phải tỏ ra thành công.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "di-chuc"
+      }
+    }
+  ],
+  "returnHeading": "Dùng thành tích như bằng chứng, không như căn cước",
+  "returnSummary": "Bạn vẫn có thể giới thiệu kết quả tốt, nhưng cần giữ những không gian nơi mình được học, thất bại và kết nối mà không phải biến mọi thứ thành nội dung chứng minh giá trị.",
+  "presentLenses": [
+    {
+      "title": "Kể cả quá trình, không chỉ đích đến",
+      "summary": "Cho thấy điều đã học và phần còn chưa giải quyết bên cạnh kết quả cuối."
+    },
+    {
+      "title": "Giữ một vùng không cần biểu diễn",
+      "summary": "Không biến mọi sở thích, quan hệ và nỗ lực thành tài sản cho hình ảnh công khai."
+    },
+    {
+      "title": "Đọc người khác rộng hơn hồ sơ",
+      "summary": "Không dùng chuẩn thành tích của chính mình để thu gọn giá trị của người khác."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "diem-so-co-dinh-nghia-con-nguoi",
+    "ap-luc-nang-suat"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "slug": "loi-ich-ca-nhan-va-tap-the",
+  "category": "conflicting-interests",
+  "title": "Khi lợi ích cá nhân va vào mục tiêu chung",
+  "shortPrompt": "Một lựa chọn tốt cho bạn lại làm cả nhóm khó đạt kết quả đã cam kết.",
+  "context": "Bạn nhận được một cơ hội cá nhân quan trọng đúng vào giai đoạn nhóm cần tập trung nhất. Nếu nhận lời, bạn có lợi thế rõ rệt cho tương lai, nhưng phần việc còn lại sẽ dồn sang những người đã cùng cam kết từ đầu.",
+  "openingQuestion": "Một mục tiêu chung có quyền đòi hỏi cá nhân hy sinh đến mức nào?",
+  "primaryTrace": "dai-doan-ket",
+  "supportingTrace": "dao-duc-trach-nhiem",
+  "optionalPerspective": [
+    "Ưu tiên cơ hội không chắc sẽ quay lại",
+    "Giữ trọn cam kết với tập thể hiện tại"
+  ],
+  "reveals": [
+    {
+      "assumption": "Đoàn kết nghĩa là cá nhân luôn phải đặt lợi ích riêng xuống sau tập thể.",
+      "finding": "Một mục tiêu chung chỉ quy tụ được lâu dài khi thừa nhận các nhu cầu khác nhau và tìm điểm có thể cùng chấp nhận.",
+      "reframe": "Vấn đề không phải xóa lợi ích cá nhân, mà là thương lượng nó minh bạch với trách nhiệm đã có.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "dang-cong-san-viet-nam"
+      }
+    },
+    {
+      "assumption": "Mỗi người tự lo cho tương lai của mình thì tập thể sẽ tự thích nghi.",
+      "finding": "Sự quy tụ cần lời hứa chung đủ rõ để từng người biết lựa chọn riêng của mình đang tác động đến ai.",
+      "reframe": "Tự do lựa chọn không tách khỏi nghĩa vụ báo sớm, bàn giao và giảm thiệt hại cho những người còn lại.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "viet-minh"
+      }
+    },
+    {
+      "assumption": "Chỉ có hai lựa chọn: hy sinh hoàn toàn hoặc rời bỏ cam kết.",
+      "finding": "Một kết quả chung có thể được bảo vệ bằng cách biến đồng thuận thành phân công mới và hành động cụ thể.",
+      "reframe": "Giải pháp tốt thường nằm ở việc thiết kế lại trách nhiệm, không phải ép một bên mất tất cả.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    }
+  ],
+  "returnHeading": "Thương lượng lợi ích mà không trốn cam kết",
+  "returnSummary": "Bạn có thể theo đuổi cơ hội cá nhân nếu nói sớm, nhận đúng phần trách nhiệm và cùng nhóm tạo một phương án thay thế khả thi.",
+  "presentLenses": [
+    {
+      "title": "Nói rõ lợi ích đang xung đột",
+      "summary": "Đừng che lựa chọn cá nhân dưới lý do mơ hồ hoặc thông báo khi đã quá muộn."
+    },
+    {
+      "title": "Định lượng phần thiếu hụt",
+      "summary": "Chỉ ra công việc, thời gian và rủi ro nhóm sẽ phải gánh nếu bạn thay đổi cam kết."
+    },
+    {
+      "title": "Đề xuất cách bù trách nhiệm",
+      "summary": "Bàn giao, thu hẹp vai trò hoặc hoàn thành trước phần quan trọng thay vì rời đi trắng tay."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "thoa-hiep-den-dau",
+    "mot-nguoi-ganh-het-cong-viec"
+  ]
+}

@@ -203,7 +203,7 @@ test("legacy six-act scroll composition is removed after all stage routes exist"
 });
 
 test("historical verification copy uses a fully Vietnamese interpretation label", () => {
-  const traces = readSource("data/traces.ts");
+  const traces = readSource("content/traces/dai-doan-ket.json");
 
   assert.doesNotMatch(traces, /summary là diễn giải/);
   assert.match(traces, /phần tóm lược là diễn giải/);

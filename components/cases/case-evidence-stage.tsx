@@ -4,9 +4,10 @@ import type { ThoughtCase } from "@/types/thought-case";
 
 interface CaseEvidenceStageProps {
   readonly item: ThoughtCase;
+  readonly perspective?: string | null;
 }
 
-export function CaseEvidenceStage({ item }: CaseEvidenceStageProps) {
+export function CaseEvidenceStage({ item, perspective }: CaseEvidenceStageProps) {
   const resolvedEvidence = item.reveals.map((reveal) => ({
     reveal,
     ...getCaseEvidence(reveal.evidence),
@@ -18,6 +19,18 @@ export function CaseEvidenceStage({ item }: CaseEvidenceStageProps) {
   if (!primaryTrace) {
     throw new Error(`Case ${item.slug} does not resolve its primary Trace`);
   }
+
+  const perspectiveIdx = perspective !== null && perspective !== undefined
+    ? Number.parseInt(perspective, 10)
+    : null;
+
+  const chosenPerspective =
+    perspectiveIdx !== null &&
+    !Number.isNaN(perspectiveIdx) &&
+    item.optionalPerspective &&
+    item.optionalPerspective[perspectiveIdx]
+      ? item.optionalPerspective[perspectiveIdx]
+      : null;
 
   return (
     <>
@@ -35,10 +48,25 @@ export function CaseEvidenceStage({ item }: CaseEvidenceStageProps) {
             </p>
             <h1 id="case-file-heading">Xem ba mốc lịch sử để nhìn lại vấn đề.</h1>
             <p>{primaryTrace.centralQuestion}</p>
-            <p className="case-file__guide">
-              Ba mốc nằm ngay bên dưới. Các nút nguồn và trang tư liệu đầy đủ
-              chỉ để đọc sâu, không bắt buộc.
-            </p>
+
+            {chosenPerspective ? (
+              <div className="case-carried-perspective">
+                <span className="case-carried-perspective__badge">
+                  GÓC NHÌN BẠN MANG THEO
+                </span>
+                <p className="case-carried-perspective__text">
+                  “{chosenPerspective}”
+                </p>
+                <p className="case-carried-perspective__note">
+                  Hãy cùng theo dõi 3 mốc lịch sử dưới đây để thấy tư tưởng và quyết sách thực tế của Chủ tịch Hồ Chí Minh đối thoại, thử thách và chuyển hóa góc nhìn này như thế nào.
+                </p>
+              </div>
+            ) : (
+              <p className="case-file__guide">
+                Ba mốc nằm ngay bên dưới. Các nút nguồn và trang tư liệu đầy đủ
+                chỉ để đọc sâu, không bắt buộc.
+              </p>
+            )}
           </div>
         </div>
       </section>

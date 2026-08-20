@@ -1,0 +1,63 @@
+{
+  "slug": "uu-tien-nguoi-quen",
+  "category": "conflicting-interests",
+  "title": "Ưu tiên người quen trong một quyết định chung",
+  "shortPrompt": "Bạn có quyền lựa chọn và một người thân quen đang chờ được ưu tiên.",
+  "context": "Bạn được giao chọn thành viên cho một cơ hội có giới hạn. Một người bạn thân đáp ứng mức tối thiểu nhưng không nổi bật bằng ứng viên khác. Nếu không chọn, quan hệ có thể rạn nứt; nếu chọn, bạn biết tiêu chí chung đã bị bẻ cong.",
+  "openingQuestion": "Sự tử tế với một người có thể trở thành bất công với những người còn lại không?",
+  "primaryTrace": "dao-duc-trach-nhiem",
+  "supportingTrace": "con-nguoi",
+  "optionalPerspective": [
+    "Ưu tiên người mình hiểu và tin tưởng",
+    "Giữ tiêu chí chung dù ảnh hưởng quan hệ"
+  ],
+  "reveals": [
+    {
+      "assumption": "Giúp người quen là chuyện tình cảm riêng, không liên quan đến trách nhiệm công việc.",
+      "finding": "Khi nắm quyền lựa chọn, tư cách cá nhân thể hiện ở khả năng tự giới hạn lợi ích và quan hệ riêng.",
+      "reframe": "Điều tử tế trong quan hệ cá nhân có thể trở thành đặc quyền khi dùng nguồn lực chung.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "tu-cach-nguoi-cach-menh"
+      }
+    },
+    {
+      "assumption": "Chỉ cần người được chọn làm được việc thì cách lựa chọn không quan trọng.",
+      "finding": "Một quy trình cần được sửa ngay từ cách đặt tiêu chí và công khai quyết định, không chỉ nhìn kết quả cuối.",
+      "reframe": "Kết quả chấp nhận được không làm một lựa chọn thiên vị trở nên công bằng.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "sua-doi-loi-lam-viec"
+      }
+    },
+    {
+      "assumption": "Ai ở vị trí đó cũng sẽ ưu tiên người mình biết nên đây là điều bình thường.",
+      "finding": "Chuẩn mực đạo đức có ý nghĩa chính khi nó yêu cầu ta làm khác điều có lợi và quen thuộc.",
+      "reframe": "Tính phổ biến của thiên vị không làm giảm trách nhiệm của người đang có quyền quyết định.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "dao-duc-cach-mang"
+      }
+    }
+  ],
+  "returnHeading": "Giữ tình cảm riêng ngoài tiêu chí chung",
+  "returnSummary": "Bạn có thể tôn trọng mối quan hệ và vẫn từ chối ưu tiên, nếu tiêu chí được công khai trước và quyết định có thể giải thích với mọi ứng viên.",
+  "presentLenses": [
+    {
+      "title": "Công bố tiêu chí trước khi biết người",
+      "summary": "Khóa các điều kiện đánh giá trước khi quan hệ cá nhân tác động vào quyết định."
+    },
+    {
+      "title": "Rút khỏi quyết định khi cần",
+      "summary": "Nhờ người độc lập đánh giá nếu quan hệ quá gần khiến tính khách quan khó bảo đảm."
+    },
+    {
+      "title": "Giải thích bằng cùng một chuẩn",
+      "summary": "Dùng một hệ tiêu chí cho người quen và người lạ, không tạo ngoại lệ kín."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "chia-se-tai-nguyen-khan-hiem",
+    "chia-cong-khong-cong-bang"
+  ]
+}

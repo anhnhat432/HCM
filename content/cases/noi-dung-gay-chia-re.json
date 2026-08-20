@@ -1,0 +1,63 @@
+{
+  "slug": "noi-dung-gay-chia-re",
+  "category": "social-media",
+  "title": "Khi nội dung gây chia rẽ đem lại lợi ích",
+  "shortPrompt": "Một bài đăng cực đoan giúp tăng tương tác dù làm các nhóm đối đầu hơn.",
+  "context": "Bạn nhận ra những nội dung nhấn mạnh xung đột, gán nhãn và buộc người xem chọn phe luôn có lượt tương tác cao hơn. Cách làm đó giúp kênh phát triển nhanh, dù cuộc thảo luận sau mỗi bài trở nên thù địch.",
+  "openingQuestion": "Nếu chia rẽ đem lại phần thưởng rõ ràng, điều gì khiến người tạo nội dung phải dừng lại?",
+  "primaryTrace": "dai-doan-ket",
+  "supportingTrace": "dao-duc-trach-nhiem",
+  "optionalPerspective": [
+    "Tận dụng định dạng đang hiệu quả rồi điều chỉnh sau",
+    "Chấp nhận tăng trưởng chậm để không nuôi chia rẽ"
+  ],
+  "reveals": [
+    {
+      "assumption": "Nêu khác biệt càng sắc thì công chúng càng hiểu rõ vấn đề.",
+      "finding": "Một mục tiêu chung chỉ xuất hiện khi khác biệt được đặt trong quan hệ với điều các bên vẫn cùng cần.",
+      "reframe": "Nội dung chỉ làm rõ đường ranh mà không làm rõ vấn đề đang biến khác biệt thành sản phẩm.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "dang-cong-san-viet-nam"
+      }
+    },
+    {
+      "assumption": "Người xem tự chịu trách nhiệm cho cách họ phản ứng với nội dung.",
+      "finding": "Sự quy tụ hay phân rã chịu ảnh hưởng từ cách thông điệp lựa chọn mục tiêu, đối tượng và ngôn ngữ.",
+      "reframe": "Người tạo nội dung không kiểm soát mọi phản ứng, nhưng chịu trách nhiệm cho cấu trúc khuyến khích phản ứng nào.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "viet-minh"
+      }
+    },
+    {
+      "assumption": "Miễn thông tin không sai thì cách đóng khung để tăng tương tác là vô hại.",
+      "finding": "Một kết quả chung cần được xây bằng đồng thuận và hành động, không chỉ bằng việc tập trung sự chú ý.",
+      "reframe": "Đúng dữ kiện nhưng cố ý kích hoạt đối đầu vẫn có thể làm suy yếu khả năng giải quyết vấn đề.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    }
+  ],
+  "returnHeading": "Tạo sự chú ý mà không bán đi khả năng đối thoại",
+  "returnSummary": "Nội dung vẫn có thể sắc và hấp dẫn nếu nó đặt xung đột vào một câu hỏi thật, chỉ rõ dữ kiện và mở một hướng hành động thay vì chỉ tạo phe.",
+  "presentLenses": [
+    {
+      "title": "Kiểm tra điều tiêu đề đang kích hoạt",
+      "summary": "Xem nó mời người đọc hiểu vấn đề hay chỉ mời họ phẫn nộ với một nhóm."
+    },
+    {
+      "title": "Đưa vào một điểm chung có thật",
+      "summary": "Không làm mềm xung đột, nhưng chỉ ra điều các bên cùng có nguy cơ mất."
+    },
+    {
+      "title": "Đo chất lượng ngoài tương tác",
+      "summary": "Theo dõi mức hiểu, nguồn được mở và hành động hữu ích thay vì chỉ lượt bình luận."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "bat-dong-tren-mang",
+    "tin-chua-kiem-chung"
+  ]
+}

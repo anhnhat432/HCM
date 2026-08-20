@@ -71,9 +71,10 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="vi">
+    <html lang="vi" suppressHydrationWarning>
       <body
         className={`${displayFont.variable} ${bodyFont.variable} ${homepageFont.variable}`}
+        suppressHydrationWarning
       >
         <a className="skip-link" href="#main-content">
           Đi đến nội dung chính

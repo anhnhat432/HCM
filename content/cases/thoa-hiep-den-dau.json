@@ -1,0 +1,63 @@
+{
+  "slug": "thoa-hiep-den-dau",
+  "category": "conflicting-interests",
+  "title": "Một tập thể nên thỏa hiệp đến đâu?",
+  "shortPrompt": "Giữ mọi người ở lại có thể buộc nhóm từ bỏ phần quan trọng nhất của mục tiêu.",
+  "context": "Hai nhóm nhỏ chỉ đồng ý hợp tác nếu phương án cuối bỏ bớt những yêu cầu mà bên còn lại xem là cốt lõi. Nhượng bộ giúp dự án tiếp tục, nhưng nếu nhượng thêm, kết quả có thể không còn giải quyết vấn đề ban đầu.",
+  "openingQuestion": "Thỏa hiệp đang tạo điểm chung, hay đang làm mục tiêu chung mất ý nghĩa?",
+  "primaryTrace": "dai-doan-ket",
+  "supportingTrace": "dao-duc-trach-nhiem",
+  "optionalPerspective": [
+    "Nhượng bộ để giữ liên minh",
+    "Giữ nguyên nguyên tắc dù có người rời đi"
+  ],
+  "reveals": [
+    {
+      "assumption": "Đoàn kết càng rộng thì càng phải chấp nhận mọi yêu cầu của các bên.",
+      "finding": "Sự thống nhất cần một mục tiêu chung đủ rõ; không có mục tiêu ấy, việc đứng cùng nhau chỉ còn là hình thức.",
+      "reframe": "Thỏa hiệp có giá trị khi bảo vệ khả năng cùng hành động, không phải khi xóa lý do để hành động.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "dang-cong-san-viet-nam"
+      }
+    },
+    {
+      "assumption": "Mọi khác biệt đều có thể giải quyết bằng cách chia đôi khoảng cách.",
+      "finding": "Một liên minh rộng có thể giữ khác biệt nhưng cần phân biệt điều linh hoạt với điều quyết định hướng đi.",
+      "reframe": "Không phải vấn đề nào cũng có điểm giữa công bằng; đôi khi cần thống nhất thứ tự ưu tiên.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "viet-minh"
+      }
+    },
+    {
+      "assumption": "Khi đã đạt thỏa thuận, không cần nói rõ phần nào mỗi bên đã từ bỏ.",
+      "finding": "Đồng thuận chỉ bền khi được chuyển thành cam kết cụ thể và mọi bên hiểu giới hạn của nó.",
+      "reframe": "Một thỏa thuận mơ hồ trì hoãn xung đột; một thỏa thuận rõ giúp tập thể biết khi nào cần thương lượng lại.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    }
+  ],
+  "returnHeading": "Thỏa hiệp mà không đánh mất điều cốt lõi",
+  "returnSummary": "Hãy tách mục tiêu không thể bỏ, cách làm có thể đổi và lợi ích có thể bù trừ. Chỉ thương lượng sau khi ba lớp đó đã rõ.",
+  "presentLenses": [
+    {
+      "title": "Gọi tên giới hạn không thể vượt",
+      "summary": "Nói rõ điều gì nếu mất đi sẽ khiến dự án không còn phục vụ mục tiêu ban đầu."
+    },
+    {
+      "title": "Mở nhiều cách đạt cùng mục tiêu",
+      "summary": "Giữ nguyên đích nhưng cho phép các bên thay đổi phương pháp và vai trò."
+    },
+    {
+      "title": "Đặt mốc xem lại thỏa thuận",
+      "summary": "Không biến một nhượng bộ trong khủng hoảng thành luật cố định cho mọi giai đoạn."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "loi-ich-ca-nhan-va-tap-the",
+    "bat-dong-khi-chay-deadline"
+  ]
+}

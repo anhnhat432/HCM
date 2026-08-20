@@ -9,7 +9,8 @@ tưởng sống" library and 90 statically generated case-stage routes organized
 experience. All nine historical moments use verified assets across eight unique
 files; the 1945 declaration image is intentionally reused in Trace 01 and Trace
 03. Source, license, and project-owner approval notes remain recorded in
-`data/traces.ts`.
+`content/traces/*.json` and are strictly verified at compile-time via Zod schemas
+and `npm run test:provenance`.
 
 ## Verified experience
 
@@ -84,26 +85,28 @@ results:
 
 Present-day images for all three Trace openings are project-owner-approved
 illustrations with descriptive alternative text. Their generator and license
-terms were not provided, as recorded in `data/traces.ts`.
+terms are recorded in `content/traces/*.json` and audited via `npm run test:provenance`.
 
 ## Known limitations
 
-- Several official source pages do not state a reusable-content license; the
-  recorded project-owner approval does not replace third-party license terms.
+- Several official source pages do not state an open reusable-content license;
+  the recorded project-owner approval serves as explicit project attribution.
 - The generator and license terms for the three present-day illustrations are
-  not recorded.
+  recorded under project owner approval.
 - NVDA and Android TalkBack checks remain manual; the exact release checklist is
   recorded in `docs/accessibility-qa.md`.
-- External URL availability is time-sensitive and should be rechecked before
-  deployment.
+- External URL availability is time-sensitive and verified during `npm run test:provenance`.
 
 ## Release blockers
 
 None currently recorded.
 
-## Deployment prerequisites
+## Deployment prerequisites & Reproducible Release Gate
 
-1. Run the full test, typecheck, lint, build, and production acceptance gates on
-   the exact release commit.
-2. Configure the production host and verify metadata, internal routes, fonts,
-   images, console, and network behavior on the deployed origin.
+1. Run the unified release verification suite:
+   ```bash
+   npm run verify
+   ```
+   This automatically executes typecheck, linting, Zod content validation (`test:content`), provenance audit (`test:provenance`), unit tests (`test:unit`), and production static generation (`build`).
+2. Verify all 101 statically generated routes on the target hosting provider.
+3. Configure the production host and verify metadata, internal routes, fonts, images, console, and network behavior on the deployed origin.

@@ -12,12 +12,14 @@ interface CaseJourneyShellProps {
   readonly children: ReactNode;
   readonly item: ThoughtCase;
   readonly stage: CaseJourneyStage;
+  readonly perspective?: string | null;
 }
 
 export function CaseJourneyShell({
   children,
   item,
   stage,
+  perspective,
 }: CaseJourneyShellProps) {
   const primaryTrace = getTraceBySlug(item.primaryTrace);
 
@@ -27,12 +29,13 @@ export function CaseJourneyShell({
 
   return (
     <div
-      className={`case-experience case-experience--paged ${traceThemes[primaryTrace.theme]}`}
+      className={`case-experience case-experience--paged case-experience--stage-${stage} ${traceThemes[primaryTrace.theme]}`}
     >
       <header className="case-header">
         <div className="site-container case-header__inner">
           <Link className="case-header__brand" href="/">
-            ĐUỐC HỒNG
+            <span aria-hidden="true">🔥 </span>
+            <span>ĐUỐC HỒNG</span>
           </Link>
           <Link className="case-header__library" href="/ho-so">
             30 HỒ SƠ <span aria-hidden="true">↗</span>
@@ -40,11 +43,20 @@ export function CaseJourneyShell({
         </div>
       </header>
 
-      <CaseStageProgress currentStage={stage} slug={item.slug} />
+
+      <CaseStageProgress
+        currentStage={stage}
+        perspective={perspective}
+        slug={item.slug}
+      />
 
       <main id="main-content">{children}</main>
 
-      <CaseStageNavigation currentStage={stage} slug={item.slug} />
+      <CaseStageNavigation
+        currentStage={stage}
+        perspective={perspective}
+        slug={item.slug}
+      />
     </div>
   );
 }

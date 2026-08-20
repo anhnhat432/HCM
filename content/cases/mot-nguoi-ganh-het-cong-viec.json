@@ -1,0 +1,63 @@
+{
+  "slug": "mot-nguoi-ganh-het-cong-viec",
+  "category": "study-teamwork",
+  "title": "Khi một người gánh gần hết công việc",
+  "shortPrompt": "Một thành viên liên tục làm thay để cứu tiến độ, còn cả nhóm dần phụ thuộc.",
+  "context": "Deadline đến gần và một thành viên có năng lực nhất âm thầm nhận thêm việc của mọi người. Dự án vẫn chạy, nhưng người ấy kiệt sức, các thành viên khác mất cơ hội chịu trách nhiệm và nhóm không còn biết ai thực sự làm chủ phần nào.",
+  "openingQuestion": "Làm thay để cứu nhóm là trách nhiệm, hay đang khiến trách nhiệm biến mất?",
+  "primaryTrace": "dao-duc-trach-nhiem",
+  "supportingTrace": "dai-doan-ket",
+  "optionalPerspective": [
+    "Cứ hoàn thành trước, phân công tính sau",
+    "Dừng lại để trả trách nhiệm về đúng người"
+  ],
+  "reveals": [
+    {
+      "assumption": "Người có khả năng hơn nên tự nhiên làm nhiều hơn để bảo đảm kết quả.",
+      "finding": "Tinh thần trách nhiệm không chỉ nằm ở lượng việc nhận về, mà còn ở cách mỗi người rèn năng lực tự chịu phần mình.",
+      "reframe": "Cứu tiến độ hôm nay có thể làm suy yếu khả năng tự đứng vững của cả nhóm ngày mai.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "tu-cach-nguoi-cach-menh"
+      }
+    },
+    {
+      "assumption": "Miễn sản phẩm xong thì cách làm bên trong không còn quan trọng.",
+      "finding": "Một tập thể cần nhìn thẳng vào cách phân công và sửa lối làm việc khiến trách nhiệm bị dồn lệch.",
+      "reframe": "Kết quả tốt không bù được một quy trình khiến một người kiệt sức và những người khác đứng ngoài.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "sua-doi-loi-lam-viec"
+      }
+    },
+    {
+      "assumption": "Trách nhiệm thuộc về người chủ động nhất, không phải tất cả mọi người.",
+      "finding": "Trách nhiệm trở thành sức mạnh khi nó là chuẩn mực tự thân của từng thành viên.",
+      "reframe": "Giúp nhóm không đồng nghĩa với làm thay; đôi khi là buộc mỗi người nhận lại phần việc của mình.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "dao-duc-cach-mang"
+      }
+    }
+  ],
+  "returnHeading": "Cứu dự án mà không làm thay cả nhóm",
+  "returnSummary": "Tiến độ cần được bảo vệ, nhưng năng lực chịu trách nhiệm của từng người cũng vậy. Một giải pháp tốt phải giữ được cả hai.",
+  "presentLenses": [
+    {
+      "title": "Hiển thị đúng tải công việc",
+      "summary": "Đưa mọi phần việc và người chịu trách nhiệm ra công khai thay vì cứu âm thầm."
+    },
+    {
+      "title": "Hỗ trợ có giới hạn",
+      "summary": "Giúp tháo nút thắt nhưng không nhận luôn quyền sở hữu phần việc của người khác."
+    },
+    {
+      "title": "Chốt lại trách nhiệm sau khủng hoảng",
+      "summary": "Sau deadline, sửa cách phân công để tình trạng gánh thay không lặp lại."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "chia-cong-khong-cong-bang",
+    "trach-nhiem-truoc-van-de-chung"
+  ]
+}

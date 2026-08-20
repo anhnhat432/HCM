@@ -8,9 +8,10 @@ import type { ThoughtCase } from "@/types/thought-case";
 
 interface CaseReturnStageProps {
   readonly item: ThoughtCase;
+  readonly perspective?: string | null;
 }
 
-export function CaseReturnStage({ item }: CaseReturnStageProps) {
+export function CaseReturnStage({ item, perspective }: CaseReturnStageProps) {
   const primaryTrace = item.reveals
     .map((reveal) => getCaseEvidence(reveal.evidence).trace)
     .find((trace) => trace.slug === item.primaryTrace);
@@ -66,8 +67,9 @@ export function CaseReturnStage({ item }: CaseReturnStageProps) {
       </section>
 
       <CaseReturn
-        evidenceHref={getCaseStageHref(item.slug, "dau-vet")}
+        evidenceHref={getCaseStageHref(item.slug, "dau-vet", perspective)}
         item={item}
+        perspective={perspective}
         relatedCases={relatedCases}
       />
     </>

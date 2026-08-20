@@ -1,0 +1,63 @@
+{
+  "slug": "phat-trien-nhung-bo-quen-con-nguoi",
+  "category": "community-society",
+  "title": "Phát triển nhưng bỏ quên con người",
+  "shortPrompt": "Các chỉ số tốt lên nhanh, trong khi một số người phải chịu điều kiện sống và làm việc tệ hơn.",
+  "context": "Một thay đổi giúp dự án phục vụ được nhiều người hơn và giảm chi phí tổng thể. Tuy vậy, nhóm vận hành phải làm việc căng hơn, một số người dùng cũ khó tiếp cận và những tác động này không xuất hiện trong báo cáo thành tích.",
+  "openingQuestion": "Một kết quả được gọi là phát triển nếu những người tạo ra hoặc chịu tác động đang bị bỏ lại?",
+  "primaryTrace": "con-nguoi",
+  "supportingTrace": "dao-duc-trach-nhiem",
+  "optionalPerspective": [
+    "Ưu tiên lợi ích tổng thể rồi khắc phục tác động sau",
+    "Điều chỉnh tốc độ để bảo vệ những người chịu chi phí"
+  ],
+  "reveals": [
+    {
+      "assumption": "Chỉ cần tổng lợi ích tăng thì thiệt hại của một nhóm nhỏ là chấp nhận được.",
+      "finding": "Quyền và phẩm giá con người đặt giới hạn cho cách một kết quả chung được tạo ra.",
+      "reframe": "Số đông hưởng lợi không tự động làm mọi chi phí đặt lên thiểu số trở nên chính đáng.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    },
+    {
+      "assumption": "Con người sẽ tự thích nghi nếu thay đổi đủ hiệu quả và không thể đảo ngược.",
+      "finding": "Phát triển cần bồi dưỡng khả năng của con người để họ tham gia vào điều kiện mới.",
+      "reframe": "Đào tạo và thời gian chuyển tiếp không phải chi phí phụ; chúng là một phần của thiết kế phát triển.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "trong-nguoi"
+      }
+    },
+    {
+      "assumption": "Các chỉ số đầu ra đủ để kết luận một chính sách hay dự án thành công.",
+      "finding": "Con người vừa là mục tiêu vừa là động lực, nên chất lượng đời sống và khả năng đóng góp phải nằm trong cách đo kết quả.",
+      "reframe": "Phát triển không chỉ hỏi tạo ra bao nhiêu, mà còn hỏi con người sống và tham gia thế nào sau thay đổi.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "di-chuc"
+      }
+    }
+  ],
+  "returnHeading": "Đặt con người vào ngay trong thước đo phát triển",
+  "returnSummary": "Bổ sung dữ kiện về người chịu tác động, thiết kế hỗ trợ chuyển tiếp và sẵn sàng điều chỉnh mục tiêu nếu kết quả đẹp được tạo bằng sự kiệt sức hoặc loại trừ.",
+  "presentLenses": [
+    {
+      "title": "Đo tác động phân bổ",
+      "summary": "Tách dữ liệu theo nhóm để thấy ai được lợi, ai chịu chi phí và ai không tiếp cận được."
+    },
+    {
+      "title": "Thiết kế giai đoạn chuyển tiếp",
+      "summary": "Cho thời gian, đào tạo và kênh hỗ trợ trước khi yêu cầu mọi người theo cách mới."
+    },
+    {
+      "title": "Cho phép điều chỉnh mục tiêu",
+      "summary": "Không giữ một chỉ số đẹp nếu bằng chứng cho thấy con người đang bị tổn hại rõ ràng."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "giao-duc-vi-thanh-tich",
+    "trach-nhiem-truoc-van-de-chung"
+  ]
+}

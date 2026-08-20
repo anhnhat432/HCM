@@ -1,0 +1,63 @@
+{
+  "slug": "tin-chua-kiem-chung",
+  "category": "social-media",
+  "title": "Một tin chưa kiểm chứng đang lan rất nhanh",
+  "shortPrompt": "Thông tin có vẻ khẩn cấp và hữu ích, nhưng nguồn gốc vẫn chưa rõ.",
+  "context": "Bạn nhận được một bài đăng cảnh báo về sự việc nghiêm trọng trong cộng đồng. Nội dung phù hợp với điều nhiều người đang lo, đã có hàng nghìn lượt chia sẻ, nhưng không dẫn nguồn gốc và chưa có xác nhận độc lập.",
+  "openingQuestion": "Trong tình huống khẩn cấp, chia sẻ sớm là trách nhiệm hay là thêm một rủi ro?",
+  "primaryTrace": "dao-duc-trach-nhiem",
+  "supportingTrace": "dai-doan-ket",
+  "optionalPerspective": [
+    "Chia sẻ ngay kèm lời nhắc tự kiểm chứng",
+    "Chờ nguồn đáng tin dù thông tin lan chậm hơn"
+  ],
+  "reveals": [
+    {
+      "assumption": "Ý định cảnh báo tốt đủ để miễn trách nhiệm nếu thông tin hóa ra sai.",
+      "finding": "Trách nhiệm nằm cả ở cách hành động được chuẩn bị, không chỉ ở mục đích người chia sẻ tự gán cho mình.",
+      "reframe": "Muốn giúp người khác không làm giảm nghĩa vụ kiểm tra điều mình sắp khuếch đại.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "tu-cach-nguoi-cach-menh"
+      }
+    },
+    {
+      "assumption": "Tin đã có nhiều người đăng lại thì độ tin cậy tự nhiên cao hơn.",
+      "finding": "Sửa lối làm việc đòi hỏi quay về nguồn, dữ kiện và quy trình kiểm tra thay vì dựa vào quán tính số đông.",
+      "reframe": "Số lượt chia sẻ đo tốc độ lan truyền, không đo chất lượng bằng chứng.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "sua-doi-loi-lam-viec"
+      }
+    },
+    {
+      "assumption": "Một lượt chia sẻ cá nhân không đủ lớn để gây hậu quả.",
+      "finding": "Trách nhiệm đạo đức hình thành từ từng hành động nhỏ lặp lại thành chuẩn mực chung.",
+      "reframe": "Mỗi người là một mắt xích quyết định thông tin dừng lại để được kiểm tra hay tiếp tục nhân lên.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "dao-duc-cach-mang"
+      }
+    }
+  ],
+  "returnHeading": "Làm chậm một nhịp trước khi khuếch đại",
+  "returnSummary": "Kiểm tra nguồn đầu tiên, tìm xác nhận độc lập và nếu vẫn cần cảnh báo, nói rõ mức độ chưa chắc chắn thay vì trình bày như sự thật đã kết luận.",
+  "presentLenses": [
+    {
+      "title": "Tìm nguồn đầu tiên",
+      "summary": "Không dùng một trang đăng lại khác làm bằng chứng cho nội dung ban đầu."
+    },
+    {
+      "title": "Tách dữ kiện khỏi suy đoán",
+      "summary": "Chỉ ra phần nào đã xác nhận, phần nào là diễn giải và phần nào còn thiếu."
+    },
+    {
+      "title": "Sửa công khai nếu đã chia sẻ sai",
+      "summary": "Đính chính ở cùng nơi và với mức rõ ràng tương xứng bài đăng trước."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "dam-dong-dang-cong-kich-mot-nguoi",
+    "noi-dung-gay-chia-re"
+  ]
+}

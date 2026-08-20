@@ -1,0 +1,63 @@
+{
+  "slug": "diem-so-co-dinh-nghia-con-nguoi",
+  "category": "human-development",
+  "title": "Điểm số có định nghĩa một con người?",
+  "shortPrompt": "Một kết quả thấp bắt đầu làm bạn nghi ngờ toàn bộ giá trị và khả năng của mình.",
+  "context": "Sau một kỳ thi quan trọng, bạn nhận kết quả thấp hơn rất nhiều so với kỳ vọng. Những lời so sánh từ gia đình, bạn bè và chính bản thân khiến một con số dần trở thành kết luận rằng bạn không đủ giỏi để đi tiếp.",
+  "openingQuestion": "Một kết quả có thể nói điều gì về bạn, và điều gì nó không có quyền kết luận?",
+  "primaryTrace": "con-nguoi",
+  "supportingTrace": "dao-duc-trach-nhiem",
+  "optionalPerspective": [
+    "Xem điểm số là tín hiệu năng lực khách quan",
+    "Xem điểm số là một dữ kiện trong quá trình dài hơn"
+  ],
+  "reveals": [
+    {
+      "assumption": "Một thước đo chung phản ánh đầy đủ giá trị của mọi người tham gia.",
+      "finding": "Phẩm giá và quyền phát triển của con người không phụ thuộc vào vị trí trên một bảng xếp hạng.",
+      "reframe": "Điểm số có thể mô tả một lần thể hiện, nhưng không thể cấp hay tước giá trị con người.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    },
+    {
+      "assumption": "Kết quả thấp chứng minh khả năng học của một người đã chạm giới hạn.",
+      "finding": "Giáo dục là quá trình bồi dưỡng lâu dài, nơi điều kiện học và cơ hội sửa sai có vai trò thiết yếu.",
+      "reframe": "Một kết quả nên mở ra câu hỏi cần học thế nào, không đóng lại câu hỏi có thể học được hay không.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "trong-nguoi"
+      }
+    },
+    {
+      "assumption": "Muốn tiến bộ thì phải liên tục dùng áp lực thành tích để ép bản thân.",
+      "finding": "Phát triển con người cần cả yêu cầu, điều kiện sống và khả năng đóng góp bền vững.",
+      "reframe": "Một phương pháp chỉ tạo kết quả nhưng làm con người mất khả năng tiếp tục không phải phát triển trọn vẹn.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "di-chuc"
+      }
+    }
+  ],
+  "returnHeading": "Đặt điểm số trở lại đúng kích thước",
+  "returnSummary": "Hãy dùng kết quả để xác định khoảng trống kiến thức và cách học tiếp, đồng thời giữ nó tách khỏi phán quyết về phẩm giá hay tiềm năng lâu dài.",
+  "presentLenses": [
+    {
+      "title": "Đọc điểm theo từng năng lực",
+      "summary": "Tách phần đã hiểu, phần thiếu và lỗi do chiến lược thay vì nhìn một con số tổng."
+    },
+    {
+      "title": "So với chính quá trình của mình",
+      "summary": "Theo dõi thay đổi qua nhiều lần học thay vì chỉ so vị trí với người khác."
+    },
+    {
+      "title": "Giữ một mục tiêu ngoài điểm",
+      "summary": "Duy trì kỹ năng, mối quan tâm hoặc đóng góp không phụ thuộc vào bảng điểm."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "nguoi-cham-tien-bo",
+    "thanh-tich-va-hinh-anh-ca-nhan"
+  ]
+}
