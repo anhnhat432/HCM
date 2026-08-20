@@ -40,7 +40,7 @@ export function CasePresentStage({ item, perspective }: CasePresentStageProps) {
         id="case-assumption"
       >
         <div className="site-container case-assumption__grid">
-          <p className="case-act-label">GÓC NHÌN BAN ĐẦU (TÙY CHỌN)</p>
+          <p className="case-act-label">GÓC NHÌN ĐẦU TIÊN CỦA BẠN</p>
           <div>
             <h2 id="case-assumption-heading">
               Cách nhìn đầu tiên thường rất nhanh.

@@ -98,10 +98,10 @@ test("present stage keeps the perspective optional and points to historical evid
 
   assert.equal((html.match(/<h1/g) ?? []).length, 1);
   assert.match(html, /BƯỚC 1 \/ ĐỌC VẤN ĐỀ/);
-  assert.match(html, /GÓC NHÌN BAN ĐẦU \(TÙY CHỌN\)/);
+  assert.match(html, /GÓC NHÌN ĐẦU TIÊN CỦA BẠN/);
   assert.match(html, /Khoảng 2 phút/);
   assert.match(html, /Không có đáp án đúng hoặc sai/);
-  assert.match(html, /Xem 3 mốc lịch sử/);
+  assert.match(html, /3 mốc lịch sử/);
   assert.ok(
     html.indexOf("experience-guide") < html.indexOf("case-scroll-cue"),
     "The three-step guide must appear before the next action",
@@ -144,12 +144,12 @@ test("return stage connects the thought formation to practical next steps", () =
   const route = readSource("app/ho-so/[slug]/tro-lai/page.tsx");
 
   assert.equal((html.match(/<h1/g) ?? []).length, 1);
-  assert.match(html, /BƯỚC 3 \/ NHẬN GỢI Ý ÁP DỤNG/);
+  assert.match(html, /BƯỚC 3 \/ CHUYỂN HÓA GÓC NHÌN/);
   assert.equal((html.match(/case-connection__timestamp/g) ?? []).length, 3);
   assert.doesNotMatch(html, /00:0[1-3]/);
   assert.match(html, /GÓC NHÌN KẾT NỐI/);
   assert.match(html, /Xem ba gợi ý áp dụng/);
-  assert.match(html, /BA GỢI Ý CHO TÌNH HUỐNG NÀY/);
+  assert.match(html, /BA GỢI Ý ÁP DỤNG/);
   assert.match(html, /Đọc sâu \(tùy chọn\)/);
   assert.doesNotMatch(html, /KẾT LUẬN KHÔNG PHẢI TRÍCH DẪN/);
   assert.equal((html.match(/case-return__lenses/g) ?? []).length, 1);

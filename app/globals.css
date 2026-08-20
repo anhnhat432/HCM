@@ -5903,136 +5903,109 @@ body:has(.home) .skip-link {
 }
 
 /* ==========================================================================
-   Shareable Wisdom Card — Heritage Artisan Postcard
+   Shareable Wisdom Card — Restrained Takeaway Utility
    ========================================================================== */
 
 .wisdom-card {
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 
 .wisdom-card__inner {
-  background: linear-gradient(135deg, #ffffff 0%, var(--color-canvas) 100%);
-  border: 2px solid var(--color-gold);
-  border-radius: var(--radius-lg);
-  padding: clamp(2rem, 4vw, 3rem);
-  box-shadow: 0 12px 32px rgba(197, 155, 39, 0.12), var(--shadow-card);
+  background: rgba(243, 238, 227, 0.35);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.75rem;
   position: relative;
-  overflow: hidden;
 }
 
 .wisdom-card__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .wisdom-card__stamp {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 4.5rem;
-  height: 4.5rem;
-  border: 2px dashed var(--color-accent);
-  border-radius: var(--radius-sm);
-  color: var(--color-accent);
-  transform: rotate(-5deg);
+  gap: 0.35rem;
   font-weight: 700;
-  line-height: 1.1;
-  font-size: 0.65rem;
-  background: rgba(163, 32, 36, 0.04);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  text-transform: uppercase;
 }
 
 .wisdom-card__category {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--color-gold-dark);
-  background: var(--color-gold-light);
-  padding: 0.3rem 0.85rem;
-  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  text-transform: uppercase;
 }
 
 .wisdom-card__body {
-  margin-bottom: 2rem;
-  position: relative;
-  padding-left: 2rem;
-}
-
-.wisdom-card__quote-mark {
-  position: absolute;
-  left: 0;
-  top: -0.5rem;
-  font-family: var(--font-display), serif;
-  font-size: 3.5rem;
-  color: var(--color-gold);
-  line-height: 1;
-  opacity: 0.6;
+  margin-bottom: 1.25rem;
 }
 
 .wisdom-card__quote {
   margin: 0;
-  font-family: var(--font-display), serif;
-  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
-  font-style: italic;
-  font-weight: 500;
-  line-height: 1.5;
+  font-family: var(--font-body), sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
   color: var(--color-ink);
 }
 
 .wisdom-card__reframe-heading {
   display: block;
-  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  font-size: 1.05rem;
   font-weight: 700;
-  color: var(--color-accent-dark);
-  margin-bottom: 0.5rem;
-  font-style: normal;
-  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.01em;
 }
 
 .wisdom-card__reframe-body {
   display: block;
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-  line-height: 1.55;
-  color: var(--color-ink);
-  font-style: normal;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-muted);
 }
 
 .wisdom-card__attribution {
-  margin: 1.25rem 0 0;
-  font-size: 0.9rem;
+  margin: 0.75rem 0 0;
+  font-size: 0.82rem;
   color: var(--color-muted);
 }
 
 .wisdom-card__footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  border-top: 1px solid var(--color-line-gold);
-  padding-top: 1.5rem;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: 1rem;
   flex-wrap: wrap;
 }
 
 .wisdom-card__copy-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.25rem;
-  background: var(--color-accent-light);
-  border: 1px solid rgba(163, 32, 36, 0.2);
-  border-radius: var(--radius-md);
+  gap: 0.4rem;
+  padding: 0.45rem 0.95rem;
+  background: #ffffff;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
   font-weight: 600;
-  font-size: 0.88rem;
-  color: var(--color-accent);
+  font-size: 0.82rem;
+  color: var(--color-ink);
   cursor: pointer;
-  transition: all 200ms ease;
+  transition: all 150ms ease;
 }
 
 .wisdom-card__copy-btn:hover {
-  background: var(--color-accent);
-  color: #ffffff;
+  background: var(--color-canvas);
+  border-color: var(--color-muted);
 }
 
 .wisdom-card__copy-btn--success {

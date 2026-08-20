@@ -84,13 +84,13 @@ export function PerspectivePrompt({
         ) : (
           <div className="perspective-prompt__neutral-state">
             <p className="perspective-prompt__neutral">
-              Không bắt buộc — hãy chọn một phản xạ ở trên để mang theo vào lịch sử, hoặc:
+              Hãy chọn 1 góc nhìn để mang theo vào 3 mốc lịch sử, hoặc:
             </p>
             <Link
               className="case-scroll-cue perspective-prompt__skip-link"
               href={getCaseStageHref(slug, "dau-vet", null)}
             >
-              <span>Xem 3 mốc lịch sử (Bỏ qua lựa chọn)</span>
+              <span>Bỏ qua bước này và xem trực tiếp 3 mốc lịch sử</span>
               <span aria-hidden="true">→</span>
             </Link>
           </div>

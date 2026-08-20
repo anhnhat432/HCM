@@ -31,7 +31,7 @@ export function CaseReturnStage({ item, perspective }: CaseReturnStageProps) {
         className="case-reframe-section"
       >
         <div className="site-container">
-          <p className="case-act-label">BƯỚC 3 / NHẬN GỢI Ý ÁP DỤNG</p>
+          <p className="case-act-label">BƯỚC 3 / CHUYỂN HÓA GÓC NHÌN</p>
           <CognitiveReframeCard item={item} perspective={perspective} />
         </div>
       </section>

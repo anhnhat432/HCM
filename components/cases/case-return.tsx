@@ -24,7 +24,7 @@ export function CaseReturn({
       <div className="site-container case-return__grid">
         {/* 1. THREE ACTIONABLE LENSES */}
         <div className="case-return__intro">
-          <p className="case-act-label">BA GỢI Ý CHO TÌNH HUỐNG NÀY</p>
+          <p className="case-act-label">BA GỢI Ý ÁP DỤNG</p>
           <h2 id="case-return-heading">BẠN CÓ THỂ THỬ GÌ NGÀY MAI?</h2>
           <p>Chuyển hóa nhận thức thành các bước phối hợp và thực hành cụ thể.</p>
         </div>
