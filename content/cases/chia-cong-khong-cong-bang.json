@@ -1,0 +1,63 @@
+{
+  "slug": "chia-cong-khong-cong-bang",
+  "category": "study-teamwork",
+  "title": "Chia công và chia điểm không công bằng",
+  "shortPrompt": "Mức đóng góp khác nhau nhưng cả nhóm đang nhận cùng một phần ghi nhận.",
+  "context": "Dự án kết thúc với kết quả tốt, nhưng một số người làm nhiều phần khó trong khi vài người chỉ xuất hiện ở cuối. Khi phải tự đánh giá đóng góp, nhóm ngại nói thật vì sợ mất hòa khí và ảnh hưởng quan hệ.",
+  "openingQuestion": "Giữ hòa khí bằng cách chia đều có thực sự công bằng với tập thể không?",
+  "primaryTrace": "dao-duc-trach-nhiem",
+  "supportingTrace": "con-nguoi",
+  "optionalPerspective": [
+    "Chia đều để tránh xung đột",
+    "Phân biệt rõ mức đóng góp dù cuộc nói chuyện khó chịu"
+  ],
+  "reveals": [
+    {
+      "assumption": "Đối xử giống nhau trong mọi trường hợp là cách công bằng nhất.",
+      "finding": "Trách nhiệm đòi hỏi mỗi người tự nhìn đúng phần mình đã làm và chưa làm.",
+      "reframe": "Công bằng không chỉ là kết quả được chia thế nào, mà còn là sự trung thực với quá trình.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "tu-cach-nguoi-cach-menh"
+      }
+    },
+    {
+      "assumption": "Nói rõ thiếu sót sẽ phá hỏng đoàn kết của nhóm.",
+      "finding": "Một tập thể trưởng thành cần có khả năng tự phê bình và sửa cách làm việc.",
+      "reframe": "Im lặng có thể giữ yên một buổi họp nhưng làm bất công lặp lại ở dự án sau.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "sua-doi-loi-lam-viec"
+      }
+    },
+    {
+      "assumption": "Chỉ người làm ít mới phải chịu trách nhiệm về sự chênh lệch.",
+      "finding": "Chuẩn mực trách nhiệm thuộc về cả cách nhóm phân công, theo dõi và phản hồi.",
+      "reframe": "Đánh giá cuối kỳ không thể sửa hết một quy trình đã để đóng góp trở nên vô hình.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "dao-duc-cach-mang"
+      }
+    }
+  ],
+  "returnHeading": "Nói thật về đóng góp mà không hạ thấp con người",
+  "returnSummary": "Nhóm có thể phân biệt mức đóng góp nhưng vẫn tôn trọng từng thành viên, nếu đánh giá dựa trên dữ kiện và mở đường cho lần làm tốt hơn.",
+  "presentLenses": [
+    {
+      "title": "Dùng dấu vết công việc",
+      "summary": "Dựa vào nhiệm vụ, phiên bản và mốc bàn giao thay vì ấn tượng cá nhân."
+    },
+    {
+      "title": "Tách đánh giá khỏi xúc phạm",
+      "summary": "Nói về hành vi và cam kết cụ thể, không gắn nhãn phẩm chất con người."
+    },
+    {
+      "title": "Sửa quy trình cho lần sau",
+      "summary": "Chốt cách phân công và kiểm tra sớm để đóng góp không chỉ lộ ra ở cuối."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "mot-nguoi-ganh-het-cong-viec",
+    "thanh-tich-cua-nhom-cong-cua-ai"
+  ]
+}

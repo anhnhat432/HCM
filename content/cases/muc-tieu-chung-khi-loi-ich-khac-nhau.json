@@ -1,0 +1,63 @@
+{
+  "slug": "muc-tieu-chung-khi-loi-ich-khac-nhau",
+  "category": "community-society",
+  "title": "Tìm mục tiêu chung khi lợi ích khác nhau",
+  "shortPrompt": "Các nhóm đều muốn giải quyết vấn đề, nhưng mỗi nhóm sẽ chịu lợi ích và chi phí khác nhau.",
+  "context": "Một dự án cộng đồng được nhiều bên ủng hộ về nguyên tắc. Tuy nhiên, nhóm hưởng lợi nhiều nhất muốn triển khai nhanh, nhóm chịu chi phí lo mất quyền lợi, còn nhóm thực hiện cần thêm nguồn lực mới có thể cam kết.",
+  "openingQuestion": "Mục tiêu chung phải được xây thế nào để không chỉ là khẩu hiệu của bên mạnh hơn?",
+  "primaryTrace": "dai-doan-ket",
+  "supportingTrace": "dao-duc-trach-nhiem",
+  "optionalPerspective": [
+    "Chốt theo lợi ích của số đông để hành động sớm",
+    "Tiếp tục thương lượng đến khi các nhóm chịu chi phí có tiếng nói thật"
+  ],
+  "reveals": [
+    {
+      "assumption": "Các bên cùng nói muốn giải quyết vấn đề thì đã có mục tiêu chung.",
+      "finding": "Mục tiêu chung cần quy tụ lợi ích khác nhau quanh một hướng mà các bên thực sự có thể tham gia.",
+      "reframe": "Cùng dùng một câu khẩu hiệu không bảo đảm mọi người đang hiểu cùng một kết quả.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "dang-cong-san-viet-nam"
+      }
+    },
+    {
+      "assumption": "Bên đông hơn có thể tự xác định điều gì là lợi ích chung.",
+      "finding": "Sức mạnh quy tụ đến từ khả năng mở rộng sự tham gia, đặc biệt với những lực lượng có vị trí và nhu cầu khác nhau.",
+      "reframe": "Số đông có thể quyết định, nhưng mục tiêu chỉ thực sự chung khi chi phí của thiểu số được nhìn thấy và xử lý.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "viet-minh"
+      }
+    },
+    {
+      "assumption": "Đạt đồng thuận về nguyên tắc là đủ để dự án tự vận hành.",
+      "finding": "Đồng thuận cần được chuyển thành phân công, nguồn lực và hành động cụ thể.",
+      "reframe": "Một mục tiêu không có người chịu trách nhiệm và nguồn lực đi kèm chỉ trì hoãn xung đột sang giai đoạn thực hiện.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    }
+  ],
+  "returnHeading": "Biến mục tiêu chung thành một thỏa thuận có thể thực hiện",
+  "returnSummary": "Nói rõ lợi ích, chi phí và điều mỗi bên phải đóng góp. Chỉ gọi là mục tiêu chung khi các nhóm chịu tác động cũng có vai trò trong cách triển khai.",
+  "presentLenses": [
+    {
+      "title": "Lập bản đồ lợi ích và chi phí",
+      "summary": "Không chỉ hỏi ai hưởng lợi; hỏi ai trả thời gian, nguồn lực và rủi ro."
+    },
+    {
+      "title": "Trao tiếng nói cho bên chịu tác động",
+      "summary": "Đưa họ vào quá trình thiết kế, không chỉ xin ý kiến khi phương án đã gần chốt."
+    },
+    {
+      "title": "Gắn mục tiêu với nguồn lực",
+      "summary": "Chỉ cam kết phần việc khi đã rõ người làm, thời gian và hỗ trợ cần thiết."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "chia-se-tai-nguyen-khan-hiem",
+    "loi-ich-ca-nhan-va-tap-the"
+  ]
+}

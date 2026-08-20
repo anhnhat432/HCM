@@ -1,0 +1,63 @@
+{
+  "slug": "ky-luat-va-long-tin",
+  "category": "leadership-responsibility",
+  "title": "Kỷ luật có thể tồn tại cùng lòng tin?",
+  "shortPrompt": "Nhóm muốn siết quy định sau nhiều lần trễ hạn, nhưng sợ biến mọi người thành đối tượng bị giám sát.",
+  "context": "Một số thành viên liên tục trễ cam kết khiến dự án chậm. Trưởng nhóm đề xuất kiểm tra dày hơn và phạt rõ ràng, trong khi những người khác lo cách đó sẽ tạo cảm giác nghi ngờ và làm mọi người chỉ đối phó.",
+  "openingQuestion": "Làm sao đặt kỷ luật mà không biến quan hệ hợp tác thành kiểm soát?",
+  "primaryTrace": "dao-duc-trach-nhiem",
+  "supportingTrace": "dai-doan-ket",
+  "optionalPerspective": [
+    "Siết quy định để bảo vệ tiến độ",
+    "Ưu tiên trao quyền để giữ lòng tin"
+  ],
+  "reveals": [
+    {
+      "assumption": "Kỷ luật chỉ có hiệu lực khi đi kèm sự giám sát chặt và hình phạt.",
+      "finding": "Nền tảng sâu hơn của kỷ luật là khả năng tự yêu cầu mình thực hiện điều đã cam kết.",
+      "reframe": "Quy định bên ngoài cần giúp hình thành trách nhiệm bên trong, không thay thế nó mãi mãi.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "tu-cach-nguoi-cach-menh"
+      }
+    },
+    {
+      "assumption": "Có quy định rõ thì không cần bàn về nguyên nhân trễ hạn.",
+      "finding": "Sửa cách làm việc đòi hỏi nhìn vào cả hành vi, điều kiện và cơ chế đang tạo ra sai lệch.",
+      "reframe": "Kỷ luật chỉ xử lý biểu hiện sẽ khiến nhóm giỏi che giấu hơn chứ chưa chắc làm tốt hơn.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "sua-doi-loi-lam-viec"
+      }
+    },
+    {
+      "assumption": "Lòng tin nghĩa là không cần kiểm tra nhau.",
+      "finding": "Trách nhiệm bền vững cần lời hứa, hành động và khả năng giải trình đi cùng nhau.",
+      "reframe": "Một mốc kiểm tra minh bạch có thể bảo vệ lòng tin nếu nó áp dụng công bằng và giúp đỡ đúng lúc.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "dao-duc-cach-mang"
+      }
+    }
+  ],
+  "returnHeading": "Đặt kỷ luật để nuôi trách nhiệm",
+  "returnSummary": "Nhóm cần ít quy tắc nhưng rõ mục đích, có cơ hội báo khó sớm và có hệ quả nhất quán khi cam kết bị bỏ qua.",
+  "presentLenses": [
+    {
+      "title": "Giải thích điều quy tắc bảo vệ",
+      "summary": "Liên kết mỗi mốc kiểm tra với tiến độ hoặc quyền lợi chung, không chỉ quyền của trưởng nhóm."
+    },
+    {
+      "title": "Cho phép báo khó trước hạn",
+      "summary": "Phân biệt người chủ động xin hỗ trợ với người im lặng rồi bỏ cam kết."
+    },
+    {
+      "title": "Áp dụng hệ quả nhất quán",
+      "summary": "Không nương tay theo quan hệ và cũng không phạt vượt quá tác động thực tế."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "nguoi-lanh-dao-khong-nhan-loi",
+    "trach-nhiem-truoc-van-de-chung"
+  ]
+}

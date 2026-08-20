@@ -1,0 +1,63 @@
+{
+  "slug": "noi-that-khi-khong-ai-biet",
+  "category": "leadership-responsibility",
+  "title": "Nói thật khi không ai có thể biết",
+  "shortPrompt": "Bạn phát hiện một sai sót có lợi cho mình và hoàn toàn có thể im lặng.",
+  "context": "Điểm số của bạn được nhập cao hơn thực tế do một lỗi nhỏ. Không ai khác biết, không có dấu hiệu hệ thống sẽ kiểm tra lại và việc báo lỗi có thể khiến kết quả cá nhân của bạn giảm đáng kể.",
+  "openingQuestion": "Sự trung thực còn có ý nghĩa gì khi chỉ chính mình biết sự thật?",
+  "primaryTrace": "dao-duc-trach-nhiem",
+  "supportingTrace": "con-nguoi",
+  "optionalPerspective": [
+    "Giữ im lặng vì lỗi không do mình tạo ra",
+    "Chủ động báo lại dù chịu thiệt"
+  ],
+  "reveals": [
+    {
+      "assumption": "Ta chỉ chịu trách nhiệm cho lỗi do chính mình gây ra.",
+      "finding": "Tư cách thể hiện ở cách ta phản ứng với lợi ích không đúng, không chỉ ở việc ai tạo ra sai sót.",
+      "reframe": "Không sửa một điều mình biết sai cũng là một lựa chọn có trách nhiệm đạo đức.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "tu-cach-nguoi-cach-menh"
+      }
+    },
+    {
+      "assumption": "Một sai lệch nhỏ không ảnh hưởng ai nên không cần làm lớn chuyện.",
+      "finding": "Sửa lối làm việc bắt đầu từ sự thật cụ thể, kể cả khi nó bất tiện và không tạo tiếng vang.",
+      "reframe": "Điều nhỏ hôm nay đang đặt ra chuẩn cho cách ta xử lý lợi ích lớn hơn ngày mai.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "sua-doi-loi-lam-viec"
+      }
+    },
+    {
+      "assumption": "Trung thực chỉ là quy tắc bên ngoài để hệ thống vận hành.",
+      "finding": "Đạo đức là năng lực tự điều chỉnh hành vi ngay cả khi không có người buộc ta phải làm đúng.",
+      "reframe": "Giá trị của lời nói thật nằm ở việc nó không phụ thuộc vào khả năng bị phát hiện.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "dao-duc-cach-mang"
+      }
+    }
+  ],
+  "returnHeading": "Chọn sự thật khi nó khiến mình mất lợi thế",
+  "returnSummary": "Bạn không cần biến việc báo lỗi thành một màn thể hiện. Chỉ cần đưa thông tin đúng đến đúng người và chấp nhận kết quả được sửa lại.",
+  "presentLenses": [
+    {
+      "title": "Xác nhận dữ kiện trước",
+      "summary": "Kiểm tra chắc chắn sai sót thay vì phản ứng chỉ dựa trên cảm giác."
+    },
+    {
+      "title": "Báo qua kênh phù hợp",
+      "summary": "Nói trực tiếp với người có thể sửa lỗi, không biến nó thành câu chuyện công khai."
+    },
+    {
+      "title": "Chấp nhận phần thiệt chính đáng",
+      "summary": "Không dùng việc mình vô can ban đầu để giữ một lợi ích mà mình biết là sai."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "quyet-dinh-de-lam-nhung-sai",
+    "im-lang-truoc-sai-pham"
+  ]
+}

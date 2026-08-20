@@ -1,0 +1,63 @@
+{
+  "slug": "bat-dong-khi-chay-deadline",
+  "category": "study-teamwork",
+  "title": "Bất đồng giữa lúc chạy deadline",
+  "shortPrompt": "Hai hướng làm đều có lý, nhưng thời gian chỉ còn đủ để chọn một.",
+  "context": "Nhóm đang ở chặng cuối thì nảy sinh hai phương án trái ngược. Mỗi bên đều có lý lẽ và đều lo phương án kia làm hỏng kết quả. Cuộc trao đổi nhanh chóng chuyển từ tranh luận cách làm sang bảo vệ cái tôi.",
+  "openingQuestion": "Khi không còn thời gian để tất cả đồng ý, nhóm nên dựa vào điều gì để quyết định?",
+  "primaryTrace": "dai-doan-ket",
+  "supportingTrace": "dao-duc-trach-nhiem",
+  "optionalPerspective": [
+    "Chọn nhanh theo ý kiến của số đông",
+    "Dừng lại để xác định tiêu chí chung"
+  ],
+  "reveals": [
+    {
+      "assumption": "Đoàn kết nghĩa là tránh tranh luận để giữ không khí yên ổn.",
+      "finding": "Một hướng chung chỉ có ý nghĩa khi nó xử lý được khác biệt đang tồn tại, không phải che chúng đi.",
+      "reframe": "Bất đồng không phải vấn đề chính; thiếu một mục tiêu và tiêu chí chung mới khiến bất đồng thành chia rẽ.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "dang-cong-san-viet-nam"
+      }
+    },
+    {
+      "assumption": "Bên đông người hơn tự nhiên đại diện cho lợi ích chung.",
+      "finding": "Sự quy tụ cần một mục tiêu đủ rộng để nhiều vị trí nhận ra phần mình trong quyết định.",
+      "reframe": "Số đông giúp chốt lựa chọn, nhưng lý do chung mới giúp những người không thắng vẫn cùng thực hiện.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "viet-minh"
+      }
+    },
+    {
+      "assumption": "Sau khi quyết định, những ý kiến còn lại không cần được nhắc đến nữa.",
+      "finding": "Một quyết định tập thể mạnh khi nó biến đồng thuận tối thiểu thành hành động có trách nhiệm.",
+      "reframe": "Chốt phương án là điểm bắt đầu của phối hợp, không phải chiến thắng của một phe.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    }
+  ],
+  "returnHeading": "Đưa tranh luận trở lại vấn đề chung",
+  "returnSummary": "Nhóm không cần đạt đồng thuận tuyệt đối. Nhóm cần một tiêu chí chung đủ rõ để chọn, cam kết và cùng chịu kết quả.",
+  "presentLenses": [
+    {
+      "title": "Tách người khỏi phương án",
+      "summary": "Phản biện lựa chọn bằng tiêu chí, không gắn lựa chọn với giá trị của người đề xuất."
+    },
+    {
+      "title": "Chốt tiêu chí trước khi bỏ phiếu",
+      "summary": "Thống nhất điều gì quan trọng nhất: thời gian, chất lượng hay mức rủi ro."
+    },
+    {
+      "title": "Phân công lại sau quyết định",
+      "summary": "Để cả người không được chọn vẫn có vai trò rõ trong phương án cuối."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "nhom-gioi-nhung-khong-hop-tac",
+    "thoa-hiep-den-dau"
+  ]
+}

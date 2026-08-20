@@ -8,13 +8,15 @@ import {
 interface CaseStageNavigationProps {
   readonly currentStage: CaseJourneyStage;
   readonly slug: string;
+  readonly perspective?: string | null;
 }
 
 export function CaseStageNavigation({
   currentStage,
   slug,
+  perspective,
 }: CaseStageNavigationProps) {
-  const navigation = getCaseStageNavigation(slug, currentStage);
+  const navigation = getCaseStageNavigation(slug, currentStage, perspective);
 
   return (
     <nav aria-label="Điều hướng giữa các bước" className="case-stage-navigation">

@@ -57,3 +57,33 @@ test("case stages provide one clear previous and next route action", () => {
     next: { href: "/ho-so", label: "Chọn tình huống khác" },
   });
 });
+
+test("case stages preserve perspective query parameter when provided", () => {
+  assert.equal(
+    getCaseStageHref(slug, "dau-vet", 0),
+    `/ho-so/${slug}/dau-vet?p=0`,
+  );
+  assert.equal(
+    getCaseStageHref(slug, "tro-lai", "1"),
+    `/ho-so/${slug}/tro-lai?p=1`,
+  );
+  assert.equal(
+    getCaseStageHref(slug, "hien-tai", "0"),
+    `/ho-so/${slug}?p=0`,
+  );
+
+  const navigationWithPerspective = getCaseStageNavigation(slug, "dau-vet", 0);
+  assert.equal(
+    navigationWithPerspective.previous.href,
+    `/ho-so/${slug}?p=0`,
+  );
+  assert.equal(
+    navigationWithPerspective.next.href,
+    `/ho-so/${slug}/tro-lai?p=0`,
+  );
+
+  const stagesWithPerspective = getCaseJourneyStages(slug, 1);
+  assert.equal(stagesWithPerspective[0].href, `/ho-so/${slug}?p=1`);
+  assert.equal(stagesWithPerspective[1].href, `/ho-so/${slug}/dau-vet?p=1`);
+  assert.equal(stagesWithPerspective[2].href, `/ho-so/${slug}/tro-lai?p=1`);
+});

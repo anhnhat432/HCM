@@ -8,6 +8,8 @@ import { QrShareDialog } from "@/components/share/qr-share-dialog";
 import { traces } from "@/data/traces";
 import { getCasePreviews } from "@/lib/thought-case-registry";
 
+
+
 const homepageHeroImage = {
   alt: "Trang đầu bản Tuyên ngôn Độc lập với bút tích và dấu lưu trữ",
   caption: "Bản Tuyên ngôn Độc lập — 1945",
@@ -25,42 +27,81 @@ export default function Home() {
     <main className="home" id="main-content">
       <header className="home-header">
         <div className="site-container home-header__inner">
-          <span className="brand-mark">ĐUỐC HỒNG</span>
-          <QrShareDialog label="Chia sẻ trang Đuốc Hồng bằng mã QR" />
+          <Link className="brand-mark" href="/">
+            <span className="brand-mark__torch" aria-hidden="true">🔥</span>
+            <span className="brand-mark__text">ĐUỐC HỒNG</span>
+          </Link>
+
+          <nav className="home-nav" aria-label="Điều hướng chính">
+            <Link className="home-nav__link" href="#tinh-huong-goi-y">30 Tình huống</Link>
+            <Link className="home-nav__link" href="/ho-so">Thư viện hồ sơ</Link>
+            <Link className="home-nav__link" href="#kho-tu-lieu">Kho tư liệu nền</Link>
+            <Link className="home-nav__link" href="/phuong-phap">Phương pháp</Link>
+          </nav>
+
+          <div className="home-header__actions">
+            <QrShareDialog label="Chia sẻ trang Đuốc Hồng bằng mã QR" />
+          </div>
         </div>
       </header>
 
       <section className="home-hero" aria-labelledby="home-heading">
         <div className="site-container home-hero__grid">
           <div className="home-hero__copy">
-            <p className="section-kicker">ĐUỐC HỒNG — 2026</p>
+            <div className="section-kicker-badge">
+              <span className="section-kicker-badge__dot" />
+              <span>TƯ TƯỞNG HỒ CHÍ MINH & THỰC TIỄN 2026</span>
+            </div>
 
             <h1 className="home-hero__title" id="home-heading">
               <span className="home-hero__title-line">Một vấn đề{" "}</span>
-              <span className="home-hero__title-line">hôm nay.{" "}</span>
+              <span className="home-hero__title-line"><strong className="text-highlight">hôm nay.</strong>{" "}</span>
               <span className="home-hero__title-line">Một tư tưởng{" "}</span>
-              <span className="home-hero__title-line">từ quá khứ.{" "}</span>
+              <span className="home-hero__title-line"><strong className="text-gold">từ quá khứ.</strong>{" "}</span>
             </h1>
 
             <p className="home-hero__supporting">
-              Bắt đầu từ những câu hỏi của hiện tại, lần theo lịch sử và khám
-              phá cách tư tưởng Hồ Chí Minh được hình thành.
+              Bắt đầu từ những trăn trở, xung đột thực tế của đời sống hiện đại, lần theo các dấu mốc lịch sử để hiểu cội nguồn và vận dụng sáng tạo <strong>Tư tưởng Hồ Chí Minh</strong>.
             </p>
 
             <p className="home-hero__journey-meta">
-              Khoảng 2 phút · Không có đáp án đúng hoặc sai.
+              Khoảng 2 phút · Không có đáp án đúng hoặc sai · Khám phá bước chuyển hóa nhận thức.
             </p>
 
-            <Link className="primary-action" href="#tinh-huong-goi-y">
-              <span>Bắt đầu với một tình huống</span>
-              <span className="primary-action__arrow" aria-hidden="true">
-                →
-              </span>
-            </Link>
+            <div className="home-hero__cta-group">
+              <Link className="primary-action" href="#tinh-huong-goi-y">
+                <span>Bắt đầu với một tình huống</span>
+                <span className="primary-action__arrow" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+              <Link className="secondary-action" href="/ho-so">
+                <span>Xem thư viện hồ sơ</span>
+              </Link>
+            </div>
+
+            <div className="home-hero__stats">
+              <div className="home-hero__stat-item">
+                <strong>30</strong>
+                <span>Hồ sơ tình huống</span>
+              </div>
+              <div className="home-hero__stat-divider" />
+              <div className="home-hero__stat-item">
+                <strong>03</strong>
+                <span>Trục tư tưởng lớn</span>
+              </div>
+              <div className="home-hero__stat-divider" />
+              <div className="home-hero__stat-item">
+                <strong>100%</strong>
+                <span>Tư liệu lịch sử xác thực</span>
+              </div>
+            </div>
+
           </div>
 
           <div className="home-hero__visual">
             <figure className="home-hero__figure">
+              <div className="home-hero__image-badge">TƯ LIỆU GỐC 1945</div>
               <div className="home-hero__image-frame">
                 <Image
                   alt={homepageHeroImage.alt}
@@ -72,9 +113,9 @@ export default function Home() {
                 />
               </div>
               <figcaption>
-                <span>{homepageHeroImage.caption}</span>
+                <strong className="home-hero__caption-title">{homepageHeroImage.caption}</strong>
                 <span className="home-hero__credit">
-                  Nguồn ảnh:{" "}
+                  Nguồn:{" "}
                   <a
                     href={homepageHeroImage.sourceUrl}
                     rel="noreferrer"
@@ -98,10 +139,13 @@ export default function Home() {
         <div className="site-container">
           <Reveal>
             <div className="scenario-picker-section__heading">
-              <p>TÌNH HUỐNG GỢI Ý</p>
+              <div className="section-pill">TRẢI NGHIỆM CHÍNH / 30 TÌNH HUỐNG THỰC TẾ</div>
               <h2 id="scenario-picker-heading">
                 Có thể bạn đang gặp một câu hỏi như thế này.
               </h2>
+              <p className="section-desc">
+                Mỗi hồ sơ xuất phát từ một tình huống thực tế của sinh viên, người trẻ ngày nay và mở ra hành trình đối thoại cùng lịch sử.
+              </p>
             </div>
           </Reveal>
 
@@ -109,24 +153,39 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="topic-section" aria-labelledby="topic-heading">
+      <section className="topic-section" id="kho-tu-lieu" aria-labelledby="topic-heading">
         <div className="site-container">
           <Reveal>
-            <h2 className="topic-section__label" id="topic-heading">
-              Kho tư liệu nền
-            </h2>
+            <div className="topic-section__header-block">
+              <div className="section-pill" style={{ marginBottom: "0.75rem" }}>
+                NỀN TẢNG HỌC THUẬT & ĐỌC SÂU
+              </div>
+              <h2 className="topic-section__label" id="topic-heading">
+                Kho tư liệu nền: 3 Trục tư tưởng lớn
+              </h2>
+              <p className="topic-section__desc">
+                Dành cho ai muốn đào sâu: Hệ thống toàn văn các mốc lịch sử, bối cảnh thực tiễn và quá trình kết tinh những giá trị tư tưởng vĩ đại của Chủ tịch Hồ Chí Minh đứng phía sau 30 hồ sơ.
+              </p>
+            </div>
           </Reveal>
 
           <TopicList traces={traces} />
         </div>
       </section>
 
+
       <footer className="home-footer">
         <div className="site-container home-footer__inner">
-          <p>ĐUỐC HỒNG — 2026</p>
+          <div className="home-footer__brand">
+            <span className="brand-mark">🔥 ĐUỐC HỒNG — 2026</span>
+            <p className="home-footer__tagline">
+              Dự án học tập và trải nghiệm tương tác Tư tưởng Hồ Chí Minh qua lăng kính đương đại.
+            </p>
+          </div>
           <div className="home-footer__links">
             <Link href="/ho-so">Hồ sơ tư tưởng sống</Link>
             <Link href="/phuong-phap">Về dự án & phương pháp</Link>
+            <Link href="#main-content">Về đầu trang ↑</Link>
           </div>
         </div>
       </footer>

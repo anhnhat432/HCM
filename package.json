@@ -8,14 +8,19 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test tests/**/*.test.ts"
+    "test:unit": "tsx --test tests/**/*.test.ts",
+    "test:content": "tsx scripts/validate-content.ts",
+    "test:provenance": "tsx scripts/audit-provenance.ts",
+    "test": "npm run test:content && npm run test:provenance && npm run test:unit",
+    "verify": "npm run typecheck && npm run lint && npm run test && npm run build"
   },
   "dependencies": {
     "framer-motion": "^13.0.0",
     "next": "16.3.0",
     "qrcode": "^1.5.4",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

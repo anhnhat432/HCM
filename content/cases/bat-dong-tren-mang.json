@@ -1,0 +1,63 @@
+{
+  "slug": "bat-dong-tren-mang",
+  "category": "social-media",
+  "title": "Khi bất đồng trên mạng thành thù địch",
+  "shortPrompt": "Một cuộc tranh luận về ý kiến đang chuyển sang chế giễu và chia phe.",
+  "context": "Hai người bắt đầu bằng một bất đồng thật về vấn đề xã hội. Sau vài lượt bình luận, bạn bè mỗi bên tham gia, cắt câu chữ khỏi bối cảnh và biến cuộc trao đổi thành cuộc thi xem phe nào hạ được đối phương.",
+  "openingQuestion": "Làm sao tiếp tục bất đồng mà không biến người khác thành kẻ thù?",
+  "primaryTrace": "dai-doan-ket",
+  "supportingTrace": "con-nguoi",
+  "optionalPerspective": [
+    "Phản công mạnh để bảo vệ quan điểm",
+    "Rút khỏi cuộc đấu phe và quay lại vấn đề"
+  ],
+  "reveals": [
+    {
+      "assumption": "Muốn giữ lập trường thì phải chứng minh phía kia hoàn toàn sai.",
+      "finding": "Một hướng chung có thể bắt đầu từ mục tiêu được chia sẻ dù cách hiểu và lợi ích còn khác nhau.",
+      "reframe": "Tìm điểm chung không buộc bạn bỏ lập trường; nó xác định điều hai bên vẫn có thể cùng bảo vệ.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "dang-cong-san-viet-nam"
+      }
+    },
+    {
+      "assumption": "Khi đã chia phe, chỉ có chiến thắng mới kết thúc tranh luận.",
+      "finding": "Sự quy tụ rộng đòi hỏi khả năng tách mục tiêu chung khỏi khác biệt đang tồn tại giữa các lực lượng.",
+      "reframe": "Thắng một lượt bình luận có thể khiến khả năng hợp tác ngoài đời giảm đi.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "viet-minh"
+      }
+    },
+    {
+      "assumption": "Ngôn từ gay gắt chỉ là phong cách trên mạng, không ảnh hưởng hành động chung.",
+      "finding": "Đồng thuận chỉ trở thành sức mạnh khi con người còn khả năng đứng cùng nhau sau khác biệt.",
+      "reframe": "Cách tranh luận hôm nay đang quyết định liệu ngày mai hai bên còn có thể cùng giải quyết vấn đề hay không.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    }
+  ],
+  "returnHeading": "Giữ bất đồng ở cấp độ có thể đối thoại",
+  "returnSummary": "Hãy thu hẹp về một luận điểm, hỏi điều có thể kiểm chứng và dừng khi cuộc trao đổi chỉ còn tạo khán giả thay vì tạo hiểu biết.",
+  "presentLenses": [
+    {
+      "title": "Nói lại điểm mình hiểu từ phía kia",
+      "summary": "Cho thấy bạn đang phản hồi lập luận thật, không phải phiên bản dễ công kích nhất."
+    },
+    {
+      "title": "Giới hạn một luận điểm mỗi lượt",
+      "summary": "Tránh kéo thêm lịch sử, nhân cách và phe nhóm vào câu hỏi đang bàn."
+    },
+    {
+      "title": "Dừng trước khi thành biểu diễn",
+      "summary": "Rời cuộc trao đổi khi mục tiêu đã chuyển từ hiểu vấn đề sang làm nhục đối phương."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "noi-dung-gay-chia-re",
+    "khac-biet-the-he"
+  ]
+}

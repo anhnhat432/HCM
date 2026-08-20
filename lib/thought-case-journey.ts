@@ -44,17 +44,23 @@ const CASE_STAGE_COPY: Record<
 export function getCaseStageHref(
   slug: string,
   stage: CaseJourneyStage,
+  perspective?: string | number | null,
 ): string {
   const baseHref = `/ho-so/${slug}`;
-  return stage === "hien-tai" ? baseHref : `${baseHref}/${stage}`;
+  const path = stage === "hien-tai" ? baseHref : `${baseHref}/${stage}`;
+  if (perspective !== undefined && perspective !== null && String(perspective).trim() !== "") {
+    return `${path}?p=${encodeURIComponent(String(perspective))}`;
+  }
+  return path;
 }
 
 export function getCaseJourneyStages(
   slug: string,
+  perspective?: string | number | null,
 ): readonly CaseJourneyStageItem[] {
   return CASE_JOURNEY_STAGES.map((stage) => ({
     id: stage,
-    href: getCaseStageHref(slug, stage),
+    href: getCaseStageHref(slug, stage, perspective),
     ...CASE_STAGE_COPY[stage],
   }));
 }
@@ -62,12 +68,13 @@ export function getCaseJourneyStages(
 export function getCaseStageNavigation(
   slug: string,
   stage: CaseJourneyStage,
+  perspective?: string | number | null,
 ): CaseStageNavigation {
   if (stage === "hien-tai") {
     return {
       previous: { href: "/ho-so", label: "Chọn tình huống khác" },
       next: {
-        href: getCaseStageHref(slug, "dau-vet"),
+        href: getCaseStageHref(slug, "dau-vet", perspective),
         label: "Xem 3 mốc lịch sử",
       },
     };
@@ -76,11 +83,11 @@ export function getCaseStageNavigation(
   if (stage === "dau-vet") {
     return {
       previous: {
-        href: getCaseStageHref(slug, "hien-tai"),
+        href: getCaseStageHref(slug, "hien-tai", perspective),
         label: "Đọc lại vấn đề",
       },
       next: {
-        href: getCaseStageHref(slug, "tro-lai"),
+        href: getCaseStageHref(slug, "tro-lai", perspective),
         label: "Nhận gợi ý áp dụng",
       },
     };
@@ -88,7 +95,7 @@ export function getCaseStageNavigation(
 
   return {
     previous: {
-      href: getCaseStageHref(slug, "dau-vet"),
+      href: getCaseStageHref(slug, "dau-vet", perspective),
       label: "Xem lại 3 mốc",
     },
     next: { href: "/ho-so", label: "Chọn tình huống khác" },

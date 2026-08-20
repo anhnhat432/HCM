@@ -30,31 +30,45 @@ export function ScenarioPicker({ previews }: ScenarioPickerProps) {
   return (
     <div className="scenario-picker">
       <ol aria-live="polite" className="scenario-picker__list">
-        {visiblePreviews.map((item, index) => (
-          <li key={item.slug}>
-            <Link href={`/ho-so/${item.slug}`}>
-              <span className="scenario-picker__number">
-                {String(page * VISIBLE_CASE_COUNT + index + 1).padStart(2, "0")}
-              </span>
-              <span className="scenario-picker__copy">
-                <span>{CASE_CATEGORY_LABELS[item.category]}</span>
-                <strong>{item.title}</strong>
-                <span>{item.shortPrompt}</span>
-              </span>
-              <span className="scenario-picker__arrow" aria-hidden="true">
-                →
-              </span>
-            </Link>
-          </li>
-        ))}
+        {visiblePreviews.map((item, index) => {
+          const itemNumber = String(page * VISIBLE_CASE_COUNT + index + 1).padStart(2, "0");
+          return (
+            <li className="scenario-picker__item" key={item.slug}>
+              <Link className="scenario-picker__card" href={`/ho-so/${item.slug}`}>
+                <div className="scenario-picker__card-top">
+                  <span className="scenario-picker__badge">
+                    {CASE_CATEGORY_LABELS[item.category]}
+                  </span>
+                  <span className="scenario-picker__number">HỒ SƠ #{itemNumber}</span>
+                </div>
+                <div className="scenario-picker__copy">
+                  <strong className="scenario-picker__title">{item.title}</strong>
+                  <p className="scenario-picker__prompt">{item.shortPrompt}</p>
+                </div>
+                <div className="scenario-picker__footer">
+                  <span className="scenario-picker__cta">Mở hồ sơ & suy ngẫm</span>
+                  <span className="scenario-picker__arrow" aria-hidden="true">
+                    →
+                  </span>
+                </div>
+              </Link>
+            </li>
+          );
+        })}
       </ol>
 
       <div className="scenario-picker__actions">
-        <button onClick={showNextPage} type="button">
-          Đổi tình huống <span aria-hidden="true">↻</span>
+        <button className="scenario-picker__btn-refresh" onClick={showNextPage} type="button">
+          <span className="scenario-picker__icon-spin" aria-hidden="true">↻</span>
+          <span>Đổi tình huống</span>
         </button>
-        <Link href="/ho-so">Xem đủ 30 hồ sơ →</Link>
+        <Link className="scenario-picker__btn-all" href="/ho-so">
+          <span>Xem trọn bộ 30 hồ sơ</span>
+          <span aria-hidden="true">→</span>
+        </Link>
       </div>
+
     </div>
   );
 }
+

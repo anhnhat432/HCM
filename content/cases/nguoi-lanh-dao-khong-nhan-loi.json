@@ -1,0 +1,64 @@
+{
+  "slug": "nguoi-lanh-dao-khong-nhan-loi",
+  "category": "leadership-responsibility",
+  "title": "Khi người dẫn dắt không nhận sai",
+  "shortPrompt": "Một quyết định sai gây hậu quả, nhưng người đứng đầu đẩy lỗi xuống thành viên.",
+  "context": "Trưởng nhóm chọn một hướng làm dù đã được cảnh báo về rủi ro. Khi phương án thất bại, bạn ấy giải thích rằng thành viên thực hiện chưa tốt và tránh nhắc đến quyết định ban đầu của mình.",
+  "openingQuestion": "Một người còn có thể dẫn dắt nếu luôn bảo vệ hình ảnh của mình trước sự thật không?",
+  "primaryTrace": "dao-duc-trach-nhiem",
+  "supportingTrace": "con-nguoi",
+  "optionalPerspective": [
+    "Giữ uy tín lãnh đạo bằng cách xử lý nội bộ",
+    "Công khai phần trách nhiệm của người ra quyết định"
+  ],
+  "reveals": [
+    {
+      "assumption": "Lãnh đạo phải luôn tỏ ra chắc chắn và không được để lộ sai lầm.",
+      "finding": "Tư cách của người dẫn dắt được thể hiện qua khả năng tự yêu cầu mình trước khi yêu cầu người khác.",
+      "reframe": "Nhận sai không làm mất vai trò; né tránh trách nhiệm mới làm mất niềm tin.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "tu-cach-nguoi-cach-menh"
+      }
+    },
+    {
+      "assumption": "Chỉ cần sửa kết quả, không cần nhìn lại cách người đứng đầu ra quyết định.",
+      "finding": "Sửa lối làm việc bắt đầu bằng việc gọi đúng nguyên nhân và tự phê bình có căn cứ.",
+      "reframe": "Nếu quyền quyết định không đi cùng trách nhiệm giải trình, lỗi cũ sẽ trở lại dưới tên mới.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "sua-doi-loi-lam-viec"
+      }
+    },
+    {
+      "assumption": "Uy tín đến từ việc không bao giờ sai trước tập thể.",
+      "finding": "Uy tín bền hơn khi lời nói, quyết định và trách nhiệm cá nhân thống nhất với nhau.",
+      "reframe": "Một lời nhận lỗi có giá trị khi nó kéo theo thay đổi trong cách làm, không chỉ là câu xin lỗi.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "dao-duc-cach-mang"
+      }
+    }
+  ],
+  "returnHeading": "Biến nhận lỗi thành năng lực lãnh đạo",
+  "returnSummary": "Người dẫn dắt cần nói rõ phần quyết định thuộc về mình, bảo vệ thành viên khỏi việc gánh thay và cho thấy điều gì sẽ thay đổi sau sai lầm.",
+  "presentLenses": [
+    {
+      "title": "Nhận đúng phần quyết định",
+      "summary": "Phân biệt lỗi trong chỉ đạo với lỗi trong thực hiện trước khi quy trách nhiệm."
+    },
+    {
+      "title": "Nói rõ tác động",
+      "summary": "Không dừng ở xin lỗi; xác nhận hậu quả mà tập thể đã phải chịu."
+    },
+    {
+      "title": "Công bố thay đổi cụ thể",
+      "summary": "Cho mọi người biết quy trình ra quyết định nào sẽ được sửa ở lần tiếp theo."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "noi-that-khi-khong-ai-biet",
+    "chia-cong-khong-cong-bang"
+  ],
+  "featured": true
+}

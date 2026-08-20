@@ -1,0 +1,195 @@
+{
+  "slug": "dai-doan-ket",
+  "order": 1,
+  "title": "Đại đoàn kết",
+  "shortTitle": "Đoàn kết",
+  "theme": "unity",
+  "cardSummary": "Khi những khác biệt cần tìm được một hướng chung.",
+  "presentDay": {
+    "label": "2026 — Điểm xuất phát",
+    "headline": [
+      "Khi khác biệt",
+      "biến thành",
+      "khoảng cách."
+    ],
+    "summary": "Một nhóm sinh viên cùng làm việc hướng đến một dự án chung, nhưng sự khác biệt trong mức độ tham gia, quan điểm và trách nhiệm dần trở thành xung đột.",
+    "image": {
+      "src": "/images/traces/dai-doan-ket/present-day-ai-group.jpg",
+      "alt": "Bốn sinh viên ngồi quanh bàn, cùng nhìn tài liệu trong lúc hai người trao đổi bằng cử chỉ",
+      "caption": "Cùng mục tiêu, khác hướng đi",
+      "credit": "Ảnh minh họa",
+      "verificationStatus": "verified",
+      "usageStatus": "approved",
+      "usageNote": "Chủ dự án cung cấp và duyệt ảnh minh họa AI ngày 2026-08-11; công cụ tạo và điều khoản giấy phép không được cung cấp.",
+      "license": "Không nêu giấy phép của công cụ tạo",
+      "kind": "present",
+      "presentation": {
+        "fit": "cover",
+        "aspectRatio": "portrait",
+        "tone": "natural",
+        "objectPosition": "50% center",
+        "background": "neutral"
+      }
+    }
+  },
+  "centralQuestion": "Điều gì có thể giữ một tập thể cùng hướng?",
+  "historicalMoments": [
+    {
+      "id": "dang-cong-san-viet-nam",
+      "year": "1930",
+      "title": "Đảng Cộng sản Việt Nam",
+      "summary": "Đầu năm 1930 tại Hương Cảng, Nguyễn Ái Quốc chủ trì Hội nghị hợp nhất các tổ chức cộng sản, quy tụ lực lượng quanh mục tiêu chung và dẫn tới sự ra đời của Đảng Cộng sản Việt Nam.",
+      "metadata": "Hương Cảng — đầu tháng 2 năm 1930",
+      "verification": "Đã đối chiếu nguồn chính thống về vai trò chủ trì của Nguyễn Ái Quốc, Hội nghị hợp nhất và ngày thành lập Đảng; phần tóm lược là diễn giải, không coi năm 1930 là điểm khởi nguồn tuyệt đối của tư tưởng đại đoàn kết.",
+      "image": {
+        "src": "/images/traces/dai-doan-ket/1930-party-foundation.jpg",
+        "alt": "Tranh tái hiện Nguyễn Ái Quốc chủ trì Hội nghị hợp nhất các tổ chức cộng sản tại Hương Cảng đầu năm 1930",
+        "caption": "Tranh tái hiện Hội nghị thành lập Đảng Cộng sản Việt Nam",
+        "credit": "Cổng Thông tin điện tử Hồ Chí Minh; ảnh chụp lại tranh của họa sĩ Phi Hoanh tại Bảo tàng Lịch sử Quốc gia",
+        "sourceUrl": "https://hochiminh.vn/hoc-va-lam-theo-bac/hoc-va-lam-theo-bac/vai-tro-cua-nguyen-ai-quoc-tai-hoi-nghi-hop-nhat-cac-to-chuc-cong-san-o-viet-nam-3992",
+        "verificationStatus": "verified",
+        "usageStatus": "approved",
+        "usageNote": "Chủ dự án xác nhận phê duyệt sử dụng công khai ngày 2026-08-10.",
+        "license": "Không nêu giấy phép tái sử dụng",
+        "kind": "artwork",
+        "presentation": {
+          "fit": "contain",
+          "aspectRatio": "landscape",
+          "tone": "soft-archival",
+          "objectPosition": "50% center",
+          "background": "paper"
+        }
+      },
+      "sources": [
+        {
+          "title": "Vai trò của Nguyễn Ái Quốc tại Hội nghị hợp nhất các tổ chức cộng sản ở Việt Nam",
+          "url": "https://hochiminh.vn/hoc-va-lam-theo-bac/hoc-va-lam-theo-bac/vai-tro-cua-nguyen-ai-quoc-tai-hoi-nghi-hop-nhat-cac-to-chuc-cong-san-o-viet-nam-3992"
+        },
+        {
+          "title": "Ngày thành lập Đảng Cộng sản Việt Nam (3-2-1930)",
+          "url": "https://tulieuvankien.dangcongsan.vn/ho-so-su-kien-nhan-chung/su-kien-va-nhan-chung/ngay-thanh-lap-dang-cong-san-viet-nam-3-2-1930-3342"
+        }
+      ]
+    },
+    {
+      "id": "viet-minh",
+      "year": "1941",
+      "title": "Việt Minh",
+      "summary": "Tháng 5 năm 1941 tại Pác Bó, Nguyễn Ái Quốc chủ trì Hội nghị Trung ương lần thứ Tám. Hội nghị quyết định thành lập Việt Minh nhằm tập hợp rộng rãi các lực lượng yêu nước cho mục tiêu giải phóng dân tộc.",
+      "metadata": "Pác Bó, Cao Bằng — 10–19 tháng 5 năm 1941",
+      "verification": "Đã đối chiếu biên niên và nguồn bảo tàng về Hội nghị Trung ương lần thứ Tám, quyết định thành lập Việt Minh và mục tiêu tập hợp lực lượng; dùng tên Nguyễn Ái Quốc đúng bối cảnh năm 1941.",
+      "image": {
+        "src": "/images/traces/dai-doan-ket/1941-viet-minh-pac-bo.jpg",
+        "alt": "Lán Khuổi Nậm tại Pác Bó, nơi Hội nghị Trung ương lần thứ Tám diễn ra tháng 5 năm 1941",
+        "caption": "Lán Khuổi Nậm tại Pác Bó, nơi Hội nghị Trung ương lần thứ Tám quyết định thành lập Mặt trận Việt Minh",
+        "credit": "Bảo tàng Lịch sử Quốc gia",
+        "sourceUrl": "https://baotanglichsu.vn/vi/Articles/3097/16382/19-5-1941-thanh-lap-mat-tran-viet-minh.html",
+        "verificationStatus": "verified",
+        "usageStatus": "approved",
+        "usageNote": "Chủ dự án xác nhận phê duyệt sử dụng công khai ngày 2026-08-10.",
+        "license": "Không nêu giấy phép tái sử dụng",
+        "kind": "historical-place",
+        "presentation": {
+          "fit": "cover",
+          "aspectRatio": "landscape",
+          "tone": "soft-archival",
+          "objectPosition": "50% center",
+          "background": "neutral"
+        }
+      },
+      "sources": [
+        {
+          "title": "Nguyễn Ái Quốc chủ trì Hội nghị lần thứ Tám của Trung ương Đảng Cộng sản Đông Dương",
+          "url": "https://baotanghochiminh.vn/nguyen-ai-quoc-chu-tri-hoi-nghi-lan-thu-tam-cua-trung-uong-dang-cong-san-dong-duong.htm"
+        },
+        {
+          "title": "19/5/1941: Thành lập Mặt trận Việt Minh",
+          "url": "https://baotanglichsu.vn/vi/Articles/3097/16382/19-5-1941-thanh-lap-mat-tran-viet-minh.html"
+        }
+      ]
+    },
+    {
+      "id": "tuyen-ngon-doc-lap",
+      "year": "1945",
+      "title": "Tuyên ngôn Độc lập",
+      "summary": "Ngày 2 tháng 9 năm 1945 tại Ba Đình, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, tuyên bố sự ra đời của nước Việt Nam Dân chủ Cộng hòa sau quá trình tập hợp lực lượng vì độc lập dân tộc.",
+      "metadata": "Quảng trường Ba Đình, Hà Nội — 2 tháng 9 năm 1945",
+      "verification": "Đã đối chiếu nguồn lưu trữ và nguồn chính thống về ngày, địa điểm, việc công bố Tuyên ngôn; câu kết là diễn giải theo chủ đề Trace, không phải trích dẫn hay khẳng định điều kiện lịch sử duy nhất.",
+      "image": {
+        "src": "/images/traces/dai-doan-ket/1945-independence-declaration.jpg",
+        "alt": "Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập trên lễ đài tại vườn hoa Ba Đình ngày 2 tháng 9 năm 1945",
+        "caption": "Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập tại vườn hoa Ba Đình, ngày 2 tháng 9 năm 1945",
+        "credit": "Trung tâm Lưu trữ quốc gia III, Phông Nghệ sĩ nhiếp ảnh Nguyễn Bá Khoản, SLT 98-65, 3002, 44, 64",
+        "sourceUrl": "https://luutru.gov.vn/cong-bo-gioi-thieu-tai-lieu/ban-tuyen-ngon-doc-lap-va-mot-so-hinh-anh-ngay-2-9-1945-tai-quang-truong-ba-dinh-lich-su.htm",
+        "verificationStatus": "verified",
+        "usageStatus": "approved",
+        "usageNote": "Chủ dự án xác nhận phê duyệt sử dụng công khai ngày 2026-08-10.",
+        "license": "Không nêu giấy phép tái sử dụng",
+        "kind": "historical-photo",
+        "presentation": {
+          "fit": "contain",
+          "aspectRatio": "landscape",
+          "tone": "archival",
+          "objectPosition": "50% center",
+          "background": "neutral"
+        }
+      },
+      "sources": [
+        {
+          "title": "Bản Tuyên ngôn Độc lập và một số hình ảnh ngày 2/9/1945 tại Quảng trường Ba Đình lịch sử",
+          "url": "https://luutru.gov.vn/cong-bo-gioi-thieu-tai-lieu/ban-tuyen-ngon-doc-lap-va-mot-so-hinh-anh-ngay-2-9-1945-tai-quang-truong-ba-dinh-lich-su.htm"
+        }
+      ]
+    }
+  ],
+  "thoughtFormation": {
+    "heading": [
+      "Tư tưởng ấy",
+      "được hình thành",
+      "như thế nào?"
+    ],
+    "factors": [
+      {
+        "title": "Truyền thống dân tộc",
+        "summary": "Tinh thần yêu nước, tương thân tương ái và đoàn kết đã hình thành qua lịch sử dân tộc."
+      },
+      {
+        "title": "Thực tiễn cách mạng",
+        "summary": "Kinh nghiệm thực tiễn cho thấy sức mạnh chỉ xuất hiện khi các lực lượng tập hợp quanh mục tiêu chung."
+      },
+      {
+        "title": "Cơ sở lý luận",
+        "summary": "Các cơ sở lý luận giúp tư tưởng đoàn kết được phát triển thành một quan điểm có hệ thống."
+      }
+    ],
+    "conclusion": [
+      "Đại đoàn kết",
+      "dân tộc"
+    ]
+  },
+  "application": {
+    "eyebrow": "Tư tưởng Đại đoàn kết trong thực tiễn",
+    "heading": [
+      "Điều này có nghĩa gì",
+      "với bạn hôm nay?"
+    ],
+    "bridge": "Quay lại nhóm sinh viên ban đầu.",
+    "items": [
+      {
+        "number": "01",
+        "title": "Tìm mục tiêu chung",
+        "summary": "Xác định điều mà cả nhóm đều muốn đạt được — không phải sự đồng nhất, mà là điểm đồng thuận."
+      },
+      {
+        "number": "02",
+        "title": "Tôn trọng khác biệt",
+        "summary": "Khác biệt về quan điểm không tự nhiên làm suy yếu tập thể; khi được lắng nghe, nó có thể trở thành sức mạnh."
+      },
+      {
+        "number": "03",
+        "title": "Biến đồng thuận thành hành động",
+        "summary": "Chuyển mục tiêu chung thành trách nhiệm rõ ràng và các bước đi cụ thể."
+      }
+    ]
+  }
+}

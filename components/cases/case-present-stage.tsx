@@ -8,9 +8,10 @@ import type { ThoughtCase } from "@/types/thought-case";
 
 interface CasePresentStageProps {
   readonly item: ThoughtCase;
+  readonly perspective?: string | null;
 }
 
-export function CasePresentStage({ item }: CasePresentStageProps) {
+export function CasePresentStage({ item, perspective }: CasePresentStageProps) {
   const fileNumber = getCaseFileNumber(item);
 
   return (
@@ -34,7 +35,7 @@ export function CasePresentStage({ item }: CasePresentStageProps) {
             <ExperienceGuide />
             <Link
               className="case-scroll-cue"
-              href={getCaseStageHref(item.slug, "dau-vet")}
+              href={getCaseStageHref(item.slug, "dau-vet", perspective)}
             >
               Xem 3 mốc lịch sử <span aria-hidden="true">→</span>
             </Link>
@@ -57,7 +58,11 @@ export function CasePresentStage({ item }: CasePresentStageProps) {
               {item.reveals[0].assumption}
             </p>
             {item.optionalPerspective ? (
-              <PerspectivePrompt perspectives={item.optionalPerspective} />
+              <PerspectivePrompt
+                initialPerspective={perspective}
+                perspectives={item.optionalPerspective}
+                slug={item.slug}
+              />
             ) : null}
           </div>
         </div>

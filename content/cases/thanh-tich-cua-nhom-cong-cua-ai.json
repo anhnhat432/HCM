@@ -1,0 +1,63 @@
+{
+  "slug": "thanh-tich-cua-nhom-cong-cua-ai",
+  "category": "leadership-responsibility",
+  "title": "Thành tích của nhóm được tính cho ai?",
+  "shortPrompt": "Người đại diện được khen ngợi, còn đóng góp phía sau dần biến mất.",
+  "context": "Dự án thành công và người thuyết trình nhận phần lớn lời khen từ giảng viên. Bạn ấy không nói sai, nhưng cũng không chủ động nhắc đến những người làm nghiên cứu, thiết kế và xử lý các phần khó phía sau.",
+  "openingQuestion": "Một người có thể nhận thành tích chung đến đâu trước khi sự ghi nhận trở thành chiếm hữu?",
+  "primaryTrace": "dai-doan-ket",
+  "supportingTrace": "dao-duc-trach-nhiem",
+  "optionalPerspective": [
+    "Người đại diện xứng đáng nhận phần nổi bật hơn",
+    "Thành tích phải phản ánh toàn bộ mạng lưới đóng góp"
+  ],
+  "reveals": [
+    {
+      "assumption": "Người xuất hiện trước công chúng tự nhiên là người tạo ra thành công.",
+      "finding": "Một kết quả chung hình thành khi nhiều vai trò được quy tụ quanh mục tiêu mà không vai trò nào tự đủ.",
+      "reframe": "Khả năng đại diện là một đóng góp, không phải quyền sở hữu toàn bộ thành quả.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "dang-cong-san-viet-nam"
+      }
+    },
+    {
+      "assumption": "Ghi nhận từng người sẽ làm câu chuyện thành tích bớt rõ ràng.",
+      "finding": "Sức mạnh tập thể nằm ở khả năng làm cho các lực lượng khác nhau cùng được nhìn thấy trong mục tiêu chung.",
+      "reframe": "Một câu chuyện ngắn vẫn có thể trung thực nếu người đại diện chỉ rõ mình đứng trên đóng góp của ai.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "viet-minh"
+      }
+    },
+    {
+      "assumption": "Sau khi đạt kết quả, cách chia sự ghi nhận không còn ảnh hưởng đến nhóm.",
+      "finding": "Ý nghĩa của thành quả chung phụ thuộc cả vào việc nó củng cố hay làm rạn nứt quan hệ giữa những người tạo ra nó.",
+      "reframe": "Ghi nhận công bằng không chỉ trả lại quá khứ; nó quyết định ai còn muốn đóng góp ở lần sau.",
+      "evidence": {
+        "traceSlug": "dai-doan-ket",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    }
+  ],
+  "returnHeading": "Kể lại thành công như một thành quả chung",
+  "returnSummary": "Người đại diện không cần thu nhỏ vai trò của mình. Điều cần làm là đặt vai trò ấy đúng trong chuỗi đóng góp đã tạo nên kết quả.",
+  "presentLenses": [
+    {
+      "title": "Nêu tên đóng góp cụ thể",
+      "summary": "Gắn từng phần nổi bật với người hoặc nhóm đã thực sự làm ra nó."
+    },
+    {
+      "title": "Chia quyền xuất hiện",
+      "summary": "Để nhiều thành viên cùng trình bày, trả lời hoặc đại diện ở các thời điểm khác nhau."
+    },
+    {
+      "title": "Thống nhất cách ghi nhận từ đầu",
+      "summary": "Không chờ đến lúc được khen mới tranh luận ai xứng đáng được nhắc tới."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "chia-cong-khong-cong-bang",
+    "nhom-gioi-nhung-khong-hop-tac"
+  ]
+}

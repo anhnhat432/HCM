@@ -1,0 +1,63 @@
+{
+  "slug": "quyet-dinh-de-lam-nhung-sai",
+  "category": "leadership-responsibility",
+  "title": "Quyết định dễ làm nhưng biết là sai",
+  "shortPrompt": "Một lối tắt giúp cả nhóm đạt mục tiêu, còn hậu quả có thể không ai phát hiện.",
+  "context": "Nhóm có thể sao chép một phần nội dung cũ để kịp hạn. Khả năng bị phát hiện rất thấp và kết quả trước mắt gần như chắc chắn tốt hơn, nhưng mọi người đều hiểu cách làm ấy không trung thực.",
+  "openingQuestion": "Nếu không ai kiểm tra, điều gì còn khiến ta phải chọn cách khó hơn?",
+  "primaryTrace": "dao-duc-trach-nhiem",
+  "supportingTrace": "dai-doan-ket",
+  "optionalPerspective": [
+    "Chấp nhận lối tắt để bảo vệ kết quả chung",
+    "Chấp nhận kết quả thấp hơn để giữ nguyên tắc"
+  ],
+  "reveals": [
+    {
+      "assumption": "Một lựa chọn chỉ sai khi có người phát hiện và xử phạt.",
+      "finding": "Đạo đức bắt đầu từ yêu cầu tự thân đối với hành vi, kể cả khi không có giám sát.",
+      "reframe": "Câu hỏi quan trọng không phải có bị bắt hay không, mà là ta đang trở thành người thế nào qua lựa chọn ấy.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "tu-cach-nguoi-cach-menh"
+      }
+    },
+    {
+      "assumption": "Áp lực tiến độ đủ để biện minh cho một cách làm thiếu trung thực.",
+      "finding": "Khó khăn cần được xử lý bằng việc sửa cách tổ chức, không phải hạ chuẩn trách nhiệm.",
+      "reframe": "Lối tắt giải quyết một deadline nhưng có thể biến thành thói quen mỗi khi tập thể gặp áp lực.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "sua-doi-loi-lam-viec"
+      }
+    },
+    {
+      "assumption": "Lợi ích của tập thể luôn đứng cao hơn nguyên tắc cá nhân.",
+      "finding": "Lợi ích chung không bền nếu được xây trên hành vi mà từng người đều biết là không đúng.",
+      "reframe": "Bảo vệ tập thể đôi khi là từ chối một kết quả đẹp nhưng làm suy yếu chuẩn mực bên trong.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "dao-duc-cach-mang"
+      }
+    }
+  ],
+  "returnHeading": "Chọn điều đúng khi lối tắt đang rất gần",
+  "returnSummary": "Nhóm cần một phương án khả thi hơn là lời kêu gọi đạo đức chung chung: thu hẹp phạm vi, xin gia hạn hoặc làm ít hơn nhưng làm thật.",
+  "presentLenses": [
+    {
+      "title": "Gọi đúng lối tắt",
+      "summary": "Nói rõ điều gì đang bị vi phạm thay vì dùng áp lực để làm nó mơ hồ."
+    },
+    {
+      "title": "Giảm tham vọng, không giảm chuẩn",
+      "summary": "Cắt bớt phạm vi để phần còn lại vẫn là công việc trung thực của nhóm."
+    },
+    {
+      "title": "Chia sẻ hậu quả quyết định",
+      "summary": "Để cả nhóm cùng chịu kết quả thay vì đẩy người phản đối vào thế đơn độc."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "noi-that-khi-khong-ai-biet",
+    "im-lang-truoc-sai-pham"
+  ]
+}

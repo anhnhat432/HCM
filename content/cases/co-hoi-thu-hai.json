@@ -1,0 +1,63 @@
+{
+  "slug": "co-hoi-thu-hai",
+  "category": "human-development",
+  "title": "Một người có xứng đáng với cơ hội thứ hai?",
+  "shortPrompt": "Một sai lầm nghiêm trọng đã xảy ra, còn người mắc lỗi nói rằng mình đã thay đổi.",
+  "context": "Một thành viên từng làm mất niềm tin của nhóm bằng cách bỏ việc và che giấu tiến độ. Sau một thời gian, bạn ấy xin quay lại, nhận lỗi và đề nghị bắt đầu từ vai trò nhỏ hơn, nhưng mọi người sợ rủi ro lặp lại.",
+  "openingQuestion": "Tha thứ có phải là quên rủi ro, và từ chối có phải là đóng cửa phát triển?",
+  "primaryTrace": "con-nguoi",
+  "supportingTrace": "dao-duc-trach-nhiem",
+  "optionalPerspective": [
+    "Không đánh cược niềm tin của nhóm thêm lần nữa",
+    "Cho một cơ hội có điều kiện để chứng minh thay đổi"
+  ],
+  "reveals": [
+    {
+      "assumption": "Một sai lầm nghiêm trọng đủ để xác định con người mãi mãi.",
+      "finding": "Phẩm giá con người và khả năng tham gia xã hội không bị xóa bỏ bởi một thời điểm thất bại.",
+      "reframe": "Không thu gọn con người vào sai lầm không có nghĩa là xóa trách nhiệm về sai lầm ấy.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    },
+    {
+      "assumption": "Nếu thật sự thay đổi, người ấy phải được trả lại ngay vị trí cũ.",
+      "finding": "Phát triển cần cơ hội học và rèn luyện theo từng bước, không phải một tuyên bố là đủ.",
+      "reframe": "Cơ hội thứ hai có thể bắt đầu nhỏ, có giới hạn và tạo bằng chứng mới cho niềm tin.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "trong-nguoi"
+      }
+    },
+    {
+      "assumption": "Tập thể chỉ cần chọn giữa tin hoàn toàn hoặc loại bỏ hoàn toàn.",
+      "finding": "Xây dựng con người và xã hội cần điều kiện để đóng góp đi cùng trách nhiệm đối với người khác.",
+      "reframe": "Một cấu trúc kiểm chứng được có thể vừa bảo vệ nhóm vừa mở đường cho sự trưởng thành.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "di-chuc"
+      }
+    }
+  ],
+  "returnHeading": "Cho cơ hội mà không giao lại niềm tin vô điều kiện",
+  "returnSummary": "Xác định điều cần sửa, bắt đầu bằng cam kết nhỏ, kiểm tra đều và mở rộng vai trò khi hành động mới đủ nhất quán.",
+  "presentLenses": [
+    {
+      "title": "Yêu cầu nhận lỗi cụ thể",
+      "summary": "Người quay lại cần gọi đúng hành vi, tác động và trách nhiệm của mình."
+    },
+    {
+      "title": "Bắt đầu bằng rủi ro thấp",
+      "summary": "Giao một phần việc rõ, có mốc kiểm tra và không đặt cả nhóm vào thế phụ thuộc."
+    },
+    {
+      "title": "Mở rộng theo bằng chứng mới",
+      "summary": "Để niềm tin trở lại từ hành động lặp lại, không chỉ từ lời hứa hoặc áp lực tình cảm."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "nguoi-cham-tien-bo",
+    "nguoi-lanh-dao-khong-nhan-loi"
+  ]
+}

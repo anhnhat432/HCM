@@ -21,8 +21,10 @@ export function TraceHeader({ title, slug }: TraceHeaderProps) {
     <header className="trace-header">
       <div className="site-container trace-header__inner">
         <Link className="trace-header__brand" href="/">
-          ĐUỐC HỒNG
+          <span aria-hidden="true">🔥 </span>
+          <span>ĐUỐC HỒNG</span>
         </Link>
+
         <span className="trace-header__title">{title}</span>
         <div className="trace-header__actions">
           <TraceSwitcher currentSlug={slug} items={switcherItems} />

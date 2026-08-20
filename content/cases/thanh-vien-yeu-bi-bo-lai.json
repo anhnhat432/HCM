@@ -1,0 +1,63 @@
+{
+  "slug": "thanh-vien-yeu-bi-bo-lai",
+  "category": "study-teamwork",
+  "title": "Khi thành viên yếu bị bỏ lại",
+  "shortPrompt": "Cả nhóm tăng tốc bằng cách giao phần ít quan trọng nhất cho người chậm hơn.",
+  "context": "Một thành viên học chậm và thường cần giải thích thêm. Để bảo đảm điểm số, nhóm dần loại bạn ấy khỏi các quyết định quan trọng, chỉ giao việc phụ và nói rằng đây là cách hiệu quả nhất cho tất cả.",
+  "openingQuestion": "Hiệu quả của nhóm có còn trọn vẹn nếu một người không còn cơ hội tiến bộ?",
+  "primaryTrace": "con-nguoi",
+  "supportingTrace": "dai-doan-ket",
+  "optionalPerspective": [
+    "Ưu tiên kết quả chung trong thời gian ngắn",
+    "Giữ một phần cơ hội học thật cho người yếu hơn"
+  ],
+  "reveals": [
+    {
+      "assumption": "Năng lực hiện tại quyết định một người xứng đáng tham gia đến đâu.",
+      "finding": "Giá trị và quyền được tham gia của con người không thể bị thu gọn vào một kết quả nhất thời.",
+      "reframe": "Điểm xuất phát thấp không phải lý do để tước đi vị trí của một người trong tập thể.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "tuyen-ngon-doc-lap"
+      }
+    },
+    {
+      "assumption": "Đào tạo người chậm là việc riêng của giảng viên, không phải của nhóm.",
+      "finding": "Sự phát triển con người cần một môi trường trao cơ hội học, thử và được hướng dẫn.",
+      "reframe": "Nhóm không chỉ tạo sản phẩm; cách nhóm làm việc cũng đang tạo ra hoặc thu hẹp năng lực của từng người.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "trong-nguoi"
+      }
+    },
+    {
+      "assumption": "Một người đóng góp ít hôm nay sẽ luôn là gánh nặng về sau.",
+      "finding": "Đầu tư vào con người là một lựa chọn dài hạn, không thể đo chỉ bằng tốc độ tức thời.",
+      "reframe": "Câu hỏi nên là cần điều kiện gì để người ấy đóng góp tốt hơn, không phải loại họ khỏi phần việc có ý nghĩa.",
+      "evidence": {
+        "traceSlug": "con-nguoi",
+        "momentId": "di-chuc"
+      }
+    }
+  ],
+  "returnHeading": "Giữ tiến độ và vẫn giữ cơ hội phát triển",
+  "returnSummary": "Không phải mọi việc đều có thể giao cho người đang yếu hơn. Nhưng mỗi người vẫn cần một phần việc thật, hỗ trợ thật và tiêu chí tiến bộ rõ ràng.",
+  "presentLenses": [
+    {
+      "title": "Giao việc vừa sức nhưng có ý nghĩa",
+      "summary": "Chọn phần việc ảnh hưởng thật đến sản phẩm thay vì một nhiệm vụ tượng trưng."
+    },
+    {
+      "title": "Ghép hỗ trợ với quyền tự làm",
+      "summary": "Cho ví dụ, phản hồi và mốc kiểm tra nhưng không làm thay toàn bộ."
+    },
+    {
+      "title": "Đo tiến bộ, không chỉ đo tốc độ",
+      "summary": "Nhìn vào mức trưởng thành qua từng vòng thay vì đóng khung bằng lần đầu."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "nguoi-cham-tien-bo",
+    "mot-nguoi-ganh-het-cong-viec"
+  ]
+}

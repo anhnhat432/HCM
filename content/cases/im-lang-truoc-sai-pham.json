@@ -1,0 +1,63 @@
+{
+  "slug": "im-lang-truoc-sai-pham",
+  "category": "conflicting-interests",
+  "title": "Im lặng để bảo vệ nhóm trước sai phạm",
+  "shortPrompt": "Nói ra có thể làm cả nhóm chịu hậu quả, nhưng im lặng khiến sai phạm được che giấu.",
+  "context": "Bạn phát hiện một thành viên đã chỉnh số liệu để kết quả dự án đẹp hơn. Nếu báo, cả nhóm có thể mất điểm và uy tín; nếu im lặng, mọi người được bảo vệ trước mắt nhưng sản phẩm chung dựa trên thông tin sai.",
+  "openingQuestion": "Bảo vệ tập thể có thể là lý do để che một điều mà tập thể đã làm sai không?",
+  "primaryTrace": "dao-duc-trach-nhiem",
+  "supportingTrace": "dai-doan-ket",
+  "optionalPerspective": [
+    "Xử lý kín để tránh cả nhóm bị liên lụy",
+    "Báo đúng sự thật dù tập thể chịu hậu quả"
+  ],
+  "reveals": [
+    {
+      "assumption": "Trung thành với nhóm nghĩa là không đưa sai phạm của nhóm ra ngoài.",
+      "finding": "Tư cách và trách nhiệm đòi hỏi mỗi người tự giữ chuẩn mực ngay cả khi lợi ích chung bị đe dọa.",
+      "reframe": "Trung thành với con người không đồng nghĩa với trung thành với một hành vi sai.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "tu-cach-nguoi-cach-menh"
+      }
+    },
+    {
+      "assumption": "Che đi một lần sẽ giúp nhóm có thời gian tự sửa mà không chịu tổn thất.",
+      "finding": "Sửa lối làm việc bắt đầu từ việc nhìn đúng sai sót và chịu trách nhiệm về tác động đã tạo ra.",
+      "reframe": "Không có dữ kiện thật, việc 'tự sửa' dễ trở thành cách kéo dài im lặng.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "sua-doi-loi-lam-viec"
+      }
+    },
+    {
+      "assumption": "Người nói ra là người làm tập thể mất đoàn kết.",
+      "finding": "Đạo đức cá nhân và trách nhiệm tập thể phải gặp nhau ở hành động bảo vệ điều đúng.",
+      "reframe": "Đoàn kết bền không được xây bằng việc cùng nhau giữ một điều sai khỏi ánh sáng.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "dao-duc-cach-mang"
+      }
+    }
+  ],
+  "returnHeading": "Bảo vệ con người nhưng không che hành vi sai",
+  "returnSummary": "Cách xử lý cần xác minh, cho người liên quan cơ hội giải trình và sửa dữ liệu, đồng thời báo đúng cấp có trách nhiệm nếu sai phạm không được khắc phục.",
+  "presentLenses": [
+    {
+      "title": "Xác minh trước khi kết luận",
+      "summary": "Giữ bản ghi, kiểm tra nguồn và tránh biến nghi ngờ thành cáo buộc công khai."
+    },
+    {
+      "title": "Yêu cầu sửa sai có thời hạn",
+      "summary": "Cho người liên quan cơ hội hành động nhưng không để lời hứa kéo dài vô hạn."
+    },
+    {
+      "title": "Báo theo mức cần thiết",
+      "summary": "Đưa sự việc đến đúng người có trách nhiệm, không phát tán rộng hơn mục đích sửa sai."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "noi-that-khi-khong-ai-biet",
+    "noi-dung-gay-chia-re"
+  ]
+}

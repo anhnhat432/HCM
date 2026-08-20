@@ -9,6 +9,7 @@ import { getThoughtCaseBySlug } from "@/lib/thought-case-registry";
 
 interface ThoughtCaseEvidencePageProps {
   readonly params: Promise<{ slug: string }>;
+  readonly searchParams?: Promise<{ p?: string }>;
 }
 
 export function generateStaticParams() {
@@ -33,8 +34,11 @@ export async function generateMetadata({
 
 export default async function ThoughtCaseEvidencePage({
   params,
+  searchParams,
 }: ThoughtCaseEvidencePageProps) {
   const { slug } = await params;
+  const search = searchParams ? await searchParams : undefined;
+  const perspective = search?.p ?? null;
   const item = getThoughtCaseBySlug(slug);
 
   if (!item) {
@@ -42,8 +46,8 @@ export default async function ThoughtCaseEvidencePage({
   }
 
   return (
-    <CaseJourneyShell item={item} stage="dau-vet">
-      <CaseEvidenceStage item={item} />
+    <CaseJourneyShell item={item} perspective={perspective} stage="dau-vet">
+      <CaseEvidenceStage item={item} perspective={perspective} />
     </CaseJourneyShell>
   );
 }

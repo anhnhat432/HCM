@@ -1,0 +1,63 @@
+{
+  "slug": "trach-nhiem-truoc-van-de-chung",
+  "category": "community-society",
+  "title": "Khi ai cũng chờ người khác hành động",
+  "shortPrompt": "Mọi người đều đồng ý vấn đề quan trọng, nhưng không ai thấy mình là người phải bắt đầu.",
+  "context": "Một vấn đề chung đã được nhắc nhiều lần và ai cũng cho rằng cần giải quyết. Tuy nhiên, mỗi người đều có lý do hợp lý để chờ người có quyền hơn, có thời gian hơn hoặc liên quan trực tiếp hơn hành động trước.",
+  "openingQuestion": "Trách nhiệm chung bắt đầu từ đâu khi không ai được chỉ định chịu trách nhiệm riêng?",
+  "primaryTrace": "dao-duc-trach-nhiem",
+  "supportingTrace": "dai-doan-ket",
+  "optionalPerspective": [
+    "Chờ người có thẩm quyền đứng ra tổ chức",
+    "Bắt đầu một hành động nhỏ trong phạm vi của mình"
+  ],
+  "reveals": [
+    {
+      "assumption": "Không được giao nhiệm vụ thì không thể bị xem là thiếu trách nhiệm.",
+      "finding": "Tư cách và trách nhiệm thể hiện ở khả năng tự nhận ra phần việc mình có thể làm, không chỉ chờ mệnh lệnh.",
+      "reframe": "Một vấn đề chung tồn tại lâu thường vì từng người chỉ nhìn vào phần trách nhiệm chưa được giao cho mình.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "tu-cach-nguoi-cach-menh"
+      }
+    },
+    {
+      "assumption": "Một hành động nhỏ không thay đổi được vấn đề lớn nên bắt đầu cũng vô ích.",
+      "finding": "Sửa lối làm việc bắt đầu từ việc nhìn thẳng vào điểm có thể thay đổi và tổ chức lại hành động cụ thể.",
+      "reframe": "Hành động đầu tiên không cần giải quyết toàn bộ; nó cần làm trách nhiệm trở nên nhìn thấy và có thể nối tiếp.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "sua-doi-loi-lam-viec"
+      }
+    },
+    {
+      "assumption": "Khi nhiều người cùng liên quan, trách nhiệm của từng người tự nhiên nhỏ đi.",
+      "finding": "Đạo đức và trách nhiệm cần trở thành chuẩn mực tự thân, rồi mới có thể tạo sức mạnh tập thể.",
+      "reframe": "Trách nhiệm chung không chia nhỏ đến mức biến mất; nó cần được chuyển thành phần việc có tên và người nhận.",
+      "evidence": {
+        "traceSlug": "dao-duc-trach-nhiem",
+        "momentId": "dao-duc-cach-mang"
+      }
+    }
+  ],
+  "returnHeading": "Biến sự đồng ý thành người bắt đầu",
+  "returnSummary": "Chọn một bước nhỏ trong phạm vi của bạn, gọi tên người cần phối hợp và đặt thời điểm kiểm tra lại. Hành động đầu tiên nên làm đường cho người khác tham gia.",
+  "presentLenses": [
+    {
+      "title": "Chọn phần mình kiểm soát được",
+      "summary": "Bắt đầu bằng thông tin, kết nối hoặc công việc cụ thể thay vì đợi toàn bộ quyền lực."
+    },
+    {
+      "title": "Mời một người cùng chịu trách nhiệm",
+      "summary": "Biến vấn đề từ lời than phiền chung thành một cam kết giữa những người có tên."
+    },
+    {
+      "title": "Đặt mốc hành động gần",
+      "summary": "Chốt một việc có thể hoàn thành sớm để tạo bằng chứng rằng vấn đề đang dịch chuyển."
+    }
+  ],
+  "relatedCaseSlugs": [
+    "ky-luat-va-long-tin",
+    "muc-tieu-chung-khi-loi-ich-khac-nhau"
+  ]
+}
