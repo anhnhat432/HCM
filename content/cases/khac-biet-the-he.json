@@ -40,8 +40,8 @@
       }
     }
   ],
-  "returnHeading": "Đổi mới mà không cắt đứt sự tiếp nối",
-  "returnSummary": "Tách giá trị cần giữ khỏi phương pháp có thể đổi, thử một phạm vi nhỏ và để cả hai thế hệ cùng đánh giá tác động trước khi mở rộng.",
+  "returnHeading": "Không phải thứ cũ nào cũng là nguyên tắc, và không phải thứ mới nào cũng là tiến bộ",
+  "returnSummary": "Xung đột thế hệ thường khó giải khi giá trị cần bảo vệ và cách thực hiện nó bị gộp thành một. Khi hai thứ được tách ra, nhóm có thể giữ điều vẫn còn lý do để giữ, đồng thời thử phương pháp mới và đánh giá nó bằng tác động thực tế.",
   "presentLenses": [
     {
       "title": "Hỏi điều mỗi bên đang bảo vệ",

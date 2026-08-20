@@ -40,8 +40,8 @@
       }
     }
   ],
-  "returnHeading": "Đo hiệu quả mà không biến mình thành công cụ",
-  "returnSummary": "Giữ mục tiêu rõ, giới hạn số việc quan trọng và theo dõi cả năng lượng lẫn kết quả. Một nhịp bền vững phải cho phép bạn tiếp tục vào ngày mai.",
+  "returnHeading": "Một ngày hiệu quả không nên làm giảm khả năng tiếp tục vào ngày mai",
+  "returnSummary": "Năng suất chỉ phản ánh lượng đầu ra trong một khoảng thời gian; nó không cho biết nhịp làm việc đó có thể được duy trì bao lâu. Nếu kết quả hôm nay liên tục được mua bằng khả năng tập trung, phục hồi và tiếp tục làm việc của ngày mai, hệ thống đang tăng output bằng cách rút dần chính năng lực tạo output.",
   "presentLenses": [
     {
       "title": "Chọn ít việc thật sự quan trọng",
