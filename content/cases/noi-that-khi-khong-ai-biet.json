@@ -40,8 +40,8 @@
       }
     }
   ],
-  "returnHeading": "Chọn sự thật khi nó khiến mình mất lợi thế",
-  "returnSummary": "Bạn không cần biến việc báo lỗi thành một màn thể hiện. Chỉ cần đưa thông tin đúng đến đúng người và chấp nhận kết quả được sửa lại.",
+  "returnHeading": "Lợi thế từ điều mình biết là sai không còn là lợi thế",
+  "returnSummary": "Câu hỏi không còn là “có ai phát hiện không?”, mà là “mình có chấp nhận kết quả này nếu biết nó có được từ một điều mình cho là sai không?”. Khi không còn người quan sát, tiêu chuẩn quyết định nằm ở chính bạn.",
   "presentLenses": [
     {
       "title": "Xác nhận dữ kiện trước",

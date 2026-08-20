@@ -40,8 +40,8 @@
       }
     }
   ],
-  "returnHeading": "Cứu dự án mà không làm thay cả nhóm",
-  "returnSummary": "Tiến độ cần được bảo vệ, nhưng năng lực chịu trách nhiệm của từng người cũng vậy. Một giải pháp tốt phải giữ được cả hai.",
+  "returnHeading": "Gánh hết công việc không phải lúc nào cũng là cứu cả nhóm",
+  "returnSummary": "Một người làm thay tất cả có thể cứu được deadline trước mắt, nhưng cũng làm yếu đi cơ hội để những người còn lại học cách chịu trách nhiệm. Kết quả không chỉ là bài tập được nộp hôm nay, mà còn là việc ngày mai nhóm có còn khả năng cùng làm hay không.",
   "presentLenses": [
     {
       "title": "Hiển thị đúng tải công việc",
