@@ -40,8 +40,8 @@
       }
     }
   ],
-  "returnHeading": "Biến sự đồng ý thành người bắt đầu",
-  "returnSummary": "Chọn một bước nhỏ trong phạm vi của bạn, gọi tên người cần phối hợp và đặt thời điểm kiểm tra lại. Hành động đầu tiên nên làm đường cho người khác tham gia.",
+  "returnHeading": "Đồng tình chưa tạo ra một điểm bắt đầu",
+  "returnSummary": "Một vấn đề chung có thể kéo dài dù rất nhiều người đều thấy nó tồn tại. Điểm nghẽn thường không nằm ở nhận thức, mà ở chỗ chưa có ai biến sự đồng tình thành một việc cụ thể đủ rõ để người khác có thể nối vào.",
   "presentLenses": [
     {
       "title": "Chọn phần mình kiểm soát được",

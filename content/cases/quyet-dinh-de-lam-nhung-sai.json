@@ -40,8 +40,8 @@
       }
     }
   ],
-  "returnHeading": "Chọn điều đúng khi lối tắt đang rất gần",
-  "returnSummary": "Nhóm cần một phương án khả thi hơn là lời kêu gọi đạo đức chung chung: thu hẹp phạm vi, xin gia hạn hoặc làm ít hơn nhưng làm thật.",
+  "returnHeading": "Một lối tắt không chỉ giải quyết việc hôm nay; nó còn đặt chuẩn cho lần sau",
+  "returnSummary": "Khi nhóm chọn một cách làm mà chính mình biết là không ổn chỉ để vượt deadline, quyết định đó không kết thúc ở sản phẩm hiện tại. Nó trở thành tiền lệ: lần sau gặp áp lực, cùng một lựa chọn sẽ dễ được chấp nhận hơn. Vì vậy bài toán không chỉ là “làm sao nộp kịp?”, mà là “mình đang tạo ra chuẩn làm việc nào cho những lần sau?”",
   "presentLenses": [
     {
       "title": "Gọi đúng lối tắt",

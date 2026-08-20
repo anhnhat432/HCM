@@ -40,8 +40,8 @@
       }
     }
   ],
-  "returnHeading": "Biến mục tiêu chung thành một thỏa thuận có thể thực hiện",
-  "returnSummary": "Nói rõ lợi ích, chi phí và điều mỗi bên phải đóng góp. Chỉ gọi là mục tiêu chung khi các nhóm chịu tác động cũng có vai trò trong cách triển khai.",
+  "returnHeading": "Mục tiêu chung bắt đầu từ việc nhìn rõ chi phí của từng bên",
+  "returnSummary": "Một mục tiêu chưa thật sự là “chung” nếu lợi ích được chia rộng nhưng chi phí lại dồn vào một nhóm. Sự đồng thuận bền hơn khi phần được, phần mất và rủi ro của từng bên đều được đặt lên bàn trước khi chốt cách làm.",
   "presentLenses": [
     {
       "title": "Lập bản đồ lợi ích và chi phí",
