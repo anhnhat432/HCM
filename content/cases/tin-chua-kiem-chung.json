@@ -40,8 +40,8 @@
       }
     }
   ],
-  "returnHeading": "Làm chậm một nhịp trước khi khuếch đại",
-  "returnSummary": "Kiểm tra nguồn đầu tiên, tìm xác nhận độc lập và nếu vẫn cần cảnh báo, nói rõ mức độ chưa chắc chắn thay vì trình bày như sự thật đã kết luận.",
+  "returnHeading": "Chia sẻ dễ hơn nhiều so với sửa một thông tin đã lan",
+  "returnSummary": "Một cảnh báo chưa rõ nguồn có thể được chia sẻ chỉ bằng một thao tác, trong khi kiểm tra và sửa một thông tin đã lan cần nhiều công sức hơn. Vì vậy mỗi người không chỉ quyết định mình có tin hay không; họ còn quyết định có trở thành một mắt xích giúp thông tin ấy mở rộng phạm vi hay không.",
   "presentLenses": [
     {
       "title": "Tìm nguồn đầu tiên",
