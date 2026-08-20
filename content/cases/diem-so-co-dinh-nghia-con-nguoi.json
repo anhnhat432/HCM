@@ -40,8 +40,8 @@
       }
     }
   ],
-  "returnHeading": "Đặt điểm số trở lại đúng kích thước",
-  "returnSummary": "Hãy dùng kết quả để xác định khoảng trống kiến thức và cách học tiếp, đồng thời giữ nó tách khỏi phán quyết về phẩm giá hay tiềm năng lâu dài.",
+  "returnHeading": "Một phép đo hẹp không trả lời được tiềm năng dài hạn",
+  "returnSummary": "Điểm số ghi lại mức độ thực hiện một yêu cầu cụ thể tại một thời điểm xác định. Vấn đề bắt đầu khi ta dùng kết quả đó để trả lời những câu hỏi về khả năng học tiếp, thích nghi hay phát triển lâu dài mà phép đo ấy chưa từng được thiết kế để trả lời.",
   "presentLenses": [
     {
       "title": "Đọc điểm theo từng năng lực",

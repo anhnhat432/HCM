@@ -40,8 +40,8 @@
       }
     }
   ],
-  "returnHeading": "Kể lại thành công như một thành quả chung",
-  "returnSummary": "Người đại diện không cần thu nhỏ vai trò của mình. Điều cần làm là đặt vai trò ấy đúng trong chuỗi đóng góp đã tạo nên kết quả.",
+  "returnHeading": "Người đại diện đứng trên một hệ thống đóng góp ít được nhìn thấy",
+  "returnSummary": "Người xuất hiện trước đám đông là phần dễ quan sát nhất của kết quả, không nhất thiết là toàn bộ nơi giá trị được tạo ra. Nếu sự ghi nhận liên tục dồn về phần dễ thấy, những công việc nghiên cứu, chuẩn bị và hỗ trợ phía sau sẽ dần trở nên khó duy trì.",
   "presentLenses": [
     {
       "title": "Nêu tên đóng góp cụ thể",
